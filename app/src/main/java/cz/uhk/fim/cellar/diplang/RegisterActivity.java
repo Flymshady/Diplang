@@ -24,10 +24,10 @@ import cz.uhk.fim.cellar.diplang.Classes.User;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
-    EditText editTextName, editTextEmail, editTextPassword;
-    TextView registrace, banner;
-    Button buttonRegister;
-    ProgressBar progressBar;
+    private EditText editTextName, editTextEmail, editTextPassword;
+    private TextView registrace, banner;
+    private Button buttonRegister;
+    private ProgressBar progressBar;
 
     private FirebaseAuth mAuth;
     private FirebaseDatabase db = FirebaseDatabase.getInstance();
