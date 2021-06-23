@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                    if(user.isEmailVerified()){
                        //redirect to user profile
-                       startActivity(new Intent(MainActivity.this, ProfileActivity.class));
+                       startActivity(new Intent(MainActivity.this, MenuActivity.class));
                    }else {
                        user.sendEmailVerification();
                        Toast.makeText(MainActivity.this, "Nejprve potvrdtě registraci na Vašem emailu", Toast.LENGTH_LONG).show();
@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                     */
                    //redirect to user profile
-                   startActivity(new Intent(MainActivity.this, ProfileActivity.class));
+                   startActivity(new Intent(MainActivity.this, NavigationActivity.class));
 
                }else{
                    Toast.makeText(MainActivity.this, "Došlo k chybě, zkuste to prosím znovu", Toast.LENGTH_LONG).show();
