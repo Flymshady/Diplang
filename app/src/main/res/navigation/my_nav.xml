@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="cz.uhk.fim.cellar.diplang.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/studyFragment"
+        android:name="cz.uhk.fim.cellar.diplang.StudyFragment"
+        android:label="fragment_study"
+        tools:layout="@layout/fragment_study" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="cz.uhk.fim.cellar.diplang.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+</navigation>

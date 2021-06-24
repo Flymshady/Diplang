@@ -114,10 +114,16 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()) {
                                         Toast.makeText(RegisterActivity.this, "Uživatel byl úspěšně zaregistrován", Toast.LENGTH_LONG).show();
+                                        progressBar.setVisibility(View.GONE);
+                                        try {
+                                            startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+                                        } finally {
+                                            finish();
+                                        }
                                     } else {
                                         Toast.makeText(RegisterActivity.this, "Došlo k chybě, zkuste to prosím znovu", Toast.LENGTH_LONG).show();
+                                        progressBar.setVisibility(View.GONE);
                                     }
-                                    progressBar.setVisibility(View.GONE);
                                 }
                             });
 

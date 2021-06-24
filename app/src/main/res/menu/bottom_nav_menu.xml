@@ -3,15 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/home"
+        android:id="@+id/homeFragment"
         android:icon="@drawable/ic_black_home_24"
         android:title="Lekce" />
     <item
-        android:id="@+id/study"
+        android:id="@+id/studyFragment"
         android:icon="@drawable/ic_black_school_24"
         android:title="Studium" />
     <item
-        android:id="@+id/profile"
+        android:id="@+id/profileFragment"
         android:icon="@drawable/ic_black_account_box_24"
         android:title="Profil" />
 </menu>
