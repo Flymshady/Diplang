@@ -9,27 +9,36 @@ import android.content.Intent;
 import android.os.Build;
 import androidx.core.app.NotificationCompat;
 
-
+/**
+ * BroadcastReceiver class for managing the notifications
+ * from the NotificationSettingsActitivy.class
+ *
+ */
 public class ReminderBroadcast extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
-            NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-            NotificationCompat.Builder builder;
-            PendingIntent pendingIntent;
+        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationCompat.Builder builder;
+        PendingIntent pendingIntent;
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        /**
+         * Devices with SDK version >= "Oreo" need the notification channel specification
+         */
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
-                CharSequence name = "DiplangReminderChallenge";
-                String description = "Channel for Diplang Reminder";
-                int importance = NotificationManager.IMPORTANCE_DEFAULT;
-                NotificationChannel channel = new NotificationChannel("notifyDiplang", name, importance);
-                channel.setDescription(description);
+            CharSequence name = "DiplangReminderChallenge";
+            String description = "Channel for Diplang Reminder";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("notifyDiplang", name, importance);
+            channel.setDescription(description);
 
-                notificationManager.createNotificationChannel(channel);
+            notificationManager.createNotificationChannel(channel);
 
-            }
-
+        }
+        /**
+         * Customizable look of the notification
+         */
         builder = new NotificationCompat.Builder(context, "notifyDiplang")
                 .setSmallIcon(R.drawable.ic_black_school_24)
                 .setContentTitle("Diplang upozornění")

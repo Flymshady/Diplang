@@ -22,6 +22,10 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import cz.uhk.fim.cellar.diplang.Classes.User;
 
+/**
+ * Registration activity to register the new user via email, password and name
+ * to the Firebase Authenticator and save the data to the Firebase RealTime Database
+ */
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText editTextName, editTextEmail, editTextPassword;

@@ -50,6 +50,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         buttonLogout.setOnClickListener(this);
 
         buttonSetNotification = (Button) v.findViewById(R.id.buttonSetNotification);
+
         buttonSetNotification.setOnClickListener(this);
 
         user = FirebaseAuth.getInstance().getCurrentUser();
