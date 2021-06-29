@@ -25,7 +25,7 @@ import cz.uhk.fim.cellar.diplang.Classes.User;
 
 public class ProfileFragment extends Fragment implements View.OnClickListener {
 
-    private Button buttonLogout;
+    private Button buttonLogout, buttonSetNotification;
     private FirebaseUser user;
     private DatabaseReference reference;
     private String userID;
@@ -48,6 +48,10 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         View v =  inflater.inflate(R.layout.fragment_profile, container, false);
         buttonLogout = (Button) v.findViewById(R.id.buttonLogout);
         buttonLogout.setOnClickListener(this);
+
+        buttonSetNotification = (Button) v.findViewById(R.id.buttonSetNotification);
+        buttonSetNotification.setOnClickListener(this);
+
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users");
         userID = user.getUid();
@@ -85,6 +89,11 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
 
                 break;
+            case R.id.buttonSetNotification:
+                startActivity(new Intent(getActivity(), NotificationSettingsActivity.class));
+
+                break;
+
         }
     }
 }
