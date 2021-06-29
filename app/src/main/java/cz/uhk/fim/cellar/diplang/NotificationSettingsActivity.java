@@ -4,6 +4,7 @@ import androidx.annotation.IntegerRes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
+import androidx.fragment.app.Fragment;
 
 import android.app.AlarmManager;
 import android.app.AlertDialog;
@@ -38,7 +39,7 @@ import java.util.Locale;
  */
 public class NotificationSettingsActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button buttonSaveNotification, buttonTimePicker;
+    private Button buttonSaveNotification, buttonTimePicker, buttonBackFromNotifications;
     private Switch switchNotifications;
     private int hour, minute;
     private boolean timePicked;
@@ -58,6 +59,10 @@ public class NotificationSettingsActivity extends AppCompatActivity implements V
 
         buttonSaveNotification = (Button) findViewById(R.id.buttonSaveNotification);
         buttonSaveNotification.setOnClickListener(this);
+
+        buttonBackFromNotifications = (Button) findViewById(R.id.buttonBackFromNotifications);
+        buttonBackFromNotifications.setOnClickListener(this);
+
 
         buttonTimePicker = (Button) findViewById(R.id.buttonTimePicker);
 
@@ -143,6 +148,13 @@ public class NotificationSettingsActivity extends AppCompatActivity implements V
         switch (view.getId()) {
             case R.id.buttonSaveNotification:
                 saveNotification();
+                break;
+            case R.id.buttonBackFromNotifications:
+                try {
+                    startActivity(new Intent(NotificationSettingsActivity.this, NavigationActivity.class));
+                } finally {
+                    finish();
+                }
                 break;
         }
     }
