@@ -16,7 +16,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class StudyFragment extends Fragment implements View.OnClickListener {
     private Context mContext;
 
-    private Button buttonSpeechActivity;
+    private Button buttonSpeechActivity, buttonTranslatorActivity;
 
     public StudyFragment() {
         // Required empty public constructor
@@ -43,6 +43,9 @@ public class StudyFragment extends Fragment implements View.OnClickListener {
         buttonSpeechActivity = (Button) v.findViewById(R.id.buttonSpeechActivity);
         buttonSpeechActivity.setOnClickListener(this);
 
+        buttonTranslatorActivity = (Button) v.findViewById(R.id.buttonTranslatorActivity);
+        buttonTranslatorActivity.setOnClickListener(this);
+
         return v;
     }
 
@@ -52,6 +55,13 @@ public class StudyFragment extends Fragment implements View.OnClickListener {
             case R.id.buttonSpeechActivity:
                 try {
                     startActivity(new Intent(getActivity(), SpeechActivity.class));
+                } finally {
+                    getActivity().finish();
+                }
+                break;
+            case R.id.buttonTranslatorActivity:
+                try {
+                    startActivity(new Intent(getActivity(), TranslatorActivity.class));
                 } finally {
                     getActivity().finish();
                 }

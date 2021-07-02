@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cz.uhk.fim.cellar.diplang">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Diplang">
-        <activity android:name=".SpeechActivity"></activity>
+        <activity android:name=".TranslatorActivity"></activity>
+        <activity android:name=".SpeechActivity" />
         <activity android:name=".NotificationSettingsActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".NavigationActivity" />
