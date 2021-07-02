@@ -2,14 +2,17 @@ package cz.uhk.fim.cellar.diplang;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -19,11 +22,14 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.ml.common.modeldownload.FirebaseModelDownloadConditions;
-import com.google.firebase.ml.naturallanguage.FirebaseNaturalLanguage;
-import com.google.firebase.ml.naturallanguage.translate.FirebaseTranslateLanguage;
-import com.google.firebase.ml.naturallanguage.translate.FirebaseTranslator;
-import com.google.firebase.ml.naturallanguage.translate.FirebaseTranslatorOptions;
+import com.google.mlkit.common.model.DownloadConditions;
+import com.google.mlkit.common.model.RemoteModelManager;
+import com.google.mlkit.nl.translate.NaturalLanguageTranslateRegistrar;
+import com.google.mlkit.nl.translate.TranslateLanguage;
+import com.google.mlkit.nl.translate.TranslateRemoteModel;
+import com.google.mlkit.nl.translate.Translation;
+import com.google.mlkit.nl.translate.Translator;
+import com.google.mlkit.nl.translate.TranslatorOptions;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -37,11 +43,12 @@ public class TranslatorActivity extends AppCompatActivity {
     private ImageView mic;
     private MaterialButton translateButton;
     private TextView translatedTextView;
+    private Button buttonDeleteModels, buttonBack;
     String[] fromLanguages = {"Z", "Angličtina", "Čeština"};
     String[] toLanguages = {"Do", "Angličtina", "Čeština"};
 
     private static final int REQUEST_PERMISSION_CODE = 1;
-    int languageCode, fromLanguageCode, toLanguageCode = 0;
+    String languageCode, fromLanguageCode, toLanguageCode = "";
 
 
     @Override
@@ -55,6 +62,8 @@ public class TranslatorActivity extends AppCompatActivity {
         mic = (ImageView) findViewById(R.id.idMic);
         translateButton = (MaterialButton) findViewById(R.id.idBtnTranslate);
         translatedTextView = (TextView) findViewById(R.id.idTranslatedText);
+        buttonDeleteModels = (Button) findViewById(R.id.buttonDeleteModels);
+        buttonBack = (Button) findViewById(R.id.buttonBack);
 
         /**
          * Select the language from which to translate
@@ -100,9 +109,9 @@ public class TranslatorActivity extends AppCompatActivity {
                 translatedTextView.setText("");
                 if(sourceEditText.getText().toString().isEmpty()){
                     Toast.makeText(TranslatorActivity.this, "Prosím zadejte text k přeložení.", Toast.LENGTH_LONG).show();
-                }else if(fromLanguageCode==0){
+                }else if(fromLanguageCode==""){
                     Toast.makeText(TranslatorActivity.this, "Prosím zadejte zdrojový jazyk.", Toast.LENGTH_LONG).show();
-                }else if(toLanguageCode==0){
+                }else if(toLanguageCode==""){
                     Toast.makeText(TranslatorActivity.this, "Prosím zadejte cílový jazyk.", Toast.LENGTH_LONG).show();
                 }else{
                     translateText(fromLanguageCode, toLanguageCode, sourceEditText.getText().toString());
@@ -126,6 +135,63 @@ public class TranslatorActivity extends AppCompatActivity {
             }
         });
 
+        buttonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    startActivity(new Intent(TranslatorActivity.this, NavigationActivity.class));
+                } finally {
+                    finish();
+                }
+            }
+        });
+
+        buttonDeleteModels.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                builder.setTitle(R.string.app_name);
+                builder.setMessage("Chcete z paměti odstranit modely pro anglický a český překlad?");
+                builder.setIcon(R.drawable.ic_baseline_warning_24);
+                builder.setPositiveButton("Ano", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+
+                        RemoteModelManager modelManager = RemoteModelManager.getInstance();
+                        // Delete the English model if it's on the device.
+                        TranslateRemoteModel englishModel = new TranslateRemoteModel.Builder(TranslateLanguage.ENGLISH).build();
+                        modelManager.deleteDownloadedModel(englishModel).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull @NotNull Exception e) {
+                                Toast.makeText(TranslatorActivity.this, "Model anglického jazyka se nepodařilo odstranit.", Toast.LENGTH_LONG).show();
+                                return;
+                            }
+                        });
+
+                        TranslateRemoteModel czechModel = new TranslateRemoteModel.Builder(TranslateLanguage.CZECH).build();
+                        modelManager.deleteDownloadedModel(czechModel).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull @NotNull Exception e) {
+                                Toast.makeText(TranslatorActivity.this, "Model českého jazyka se nepodařilo odstranit.", Toast.LENGTH_LONG).show();
+                                return;
+                            }
+                        });
+                        Toast.makeText(TranslatorActivity.this, "Modely byly odstraněny.", Toast.LENGTH_LONG).show();
+
+                    }
+                });
+                builder.setNegativeButton("Ne", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog alert = builder.create();
+                alert.show();
+
+            }
+        });
+
     }
 
     @Override
@@ -139,16 +205,22 @@ public class TranslatorActivity extends AppCompatActivity {
         }
     }
 
-    private void translateText(int fromLanguageCode, int toLanguageCode, String source){
+    private void translateText(String fromLanguageCode, String toLanguageCode, String source){
         translatedTextView.setText("Stahuji data...");
-        FirebaseTranslatorOptions options = new FirebaseTranslatorOptions.Builder()
+        TranslatorOptions options = new TranslatorOptions.Builder()
                 .setSourceLanguage(fromLanguageCode)
                 .setTargetLanguage(toLanguageCode)
                 .build();
+        Translator translator = Translation.getClient(options);
 
-        FirebaseTranslator translator = FirebaseNaturalLanguage.getInstance().getTranslator(options);
-        FirebaseModelDownloadConditions conditions = new FirebaseModelDownloadConditions.Builder().build();
+        /**
+         * Ensure that the close() method is called when the Translator object will no longer be used.
+         */
+        getLifecycle().addObserver(translator);
 
+        DownloadConditions conditions = new DownloadConditions.Builder()
+                .requireWifi()
+                .build();
 
         translator.downloadModelIfNeeded(conditions).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
@@ -176,18 +248,20 @@ public class TranslatorActivity extends AppCompatActivity {
         });
     }
 
-    public int getLanguageCode(String language) {
-        int languageCode = 0;
+    public String getLanguageCode(String language) {
+        String languageCode = "";
         switch (language){
             case "Angličtina":
-                languageCode = FirebaseTranslateLanguage.EN;
+                languageCode = TranslateLanguage.ENGLISH;
                 break;
             case "Čeština":
-                languageCode = FirebaseTranslateLanguage.CS;
+                languageCode = TranslateLanguage.CZECH;
                 break;
             default:
-                languageCode = 0;
+                languageCode = "";
         }
         return languageCode;
     }
+
+
 }
