@@ -3,7 +3,9 @@ package cz.uhk.fim.cellar.diplang;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -17,6 +19,13 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import org.jetbrains.annotations.NotNull;
+
+import cz.uhk.fim.cellar.diplang.Classes.User;
 
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
@@ -25,7 +34,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private Button login, register, forgotten;
     private FirebaseAuth mAuth;
     private ProgressBar progressBar;
-    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    private FirebaseUser user;
+    private SharedPreferences sp;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private DocumentReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,9 +59,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         password = (EditText) findViewById(R.id.password);
 
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
+
+        user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             // User is signed in
             // go to main page
+            saveNameOfUser();
             try {
                 startActivity(new Intent(LoginActivity.this, NavigationActivity.class));
             } finally {
@@ -121,6 +136,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                     */
                     //přesměrování na navigační stránku
+                    saveNameOfUser();
+
                     try {
                         startActivity(new Intent(LoginActivity.this, NavigationActivity.class));
                     } finally {
@@ -134,5 +151,27 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 }
             }
         });
+    }
+
+    private void saveNameOfUser() {
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        if(user!=null) {
+            String userID = user.getUid();
+            reference = db.collection("users").document(userID);
+
+            Task<DocumentSnapshot> documentSnapshot = reference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull @NotNull Task<DocumentSnapshot> task) {
+                    User userProfile = task.getResult().toObject(User.class);
+                    if (userProfile != null) {
+                        String name = userProfile.name;
+                        sp = getSharedPreferences("MyUser", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sp.edit();
+                        editor.putString("name", name);
+                        editor.commit();
+                    }
+                }
+            });
+        }
     }
 }

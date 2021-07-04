@@ -19,6 +19,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -26,18 +28,27 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import org.jetbrains.annotations.NotNull;
 
 import cz.uhk.fim.cellar.diplang.Classes.User;
+import cz.uhk.fim.cellar.diplang.MainActivity;
+import cz.uhk.fim.cellar.diplang.NotificationSettingsActivity;
+import cz.uhk.fim.cellar.diplang.R;
 
 public class ProfileFragment extends Fragment implements View.OnClickListener {
 
     private Button buttonLogout, buttonSetNotification;
     private FirebaseUser user;
-    private DatabaseReference reference;
     private String userID;
     private SharedPreferences sp;
     private Context mContext;
     private Drawable topDrawable;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private DocumentReference reference;
 
 
     public ProfileFragment() {
@@ -76,12 +87,27 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         buttonSetNotification.setCompoundDrawablesWithIntrinsicBounds(null, topDrawable, null, null);
         buttonSetNotification.setOnClickListener(this);
 
-        user = FirebaseAuth.getInstance().getCurrentUser();
-        reference = FirebaseDatabase.getInstance().getReference("Users");
-        userID = user.getUid();
-
         final TextView textNameFill = (TextView) v.findViewById(R.id.textNameFill);
+        textNameFill.setText(this.getActivity().getSharedPreferences("MyUser", Context.MODE_PRIVATE).getString("name", ""));
+/*
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        userID = user.getUid();
+        reference = db.collection("users").document(userID);
+        Task<DocumentSnapshot> documentSnapshot = reference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull @NotNull Task<DocumentSnapshot> task) {
+                User userProfile = task.getResult().toObject(User.class);
+                if(userProfile != null){
+                    String name = userProfile.name;
+                    textNameFill.setText(name);
+                }else{
+                    Toast.makeText(getActivity(), "Něco se pokazilo.", Toast.LENGTH_LONG).show();
 
+                }
+            }
+        });
+*/
+     /*
         reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -97,7 +123,12 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                 Toast.makeText(getActivity(), "Něco se pokazilo.", Toast.LENGTH_LONG).show();
             }
         });
+
+
+      */
         return v;
+
+
     }
 
     @Override

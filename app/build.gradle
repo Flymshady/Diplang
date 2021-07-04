@@ -51,8 +51,9 @@ dependencies {
   //  implementation 'com.google.firebase:firebase-ml-natural-language-language-id-model:20.0.7'
     implementation 'com.google.mlkit:language-id:16.1.1'
     implementation 'com.google.mlkit:translate:16.1.2'
+    implementation 'com.google.firebase:firebase-firestore:23.0.1'
 
- //   implementation 'com.google.firebase:firebase-ml-natural-language-translate-model:20.0.9'
+    //   implementation 'com.google.firebase:firebase-ml-natural-language-translate-model:20.0.9'
 
 
     testImplementation 'junit:junit:4.+'

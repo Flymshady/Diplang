@@ -13,6 +13,10 @@ import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import cz.uhk.fim.cellar.diplang.R;
+import cz.uhk.fim.cellar.diplang.SpeechActivity;
+import cz.uhk.fim.cellar.diplang.TranslatorActivity;
+
 public class StudyFragment extends Fragment implements View.OnClickListener {
     private Context mContext;
 
