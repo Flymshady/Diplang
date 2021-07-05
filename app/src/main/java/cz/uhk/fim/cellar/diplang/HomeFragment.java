@@ -30,6 +30,7 @@ public class HomeFragment extends Fragment {
     private B2HomeFragment b2HomeFragment;
     private B2PlusHomeFragment b2PlusHomeFragment;
     private List<String> names;
+    private int userLevel;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -57,6 +58,7 @@ public class HomeFragment extends Fragment {
         textName.setText(sp.getString("name",""));
 
         spinnerLevel =(Spinner) v.findViewById(R.id.spinnerLevel);
+        SharedPreferences.Editor editor = sp.edit();
 
         b2HomeFragment = new B2HomeFragment();
         b2PlusHomeFragment = new B2PlusHomeFragment();
@@ -64,6 +66,8 @@ public class HomeFragment extends Fragment {
         names = new ArrayList<>();
         names.add("B2");
         names.add("B2+");
+        userLevel = sp.getInt("level",0);
+
 
         ArrayAdapter<String > arrayAdapter = new ArrayAdapter<>(v.getContext(), R.layout.item_level, names);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -75,9 +79,15 @@ public class HomeFragment extends Fragment {
                 switch(i){
                     case 0:
                         selectFragment(b2HomeFragment);
+                        editor.putInt("level", spinnerLevel.getSelectedItemPosition());
+                        editor.commit();
+                        userLevel = sp.getInt("level",0);
                         break;
                     case 1:
                         selectFragment(b2PlusHomeFragment);
+                        editor.putInt("level", spinnerLevel.getSelectedItemPosition());
+                        editor.commit();
+                        userLevel = sp.getInt("level",0);
                         break;
                 }
             }
@@ -87,6 +97,7 @@ public class HomeFragment extends Fragment {
 
             }
         });
+        spinnerLevel.setSelection(userLevel);
 
 
         return v;
