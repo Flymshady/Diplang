@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -64,11 +65,12 @@ public class StudyFragment extends Fragment implements View.OnClickListener {
                 }
                 break;
             case R.id.buttonTranslatorActivity:
-                try {
-                    startActivity(new Intent(getActivity(), TranslatorActivity.class));
-                } finally {
-                    getActivity().finish();
-                }
+
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.addToBackStack(null);
+                transaction.commit();
+                startActivity(new Intent(getActivity(), TranslatorActivity.class));
+
                 break;
 
         }

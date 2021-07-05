@@ -7,22 +7,29 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class HomeFragment extends Fragment {
 
-    private TextView textName, textPoints, textLessonName1,textLessonName2, textLessonName3, textLessonName4, textLessonName5, textLessonName6, textLessonName7;
-    private TextView textLessonPoints1, textLessonPoints2, textLessonPoints3, textLessonPoints4, textLessonPoints5, textLessonPoints6, textLessonPoints7;
+    private TextView textName, textPoints;
     private SharedPreferences sp;
     private Spinner spinnerLevel;
-    private ImageView startLesson1, startLesson2, startLesson3, startLesson4, startLesson5, startLesson6, startLesson7;
 
+    private B2HomeFragment b2HomeFragment;
+    private B2PlusHomeFragment b2PlusHomeFragment;
+    private List<String> names;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -51,32 +58,43 @@ public class HomeFragment extends Fragment {
 
         spinnerLevel =(Spinner) v.findViewById(R.id.spinnerLevel);
 
-        textLessonName1 = (TextView) v.findViewById(R.id.textLessonName1);
-        textLessonName2 = (TextView) v.findViewById(R.id.textLessonName2);
-        textLessonName3 = (TextView) v.findViewById(R.id.textLessonName3);
-        textLessonName4 = (TextView) v.findViewById(R.id.textLessonName4);
-        textLessonName5 = (TextView) v.findViewById(R.id.textLessonName5);
-        textLessonName6 = (TextView) v.findViewById(R.id.textLessonName6);
-        textLessonName7 = (TextView) v.findViewById(R.id.textLessonName7);
-        textLessonPoints1 = (TextView) v.findViewById(R.id.textLessonPoints1);
-        textLessonPoints2 = (TextView) v.findViewById(R.id.textLessonPoints2);
-        textLessonPoints3 = (TextView) v.findViewById(R.id.textLessonPoints3);
-        textLessonPoints4 = (TextView) v.findViewById(R.id.textLessonPoints4);
-        textLessonPoints5 = (TextView) v.findViewById(R.id.textLessonPoints5);
-        textLessonPoints6 = (TextView) v.findViewById(R.id.textLessonPoints6);
-        textLessonPoints7 = (TextView) v.findViewById(R.id.textLessonPoints7);
-        startLesson1 = (ImageView) v.findViewById(R.id.startLesson1);
-        startLesson2 = (ImageView) v.findViewById(R.id.startLesson2);
-        startLesson3 = (ImageView) v.findViewById(R.id.startLesson3);
-        startLesson4 = (ImageView) v.findViewById(R.id.startLesson4);
-        startLesson5 = (ImageView) v.findViewById(R.id.startLesson5);
-        startLesson6 = (ImageView) v.findViewById(R.id.startLesson6);
-        startLesson7 = (ImageView) v.findViewById(R.id.startLesson7);
+        b2HomeFragment = new B2HomeFragment();
+        b2PlusHomeFragment = new B2PlusHomeFragment();
 
+        names = new ArrayList<>();
+        names.add("B2");
+        names.add("B2+");
 
+        ArrayAdapter<String > arrayAdapter = new ArrayAdapter<>(v.getContext(), R.layout.item_level, names);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerLevel.setAdapter(arrayAdapter);
 
+        spinnerLevel.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                switch(i){
+                    case 0:
+                        selectFragment(b2HomeFragment);
+                        break;
+                    case 1:
+                        selectFragment(b2PlusHomeFragment);
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
 
         return v;
+    }
+
+    private void selectFragment(Fragment fragment) {
+        FragmentTransaction fragmentTransaction = this.getActivity().getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.frameLayout, fragment);
+        fragmentTransaction.commit();
     }
 }

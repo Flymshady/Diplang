@@ -10,6 +10,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat;
 
 import android.view.LayoutInflater;
@@ -145,11 +146,12 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
                 break;
             case R.id.buttonSetNotification:
-                try {
+
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.addToBackStack(null);
+                transaction.commit();
                 startActivity(new Intent(getActivity(), NotificationSettingsActivity.class));
-                } finally {
-                    getActivity().finish();
-                }
+
                 break;
 
         }
