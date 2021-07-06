@@ -34,11 +34,11 @@ public class PageFragment1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_page1, container, false);
+        View v = inflater.inflate(R.layout.fragment_page1, container, false);
 
 
 
 
-        return rootView;
+        return v;
     }
 }

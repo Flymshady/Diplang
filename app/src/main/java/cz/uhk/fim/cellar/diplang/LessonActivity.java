@@ -1,5 +1,6 @@
 package cz.uhk.fim.cellar.diplang;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -10,6 +11,11 @@ import android.os.Bundle;
 import android.text.Html;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,13 +31,12 @@ public class LessonActivity extends AppCompatActivity {
     private int numberOfLesson;
     private User user;
     private String userName;
-    LinearLayout dotsLayout;
-    SliderAdapter adapter;
-    ViewPager2 pager2;
-    int list[];
-    TextView[] dots;
+    private TabLayout tabs;
+    private ViewPager2 viewPager2;
+
 
 //https://www.youtube.com/watch?v=xd7SYulEWuc&ab_channel=Code2Develop
+ //   https://www.youtube.com/watch?v=iJpB5ju3tN8&ab_channel=CodeDocuDeveloperC%23AspNetAngular
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,46 +47,20 @@ public class LessonActivity extends AppCompatActivity {
         numberOfLesson = getIntent().getIntExtra("lesson", 1);
         userName = getIntent().getStringExtra("name");
 
-        dotsLayout=findViewById(R.id.dots_container);
-        pager2 = findViewById(R.id.viewPager);
-        list = new int[3];
-        list[0]=getResources().getColor(R.color.blue);
-        list[0]=getResources().getColor(R.color.black);
-        list[0]=getResources().getColor(R.color.red);
+        tabs = (TabLayout) findViewById(R.id.tabs);
+        viewPager2 = (ViewPager2) findViewById(R.id.viewPager);
 
-        adapter = new SliderAdapter(list);
-        pager2.setAdapter(adapter);
 
-        dots = new TextView[3];
-        dotsIndicator();
 
-        pager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+        ViewPagerAdapter adapter = new ViewPagerAdapter(this);
+        viewPager2.setAdapter(adapter);
+
+        new TabLayoutMediator(tabs, viewPager2, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
-            public void onPageSelected(int position) {
-                selectedIndicator(position);
-                super.onPageSelected(position);
+            public void onConfigureTab(@NonNull @NotNull TabLayout.Tab tab, int position) {
+                tab.setText("Tab "+ (position + 1));
             }
-        });
+        }).attach();
 
-    }
-
-    private void selectedIndicator(int position) {
-        for(int i=0; i<dots.length;i++){
-            if(i==position){
-                dots[i].setTextColor(list[position]);
-            }else{
-                dots[i].setTextColor(getResources().getColor(R.color.black));
-            }
-        }
-    }
-
-    private void dotsIndicator() {
-        for(int i= 0; i<dots.length; i++){
-            dots[i] = new TextView(this);
-            //circle shape
-            dots[i].setText(Html.fromHtml("&#9679"));
-            dots[i].setTextSize(18);
-            dotsLayout.addView(dots[i]);
-        }
     }
 }
