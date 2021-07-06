@@ -1,5 +1,7 @@
 package cz.uhk.fim.cellar.diplang;
 
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -13,7 +15,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 
-public class B2HomeFragment extends Fragment {
+public class B2HomeFragment extends Fragment implements View.OnClickListener {
 
     private TextView textLessonName1,textLessonName2, textLessonName3, textLessonName4, textLessonName5, textLessonName6, textLessonName7;
     private TextView textLessonPoints1, textLessonPoints2, textLessonPoints3, textLessonPoints4, textLessonPoints5, textLessonPoints6, textLessonPoints7;
@@ -43,6 +45,7 @@ public class B2HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_b2_home, container, false);
+        sp = this.getActivity().getSharedPreferences("MyUser", Context.MODE_PRIVATE);
 
         textLessonName1 = (TextView) v.findViewById(R.id.textLessonName1);
         textLessonName2 = (TextView) v.findViewById(R.id.textLessonName2);
@@ -73,6 +76,22 @@ public class B2HomeFragment extends Fragment {
         downloadLesson6 = (ImageView) v.findViewById(R.id.downloadLesson6);
         downloadLesson7 = (ImageView) v.findViewById(R.id.downloadLesson7);
 
+        startLesson1.setOnClickListener(this);
+
         return v;
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.startLesson1:
+                startActivity(new Intent(this.getActivity(), LessonActivity.class)
+                        .putExtra("level", "B2")
+                        .putExtra("lesson", 1)
+                        .putExtra("name", sp.getString("name",""))
+
+                );
+                break;
+        }
     }
 }
