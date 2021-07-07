@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
             } finally {
                 finish();
             }
-            } else {
+        } else {
             // No user is signed in
             // go to loging page
             Toast.makeText(MainActivity.this, "Přihlaště se", Toast.LENGTH_SHORT).show();
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
             try {
                 startActivity(new Intent(MainActivity.this, LoginActivity.class));
             } finally {
-            finish();
+                finish();
             }
         }
     }

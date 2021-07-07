@@ -19,13 +19,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
 
-import org.jetbrains.annotations.NotNull;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import cz.uhk.fim.cellar.diplang.Classes.User;
 
@@ -41,9 +35,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private ProgressBar progressBar;
 
     private FirebaseAuth mAuth;
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
-  //  private FirebaseDatabase db = FirebaseDatabase.getInstance();
-  //  private DatabaseReference root = db.getReference();
+    private FirebaseDatabase db = FirebaseDatabase.getInstance();
+    private DatabaseReference root = db.getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,27 +111,21 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-
-                            Map<String, Object> user = new HashMap<>();
-                            user.put("uid", FirebaseAuth.getInstance().getCurrentUser().getUid().toString());
-                            user.put("name", name);
-                            user.put("email", email);
-
-                            db.collection("users")
-                                    .document(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())
-                                    .set(user)
-                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull @NotNull Task<Void> task) {
-                                         if(task.isSuccessful()) {
-                                             Toast.makeText(RegisterActivity.this, "Uživatel byl úspěšně zaregistrován", Toast.LENGTH_LONG).show();
-                                             progressBar.setVisibility(View.GONE);
-                                            try {
-                                              startActivity(new Intent(RegisterActivity.this, MainActivity.class));
-                                            } finally {
-                                             finish();
-                                             }
-                                         } else {
+                            User user = new User(FirebaseAuth.getInstance().getCurrentUser().getUid(),name, email);
+                            FirebaseDatabase.getInstance().getReference("Users")
+                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())
+                                    .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if(task.isSuccessful()) {
+                                        Toast.makeText(RegisterActivity.this, "Uživatel byl úspěšně zaregistrován", Toast.LENGTH_LONG).show();
+                                        progressBar.setVisibility(View.GONE);
+                                        try {
+                                            startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+                                        } finally {
+                                            finish();
+                                        }
+                                    } else {
                                         Toast.makeText(RegisterActivity.this, "Došlo k chybě, zkuste to prosím znovu", Toast.LENGTH_LONG).show();
                                         progressBar.setVisibility(View.GONE);
                                     }

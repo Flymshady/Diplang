@@ -2,9 +2,7 @@ package cz.uhk.fim.cellar.diplang.LessonFragments;
 
 import android.os.Bundle;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -13,12 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import cz.uhk.fim.cellar.diplang.LessonViewModel;
 import cz.uhk.fim.cellar.diplang.R;
@@ -29,8 +21,6 @@ public class PageFragment1 extends Fragment implements View.OnClickListener {
     private ViewPager2 viewPager2;
     private LessonViewModel viewModel;
     private TextView task1L1P1, task2L1P1;
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
-
 
     public PageFragment1() {
         // Required empty public constructor
@@ -71,15 +61,6 @@ public class PageFragment1 extends Fragment implements View.OnClickListener {
     }
 
     private void loadData() {
-        DocumentReference dfTask1 = db.document("/lessons/lesson1/pages/page1/tasks/task1");
-        dfTask1.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-            @Override
-            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-                task1L1P1.setText(value.getString("Text1"));
-                task2L1P1.setText(value.getString("Text2"));
-            }
-        });
-
     }
 
     @Override

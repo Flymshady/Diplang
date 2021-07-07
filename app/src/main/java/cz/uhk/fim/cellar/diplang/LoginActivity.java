@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -19,11 +20,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-
-import org.jetbrains.annotations.NotNull;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import cz.uhk.fim.cellar.diplang.Classes.User;
 
@@ -36,8 +37,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private ProgressBar progressBar;
     private FirebaseUser user;
     private SharedPreferences sp;
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private DocumentReference reference;
+    private FirebaseDatabase db = FirebaseDatabase.getInstance();
+    private DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +67,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             // go to main page
             saveNameOfUser();
             try {
-                startActivity(new Intent(LoginActivity.this, NavigationActivity.class));
+                startActivity(new Intent(LoginActivity.this, SplashScreen.class));
             } finally {
                 finish();
             }
@@ -136,14 +137,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                     */
                     //přesměrování na navigační stránku
+
                     saveNameOfUser();
 
                     try {
-                        startActivity(new Intent(LoginActivity.this, NavigationActivity.class));
+                        startActivity(new Intent(LoginActivity.this, SplashScreen.class));
                     } finally {
                         finish();
-                    }
 
+                    }
 
                 }else{
                     Toast.makeText(LoginActivity.this, "Došlo k chybě, zkuste to prosím znovu", Toast.LENGTH_LONG).show();
@@ -157,21 +159,34 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         user = FirebaseAuth.getInstance().getCurrentUser();
         if(user!=null) {
             String userID = user.getUid();
-            reference = db.collection("users").document(userID);
+            reference = FirebaseDatabase.getInstance().getReference("Users");
 
-            Task<DocumentSnapshot> documentSnapshot = reference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
-                public void onComplete(@NonNull @NotNull Task<DocumentSnapshot> task) {
-                    User userProfile = task.getResult().toObject(User.class);
-                    if (userProfile != null) {
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    User userProfile = snapshot.getValue(User.class);
+                    if(userProfile != null){
                         String name = userProfile.name;
                         sp = getSharedPreferences("MyUser", Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = sp.edit();
                         editor.putString("name", name);
                         editor.commit();
+                        System.out.println(name);
+                        System.out.println(name);
+                        System.out.println(name);
+                    }else{
+                        System.out.println("efef");
+                        System.out.println("efef");
                     }
                 }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(LoginActivity.this, "Něco se pokazilo.", Toast.LENGTH_LONG).show();
+                }
             });
+
+
         }
     }
 }
