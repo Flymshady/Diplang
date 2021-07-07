@@ -11,6 +11,7 @@
 
   <com.google.android.material.tabs.TabLayout
       android:id="@+id/tabs"
+      android:clickable="false"
       android:layout_width="match_parent"
       android:layout_height="wrap_content">
 

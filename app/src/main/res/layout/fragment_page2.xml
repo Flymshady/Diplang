@@ -1,16 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LessonFragments.PageFragment1">
+    android:orientation="vertical"
+    tools:context=".LessonFragments.PageFragment2">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+        <Button
+            android:id="@+id/btnBackToL1P1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:textAllCaps="false"
+            android:text="Zpět"/>
+        <TextView
+            android:id="@+id/TVPointsL1P2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:textColor="@color/purple_700"
+            android:textSize="15sp"
+            android:textAlignment="center"
+            android:text="Body: "/>
+    </LinearLayout>
+    <ScrollView
+        android:paddingTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         >
         <TextView
+            android:id="@+id/task1L1P2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
@@ -21,7 +51,7 @@
 "/>
 
         <EditText
-            android:id="@+id/ET1L1"
+            android:id="@+id/ET1L1P2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textSize="18sp"
@@ -31,6 +61,17 @@
             android:layout_marginTop="20sp"
             />
         <TextView
+            android:id="@+id/RightAnswer1L1P3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:visibility="gone"
+            />
+
+        <TextView
+            android:id="@+id/task2L1P2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
@@ -41,7 +82,7 @@
 "/>
 
         <EditText
-            android:id="@+id/ET2L1"
+            android:id="@+id/ET2L1P2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textSize="18sp"
@@ -51,6 +92,16 @@
             android:layout_marginTop="20sp"
             />
         <TextView
+            android:id="@+id/RightAnswer2L1P3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:visibility="gone"
+            />
+        <TextView
+            android:id="@+id/task3L1P2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
@@ -61,7 +112,7 @@
 "/>
 
         <EditText
-            android:id="@+id/ET3L1"
+            android:id="@+id/ET3L1P2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textSize="18sp"
@@ -71,6 +122,16 @@
             android:layout_marginTop="20sp"
             />
         <TextView
+            android:id="@+id/RightAnswer3L1P3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:visibility="gone"
+            />
+        <TextView
+            android:id="@+id/task4L1P2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
@@ -81,7 +142,7 @@
 "/>
 
         <EditText
-            android:id="@+id/ET4L1"
+            android:id="@+id/ET4L1P2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textSize="18sp"
@@ -91,6 +152,16 @@
             android:layout_marginTop="20sp"
             />
         <TextView
+            android:id="@+id/RightAnswer4L1P3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:visibility="gone"
+            />
+        <TextView
+            android:id="@+id/task5L1P2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
@@ -101,7 +172,7 @@
 "/>
 
         <EditText
-            android:id="@+id/ET5L1"
+            android:id="@+id/ET5L1P2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textSize="18sp"
@@ -110,14 +181,57 @@
             android:hint="5)"
             android:layout_marginTop="20sp"
             />
+        <TextView
+            android:id="@+id/RightAnswer5L1P3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:visibility="gone"
+            />
         <Button
-            android:id="@+id/btnSaveP1L1"
+            android:id="@+id/btnSaveL1P2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:text="Uložit"/>
+
+
+        <LinearLayout
+            android:id="@+id/finishL1P2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/teal_700"
+            android:visibility="gone"
+            android:weightSum="2"
+            android:orientation="vertical"
+            android:layout_marginBottom="20dp">
+            <TextView
+                android:id="@+id/finishTVL1P2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:layout_marginTop="20sp"
+                />
+            <Button
+                android:id="@+id/btnNextToP3"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:background="@color/teal_700"
+                android:text="Další"
+                />
+
+
+        </LinearLayout>
+
     </LinearLayout>
+    </ScrollView>
 
-
-</ScrollView>
+</LinearLayout>

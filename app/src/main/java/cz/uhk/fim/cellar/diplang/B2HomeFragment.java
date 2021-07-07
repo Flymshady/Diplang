@@ -85,12 +85,17 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.startLesson1:
-                startActivity(new Intent(this.getActivity(), LessonActivity.class)
-                        .putExtra("level", "B2")
-                        .putExtra("lesson", 1)
-                        .putExtra("name", sp.getString("name",""))
+                try {
+                    startActivity(new Intent(this.getActivity(), LessonActivity.class)
+                            .putExtra("level", "B2")
+                            .putExtra("lesson", 1)
+                            .putExtra("name", sp.getString("name",""))
 
-                );
+                    );
+                }finally {
+                    getActivity().finish();
+                }
+
                 break;
         }
     }

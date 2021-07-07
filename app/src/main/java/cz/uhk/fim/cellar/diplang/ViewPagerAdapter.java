@@ -10,6 +10,8 @@ import org.jetbrains.annotations.NotNull;
 import cz.uhk.fim.cellar.diplang.LessonFragments.PageFragment1;
 import cz.uhk.fim.cellar.diplang.LessonFragments.PageFragment2;
 import cz.uhk.fim.cellar.diplang.LessonFragments.PageFragment3;
+import cz.uhk.fim.cellar.diplang.LessonFragments.PageFragment4;
+import cz.uhk.fim.cellar.diplang.LessonFragments.PageFragmentFinal;
 
 public class ViewPagerAdapter extends FragmentStateAdapter {
     public ViewPagerAdapter(@NonNull @NotNull FragmentActivity fragmentActivity) {
@@ -27,6 +29,10 @@ public class ViewPagerAdapter extends FragmentStateAdapter {
                 return new PageFragment2();
             case 2:
                 return new PageFragment3();
+            case 3:
+                return new PageFragment4();
+            case 4:
+                return new PageFragmentFinal();
             default:
                 return new PageFragment1();
         }
@@ -34,6 +40,6 @@ public class ViewPagerAdapter extends FragmentStateAdapter {
 
     @Override
     public int getItemCount() {
-        return 3;
+        return 5;
     }
 }
