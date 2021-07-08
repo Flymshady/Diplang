@@ -12,6 +12,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import cz.uhk.fim.cellar.diplang.Classes.PageTask;
 import cz.uhk.fim.cellar.diplang.LessonViewModel;
 import cz.uhk.fim.cellar.diplang.R;
 
@@ -21,6 +29,7 @@ public class PageFragment1 extends Fragment implements View.OnClickListener {
     private ViewPager2 viewPager2;
     private LessonViewModel viewModel;
     private TextView task1L1P1, task2L1P1;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
 
     public PageFragment1() {
         // Required empty public constructor
@@ -61,6 +70,38 @@ public class PageFragment1 extends Fragment implements View.OnClickListener {
     }
 
     private void loadData() {
+        DatabaseReference myRefTask1 = database.getReference("Lessons").child("Lesson1").child("Page1").child("Task1");
+        myRefTask1.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                PageTask task1 = dataSnapshot.getValue(PageTask.class);
+                if(task1!=null){
+                    task1L1P1.setText(task1.getText());
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+            }
+        });
+        DatabaseReference myRefTask2 = database.getReference("Lessons").child("Lesson1").child("Page1").child("Task2");
+        myRefTask2.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                PageTask task2 = dataSnapshot.getValue(PageTask.class);
+                if(task2!=null){
+                    task2L1P1.setText(task2.getText());
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+            }
+        });
     }
 
     @Override

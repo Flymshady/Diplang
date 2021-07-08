@@ -1,5 +1,6 @@
 package cz.uhk.fim.cellar.diplang.LessonFragments;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.InputType;
@@ -13,13 +14,28 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
+import com.google.firebase.database.ValueEventListener;
+
+import cz.uhk.fim.cellar.diplang.Classes.PageTask;
+import cz.uhk.fim.cellar.diplang.Classes.UserTask;
 import cz.uhk.fim.cellar.diplang.LessonViewModel;
 import cz.uhk.fim.cellar.diplang.LoginActivity;
+import cz.uhk.fim.cellar.diplang.MainActivity;
 import cz.uhk.fim.cellar.diplang.R;
+import cz.uhk.fim.cellar.diplang.RegisterActivity;
 
 import static android.view.View.GONE;
 
@@ -28,7 +44,7 @@ public class PageFragment2 extends Fragment implements View.OnClickListener {
     private EditText ET1L1P2, ET2L1P2, ET3L1P2, ET4L1P2, ET5L1P2;
     private Button btnSaveL1P2, btnNextToP3, btnBackToL1P1;
     private String A1T1L1P2, A2T1L1P2, A3T1L1P2, A4T1L1P2, A5T1L1P2;
-    private String RA1T1L1P2, RA2T1L1P2, RA3T1L1P2, RA4T1L1P2, RA5T1L1P2;
+    private String rightAnswerTextTask1L1P2, rightAnswerTextTask2L1P2, rightAnswerTextTask3L1P2, rightAnswerTextTask4L1P2, rightAnswerTextTask5L1P2;
     private int points = 0;
     private ViewPager2 viewPager2;
     private LinearLayout finishL1P2;
@@ -36,6 +52,10 @@ public class PageFragment2 extends Fragment implements View.OnClickListener {
     private LessonViewModel viewModel;
     private TextView RightAnswer1L1P3, RightAnswer2L1P3,RightAnswer3L1P3, RightAnswer4L1P3, RightAnswer5L1P3;
     private TextView task1L1P2, task2L1P2, task3L1P2, task4L1P2, task5L1P2;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private PageTask task1, task2, task3, task4, task5;
+    private int pointsT1, pointsT2, pointsT3, pointsT4, pointsT5;
+    private UserTask utask1, utask2, utask3, utask4, utask5;
 
 
     public PageFragment2() {
@@ -86,6 +106,11 @@ public class PageFragment2 extends Fragment implements View.OnClickListener {
         task3L1P2 = (TextView) v.findViewById(R.id.task3L1P2);
         task4L1P2 = (TextView) v.findViewById(R.id.task4L1P2);
         task5L1P2 = (TextView) v.findViewById(R.id.task5L1P2);
+        utask1 = new UserTask();
+        utask2 = new UserTask();
+        utask3 = new UserTask();
+        utask4 = new UserTask();
+        utask5 = new UserTask();
 
 
         finishL1P2.setVisibility(GONE);
@@ -104,23 +129,110 @@ public class PageFragment2 extends Fragment implements View.OnClickListener {
     }
 
     private void loadData() {
-        RA1T1L1P2 = "a";
-        RA2T1L1P2 = "b";
-        RA3T1L1P2 = "c";
-        RA4T1L1P2 = "d";
-        RA5T1L1P2 = "e";
-/*
-        task1L1P2.setText("");
-        task2L1P2.setText("");
-        task3L1P2.setText("");
-        task4L1P2.setText("");
-        task5L1P2.setText("");
-  */
-        RightAnswer1L1P3.setText(RA1T1L1P2);
-        RightAnswer2L1P3.setText(RA2T1L1P2);
-        RightAnswer3L1P3.setText(RA3T1L1P2);
-        RightAnswer4L1P3.setText(RA4T1L1P2);
-        RightAnswer5L1P3.setText(RA5T1L1P2);
+        DatabaseReference myRefTask1 = database.getReference("Lessons").child("Lesson1").child("Page2").child("Task1");
+        myRefTask1.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                PageTask task1 = dataSnapshot.getValue(PageTask.class);
+                if(task1!=null){
+                    task1L1P2.setText(task1.getText());
+                    rightAnswerTextTask1L1P2 = task1.getRightAnswer();
+                    pointsT1 = task1.getPoints();
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+            }
+        });
+
+        DatabaseReference myRefTask2 = database
+                .getReference("Lessons").child("Lesson1").child("Page2").child("Task2");
+        myRefTask2.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                PageTask task2 = dataSnapshot.getValue(PageTask.class);
+                if(task2!=null){
+                    task2L1P2.setText(task2.getText());
+                    rightAnswerTextTask2L1P2 = task2.getRightAnswer();
+                    pointsT2 = task2.getPoints();
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+            }
+        });
+
+        DatabaseReference myRefTask3 = database
+                .getReference("Lessons").child("Lesson1").child("Page2").child("Task3");
+        myRefTask3.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                PageTask task3 = dataSnapshot.getValue(PageTask.class);
+                if(task3!=null){
+                    task3L1P2.setText(task3.getText());
+                    rightAnswerTextTask3L1P2 = task3.getRightAnswer();
+                    pointsT3 = task3.getPoints();
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+            }
+        });
+
+        DatabaseReference myRefTask4 = database
+                .getReference("Lessons").child("Lesson1").child("Page2").child("Task4");
+        myRefTask4.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                PageTask task4 = dataSnapshot.getValue(PageTask.class);
+                if(task4!=null){
+                    task4L1P2.setText(task4.getText());
+                    rightAnswerTextTask4L1P2 = task4.getRightAnswer();
+                    pointsT4 = task4.getPoints();
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+            }
+        });
+
+        DatabaseReference myRefTask5 = database
+                .getReference("Lessons").child("Lesson1").child("Page2").child("Task5");
+        myRefTask5.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                PageTask task5 = dataSnapshot.getValue(PageTask.class);
+                if(task5!=null){
+                    task5L1P2.setText(task5.getText());
+                    rightAnswerTextTask5L1P2 = task5.getRightAnswer();
+                    pointsT5 = task5.getPoints();
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+            }
+        });
+
+        RightAnswer1L1P3.setText(rightAnswerTextTask1L1P2);
+        RightAnswer2L1P3.setText(rightAnswerTextTask2L1P2);
+        RightAnswer3L1P3.setText(rightAnswerTextTask3L1P2);
+        RightAnswer4L1P3.setText(rightAnswerTextTask4L1P2);
+        RightAnswer5L1P3.setText(rightAnswerTextTask5L1P2);
     }
 
 
@@ -134,6 +246,7 @@ public class PageFragment2 extends Fragment implements View.OnClickListener {
                 btnSaveL1P2.setVisibility(GONE);
                 viewModel.setDipPoints(viewModel.getDipPoints().getValue()+points);
                 TVPointsL1P2.setText(viewModel.getDipPoints().getValue().toString());
+                saveUserTask();
                 Toast.makeText(this.getActivity(), "Počet bodů: "+points, Toast.LENGTH_LONG).show();
                 break;
             case (R.id.btnNextToP3):
@@ -144,6 +257,43 @@ public class PageFragment2 extends Fragment implements View.OnClickListener {
                 break;
 
         }
+    }
+
+    private void saveUserTask() {
+        FirebaseDatabase.getInstance().getReference("UserTasks")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())
+                .child("Lesson1")
+                .child("Page2")
+                .child("Task1")
+                .setValue(utask1);
+        FirebaseDatabase.getInstance().getReference("UserTasks")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())
+                .child("Lesson1")
+                .child("Page2")
+                .child("Task2")
+                .setValue(utask2);
+        FirebaseDatabase.getInstance().getReference("UserTasks")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())
+                .child("Lesson1")
+                .child("Page2")
+                .child("Task3")
+                .setValue(utask3);
+        FirebaseDatabase.getInstance().getReference("UserTasks")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())
+                .child("Lesson1")
+                .child("Page2")
+                .child("Task4")
+                .setValue(utask4);
+        FirebaseDatabase.getInstance().getReference("UserTasks")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())
+                .child("Lesson1")
+                .child("Page2")
+                .child("Task5")
+                .setValue(utask5);
+
+
+
+
     }
 
     @Override
@@ -167,40 +317,55 @@ public class PageFragment2 extends Fragment implements View.OnClickListener {
         ET3L1P2.setInputType(InputType.TYPE_NULL);
         ET4L1P2.setInputType(InputType.TYPE_NULL);
         ET5L1P2.setInputType(InputType.TYPE_NULL);
-        if(A1T1L1P2.toLowerCase().equals(RA1T1L1P2)) {
+        utask1.setAnswer(A1T1L1P2);
+        utask2.setAnswer(A2T1L1P2);
+        utask3.setAnswer(A3T1L1P2);
+        utask4.setAnswer(A4T1L1P2);
+        utask5.setAnswer(A5T1L1P2);
+        if(A1T1L1P2.toLowerCase().equals(rightAnswerTextTask1L1P2)) {
             ET1L1P2.setBackgroundResource(R.color.green);
-            pointsCount++;
+            utask1.setPoints(pointsT1);
+            pointsCount+=pointsT1;
         }else{
             RightAnswer1L1P3.setVisibility(View.VISIBLE);
             ET1L1P2.setBackgroundResource(R.color.red);
+            utask1.setPoints(0);
         }
-        if(A2T1L1P2.toLowerCase().equals(RA2T1L1P2)) {
+        if(A2T1L1P2.toLowerCase().equals(rightAnswerTextTask2L1P2)) {
             ET2L1P2.setBackgroundResource(R.color.green);
-            pointsCount++;
+            utask2.setPoints(pointsT2);
+            pointsCount+=pointsT2;
         }else {
             RightAnswer2L1P3.setVisibility(View.VISIBLE);
             ET2L1P2.setBackgroundResource(R.color.red);
+            utask2.setPoints(0);
         }
-        if(A3T1L1P2.toLowerCase().equals(RA3T1L1P2)) {
+        if(A3T1L1P2.toLowerCase().equals(rightAnswerTextTask3L1P2)) {
             ET3L1P2.setBackgroundResource(R.color.green);
-            pointsCount++;
+            utask3.setPoints(pointsT3);
+            pointsCount+=pointsT3;
         }else {
             RightAnswer3L1P3.setVisibility(View.VISIBLE);
             ET3L1P2.setBackgroundResource(R.color.red);
+            utask3.setPoints(0);
         }
-        if(A4T1L1P2.toLowerCase().equals(RA4T1L1P2)) {
+        if(A4T1L1P2.toLowerCase().equals(rightAnswerTextTask4L1P2)) {
             ET4L1P2.setBackgroundResource(R.color.green);
-            pointsCount++;
+            utask4.setPoints(pointsT4);
+            pointsCount+=pointsT4;
         }else {
             RightAnswer4L1P3.setVisibility(View.VISIBLE);
             ET4L1P2.setBackgroundResource(R.color.red);
+            utask4.setPoints(0);
         }
-        if(A5T1L1P2.toLowerCase().equals(RA5T1L1P2)) {
+        if(A5T1L1P2.toLowerCase().equals(rightAnswerTextTask5L1P2)) {
             ET5L1P2.setBackgroundResource(R.color.green);
-            pointsCount++;
+            utask5.setPoints(pointsT5);
+            pointsCount+=pointsT5;
         }else {
             RightAnswer5L1P3.setVisibility(View.VISIBLE);
             ET5L1P2.setBackgroundResource(R.color.red);
+            utask5.setPoints(0);
         }
         return pointsCount;
     }

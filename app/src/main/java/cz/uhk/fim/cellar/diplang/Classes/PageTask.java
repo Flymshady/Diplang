@@ -1,16 +1,21 @@
 package cz.uhk.fim.cellar.diplang.Classes;
 
-public class Task {
+public class PageTask {
 
     private String text;
     private String rightAnswer;
     private int points;
 
-    public Task(String text, String rightAnswer, int points) {
+    public PageTask(String text, String rightAnswer, int points) {
         this.text = text;
         this.rightAnswer = rightAnswer;
         this.points = points;
     }
+
+    public PageTask(String text) {
+        this.text = text;
+    }
+
 
     public String getText() {
         return text;
@@ -36,7 +41,7 @@ public class Task {
         this.points = points;
     }
 
-    public Task(){
+    public PageTask(){
 
     }
 }

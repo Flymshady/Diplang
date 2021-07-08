@@ -12,6 +12,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
+
+import cz.uhk.fim.cellar.diplang.Classes.Lesson;
 import cz.uhk.fim.cellar.diplang.LessonViewModel;
 import cz.uhk.fim.cellar.diplang.R;
 
@@ -52,12 +56,11 @@ public class PageFragment4 extends Fragment implements View.OnClickListener {
 
         btnBackToL1P3 = (Button) v.findViewById(R.id.btnBackToL1P3);
         TVPointsL1P4 = (TextView) v.findViewById(R.id.TVPointsL1P4);
-       TVPointsL1P4.setText(viewModel.getDipPoints().getValue().toString());
+        TVPointsL1P4.setText(viewModel.getDipPoints().getValue().toString());
         btnBackToL1P3.setOnClickListener(this);
 
         btnNextToFinish = (Button) v.findViewById(R.id.btnNextToFinish);
         btnNextToFinish.setOnClickListener(this);
-
 
         return v;
     }
@@ -82,4 +85,5 @@ public class PageFragment4 extends Fragment implements View.OnClickListener {
 
         }
     }
+
 }

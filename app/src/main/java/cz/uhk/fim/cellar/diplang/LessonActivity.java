@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 
@@ -15,6 +18,8 @@ import org.jetbrains.annotations.NotNull;
 
 import cz.uhk.fim.cellar.diplang.Classes.User;
 
+import static androidx.core.content.ContextCompat.getSystemService;
+
 public class LessonActivity extends AppCompatActivity {
 
     private String level;
@@ -24,6 +29,7 @@ public class LessonActivity extends AppCompatActivity {
     private TabLayout tabs;
     private ViewPager2 viewPager2;
     private LessonViewModel viewModel;
+    private int pointsTotal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +48,8 @@ public class LessonActivity extends AppCompatActivity {
         viewModel.setLesson(numberOfLesson);
         userName = getIntent().getStringExtra("name");
         viewModel.setUsername(userName);
+        pointsTotal = getIntent().getIntExtra("pointsTotal", 1);
+        viewModel.setPointsTotal(pointsTotal);
 
         tabs = (TabLayout) findViewById(R.id.tabs);
         viewPager2 = (ViewPager2) findViewById(R.id.viewPager);
@@ -62,7 +70,10 @@ public class LessonActivity extends AppCompatActivity {
 
 
 
+
+
     }
+
     public void moveNext(View view) {
         //it doesn't matter if you're already in the last item
         viewPager2.setCurrentItem(viewPager2.getCurrentItem() + 1);

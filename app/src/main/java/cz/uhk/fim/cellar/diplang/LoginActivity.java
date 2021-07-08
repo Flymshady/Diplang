@@ -171,12 +171,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         SharedPreferences.Editor editor = sp.edit();
                         editor.putString("name", name);
                         editor.commit();
-                        System.out.println(name);
-                        System.out.println(name);
-                        System.out.println(name);
-                    }else{
-                        System.out.println("efef");
-                        System.out.println("efef");
                     }
                 }
 
