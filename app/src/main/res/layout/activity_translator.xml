@@ -85,34 +85,83 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Text můžete také zadat hlasem"
-        android:textColor="@color/purple_700"
-        android:textAlignment="center"
-        android:textSize="14sp"
-        android:layout_marginTop="5dp"
-        android:layout_gravity="center"/>
-    <ImageView
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/ic_baseline_mic_24"
-        app:tint="@color/purple_700"
-        android:id="@+id/idMic"
-        />
-
-    <com.google.android.material.button.MaterialButton
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/idBtnTranslate"
-        android:layout_marginStart="20dp"
+        android:orientation="horizontal"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:text="Přeložit"
-        android:textAllCaps="false"/>
+        android:weightSum="3"
+        >
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="20dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:weightSum="2">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="0dp"
+                android:src="@drawable/ic_baseline_volume_up_24"
+                android:id="@+id/imageTTS"
+            />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="0dp"
+                android:layout_height="wrap_content"
+                android:text="Přehrát text"
+                android:gravity="center"
+                android:textColor="@color/purple_700"
+                android:textAlignment="center"
+                android:textSize="14sp"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:id="@+id/idBtnTranslate"
+            android:text="Přeložit"
+            android:textAllCaps="false"/>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginRight="20dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:weightSum="2">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="0dp"
+                android:src="@drawable/ic_baseline_mic_24"
+                app:tint="@color/purple_700"
+                android:id="@+id/idMic"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Text můžete také zadat hlasem"
+                android:textColor="@color/purple_700"
+                android:textAlignment="center"
+                android:textSize="14sp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+    </LinearLayout>
+
     <TextView
         android:id="@+id/idTranslatedText"
         android:layout_width="match_parent"
@@ -123,6 +172,24 @@
         android:textAllCaps="false"
         android:textColor="@color/purple_700"
         android:textSize="18sp"/>
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/ic_baseline_volume_up_24"
+        android:id="@+id/imageTranslatedTTS"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Přehrát text"
+        android:textColor="@color/purple_700"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="150dp"

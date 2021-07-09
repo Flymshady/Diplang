@@ -8,8 +8,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.FragmentManager;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
+import android.speech.tts.TextToSpeech;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -40,10 +43,11 @@ public class TranslatorActivity extends AppCompatActivity {
 
     private Spinner fromSpinner, toSpinner;
     private TextInputEditText sourceEditText;
-    private ImageView mic;
+    private ImageView mic, imageTTS, imageTranslatedTTS;
     private MaterialButton translateButton;
     private TextView translatedTextView;
     private Button buttonDeleteModels, buttonBack;
+    private TextToSpeech mTTS;
     String[] fromLanguages = {"Z", "Angličtina", "Čeština"};
     String[] toLanguages = {"Do", "Angličtina", "Čeština"};
 
@@ -64,6 +68,25 @@ public class TranslatorActivity extends AppCompatActivity {
         translatedTextView = (TextView) findViewById(R.id.idTranslatedText);
         buttonDeleteModels = (Button) findViewById(R.id.buttonDeleteModels);
         buttonBack = (Button) findViewById(R.id.buttonBack);
+        imageTTS = (ImageView) findViewById(R.id.imageTTS);
+        imageTranslatedTTS = (ImageView) findViewById(R.id.imageTranslatedTTS);
+
+        mTTS = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if(status == TextToSpeech.SUCCESS){
+                    int result = mTTS.setLanguage(Locale.ENGLISH);
+                    if(result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED){
+                        Log.e("TTS", "Language not supported");
+                    }else {
+                        imageTTS.setEnabled(true);
+                    }
+                } else {
+                    Log.e("TTS", "Initialization failed");
+                }
+            }
+        });
+        
 
         /**
          * Select the language from which to translate
@@ -115,6 +138,28 @@ public class TranslatorActivity extends AppCompatActivity {
                     Toast.makeText(TranslatorActivity.this, "Prosím zadejte cílový jazyk.", Toast.LENGTH_LONG).show();
                 }else{
                     translateText(fromLanguageCode, toLanguageCode, sourceEditText.getText().toString());
+                }
+            }
+        });
+
+        imageTTS.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(mTTS.isSpeaking()){
+                    mTTS.stop();
+                }else{
+                    speak(1);
+                }
+            }
+        });
+
+        imageTranslatedTTS.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(mTTS.isSpeaking()){
+                    mTTS.stop();
+                }else{
+                    speak(2);
                 }
             }
         });
@@ -188,6 +233,32 @@ public class TranslatorActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void speak(int type) {
+        String text="";
+        if(type==1){
+            text = sourceEditText.getText().toString();
+        }
+        else if(type==2){
+            text = translatedTextView.getText().toString();
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            mTTS.speak(text,TextToSpeech.QUEUE_FLUSH,null,null);
+        } else {
+            mTTS.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        if(mTTS != null){
+            mTTS.stop();
+            mTTS.shutdown();
+        }
+
+        super.onDestroy();
     }
 
     @Override
