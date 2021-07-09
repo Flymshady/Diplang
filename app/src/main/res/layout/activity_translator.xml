@@ -77,7 +77,7 @@
             android:overScrollMode="always"
             android:scrollbarStyle="insideInset"
             android:scrollbars="vertical"
-            android:importantForAutofill="no"
+            android:scrollbarSize="15dp"
             android:inputType="textImeMultiLine|textMultiLine"
             android:textColor="@color/black"
             android:textColorHint="@color/black"

@@ -10,9 +10,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -39,6 +41,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.Locale;
 
+import cz.uhk.fim.cellar.diplang.navigation.NavigationActivity;
+
 public class TranslatorActivity extends AppCompatActivity {
 
     private Spinner fromSpinner, toSpinner;
@@ -59,6 +63,10 @@ public class TranslatorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_translator);
+
+        Intent intent = getIntent();
+        String action = intent.getAction();
+        String type = intent.getType();
 
         fromSpinner =(Spinner) findViewById(R.id.idFromSpinner);
         toSpinner = (Spinner) findViewById(R.id.idToSpinner);
@@ -121,6 +129,8 @@ public class TranslatorActivity extends AppCompatActivity {
 
             }
         });
+
+
 
         ArrayAdapter toAdapter = new ArrayAdapter(this, R.layout.spinner_item, toLanguages);
         toAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -230,6 +240,44 @@ public class TranslatorActivity extends AppCompatActivity {
                 AlertDialog alert = builder.create();
                 alert.show();
 
+            }
+        });
+
+        /**
+         * Share String (text) for the translation (from English to Czech only)
+         */
+        if(Intent.ACTION_SEND.equals(action) && type != null){
+            String sharedText = intent.getStringExtra(Intent.EXTRA_TEXT);
+            if(sharedText !=null){
+                    sourceEditText.setText(sharedText);
+                    fromSpinner.setSelection(1);
+                    toSpinner.setSelection(2);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        translateButton.performClick();
+                    }
+                }, 1000);
+
+            }
+        }
+
+        /**
+         * Better scrollbar visibility inside the editable text field
+         */
+        sourceEditText.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+
+                if (view.getId() == R.id.idEditSource) {
+                    view.getParent().requestDisallowInterceptTouchEvent(true);
+                    switch (motionEvent.getAction()&MotionEvent.ACTION_MASK){
+                        case MotionEvent.ACTION_UP:
+                            view.getParent().requestDisallowInterceptTouchEvent(false);
+                            break;
+                    }
+                }
+                return false;
             }
         });
 
