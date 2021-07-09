@@ -1,13 +1,10 @@
-package cz.uhk.fim.cellar.diplang;
+package cz.uhk.fim.cellar.diplang.lessons;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
 
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 
@@ -16,9 +13,8 @@ import com.google.android.material.tabs.TabLayoutMediator;
 
 import org.jetbrains.annotations.NotNull;
 
-import cz.uhk.fim.cellar.diplang.Classes.User;
-
-import static androidx.core.content.ContextCompat.getSystemService;
+import cz.uhk.fim.cellar.diplang.R;
+import cz.uhk.fim.cellar.diplang.classes.User;
 
 public class LessonActivity extends AppCompatActivity {
 
@@ -57,7 +53,7 @@ public class LessonActivity extends AppCompatActivity {
         viewPager2.setUserInputEnabled(false);
 
 
-        ViewPagerAdapter adapter = new ViewPagerAdapter(this);
+        LessonViewPagerAdapter adapter = new LessonViewPagerAdapter(this);
         viewPager2.setAdapter(adapter);
 
         new TabLayoutMediator(tabs, viewPager2, new TabLayoutMediator.TabConfigurationStrategy() {

@@ -1,4 +1,4 @@
-package cz.uhk.fim.cellar.diplang;
+package cz.uhk.fim.cellar.diplang.lessons;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

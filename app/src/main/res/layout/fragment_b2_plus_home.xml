@@ -8,7 +8,7 @@
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".B2PlusHomeFragment">
+    tools:context=".navigation.B2PlusHomeFragment">
 
     <TextView
         android:layout_width="match_parent"

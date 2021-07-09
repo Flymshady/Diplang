@@ -1,7 +1,4 @@
-package cz.uhk.fim.cellar.diplang.Classes;
-
-import java.time.LocalDateTime;
-import java.util.Date;
+package cz.uhk.fim.cellar.diplang.classes;
 
 public class UserTask {
 

@@ -1,4 +1,4 @@
-package cz.uhk.fim.cellar.diplang.LessonFragments;
+package cz.uhk.fim.cellar.diplang.lessons.lessonFragments;
 
 import android.os.Bundle;
 
@@ -23,9 +23,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import cz.uhk.fim.cellar.diplang.Classes.PageTask;
-import cz.uhk.fim.cellar.diplang.Classes.UserTask;
-import cz.uhk.fim.cellar.diplang.LessonViewModel;
+import cz.uhk.fim.cellar.diplang.classes.PageTask;
+import cz.uhk.fim.cellar.diplang.classes.UserTask;
+import cz.uhk.fim.cellar.diplang.lessons.LessonViewModel;
 import cz.uhk.fim.cellar.diplang.R;
 
 

@@ -1,8 +1,6 @@
-package cz.uhk.fim.cellar.diplang.LessonFragments;
+package cz.uhk.fim.cellar.diplang.lessons.lessonFragments;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -18,11 +16,9 @@ import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
-import cz.uhk.fim.cellar.diplang.B2PlusHomeFragment;
-import cz.uhk.fim.cellar.diplang.Classes.Lesson;
-import cz.uhk.fim.cellar.diplang.LessonViewModel;
-import cz.uhk.fim.cellar.diplang.NavigationActivity;
-import cz.uhk.fim.cellar.diplang.NotificationSettingsActivity;
+import cz.uhk.fim.cellar.diplang.classes.Lesson;
+import cz.uhk.fim.cellar.diplang.lessons.LessonViewModel;
+import cz.uhk.fim.cellar.diplang.navigation.NavigationActivity;
 import cz.uhk.fim.cellar.diplang.R;
 
 

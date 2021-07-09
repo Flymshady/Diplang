@@ -1,10 +1,8 @@
-package cz.uhk.fim.cellar.diplang;
+package cz.uhk.fim.cellar.diplang.navigation;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -12,6 +10,9 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import cz.uhk.fim.cellar.diplang.R;
+import cz.uhk.fim.cellar.diplang.authentication.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".LessonFragments.PageFragment2">
+    tools:context=".lessons.lessonFragments.PageFragment2">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -47,6 +47,7 @@
             android:textColor="@color/black"
             android:gravity="center"
             android:layout_marginTop="20sp"
+            android:textIsSelectable="true"
             android:text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam. Nulla est. Pellentesque sapien. In sem justo, commodo ut, suscipit at, pharetra vitae, orci. Aliquam in lorem sit amet leo accumsan lacinia.
 "/>
 
@@ -78,6 +79,7 @@
             android:textColor="@color/black"
             android:gravity="center"
             android:layout_marginTop="20sp"
+            android:textIsSelectable="true"
             android:text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam. Nulla est. Pellentesque sapien. In sem justo, commodo ut, suscipit at, pharetra vitae, orci. Aliquam in lorem sit amet leo accumsan lacinia.
 "/>
 
@@ -108,6 +110,7 @@
             android:textColor="@color/black"
             android:gravity="center"
             android:layout_marginTop="20sp"
+            android:textIsSelectable="true"
             android:text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam. Nulla est. Pellentesque sapien. In sem justo, commodo ut, suscipit at, pharetra vitae, orci. Aliquam in lorem sit amet leo accumsan lacinia.
 "/>
 
@@ -138,6 +141,7 @@
             android:textColor="@color/black"
             android:gravity="center"
             android:layout_marginTop="20sp"
+            android:textIsSelectable="true"
             android:text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam. Nulla est. Pellentesque sapien. In sem justo, commodo ut, suscipit at, pharetra vitae, orci. Aliquam in lorem sit amet leo accumsan lacinia.
 "/>
 
@@ -168,6 +172,7 @@
             android:textColor="@color/black"
             android:gravity="center"
             android:layout_marginTop="20sp"
+            android:textIsSelectable="true"
             android:text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam. Nulla est. Pellentesque sapien. In sem justo, commodo ut, suscipit at, pharetra vitae, orci. Aliquam in lorem sit amet leo accumsan lacinia.
 "/>
 

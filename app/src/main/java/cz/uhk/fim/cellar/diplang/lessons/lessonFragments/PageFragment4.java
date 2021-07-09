@@ -1,4 +1,4 @@
-package cz.uhk.fim.cellar.diplang.LessonFragments;
+package cz.uhk.fim.cellar.diplang.lessons.lessonFragments;
 
 import android.os.Bundle;
 
@@ -12,11 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.FirebaseDatabase;
-
-import cz.uhk.fim.cellar.diplang.Classes.Lesson;
-import cz.uhk.fim.cellar.diplang.LessonViewModel;
+import cz.uhk.fim.cellar.diplang.lessons.LessonViewModel;
 import cz.uhk.fim.cellar.diplang.R;
 
 

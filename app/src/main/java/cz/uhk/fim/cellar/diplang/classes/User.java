@@ -1,4 +1,4 @@
-package cz.uhk.fim.cellar.diplang.Classes;
+package cz.uhk.fim.cellar.diplang.classes;
 
 public class User {
 

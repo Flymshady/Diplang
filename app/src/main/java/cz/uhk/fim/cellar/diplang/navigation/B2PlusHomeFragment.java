@@ -1,4 +1,4 @@
-package cz.uhk.fim.cellar.diplang;
+package cz.uhk.fim.cellar.diplang.navigation;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,8 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
+
+import cz.uhk.fim.cellar.diplang.R;
 
 
 public class B2PlusHomeFragment extends Fragment {

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LessonFragments.PageFragment1">
+    tools:context=".lessons.lessonFragments.PageFragment1">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -17,6 +17,7 @@
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="18sp"
+            android:textIsSelectable="true"
         />
 
         <TextView
@@ -29,6 +30,7 @@
             android:layout_marginTop="20dp"
             android:textColor="@color/black"
             android:textSize="18sp"
+            android:textIsSelectable="true"
             />
 
         <Button

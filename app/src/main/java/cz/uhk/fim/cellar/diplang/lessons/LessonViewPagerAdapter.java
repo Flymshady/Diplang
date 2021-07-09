@@ -1,4 +1,4 @@
-package cz.uhk.fim.cellar.diplang;
+package cz.uhk.fim.cellar.diplang.lessons;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -7,14 +7,14 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import org.jetbrains.annotations.NotNull;
 
-import cz.uhk.fim.cellar.diplang.LessonFragments.PageFragment1;
-import cz.uhk.fim.cellar.diplang.LessonFragments.PageFragment2;
-import cz.uhk.fim.cellar.diplang.LessonFragments.PageFragment3;
-import cz.uhk.fim.cellar.diplang.LessonFragments.PageFragment4;
-import cz.uhk.fim.cellar.diplang.LessonFragments.PageFragmentFinal;
+import cz.uhk.fim.cellar.diplang.lessons.lessonFragments.PageFragment1;
+import cz.uhk.fim.cellar.diplang.lessons.lessonFragments.PageFragment2;
+import cz.uhk.fim.cellar.diplang.lessons.lessonFragments.PageFragment3;
+import cz.uhk.fim.cellar.diplang.lessons.lessonFragments.PageFragment4;
+import cz.uhk.fim.cellar.diplang.lessons.lessonFragments.PageFragmentFinal;
 
-public class ViewPagerAdapter extends FragmentStateAdapter {
-    public ViewPagerAdapter(@NonNull @NotNull FragmentActivity fragmentActivity) {
+public class LessonViewPagerAdapter extends FragmentStateAdapter {
+    public LessonViewPagerAdapter(@NonNull @NotNull FragmentActivity fragmentActivity) {
         super(fragmentActivity);
     }
 

@@ -1,4 +1,4 @@
-package cz.uhk.fim.cellar.diplang;
+package cz.uhk.fim.cellar.diplang.notifications;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -8,6 +8,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import androidx.core.app.NotificationCompat;
+
+import cz.uhk.fim.cellar.diplang.navigation.MainActivity;
+import cz.uhk.fim.cellar.diplang.R;
 
 /**
  * BroadcastReceiver class for managing the notifications

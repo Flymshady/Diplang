@@ -1,4 +1,4 @@
-package cz.uhk.fim.cellar.diplang;
+package cz.uhk.fim.cellar.diplang.navigation;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,7 +13,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,11 +23,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import cz.uhk.fim.cellar.diplang.Classes.Lesson;
-import cz.uhk.fim.cellar.diplang.Classes.PageTask;
-
-import static android.content.Context.CONNECTIVITY_SERVICE;
-import static androidx.core.content.ContextCompat.getSystemService;
+import cz.uhk.fim.cellar.diplang.lessons.LessonActivity;
+import cz.uhk.fim.cellar.diplang.R;
+import cz.uhk.fim.cellar.diplang.classes.Lesson;
 
 
 public class B2HomeFragment extends Fragment implements View.OnClickListener {

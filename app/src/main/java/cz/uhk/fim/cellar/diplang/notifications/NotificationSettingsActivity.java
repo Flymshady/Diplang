@@ -1,10 +1,9 @@
-package cz.uhk.fim.cellar.diplang;
+package cz.uhk.fim.cellar.diplang.notifications;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlarmManager;
 import android.app.AlertDialog;
-import android.app.FragmentManager;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Context;
@@ -20,6 +19,9 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 import java.util.Locale;
+
+import cz.uhk.fim.cellar.diplang.navigation.NavigationActivity;
+import cz.uhk.fim.cellar.diplang.R;
 
 /**
  * The NotificationSettingsActivity is class for customizable notifications

@@ -1,4 +1,4 @@
-package cz.uhk.fim.cellar.diplang;
+package cz.uhk.fim.cellar.diplang.navigation;
 
 import android.content.Context;
 import android.content.Intent;
@@ -50,6 +50,7 @@ public class StudyFragment extends Fragment implements View.OnClickListener {
 
         buttonTranslatorActivity = (Button) v.findViewById(R.id.buttonTranslatorActivity);
         buttonTranslatorActivity.setOnClickListener(this);
+
 
         return v;
     }

@@ -13,41 +13,45 @@
         android:roundIcon="@mipmap/pixel_diplang"
         android:supportsRtl="true"
         android:theme="@style/Theme.Diplang">
-        <activity android:name=".SplashScreen"></activity>
+        <activity android:name=".SplashScreen"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"/>
         <activity
-            android:name=".LessonActivity"
+            android:name=".lessons.LessonActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" />
         <activity
             android:name=".TranslatorActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait">
+
+        </activity>
         <activity
             android:name=".SpeechActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".NotificationSettingsActivity"
+            android:name=".notifications.NotificationSettingsActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".authentication.LoginActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".NavigationActivity"
+            android:name=".navigation.NavigationActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ForgottenPassword"
+            android:name=".authentication.ForgottenPassword"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".authentication.RegisterActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".MainActivity"
+            android:name=".navigation.MainActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -57,7 +61,7 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".ReminderBroadcast" />
+        <receiver android:name=".notifications.ReminderBroadcast" />
     </application>
 
 </manifest>

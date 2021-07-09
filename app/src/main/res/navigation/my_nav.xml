@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="cz.uhk.fim.cellar.diplang.HomeFragment"
+        android:name="cz.uhk.fim.cellar.diplang.navigation.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/studyFragment"
-        android:name="cz.uhk.fim.cellar.diplang.StudyFragment"
+        android:name="cz.uhk.fim.cellar.diplang.navigation.StudyFragment"
         android:label="fragment_study"
         tools:layout="@layout/fragment_study" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="cz.uhk.fim.cellar.diplang.ProfileFragment"
+        android:name="cz.uhk.fim.cellar.diplang.navigation.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>

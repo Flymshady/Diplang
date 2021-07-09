@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import cz.uhk.fim.cellar.diplang.navigation.NavigationActivity;
+
 public class SplashScreen extends AppCompatActivity {
 
     @Override

@@ -1,4 +1,4 @@
-package cz.uhk.fim.cellar.diplang;
+package cz.uhk.fim.cellar.diplang.authentication;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,7 +21,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 
-import cz.uhk.fim.cellar.diplang.Classes.User;
+import cz.uhk.fim.cellar.diplang.navigation.MainActivity;
+import cz.uhk.fim.cellar.diplang.R;
+import cz.uhk.fim.cellar.diplang.classes.User;
 
 /**
  * Registration activity to register the new user via email, password and name

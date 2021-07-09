@@ -1,7 +1,5 @@
-package cz.uhk.fim.cellar.diplang.LessonFragments;
+package cz.uhk.fim.cellar.diplang.lessons.lessonFragments;
 
-import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.LayoutInflater;
@@ -13,29 +11,21 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.ColorInt;
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 
-import cz.uhk.fim.cellar.diplang.Classes.PageTask;
-import cz.uhk.fim.cellar.diplang.Classes.UserTask;
-import cz.uhk.fim.cellar.diplang.LessonViewModel;
-import cz.uhk.fim.cellar.diplang.LoginActivity;
-import cz.uhk.fim.cellar.diplang.MainActivity;
+import cz.uhk.fim.cellar.diplang.classes.PageTask;
+import cz.uhk.fim.cellar.diplang.classes.UserTask;
+import cz.uhk.fim.cellar.diplang.lessons.LessonViewModel;
 import cz.uhk.fim.cellar.diplang.R;
-import cz.uhk.fim.cellar.diplang.RegisterActivity;
 
 import static android.view.View.GONE;
 
