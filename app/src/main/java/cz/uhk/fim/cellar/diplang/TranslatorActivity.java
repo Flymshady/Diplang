@@ -50,7 +50,7 @@ public class TranslatorActivity extends AppCompatActivity {
     private ImageView mic, imageTTS, imageTranslatedTTS;
     private MaterialButton translateButton;
     private TextView translatedTextView;
-    private Button buttonDeleteModels, buttonBack;
+    private Button buttonDeleteModels, buttonBack, btnSavePhrase;
     private TextToSpeech mTTS;
     String[] fromLanguages = {"Z", "Angličtina", "Čeština"};
     String[] toLanguages = {"Do", "Angličtina", "Čeština"};
@@ -78,6 +78,7 @@ public class TranslatorActivity extends AppCompatActivity {
         buttonBack = (Button) findViewById(R.id.buttonBack);
         imageTTS = (ImageView) findViewById(R.id.imageTTS);
         imageTranslatedTTS = (ImageView) findViewById(R.id.imageTranslatedTTS);
+        btnSavePhrase = (Button) findViewById(R.id.btnSavePhrase);
 
         mTTS = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
             @Override
@@ -278,6 +279,31 @@ public class TranslatorActivity extends AppCompatActivity {
                     }
                 }
                 return false;
+            }
+        });
+
+        /**
+         * Save the english phrase and its translation to the DB
+         * and use it in the PhrasesActivity
+         */
+        btnSavePhrase.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String englishPhrase;
+                String czechPhrase;
+                if(toSpinner.getSelectedItemPosition()==1
+                        && fromSpinner.getSelectedItemPosition()==2
+                        && sourceEditText.getText().toString()!=null
+                        && translatedTextView.getText().toString()!=null){
+                    englishPhrase = sourceEditText.getText().toString();
+                    czechPhrase = translatedTextView.getText().toString();
+                }else if(toSpinner.getSelectedItemPosition()==2
+                        && fromSpinner.getSelectedItemPosition()==1
+                        && sourceEditText.getText().toString()!=null
+                        && translatedTextView.getText().toString()!=null){
+                    englishPhrase = translatedTextView.getText().toString();
+                    englishPhrase = translatedTextView.getText().toString();
+                }
             }
         });
 

@@ -13,9 +13,13 @@
         android:roundIcon="@mipmap/pixel_diplang"
         android:supportsRtl="true"
         android:theme="@style/Theme.Diplang">
-        <activity android:name=".SplashScreen"
+        <activity android:name=".PhrasesActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".SplashScreen"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".lessons.LessonActivity"
             android:configChanges="keyboardHidden|orientation"
@@ -23,12 +27,14 @@
         <activity
             android:name=".TranslatorActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:launchMode="singleTask">
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name="android.intent.action.SEND"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <data android:mimeType="*/*"/>
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="*/*" />
             </intent-filter>
         </activity>
         <activity

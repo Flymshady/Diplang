@@ -189,6 +189,15 @@
         android:textSize="14sp"
         android:layout_marginTop="5dp"
         android:layout_gravity="center"/>
+    <Button
+        android:id="@+id/btnSavePhrase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textAllCaps="false"
+        android:layout_marginTop="20dp"
+        android:text="Uložit frázi"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -197,7 +206,7 @@
         android:weightSum="2"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
         >
         <Button
             android:id="@+id/buttonBack"
