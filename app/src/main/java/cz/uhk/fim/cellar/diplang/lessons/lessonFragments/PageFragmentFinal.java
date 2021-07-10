@@ -73,7 +73,7 @@ public class PageFragmentFinal extends Fragment implements View.OnClickListener 
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.buttonFinishLesson:
-                saveUserLesson();
+             //   saveUserLesson();
                 try {
                     startActivity(new Intent( getActivity(), NavigationActivity.class));
                 } finally {

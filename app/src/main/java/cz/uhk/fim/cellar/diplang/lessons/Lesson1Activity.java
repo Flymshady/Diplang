@@ -40,7 +40,7 @@ public class Lesson1Activity extends AppCompatActivity {
 
         level = getIntent().getStringExtra("level");
         viewModel.setLevel(level);
-        numberOfLesson = getIntent().getIntExtra("lesson", 1);
+        numberOfLesson = getIntent().getIntExtra("number", 1);
         viewModel.setLesson(numberOfLesson);
         userName = getIntent().getStringExtra("name");
         viewModel.setUsername(userName);
@@ -59,7 +59,7 @@ public class Lesson1Activity extends AppCompatActivity {
         new TabLayoutMediator(tabs, viewPager2, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
             public void onConfigureTab(@NonNull @NotNull TabLayout.Tab tab, int position) {
-                tab.setText("Tab "+ (position + 1));
+                tab.setText(position + 1);
                 tab.view.setClickable(false);
             }
         }).attach();

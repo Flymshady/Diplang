@@ -16,6 +16,13 @@ public class Lesson {
         this.number = number;
     }
 
+    public Lesson(int pointsTotal, String name, String level, int number) {
+        this.pointsTotal = pointsTotal;
+        this.name = name;
+        this.level = level;
+        this.number = number;
+    }
+
     public Lesson() {
     }
 

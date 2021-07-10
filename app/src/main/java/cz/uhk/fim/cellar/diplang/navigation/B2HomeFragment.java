@@ -175,10 +175,10 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
             case R.id.startLesson1:
                 try {
                     startActivity(new Intent(this.getActivity(), Lesson1Activity.class)
-                            .putExtra("level", "B2")
-                            .putExtra("lesson", 1)
-                            .putExtra("name", sp.getString("name",""))
-                            .putExtra("pointsTotal", 10)
+                            .putExtra("level", lesson1.getLevel())
+                            .putExtra("number", lesson1.getNumber())
+                            .putExtra("name", lesson1.getName())
+                            .putExtra("pointsTotal", lesson1.getPointsTotal())
 
                     );
                 }finally {

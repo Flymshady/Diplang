@@ -24,42 +24,31 @@ import com.google.firebase.database.ValueEventListener;
 import org.jetbrains.annotations.NotNull;
 import cz.uhk.fim.cellar.diplang.R;
 
-public class Page1Lesson1Fragment extends Fragment implements View.OnClickListener {
 
-    private Button btnNextToP2;
+public class Page5Lesson1Fragment extends Fragment implements View.OnClickListener {
+
+    private Button btnNextToP6;
     private ViewPager2 viewPager2;
     private LinearLayout linearLayout;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
 
-    public Page1Lesson1Fragment() {
+    public Page5Lesson1Fragment() {
         // Required empty public constructor
     }
 
-
-    public static Page1Lesson1Fragment newInstance(String param1, String param2) {
-        Page1Lesson1Fragment fragment = new Page1Lesson1Fragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_page1_lesson1, container, false);
+        View v = inflater.inflate(R.layout.fragment_page5_lesson1, container, false);
 
-        linearLayout = (LinearLayout) v.findViewById(R.id.layoutP1L1);
+        linearLayout = (LinearLayout) v.findViewById(R.id.layoutP5L1);
 
         loadData();
 
-        btnNextToP2 = (Button) v.findViewById(R.id.btnNextToP2);
-        btnNextToP2.setOnClickListener(this);
+        btnNextToP6 = (Button) v.findViewById(R.id.btnNextToP6);
+        btnNextToP6.setOnClickListener(this);
 
         viewPager2 = (ViewPager2) getActivity().findViewById(R.id.viewPager);
 
@@ -68,7 +57,7 @@ public class Page1Lesson1Fragment extends Fragment implements View.OnClickListen
 
     private void loadData() {
 
-        DatabaseReference myRefTask1 = database.getReference("Lessons").child("Lesson1").child("Page1").child("TextTask1");
+        DatabaseReference myRefTask1 = database.getReference("Lessons").child("Lesson1").child("Page5").child("TextTask1");
         myRefTask1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
@@ -103,7 +92,7 @@ public class Page1Lesson1Fragment extends Fragment implements View.OnClickListen
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.btnNextToP2:
+            case R.id.btnNextToP6:
                 viewPager2.setCurrentItem(viewPager2.getCurrentItem() + 1);
 
         }

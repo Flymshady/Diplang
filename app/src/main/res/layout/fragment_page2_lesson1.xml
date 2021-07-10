@@ -82,13 +82,14 @@
                     android:layout_marginTop="10dp"
                     />
                 <TextView
-                    android:id="@+id/RightAnswer1L1P3"
+                    android:id="@+id/RightAnswer1L1P2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="18sp"
                     android:textColor="@color/black"
                     android:gravity="center"
                     android:visibility="gone"
+                    android:background="@color/right_answer_color"
                     />
 
                 <TextView
@@ -114,13 +115,14 @@
                     android:layout_marginTop="10dp"
                     />
                 <TextView
-                    android:id="@+id/RightAnswer2L1P3"
+                    android:id="@+id/RightAnswer2L1P2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="18sp"
                     android:textColor="@color/black"
                     android:gravity="center"
                     android:visibility="gone"
+                    android:background="@color/right_answer_color"
                     />
                 <TextView
                     android:id="@+id/task3L1P2"
@@ -145,13 +147,14 @@
                     android:layout_marginTop="10dp"
                     />
                 <TextView
-                    android:id="@+id/RightAnswer3L1P3"
+                    android:id="@+id/RightAnswer3L1P2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="18sp"
                     android:textColor="@color/black"
                     android:gravity="center"
                     android:visibility="gone"
+                    android:background="@color/right_answer_color"
                     />
                 <TextView
                     android:id="@+id/task4L1P2"
@@ -176,13 +179,14 @@
                     android:layout_marginTop="10dp"
                     />
                 <TextView
-                    android:id="@+id/RightAnswer4L1P3"
+                    android:id="@+id/RightAnswer4L1P2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="18sp"
                     android:textColor="@color/black"
                     android:gravity="center"
                     android:visibility="gone"
+                    android:background="@color/right_answer_color"
                     />
                 <TextView
                     android:id="@+id/task5L1P2"
@@ -207,13 +211,14 @@
                     android:layout_marginTop="10dp"
                     />
                 <TextView
-                    android:id="@+id/RightAnswer5L1P3"
+                    android:id="@+id/RightAnswer5L1P2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="18sp"
                     android:textColor="@color/black"
                     android:gravity="center"
                     android:visibility="gone"
+                    android:background="@color/right_answer_color"
                     />
                 <Button
                     android:id="@+id/btnSaveL1P2"

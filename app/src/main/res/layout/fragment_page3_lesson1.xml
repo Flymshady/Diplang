@@ -6,6 +6,7 @@
     android:orientation="vertical"
     tools:context=".lessons.lessonFragments.Page3Lesson1Fragment">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,92 +31,275 @@
             android:textAlignment="center"
             android:text="Body: "/>
     </LinearLayout>
-
     <ScrollView
-        android:paddingTop="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            >
-            <TextView
-                android:id="@+id/task1L1P3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:textColor="@color/black"
-                android:gravity="center"
-                android:layout_marginTop="20sp"
-                android:textIsSelectable="true"
-                android:text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam. Nulla est. Pellentesque sapien. In sem justo, commodo ut, suscipit at, pharetra vitae, orci. Aliquam in lorem sit amet leo accumsan lacinia.
-"/>
-
-
-            <EditText
-                android:id="@+id/ET1L1P3"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textSize="18sp"
-                android:textColor="@color/black"
-                android:gravity="center"
-                android:hint="1)"
-                android:layout_marginTop="20sp"
-                />
-            <TextView
-                android:id="@+id/RAL1P3"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textSize="18sp"
-                android:textColor="@color/black"
-                android:layout_gravity="center"
-                android:text="vysledek"
-                android:visibility="gone"
-                android:gravity="center"/>
-            <Button
-                android:id="@+id/btnSaveL1P3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:text="Uložit"/>
-
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
 
             <LinearLayout
-                android:id="@+id/finishL1P3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/teal_700"
-                android:visibility="gone"
-                android:weightSum="2"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="50dp"
                 android:orientation="vertical"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp">
+                >
                 <TextView
-                    android:id="@+id/finishTVL1P3"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
+                    android:id="@+id/infoPage3Lesson1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:textSize="18sp"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:gravity="center"
-                    android:layout_marginTop="20sp"
+                    android:textIsSelectable="true"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/task1L1P3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:textIsSelectable="true"
+                    android:text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam. Nulla est. Pellentesque sapien. In sem justo, commodo ut, suscipit at, pharetra vitae, orci. Aliquam in lorem sit amet leo accumsan lacinia.
+"/>
+
+                <EditText
+                    android:id="@+id/ET1L1P3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:hint="6)"
+                    android:layout_marginTop="10dp"
+                    />
+                <TextView
+                    android:id="@+id/RightAnswer1L1P3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    android:background="@color/right_answer_color"
+                    />
+
+                <TextView
+                    android:id="@+id/task2L1P3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:textIsSelectable="true"
+                    android:text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam. Nulla est. Pellentesque sapien. In sem justo, commodo ut, suscipit at, pharetra vitae, orci. Aliquam in lorem sit amet leo accumsan lacinia.
+"/>
+
+                <EditText
+                    android:id="@+id/ET2L1P3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:hint="7)"
+                    android:layout_marginTop="10dp"
+                    />
+                <TextView
+                    android:id="@+id/RightAnswer2L1P3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    android:background="@color/right_answer_color"
+                    />
+                <TextView
+                    android:id="@+id/task3L1P3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:textIsSelectable="true"
+                    android:text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam. Nulla est. Pellentesque sapien. In sem justo, commodo ut, suscipit at, pharetra vitae, orci. Aliquam in lorem sit amet leo accumsan lacinia.
+"/>
+
+                <EditText
+                    android:id="@+id/ET3L1P3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:hint="8)"
+                    android:layout_marginTop="10dp"
+                    />
+                <TextView
+                    android:id="@+id/RightAnswer3L1P3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    android:background="@color/right_answer_color"
+                    />
+                <TextView
+                    android:id="@+id/task4L1P3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:textIsSelectable="true"
+                    android:text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam. Nulla est. Pellentesque sapien. In sem justo, commodo ut, suscipit at, pharetra vitae, orci. Aliquam in lorem sit amet leo accumsan lacinia.
+"/>
+
+                <EditText
+                    android:id="@+id/ET4L1P3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:hint="9)"
+                    android:layout_marginTop="10dp"
+                    />
+                <TextView
+                    android:id="@+id/RightAnswer4L1P3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    android:background="@color/right_answer_color"
+                    />
+                <TextView
+                    android:id="@+id/task5L1P3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:textIsSelectable="true"
+                    android:text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam. Nulla est. Pellentesque sapien. In sem justo, commodo ut, suscipit at, pharetra vitae, orci. Aliquam in lorem sit amet leo accumsan lacinia.
+"/>
+
+                <EditText
+                    android:id="@+id/ET5L1P3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:hint="10)"
+                    android:layout_marginTop="10dp"
+                    />
+                <TextView
+                    android:id="@+id/RightAnswer5L1P3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    android:background="@color/right_answer_color"
+                    />
+                <TextView
+                    android:id="@+id/task6L1P3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:textIsSelectable="true"
+                    android:text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam. Nulla est. Pellentesque sapien. In sem justo, commodo ut, suscipit at, pharetra vitae, orci. Aliquam in lorem sit amet leo accumsan lacinia.
+"/>
+
+                <EditText
+                    android:id="@+id/ET6L1P3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:hint="11)"
+                    android:layout_marginTop="10dp"
+                    />
+                <TextView
+                    android:id="@+id/RightAnswer6L1P3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:background="@color/right_answer_color"
+                    android:visibility="gone"
                     />
                 <Button
-                    android:id="@+id/btnNextToP4"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
+                    android:id="@+id/btnSaveL1P3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:text="Uložit"/>
+
+
+                <LinearLayout
+                    android:id="@+id/finishL1P3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:background="@color/teal_700"
-                    android:text="Další"
-                    />
+                    android:visibility="gone"
+                    android:weightSum="2"
+                    android:layout_marginTop="50dp"
+                    android:orientation="vertical"
+                    >
+                    <TextView
+                        android:id="@+id/finishTVL1P3"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:textSize="18sp"
+                        android:textColor="@color/white"
+                        android:gravity="center"
+                        android:layout_marginTop="20dp"
+                        />
+                    <Button
+                        android:id="@+id/btnNextToP4"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"
+                        android:background="@color/teal_700"
+                        android:text="Další"
+                        />
+
+
+                </LinearLayout>
+
             </LinearLayout>
 
+
+
         </LinearLayout>
-
-
     </ScrollView>
 
 

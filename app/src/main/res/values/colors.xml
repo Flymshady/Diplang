@@ -20,4 +20,5 @@
     <color name="orange">#FF7F00</color>
     <color name="red">#FF0000</color>
     <color name="textHint">#c6c6c6</color>
+    <color name="right_answer_color">#FAC0A2</color>
 </resources>
