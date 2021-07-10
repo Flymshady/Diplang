@@ -16,7 +16,7 @@ import org.jetbrains.annotations.NotNull;
 import cz.uhk.fim.cellar.diplang.R;
 import cz.uhk.fim.cellar.diplang.classes.User;
 
-public class LessonActivity extends AppCompatActivity {
+public class Lesson1Activity extends AppCompatActivity {
 
     private String level;
     private int numberOfLesson;
@@ -30,7 +30,7 @@ public class LessonActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lesson);
+        setContentView(R.layout.activity_lesson1);
 
         viewModel = new ViewModelProvider(this).get(LessonViewModel.class);
         viewModel.getDipPoints().observe(this, dipPoints -> {
@@ -53,7 +53,7 @@ public class LessonActivity extends AppCompatActivity {
         viewPager2.setUserInputEnabled(false);
 
 
-        LessonViewPagerAdapter adapter = new LessonViewPagerAdapter(this);
+        Lesson1ViewPagerAdapter adapter = new Lesson1ViewPagerAdapter(this);
         viewPager2.setAdapter(adapter);
 
         new TabLayoutMediator(tabs, viewPager2, new TabLayoutMediator.TabConfigurationStrategy() {

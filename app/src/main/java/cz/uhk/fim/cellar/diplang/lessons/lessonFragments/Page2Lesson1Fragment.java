@@ -22,6 +22,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import cz.uhk.fim.cellar.diplang.classes.LessonPage;
 import cz.uhk.fim.cellar.diplang.classes.PageTask;
 import cz.uhk.fim.cellar.diplang.classes.UserTask;
 import cz.uhk.fim.cellar.diplang.lessons.LessonViewModel;
@@ -29,7 +30,7 @@ import cz.uhk.fim.cellar.diplang.R;
 
 import static android.view.View.GONE;
 
-public class PageFragment2 extends Fragment implements View.OnClickListener {
+public class Page2Lesson1Fragment extends Fragment implements View.OnClickListener {
 
     private EditText ET1L1P2, ET2L1P2, ET3L1P2, ET4L1P2, ET5L1P2;
     private Button btnSaveL1P2, btnNextToP3, btnBackToL1P1;
@@ -41,20 +42,21 @@ public class PageFragment2 extends Fragment implements View.OnClickListener {
     private TextView finishTVL1P2, TVPointsL1P2;
     private LessonViewModel viewModel;
     private TextView RightAnswer1L1P3, RightAnswer2L1P3,RightAnswer3L1P3, RightAnswer4L1P3, RightAnswer5L1P3;
-    private TextView task1L1P2, task2L1P2, task3L1P2, task4L1P2, task5L1P2;
+    private TextView task1L1P2, task2L1P2, task3L1P2, task4L1P2, task5L1P2, infoPage2Lesson1;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     private PageTask task1, task2, task3, task4, task5;
     private int pointsT1, pointsT2, pointsT3, pointsT4, pointsT5;
     private UserTask utask1, utask2, utask3, utask4, utask5;
+    private int pagePoints;
 
 
-    public PageFragment2() {
+    public Page2Lesson1Fragment() {
         // Required empty public constructor
     }
 
 
-    public static PageFragment2 newInstance(String param1, String param2) {
-        PageFragment2 fragment = new PageFragment2();
+    public static Page2Lesson1Fragment newInstance(String param1, String param2) {
+        Page2Lesson1Fragment fragment = new Page2Lesson1Fragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -69,7 +71,7 @@ public class PageFragment2 extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_page2, container, false);
+        View v = inflater.inflate(R.layout.fragment_page2_lesson1, container, false);
 
         viewModel = new ViewModelProvider(requireActivity()).get(LessonViewModel.class);
 
@@ -96,6 +98,7 @@ public class PageFragment2 extends Fragment implements View.OnClickListener {
         task3L1P2 = (TextView) v.findViewById(R.id.task3L1P2);
         task4L1P2 = (TextView) v.findViewById(R.id.task4L1P2);
         task5L1P2 = (TextView) v.findViewById(R.id.task5L1P2);
+        infoPage2Lesson1 = (TextView) v.findViewById(R.id.infoPage2Lesson1);
         utask1 = new UserTask();
         utask2 = new UserTask();
         utask3 = new UserTask();
@@ -119,6 +122,24 @@ public class PageFragment2 extends Fragment implements View.OnClickListener {
     }
 
     private void loadData() {
+        DatabaseReference myRefPage = database.getReference("Lessons").child("Lesson1").child("Page2");
+        myRefPage.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                LessonPage lessonPage = dataSnapshot.getValue(LessonPage.class);
+                if(lessonPage!=null){
+                    infoPage2Lesson1.setText(lessonPage.getInfo());
+                    pagePoints = lessonPage.getPagePoints();
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+            }
+        });
+
         DatabaseReference myRefTask1 = database.getReference("Lessons").child("Lesson1").child("Page2").child("Task1");
         myRefTask1.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -129,6 +150,7 @@ public class PageFragment2 extends Fragment implements View.OnClickListener {
                 if(task1!=null){
                     task1L1P2.setText(task1.getText());
                     rightAnswerTextTask1L1P2 = task1.getRightAnswer();
+                    RightAnswer1L1P3.setText("Right answer: "+rightAnswerTextTask1L1P2);
                     pointsT1 = task1.getPoints();
                 }
             }
@@ -149,6 +171,7 @@ public class PageFragment2 extends Fragment implements View.OnClickListener {
                 if(task2!=null){
                     task2L1P2.setText(task2.getText());
                     rightAnswerTextTask2L1P2 = task2.getRightAnswer();
+                    RightAnswer2L1P3.setText("Right answer: "+rightAnswerTextTask2L1P2);
                     pointsT2 = task2.getPoints();
                 }
             }
@@ -169,6 +192,7 @@ public class PageFragment2 extends Fragment implements View.OnClickListener {
                 if(task3!=null){
                     task3L1P2.setText(task3.getText());
                     rightAnswerTextTask3L1P2 = task3.getRightAnswer();
+                    RightAnswer3L1P3.setText("Right answer: "+rightAnswerTextTask3L1P2);
                     pointsT3 = task3.getPoints();
                 }
             }
@@ -189,6 +213,7 @@ public class PageFragment2 extends Fragment implements View.OnClickListener {
                 if(task4!=null){
                     task4L1P2.setText(task4.getText());
                     rightAnswerTextTask4L1P2 = task4.getRightAnswer();
+                    RightAnswer4L1P3.setText("Right answer: "+rightAnswerTextTask4L1P2);
                     pointsT4 = task4.getPoints();
                 }
             }
@@ -209,6 +234,7 @@ public class PageFragment2 extends Fragment implements View.OnClickListener {
                 if(task5!=null){
                     task5L1P2.setText(task5.getText());
                     rightAnswerTextTask5L1P2 = task5.getRightAnswer();
+                    RightAnswer5L1P3.setText("Right answer: "+rightAnswerTextTask5L1P2);
                     pointsT5 = task5.getPoints();
                 }
             }
@@ -217,12 +243,6 @@ public class PageFragment2 extends Fragment implements View.OnClickListener {
                 // Failed to read value
             }
         });
-
-        RightAnswer1L1P3.setText(rightAnswerTextTask1L1P2);
-        RightAnswer2L1P3.setText(rightAnswerTextTask2L1P2);
-        RightAnswer3L1P3.setText(rightAnswerTextTask3L1P2);
-        RightAnswer4L1P3.setText(rightAnswerTextTask4L1P2);
-        RightAnswer5L1P3.setText(rightAnswerTextTask5L1P2);
     }
 
 
@@ -236,7 +256,7 @@ public class PageFragment2 extends Fragment implements View.OnClickListener {
                 btnSaveL1P2.setVisibility(GONE);
                 viewModel.setDipPoints(viewModel.getDipPoints().getValue()+points);
                 TVPointsL1P2.setText(viewModel.getDipPoints().getValue().toString());
-                saveUserTask();
+            //    saveUserTask();
                 Toast.makeText(this.getActivity(), "Počet bodů: "+points, Toast.LENGTH_LONG).show();
                 break;
             case (R.id.btnNextToP3):
@@ -280,10 +300,6 @@ public class PageFragment2 extends Fragment implements View.OnClickListener {
                 .child("Page2")
                 .child("Task5")
                 .setValue(utask5);
-
-
-
-
     }
 
     @Override

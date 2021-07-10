@@ -29,7 +29,7 @@ import cz.uhk.fim.cellar.diplang.lessons.LessonViewModel;
 import cz.uhk.fim.cellar.diplang.R;
 
 
-public class PageFragment3 extends Fragment implements View.OnClickListener {
+public class Page3Lesson1Fragment extends Fragment implements View.OnClickListener {
 
     private ViewPager2 viewPager2;
     private Button btnNextToP4, btnBackToL1P2, btnSaveL1P3;
@@ -48,12 +48,12 @@ public class PageFragment3 extends Fragment implements View.OnClickListener {
     private UserTask utask1;
 
 
-    public PageFragment3() {
+    public Page3Lesson1Fragment() {
         // Required empty public constructor
     }
 
-    public static PageFragment3 newInstance(String param1, String param2) {
-        PageFragment3 fragment = new PageFragment3();
+    public static Page3Lesson1Fragment newInstance(String param1, String param2) {
+        Page3Lesson1Fragment fragment = new Page3Lesson1Fragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -68,7 +68,7 @@ public class PageFragment3 extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_page3, container, false);
+        View v = inflater.inflate(R.layout.fragment_page3_lesson1, container, false);
 
         viewModel = new ViewModelProvider(requireActivity()).get(LessonViewModel.class);
         viewPager2 = (ViewPager2) getActivity().findViewById(R.id.viewPager);

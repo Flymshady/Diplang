@@ -23,7 +23,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import cz.uhk.fim.cellar.diplang.lessons.LessonActivity;
+import cz.uhk.fim.cellar.diplang.lessons.Lesson1Activity;
 import cz.uhk.fim.cellar.diplang.R;
 import cz.uhk.fim.cellar.diplang.classes.Lesson;
 
@@ -174,7 +174,7 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
         switch (view.getId()){
             case R.id.startLesson1:
                 try {
-                    startActivity(new Intent(this.getActivity(), LessonActivity.class)
+                    startActivity(new Intent(this.getActivity(), Lesson1Activity.class)
                             .putExtra("level", "B2")
                             .putExtra("lesson", 1)
                             .putExtra("name", sp.getString("name",""))
