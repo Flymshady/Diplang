@@ -7,6 +7,16 @@ public class Lesson {
     private String level;
     private int dipsGained;
     private int number;
+    private String created; //LocalDateTime.now();
+
+    public Lesson(int pointsTotal, String name, String level, int dipsGained, int number, String created) {
+        this.pointsTotal = pointsTotal;
+        this.name = name;
+        this.level = level;
+        this.dipsGained = dipsGained;
+        this.number = number;
+        this.created = created;
+    }
 
     public Lesson(int pointsTotal, String name, String level, int dipsGained, int number) {
         this.pointsTotal = pointsTotal;
@@ -24,6 +34,14 @@ public class Lesson {
     }
 
     public Lesson() {
+    }
+
+    public String getCreated() {
+        return created;
+    }
+
+    public void setCreated(String created) {
+        this.created = created;
     }
 
     public String getName() {

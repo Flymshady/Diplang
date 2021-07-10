@@ -11,15 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:weightSum="2">
-        <Button
-            android:id="@+id/btnBackToL1P2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:textAllCaps="false"
-            android:text="Zpět"/>
+        android:weightSum="1">
         <TextView
             android:id="@+id/TVPointsL1P3"
             android:layout_width="0dp"

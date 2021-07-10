@@ -22,6 +22,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.time.LocalDateTime;
+
 import cz.uhk.fim.cellar.diplang.classes.LessonPage;
 import cz.uhk.fim.cellar.diplang.classes.PageTask;
 import cz.uhk.fim.cellar.diplang.classes.UserTask;
@@ -34,8 +36,8 @@ import static android.view.View.GONE;
 public class Page3Lesson1Fragment extends Fragment implements View.OnClickListener {
 
     private EditText ET1L1P3, ET2L1P3, ET3L1P3, ET4L1P3, ET5L1P3, ET6L1P3;
-    private Button btnSaveL1P3, btnNextToP4, btnBackToL1P2;
-    private String A1T1L1P3, A2T1L1P3, A3T1L1P3, A4T1L1P3, A5T1L1P3, A6T1L1P3;
+    private Button btnSaveL1P3, btnNextToP4;
+    private String A1T1L1P3, A2T1L1P3, A3T1L1P3, A4T1L1P3, A5T1L1P3, A6T1L1P3 ="";
     private String rightAnswerTextTask1L1P3, rightAnswerTextTask2L1P3, rightAnswerTextTask3L1P3, rightAnswerTextTask4L1P3, rightAnswerTextTask5L1P3, rightAnswerTextTask6L1P3;
     private int points = 0;
     private ViewPager2 viewPager2;
@@ -74,7 +76,6 @@ public class Page3Lesson1Fragment extends Fragment implements View.OnClickListen
         finishL1P3 = (LinearLayout) v.findViewById(R.id.finishL1P3);
         finishTVL1P3 = (TextView) v.findViewById(R.id.finishTVL1P3);
         btnNextToP4 = (Button) v.findViewById(R.id.btnNextToP4);
-        btnBackToL1P2 = (Button) v.findViewById(R.id.btnBackToL1P2);
         TVPointsL1P3 = (TextView) v.findViewById(R.id.TVPointsL1P3);
         TVPointsL1P3.setText(viewModel.getDipPoints().getValue().toString());
         RightAnswer1L1P3 = (TextView) v.findViewById(R.id.RightAnswer1L1P3);
@@ -96,7 +97,12 @@ public class Page3Lesson1Fragment extends Fragment implements View.OnClickListen
         utask4 = new UserTask();
         utask5 = new UserTask();
         utask6 = new UserTask();
-
+        utask1.setCreated(LocalDateTime.now().toString());
+        utask2.setCreated(LocalDateTime.now().toString());
+        utask3.setCreated(LocalDateTime.now().toString());
+        utask4.setCreated(LocalDateTime.now().toString());
+        utask5.setCreated(LocalDateTime.now().toString());
+        utask6.setCreated(LocalDateTime.now().toString());
 
         finishL1P3.setVisibility(GONE);
 
@@ -104,11 +110,8 @@ public class Page3Lesson1Fragment extends Fragment implements View.OnClickListen
 
         loadData();
 
-
-
         btnSaveL1P3.setOnClickListener(this);
         btnNextToP4.setOnClickListener(this);
-        btnBackToL1P2.setOnClickListener(this);
 
         return v;
     }
@@ -269,14 +272,11 @@ public class Page3Lesson1Fragment extends Fragment implements View.OnClickListen
                 btnSaveL1P3.setVisibility(GONE);
                 viewModel.setDipPoints(viewModel.getDipPoints().getValue()+points);
                 TVPointsL1P3.setText(viewModel.getDipPoints().getValue().toString());
-                //    saveUserTask();
+                saveUserTask();
                 Toast.makeText(this.getActivity(), "Počet bodů: "+points, Toast.LENGTH_LONG).show();
                 break;
             case (R.id.btnNextToP4):
                 viewPager2.setCurrentItem(viewPager2.getCurrentItem() + 1);
-                break;
-            case(R.id.btnBackToL1P2):
-                viewPager2.setCurrentItem(viewPager2.getCurrentItem() - 1);
                 break;
 
         }

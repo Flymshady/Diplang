@@ -24,10 +24,15 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.mlkit.common.model.DownloadConditions;
 import com.google.mlkit.common.model.RemoteModelManager;
 import com.google.mlkit.nl.translate.TranslateLanguage;
@@ -38,9 +43,12 @@ import com.google.mlkit.nl.translate.TranslatorOptions;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Locale;
 
+import cz.uhk.fim.cellar.diplang.classes.Phrase;
 import cz.uhk.fim.cellar.diplang.navigation.NavigationActivity;
 
 public class TranslatorActivity extends AppCompatActivity {
@@ -54,6 +62,8 @@ public class TranslatorActivity extends AppCompatActivity {
     private TextToSpeech mTTS;
     String[] fromLanguages = {"Z", "Angličtina", "Čeština"};
     String[] toLanguages = {"Do", "Angličtina", "Čeština"};
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
     private static final int REQUEST_PERMISSION_CODE = 1;
     String languageCode, fromLanguageCode, toLanguageCode = "";
@@ -289,24 +299,47 @@ public class TranslatorActivity extends AppCompatActivity {
         btnSavePhrase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String englishPhrase;
-                String czechPhrase;
-                if(toSpinner.getSelectedItemPosition()==1
-                        && fromSpinner.getSelectedItemPosition()==2
-                        && sourceEditText.getText().toString()!=null
-                        && translatedTextView.getText().toString()!=null){
-                    englishPhrase = sourceEditText.getText().toString();
-                    czechPhrase = translatedTextView.getText().toString();
-                }else if(toSpinner.getSelectedItemPosition()==2
-                        && fromSpinner.getSelectedItemPosition()==1
-                        && sourceEditText.getText().toString()!=null
-                        && translatedTextView.getText().toString()!=null){
-                    englishPhrase = translatedTextView.getText().toString();
-                    englishPhrase = translatedTextView.getText().toString();
-                }
+                savePhrase();
             }
         });
 
+    }
+
+    private void savePhrase() {
+        String englishPhrase="";
+        String czechPhrase="";
+        if(toSpinner.getSelectedItemPosition()==1 //english
+                && fromSpinner.getSelectedItemPosition()==2 //czech
+                && sourceEditText.getText().toString()!=null //2
+                && translatedTextView.getText().toString()!=null){
+            czechPhrase = sourceEditText.getText().toString();
+            englishPhrase = translatedTextView.getText().toString();
+        }else if(toSpinner.getSelectedItemPosition()==2
+                && fromSpinner.getSelectedItemPosition()==1
+                && sourceEditText.getText().toString()!=null
+                && translatedTextView.getText().toString()!=null){
+            englishPhrase = sourceEditText.getText().toString();
+            czechPhrase = translatedTextView.getText().toString();
+        }else {
+            Toast.makeText(TranslatorActivity.this, "Vložte frázi.", Toast.LENGTH_LONG).show();
+        }
+        String created = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS).toString();
+        if(englishPhrase.equals("") || czechPhrase.equals("")){
+            return;
+        }
+        Phrase phrase = new Phrase(englishPhrase, czechPhrase, created);
+
+        FirebaseDatabase.getInstance().getReference("UserPhrases")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())
+                .child(created)
+                .setValue(phrase).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull @NotNull Exception e) {
+                Toast.makeText(TranslatorActivity.this, "Fráze nebyla uložena.", Toast.LENGTH_LONG).show();
+                return;
+            }
+        });
+        Toast.makeText(TranslatorActivity.this, "Fráze byla uložena.", Toast.LENGTH_LONG).show();
     }
 
     private void speak(int type) {

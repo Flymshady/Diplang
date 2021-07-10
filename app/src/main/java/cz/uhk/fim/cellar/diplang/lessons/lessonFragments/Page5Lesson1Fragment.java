@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.Gravity;
@@ -23,6 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.jetbrains.annotations.NotNull;
 import cz.uhk.fim.cellar.diplang.R;
+import cz.uhk.fim.cellar.diplang.lessons.LessonViewModel;
 
 
 public class Page5Lesson1Fragment extends Fragment implements View.OnClickListener {
@@ -30,6 +32,8 @@ public class Page5Lesson1Fragment extends Fragment implements View.OnClickListen
     private Button btnNextToP6;
     private ViewPager2 viewPager2;
     private LinearLayout linearLayout;
+    private LessonViewModel viewModel;
+    private TextView TVPointsL1P5;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
 
     public Page5Lesson1Fragment() {
@@ -43,12 +47,16 @@ public class Page5Lesson1Fragment extends Fragment implements View.OnClickListen
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_page5_lesson1, container, false);
 
+        viewModel = new ViewModelProvider(requireActivity()).get(LessonViewModel.class);
         linearLayout = (LinearLayout) v.findViewById(R.id.layoutP5L1);
 
         loadData();
 
         btnNextToP6 = (Button) v.findViewById(R.id.btnNextToP6);
         btnNextToP6.setOnClickListener(this);
+
+        TVPointsL1P5 = (TextView) v.findViewById(R.id.TVPointsL1P5);
+        TVPointsL1P5.setText(viewModel.getDipPoints().getValue().toString());
 
         viewPager2 = (ViewPager2) getActivity().findViewById(R.id.viewPager);
 

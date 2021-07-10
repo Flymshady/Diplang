@@ -22,6 +22,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.time.LocalDateTime;
+
 import cz.uhk.fim.cellar.diplang.classes.LessonPage;
 import cz.uhk.fim.cellar.diplang.classes.PageTask;
 import cz.uhk.fim.cellar.diplang.classes.UserTask;
@@ -34,8 +36,8 @@ import static android.view.View.GONE;
 public class Page4Lesson1Fragment extends Fragment implements View.OnClickListener {
 
     private EditText ET1L1P4, ET2L1P4, ET3L1P4, ET4L1P4;
-    private Button btnSaveL1P4, btnNextToP5, btnBackToL1P3;
-    private String A1T1L1P4, A2T1L1P4, A3T1L1P4, A4T1L1P4;
+    private Button btnSaveL1P4, btnNextToP5;
+    private String A1T1L1P4, A2T1L1P4, A3T1L1P4, A4T1L1P4 ="";
     private String rightAnswerTextTask1L1P4, rightAnswerTextTask2L1P4, rightAnswerTextTask3L1P4, rightAnswerTextTask4L1P4;
     private int points = 0;
     private ViewPager2 viewPager2;
@@ -47,7 +49,7 @@ public class Page4Lesson1Fragment extends Fragment implements View.OnClickListen
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     private PageTask task1, task2, task3, task4, task5;
     private int pointsT1, pointsT2, pointsT3, pointsT4;
-    private UserTask utask1, utask2, utask3, utask4, utask5;
+    private UserTask utask1, utask2, utask3, utask4;
     private int pagePoints;
 
 
@@ -72,7 +74,6 @@ public class Page4Lesson1Fragment extends Fragment implements View.OnClickListen
         finishL1P4 = (LinearLayout) v.findViewById(R.id.finishL1P4);
         finishTVL1P4 = (TextView) v.findViewById(R.id.finishTVL1P4);
         btnNextToP5 = (Button) v.findViewById(R.id.btnNextToP5);
-        btnBackToL1P3 = (Button) v.findViewById(R.id.btnBackToL1P3);
         TVPointsL1P4 = (TextView) v.findViewById(R.id.TVPointsL1P4);
         TVPointsL1P4.setText(viewModel.getDipPoints().getValue().toString());
         RightAnswer1L1P4 = (TextView) v.findViewById(R.id.RightAnswer1L1P4);
@@ -88,7 +89,11 @@ public class Page4Lesson1Fragment extends Fragment implements View.OnClickListen
         utask2 = new UserTask();
         utask3 = new UserTask();
         utask4 = new UserTask();
-        utask5 = new UserTask();
+        utask1.setCreated(LocalDateTime.now().toString());
+        utask2.setCreated(LocalDateTime.now().toString());
+        utask3.setCreated(LocalDateTime.now().toString());
+        utask4.setCreated(LocalDateTime.now().toString());
+
 
         finishL1P4.setVisibility(GONE);
 
@@ -98,7 +103,6 @@ public class Page4Lesson1Fragment extends Fragment implements View.OnClickListen
 
         btnSaveL1P4.setOnClickListener(this);
         btnNextToP5.setOnClickListener(this);
-        btnBackToL1P3.setOnClickListener(this);
 
         return v;
     }
@@ -217,14 +221,11 @@ public class Page4Lesson1Fragment extends Fragment implements View.OnClickListen
                 btnSaveL1P4.setVisibility(GONE);
                 viewModel.setDipPoints(viewModel.getDipPoints().getValue()+points);
                 TVPointsL1P4.setText(viewModel.getDipPoints().getValue().toString());
-                //    saveUserTask();
+                saveUserTask();
                 Toast.makeText(this.getActivity(), "Počet bodů: "+points, Toast.LENGTH_LONG).show();
                 break;
             case (R.id.btnNextToP5):
                 viewPager2.setCurrentItem(viewPager2.getCurrentItem() + 1);
-                break;
-            case(R.id.btnBackToL1P3):
-                viewPager2.setCurrentItem(viewPager2.getCurrentItem() - 1);
                 break;
 
         }
@@ -255,12 +256,6 @@ public class Page4Lesson1Fragment extends Fragment implements View.OnClickListen
                 .child("Page4")
                 .child("Task4")
                 .setValue(utask4);
-        FirebaseDatabase.getInstance().getReference("UserTasks")
-                .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())
-                .child("Lesson1")
-                .child("Page4")
-                .child("Task5")
-                .setValue(utask5);
     }
 
     @Override

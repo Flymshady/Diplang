@@ -4,12 +4,12 @@ public class UserTask {
 
     private String answer;
     private int points;
-    private String dateTime;
+    private String created; //LocalDateTime.now();
 
-    public UserTask(String answer, int points, String dateTime) {
+    public UserTask(String answer, int points, String created) {
         this.answer = answer;
         this.points = points;
-        this.dateTime = dateTime;
+        this.created = created;
     }
 
     public UserTask(String answer, int points) {
@@ -19,6 +19,14 @@ public class UserTask {
 
     public UserTask(){
 
+    }
+
+    public String getCreated() {
+        return created;
+    }
+
+    public void setCreated(String created) {
+        this.created = created;
     }
 
     public String getAnswer() {
@@ -37,11 +45,4 @@ public class UserTask {
         this.points = points;
     }
 
-    public String getDateTime() {
-        return dateTime;
-    }
-
-    public void setDateTime(String dateTime) {
-        this.dateTime = dateTime;
-    }
 }

@@ -103,14 +103,15 @@ public class HomeFragment extends Fragment {
 
             }
         });
-/*
+
         if(isNetworkAvailable()) {
             loadUserData();
         }
-*/
+
 
         return v;
     }
+
 
     private void loadUserData() {
         DatabaseReference myRef = database
@@ -119,18 +120,17 @@ public class HomeFragment extends Fragment {
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                Map<String, Object> map = (Map<String, Object>) dataSnapshot.getValue();
-              //https://www.youtube.com/watch?v=KjvUeYcRMyc&ab_channel=O.M.T-ONEMINUTETUTORIALS
-                List<Integer> lessonPoints = (List<Integer>) dataSnapshot.getValue();
-                if(lessonPoints!=null){
-                    int total=0;
-                    for(int i : lessonPoints){
-                        total+=i;
-                    }
-                    textPoints.setText(total + " dips");
+                int total=0;
+                String dipsText="dips";
+                for(DataSnapshot snapshot:dataSnapshot.getChildren()) {
+                    String key = snapshot.getKey();
+                    int value = ((Long)snapshot.getValue()).intValue();
+                    total+=value;
                 }
+                if(total==1){
+                    dipsText="dip";
+                }
+                textPoints.setText(total + " "+dipsText);
             }
             @Override
             public void onCancelled(DatabaseError error) {

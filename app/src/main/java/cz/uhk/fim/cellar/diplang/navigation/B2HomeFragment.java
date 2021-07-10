@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,6 +23,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.time.LocalDateTime;
 
 import cz.uhk.fim.cellar.diplang.lessons.Lesson1Activity;
 import cz.uhk.fim.cellar.diplang.R;
@@ -105,6 +108,7 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
             loadLessonsData();
         }
         startLesson1.setOnClickListener(this);
+        startLesson2.setOnClickListener(this);
         
         
 
@@ -141,13 +145,13 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
                 // whenever data at this location is updated.
                 resultLesson1 = dataSnapshot.getValue(Lesson.class);
                 if(resultLesson1!=null){
-                    textLessonPoints1.setText(Integer.toString(resultLesson1.getDipsGained()));
+                    textLessonPoints1.setText(Integer.toString(resultLesson1.getDipsGained())+" / " + resultLesson1.getPointsTotal());
                     if(resultLesson1.getDipsGained()==resultLesson1.getPointsTotal()){
-                        startLesson1.setBackgroundResource(R.drawable.star_purple_full);
+                        startLesson1.setImageResource(R.drawable.star_purple_full);
                     } else if (resultLesson1.getDipsGained()==0) {
-                        startLesson1.setBackgroundResource(R.drawable.star_purple_border);
+                        startLesson1.setImageResource(R.drawable.star_purple_border);
                     }else{
-                        startLesson1.setBackgroundResource(R.drawable.star_purple_half);
+                        startLesson1.setImageResource(R.drawable.star_purple_half);
                     }
                 }
             }
@@ -184,6 +188,7 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
                 }finally {
                     getActivity().finish();
                 }
+            case R.id.startLesson2:
 
                 break;
         }

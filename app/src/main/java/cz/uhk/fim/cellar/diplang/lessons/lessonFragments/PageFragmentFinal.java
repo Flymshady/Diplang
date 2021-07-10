@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -49,20 +50,24 @@ public class PageFragmentFinal extends Fragment implements View.OnClickListener 
 
         finalStar = (ImageView) v.findViewById(R.id.finalStar);
         pointsFinal = (TextView) v.findViewById(R.id.pointsFinal);
+        String dipsText = "dips";
+        if(viewModel.getDipPoints().getValue()==1){
+            dipsText = "dip";
+        }
         pointsFinal.setText("Výsledek lekce je:\n" +
                 viewModel.getDipPoints().getValue().toString()
-                + " dips\nz celkových " +
-                viewModel.getPointsTotal().getValue().toString());
+                + " dips\nz celkových\n" +
+                viewModel.getPointsTotal().getValue().toString() + " "+ dipsText);
         buttonFinishLesson = (Button) v.findViewById(R.id.buttonFinishLesson);
         buttonFinishLesson.setOnClickListener(this);
 
         if(viewModel.getDipPoints().getValue() == viewModel.getPointsTotal().getValue()){
-            finalStar.setBackgroundResource(R.drawable.star_full_yellow);
+            finalStar.setBackgroundResource(R.drawable.star_purple_full);
         }
         else if(viewModel.getDipPoints().getValue()==0){
-            finalStar.setBackgroundResource(R.drawable.star_border_yellow);
+            finalStar.setBackgroundResource(R.drawable.star_purple_border);
         }else{
-            finalStar.setBackgroundResource(R.drawable.star_half_yellow);
+            finalStar.setBackgroundResource(R.drawable.star_purple_half);
         }
 
 
@@ -73,7 +78,7 @@ public class PageFragmentFinal extends Fragment implements View.OnClickListener 
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.buttonFinishLesson:
-             //   saveUserLesson();
+                saveUserLesson();
                 try {
                     startActivity(new Intent( getActivity(), NavigationActivity.class));
                 } finally {
