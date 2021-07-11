@@ -13,9 +13,11 @@
         android:roundIcon="@mipmap/pixel_diplang"
         android:supportsRtl="true"
         android:theme="@style/Theme.Diplang">
-        <activity android:name=".PhrasesActivity"
+        <activity android:name=".lessons.Lesson2Activity"></activity>
+        <activity
+            android:name=".PhrasesActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".SplashScreen"
             android:configChanges="keyboardHidden|orientation"

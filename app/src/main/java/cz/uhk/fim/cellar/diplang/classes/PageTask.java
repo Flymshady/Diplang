@@ -5,6 +5,19 @@ public class PageTask {
     private String text;
     private String rightAnswer;
     private int points;
+    private String link;
+
+    public PageTask(String text, String rightAnswer, int points, String link) {
+        this.text = text;
+        this.rightAnswer = rightAnswer;
+        this.points = points;
+        this.link = link;
+    }
+
+    public PageTask(String text, String link) {
+        this.text = text;
+        this.link = link;
+    }
 
     public PageTask(String text, String rightAnswer, int points) {
         this.text = text;
@@ -12,10 +25,17 @@ public class PageTask {
         this.points = points;
     }
 
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
     public PageTask(String text) {
         this.text = text;
     }
-
 
     public String getText() {
         return text;
