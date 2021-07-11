@@ -53,7 +53,7 @@ public class Lesson2Activity extends AppCompatActivity {
         viewPager2.setUserInputEnabled(false);
 
 
-        Lesson1ViewPagerAdapter adapter = new Lesson1ViewPagerAdapter(this);
+        Lesson2ViewPagerAdapter adapter = new Lesson2ViewPagerAdapter(this);
         viewPager2.setAdapter(adapter);
 
         new TabLayoutMediator(tabs, viewPager2, new TabLayoutMediator.TabConfigurationStrategy() {

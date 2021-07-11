@@ -36,7 +36,7 @@ public class Page2Lesson1Fragment extends Fragment implements View.OnClickListen
 
     private EditText ET1L1P2, ET2L1P2, ET3L1P2, ET4L1P2, ET5L1P2;
     private Button btnSaveL1P2, btnNextToP3;
-    private String A1T1L1P2, A2T1L1P2, A3T1L1P2, A4T1L1P2, A5T1L1P2 = "";
+    private String A1T1L1P2, A2T1L1P2, A3T1L1P2, A4T1L1P2, A5T1L1P2;
     private String rightAnswerTextTask1L1P2, rightAnswerTextTask2L1P2, rightAnswerTextTask3L1P2, rightAnswerTextTask4L1P2, rightAnswerTextTask5L1P2;
     private int points = 0;
     private ViewPager2 viewPager2;
