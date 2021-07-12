@@ -19,6 +19,8 @@ import cz.uhk.fim.cellar.diplang.lessons.lessonFragments.Page5Lesson1Fragment;
 import cz.uhk.fim.cellar.diplang.lessons.lessonFragments.Page5Lesson2Fragment;
 import cz.uhk.fim.cellar.diplang.lessons.lessonFragments.Page6Lesson1Fragment;
 import cz.uhk.fim.cellar.diplang.lessons.lessonFragments.Page6Lesson2Fragment;
+import cz.uhk.fim.cellar.diplang.lessons.lessonFragments.Page7Lesson2Fragment;
+import cz.uhk.fim.cellar.diplang.lessons.lessonFragments.Page8Lesson2Fragment;
 import cz.uhk.fim.cellar.diplang.lessons.lessonFragments.PageFragmentFinal;
 
 public class Lesson2ViewPagerAdapter extends FragmentStateAdapter {
@@ -44,6 +46,10 @@ public class Lesson2ViewPagerAdapter extends FragmentStateAdapter {
             case 5:
                 return new Page6Lesson2Fragment();
             case 6:
+                return new Page7Lesson2Fragment();
+            case 7:
+                return new Page8Lesson2Fragment();
+            case 8:
                 return new PageFragmentFinal();
             default:
                 return new Page1Lesson2Fragment();
@@ -52,6 +58,6 @@ public class Lesson2ViewPagerAdapter extends FragmentStateAdapter {
 
     @Override
     public int getItemCount() {
-        return 7;
+        return 9;
     }
 }
