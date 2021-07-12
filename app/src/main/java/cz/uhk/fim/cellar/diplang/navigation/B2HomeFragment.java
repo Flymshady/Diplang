@@ -139,7 +139,7 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
 
         DatabaseReference myRefLesson2 = database
                 .getReference("Lessons").child("Lesson2");
-        myRefLesson1.addListenerForSingleValueEvent(new ValueEventListener() {
+        myRefLesson2.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
@@ -173,6 +173,33 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
                         startLesson1.setImageResource(R.drawable.star_purple_border);
                     }else{
                         startLesson1.setImageResource(R.drawable.star_purple_half);
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+            }
+        });
+
+        DatabaseReference myRefUserLesson2 = database
+                .getReference("UserTasks")
+                .child(user.getUid()).child("Lesson2")
+                .child("Results");
+        myRefUserLesson2.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                resultLesson2 = dataSnapshot.getValue(Lesson.class);
+                if(resultLesson2!=null){
+                    textLessonPoints2.setText(Integer.toString(resultLesson2.getDipsGained())+" / " + resultLesson2.getPointsTotal());
+                    if(resultLesson2.getDipsGained()==resultLesson2.getPointsTotal()){
+                        startLesson2.setImageResource(R.drawable.star_purple_full);
+                    } else if (resultLesson2.getDipsGained()==0) {
+                        startLesson2.setImageResource(R.drawable.star_purple_border);
+                    }else{
+                        startLesson2.setImageResource(R.drawable.star_purple_half);
                     }
                 }
             }

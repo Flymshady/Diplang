@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/pixel_diplang"
         android:supportsRtl="true"
         android:theme="@style/Theme.Diplang">
-        <activity android:name=".lessons.Lesson2Activity"></activity>
+        <activity android:name=".lessons.Lesson2Activity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".PhrasesActivity"
             android:configChanges="keyboardHidden|orientation"

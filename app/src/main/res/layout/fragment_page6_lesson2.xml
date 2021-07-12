@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".lessons.lessonFragments.Page4Lesson2Fragment">
+    tools:context=".lessons.lessonFragments.Page6Lesson2Fragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,7 +12,7 @@
         android:orientation="horizontal"
         android:weightSum="1">
         <TextView
-            android:id="@+id/TVPointsL2P4"
+            android:id="@+id/TVPointsL2P6"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -45,7 +45,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/infoPage4Lesson2"
+                    android:id="@+id/infoPage6Lesson2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
@@ -55,35 +55,7 @@
                     android:textStyle="bold"/>
 
                 <TextView
-                    android:id="@+id/task1L2P4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:background="@color/teal_100"
-                    android:textColor="@color/black"
-                    android:gravity="center"
-                    android:layout_marginTop="20dp"
-                    android:textIsSelectable="true"
-                    android:text="text"
-                    />
-                <Spinner
-                    android:id="@+id/spinnerT1L2P4"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    />
-                <TextView
-                    android:id="@+id/RightAnswer1L2P4"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:textSize="18sp"
-                    android:textColor="@color/black"
-                    android:gravity="center"
-                    android:visibility="gone"
-                    android:background="@color/right_answer_color"
-                    />
-
-                <TextView
-                    android:id="@+id/task2L2P4"
+                    android:id="@+id/task1L2P6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
@@ -95,41 +67,12 @@
                     android:text="text"
                     />
                 <Spinner
-                    android:id="@+id/spinnerT2L2P4"
+                    android:id="@+id/spinnerT1L2P6"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     />
                 <TextView
-                    android:id="@+id/RightAnswer2L2P4"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:textSize="18sp"
-                    android:textColor="@color/black"
-                    android:gravity="center"
-                    android:visibility="gone"
-                    android:background="@color/right_answer_color"
-                    />
-
-
-                <TextView
-                    android:id="@+id/task3L2P4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:background="@color/teal_100"
-                    android:textColor="@color/black"
-                    android:gravity="center"
-                    android:layout_marginTop="20dp"
-                    android:textIsSelectable="true"
-                    android:text="text"
-                    />
-                <Spinner
-                    android:id="@+id/spinnerT3L2P4"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    />
-                <TextView
-                    android:id="@+id/RightAnswer3L2P4"
+                    android:id="@+id/RightAnswer1L2P6"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="18sp"
@@ -140,7 +83,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/task4L2P4"
+                    android:id="@+id/task2L2P6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
@@ -152,12 +95,12 @@
                     android:text="text"
                     />
                 <Spinner
-                    android:id="@+id/spinnerT4L2P4"
+                    android:id="@+id/spinnerT2L2P6"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     />
                 <TextView
-                    android:id="@+id/RightAnswer4L2P4"
+                    android:id="@+id/RightAnswer2L2P6"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="18sp"
@@ -165,10 +108,137 @@
                     android:gravity="center"
                     android:visibility="gone"
                     android:background="@color/right_answer_color"
+                    />
+
+
+                <TextView
+                    android:id="@+id/task3L2P6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:background="@color/teal_100"
+                    android:gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:textIsSelectable="true"
+                    android:text="text"
+                    />
+                <Spinner
+                    android:id="@+id/spinnerT3L2P6"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
+                <TextView
+                    android:id="@+id/RightAnswer3L2P6"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    android:background="@color/right_answer_color"
+                    />
+
+                <TextView
+                    android:id="@+id/task4L2P6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:background="@color/teal_100"
+                    android:layout_marginTop="20dp"
+                    android:textIsSelectable="true"
+                    android:text="text"
+                    />
+                <Spinner
+                    android:id="@+id/spinnerT4L2P6"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
+                <TextView
+                    android:id="@+id/RightAnswer4L2P6"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    android:background="@color/right_answer_color"
+                    />
+
+                <TextView
+                    android:id="@+id/task5L2P6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/teal_100"
+                    android:textIsSelectable="true"
+                    android:text="text"
+                    />
+                <Spinner
+                    android:id="@+id/spinnerT5L2P6"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
+                <TextView
+                    android:id="@+id/RightAnswer5L2P6"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    android:background="@color/right_answer_color"
+                    />
+
+                <TextView
+                    android:id="@+id/task6L2P6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:background="@color/teal_100"
+                    android:layout_marginTop="20dp"
+                    android:textIsSelectable="true"
+                    android:text="text"
+                    />
+                <Spinner
+                    android:id="@+id/spinnerT6L2P6"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
+                <TextView
+                    android:id="@+id/RightAnswer6L2P6"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    android:background="@color/right_answer_color"
+                    />
+
+
+                <TextView
+                    android:id="@+id/task7L2P6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:background="@color/teal_100"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:textIsSelectable="true"
+                    android:text="text"
                     />
 
                 <Button
-                    android:id="@+id/btnSaveL2P4"
+                    android:id="@+id/btnSaveL2P6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -177,7 +247,7 @@
                     android:text="Uložit"/>
 
                 <LinearLayout
-                    android:id="@+id/finishL2P4"
+                    android:id="@+id/finishL2P6"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/teal_700"
@@ -187,7 +257,7 @@
                     android:orientation="vertical"
                     >
                     <TextView
-                        android:id="@+id/finishTVL2P4"
+                        android:id="@+id/finishTVL2P6"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -197,7 +267,7 @@
                         android:layout_marginTop="20dp"
                         />
                     <Button
-                        android:id="@+id/btnNextToP5L2"
+                        android:id="@+id/btnNextToP7L2"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"

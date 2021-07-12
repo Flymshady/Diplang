@@ -94,14 +94,29 @@ public class PageFragmentFinal extends Fragment implements View.OnClickListener 
         lesson.setLevel(viewModel.getLevel().getValue());
         lesson.setNumber(viewModel.getLesson().getValue());
         lesson.setPointsTotal(viewModel.getPointsTotal().getValue());
-        FirebaseDatabase.getInstance().getReference("UserTasks")
-                .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())
-                .child("Lesson1").child("Results")
-                .setValue(lesson);
 
-        FirebaseDatabase.getInstance().getReference("Users")
-                .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())
-                .child("Points").child("lesson1")
-                .setValue(lesson.getDipsGained());
+        if(lesson.getNumber()==1 && lesson.getLevel().equals("B2")){
+            FirebaseDatabase.getInstance().getReference("UserTasks")
+                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())
+                    .child("Lesson1").child("Results")
+                    .setValue(lesson);
+
+            FirebaseDatabase.getInstance().getReference("Users")
+                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())
+                    .child("Points").child("lesson1")
+                    .setValue(lesson.getDipsGained());
+        }
+        else if(lesson.getNumber()==2 && lesson.getLevel().equals("B2")){
+            FirebaseDatabase.getInstance().getReference("UserTasks")
+                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())
+                    .child("Lesson2").child("Results")
+                    .setValue(lesson);
+
+            FirebaseDatabase.getInstance().getReference("Users")
+                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())
+                    .child("Points").child("lesson2")
+                    .setValue(lesson.getDipsGained());
+            System.out.println(viewModel.getDipPoints().getValue());
+        }
     }
 }
