@@ -9,6 +9,18 @@ public class OptionsTask {
     private int points;
     private String rightAnswer;
     private String text;
+    private String hint;
+
+    public OptionsTask(String optionA, String optionB, String optionC, String optionD, int points, String rightAnswer, String text, String hint) {
+        this.optionA = optionA;
+        this.optionB = optionB;
+        this.optionC = optionC;
+        this.optionD = optionD;
+        this.points = points;
+        this.rightAnswer = rightAnswer;
+        this.text = text;
+        this.hint = hint;
+    }
 
     public OptionsTask(String optionA, String optionB, String optionC, String optionD, int points, String rightAnswer, String text) {
         this.optionA = optionA;
@@ -22,6 +34,14 @@ public class OptionsTask {
 
     public OptionsTask(){
 
+    }
+
+    public String getHint() {
+        return hint;
+    }
+
+    public void setHint(String hint) {
+        this.hint = hint;
     }
 
     public String getOptionA() {

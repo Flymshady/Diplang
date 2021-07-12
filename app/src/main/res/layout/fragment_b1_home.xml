@@ -8,7 +8,7 @@
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".navigation.B2PlusHomeFragment">
+    tools:context=".navigation.B1HomeFragment">
 
     <TextView
         android:layout_width="match_parent"
@@ -49,7 +49,7 @@
                 android:weightSum="3">
 
                 <ImageView
-                    android:id="@+id/startLesson1B2P"
+                    android:id="@+id/startLesson1B1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -74,7 +74,7 @@
                         android:textColor="@color/purple_700"
                         android:text="Lekce 1"/>
                     <TextView
-                        android:id="@+id/textLessonName1B2P"
+                        android:id="@+id/textLessonName1B1"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -85,7 +85,7 @@
                         android:textColor="@color/purple_700"
                         android:text="Název"/>
                     <TextView
-                        android:id="@+id/textLessonPoints1B2P"
+                        android:id="@+id/textLessonPoints1B1"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -96,7 +96,7 @@
                         android:text="Body za lekci"/>
                 </LinearLayout>
                 <ImageView
-                    android:id="@+id/downloadLesson1B2P"
+                    android:id="@+id/downloadLesson1B1"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_weight="0.5"
@@ -114,7 +114,7 @@
                 android:weightSum="3">
 
                 <ImageView
-                    android:id="@+id/startLesson2B2P"
+                    android:id="@+id/startLesson2B1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -139,7 +139,7 @@
                         android:textColor="@color/purple_700"
                         android:text="Lekce 2"/>
                     <TextView
-                        android:id="@+id/textLessonName2B2P"
+                        android:id="@+id/textLessonName2B1"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -150,7 +150,7 @@
                         android:textColor="@color/purple_700"
                         android:text="Název"/>
                     <TextView
-                        android:id="@+id/textLessonPoints2B2P"
+                        android:id="@+id/textLessonPoints2B1"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -161,7 +161,7 @@
                         android:text="Body za lekci"/>
                 </LinearLayout>
                 <ImageView
-                    android:id="@+id/downloadLesson2B2P"
+                    android:id="@+id/downloadLesson2B1"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_weight="0.5"
@@ -179,7 +179,7 @@
                 android:weightSum="3">
 
                 <ImageView
-                    android:id="@+id/startLesson3B2P"
+                    android:id="@+id/startLesson3B1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -204,7 +204,7 @@
                         android:textColor="@color/purple_700"
                         android:text="Lekce 3"/>
                     <TextView
-                        android:id="@+id/textLessonName3B2P"
+                        android:id="@+id/textLessonName3B1"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -215,7 +215,7 @@
                         android:textColor="@color/purple_700"
                         android:text="Název"/>
                     <TextView
-                        android:id="@+id/textLessonPoints3B2P"
+                        android:id="@+id/textLessonPoints3B1"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -226,7 +226,7 @@
                         android:text="Body za lekci"/>
                 </LinearLayout>
                 <ImageView
-                    android:id="@+id/downloadLesson3B2P"
+                    android:id="@+id/downloadLesson3B1"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_weight="0.5"
@@ -244,7 +244,7 @@
                 android:weightSum="3">
 
                 <ImageView
-                    android:id="@+id/startLesson4B2P"
+                    android:id="@+id/startLesson4B1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -269,7 +269,7 @@
                         android:textColor="@color/purple_700"
                         android:text="Lekce 4"/>
                     <TextView
-                        android:id="@+id/textLessonName4B2P"
+                        android:id="@+id/textLessonName4B1"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -280,7 +280,7 @@
                         android:textColor="@color/purple_700"
                         android:text="Název"/>
                     <TextView
-                        android:id="@+id/textLessonPoints4B2P"
+                        android:id="@+id/textLessonPoints4B1"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -291,7 +291,7 @@
                         android:text="Body za lekci"/>
                 </LinearLayout>
                 <ImageView
-                    android:id="@+id/downloadLesson4B2P"
+                    android:id="@+id/downloadLesson4B1"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_weight="0.5"
@@ -309,7 +309,7 @@
                 android:weightSum="3">
 
                 <ImageView
-                    android:id="@+id/startLesson5B2P"
+                    android:id="@+id/startLesson5B1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -334,7 +334,7 @@
                         android:textColor="@color/purple_700"
                         android:text="Lekce 5"/>
                     <TextView
-                        android:id="@+id/textLessonName5B2P"
+                        android:id="@+id/textLessonName5B1"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -345,7 +345,7 @@
                         android:textColor="@color/purple_700"
                         android:text="Název"/>
                     <TextView
-                        android:id="@+id/textLessonPoints5B2P"
+                        android:id="@+id/textLessonPoints5B1"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -356,7 +356,7 @@
                         android:text="Body za lekci"/>
                 </LinearLayout>
                 <ImageView
-                    android:id="@+id/downloadLesson5B2P"
+                    android:id="@+id/downloadLesson5B1"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_weight="0.5"
@@ -374,7 +374,7 @@
                 android:weightSum="3">
 
                 <ImageView
-                    android:id="@+id/startLesson6B2P"
+                    android:id="@+id/startLesson6B1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -399,7 +399,7 @@
                         android:textColor="@color/purple_700"
                         android:text="Lekce 6"/>
                     <TextView
-                        android:id="@+id/textLessonName6B2P"
+                        android:id="@+id/textLessonName6B1"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -410,7 +410,7 @@
                         android:textColor="@color/purple_700"
                         android:text="Název"/>
                     <TextView
-                        android:id="@+id/textLessonPoints6B2P"
+                        android:id="@+id/textLessonPoints6B1"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -421,7 +421,7 @@
                         android:text="Body za lekci"/>
                 </LinearLayout>
                 <ImageView
-                    android:id="@+id/downloadLesson6B2P"
+                    android:id="@+id/downloadLesson6B1"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_weight="0.5"
@@ -439,7 +439,7 @@
                 android:weightSum="3">
 
                 <ImageView
-                    android:id="@+id/startLesson7B2P"
+                    android:id="@+id/startLesson7B1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -464,7 +464,7 @@
                         android:textColor="@color/purple_700"
                         android:text="Lekce 7"/>
                     <TextView
-                        android:id="@+id/textLessonName7B2P"
+                        android:id="@+id/textLessonName7B1"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -475,7 +475,7 @@
                         android:textColor="@color/purple_700"
                         android:text="Název"/>
                     <TextView
-                        android:id="@+id/textLessonPoints7B2P"
+                        android:id="@+id/textLessonPoints7B1"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -486,7 +486,7 @@
                         android:text="Body za lekci"/>
                 </LinearLayout>
                 <ImageView
-                    android:id="@+id/downloadLesson7B2P"
+                    android:id="@+id/downloadLesson7B1"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_weight="0.5"

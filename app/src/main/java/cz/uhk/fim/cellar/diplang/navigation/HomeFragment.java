@@ -27,7 +27,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import cz.uhk.fim.cellar.diplang.R;
 
@@ -38,7 +37,7 @@ public class HomeFragment extends Fragment {
     private Spinner spinnerLevel;
 
     private B2HomeFragment b2HomeFragment;
-    private B2PlusHomeFragment b2PlusHomeFragment;
+    private B1HomeFragment b1HomeFragment;
     private List<String> names;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     FirebaseUser user;
@@ -72,11 +71,11 @@ public class HomeFragment extends Fragment {
         textPoints = (TextView) v.findViewById(R.id.textPoints);
 
         b2HomeFragment = new B2HomeFragment();
-        b2PlusHomeFragment = new B2PlusHomeFragment();
+        b1HomeFragment = new B1HomeFragment();
 
         names = new ArrayList<>();
         names.add("B2");
-        names.add("B2+");
+        names.add("B1");
 
         ArrayAdapter<String > arrayAdapter = new ArrayAdapter<>(v.getContext(), R.layout.item_level, names);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -90,7 +89,7 @@ public class HomeFragment extends Fragment {
                         selectFragment(b2HomeFragment);
                         break;
                     case 1:
-                        selectFragment(b2PlusHomeFragment);
+                        selectFragment(b1HomeFragment);
                         break;
                     default:
                         selectFragment(b2HomeFragment);

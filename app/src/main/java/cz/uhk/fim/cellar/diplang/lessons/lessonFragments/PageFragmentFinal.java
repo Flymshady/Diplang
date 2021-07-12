@@ -129,6 +129,17 @@ public class PageFragmentFinal extends Fragment implements View.OnClickListener 
                     .child("Points").child("lesson1")
                     .setValue(lesson.getDipsGained());
         }
+        else if(lesson.getNumber()==1 && lesson.getLevel().equals("B1")){
+            FirebaseDatabase.getInstance().getReference("UserTasks")
+                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())
+                    .child("Lesson1B1").child("Results")
+                    .setValue(lesson);
+
+            FirebaseDatabase.getInstance().getReference("Users")
+                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())
+                    .child("Points").child("lesson1")
+                    .setValue(lesson.getDipsGained());
+        }
         else if(lesson.getNumber()==2 && lesson.getLevel().equals("B2")){
             FirebaseDatabase.getInstance().getReference("UserTasks")
                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())
