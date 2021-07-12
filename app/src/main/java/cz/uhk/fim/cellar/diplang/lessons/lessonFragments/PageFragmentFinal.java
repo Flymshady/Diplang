@@ -88,6 +88,29 @@ public class PageFragmentFinal extends Fragment implements View.OnClickListener 
         }
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        viewModel = new ViewModelProvider(requireActivity()).get(LessonViewModel.class);
+        String dipsText = "dips";
+        if(viewModel.getDipPoints().getValue()==1){
+            dipsText = "dip";
+        }
+        pointsFinal.setText("Výsledek lekce je:\n" +
+                viewModel.getDipPoints().getValue().toString()
+                + " dips\nz celkových\n" +
+                viewModel.getPointsTotal().getValue().toString() + " "+ dipsText);
+        if(viewModel.getDipPoints().getValue() == viewModel.getPointsTotal().getValue()){
+            finalStar.setBackgroundResource(R.drawable.star_purple_full);
+        }
+        else if(viewModel.getDipPoints().getValue()==0){
+            finalStar.setBackgroundResource(R.drawable.star_purple_border);
+        }else{
+            finalStar.setBackgroundResource(R.drawable.star_purple_half);
+        }
+
+    }
+
     private void saveUserLesson() {
         lesson = new Lesson();
         lesson.setDipsGained(viewModel.getDipPoints().getValue());
@@ -116,7 +139,17 @@ public class PageFragmentFinal extends Fragment implements View.OnClickListener 
                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())
                     .child("Points").child("lesson2")
                     .setValue(lesson.getDipsGained());
-            System.out.println(viewModel.getDipPoints().getValue());
+        }
+        else if(lesson.getNumber()==3 && lesson.getLevel().equals("B2")){
+            FirebaseDatabase.getInstance().getReference("UserTasks")
+                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())
+                    .child("Lesson3").child("Results")
+                    .setValue(lesson);
+
+            FirebaseDatabase.getInstance().getReference("Users")
+                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())
+                    .child("Points").child("lesson3")
+                    .setValue(lesson.getDipsGained());
         }
     }
 }

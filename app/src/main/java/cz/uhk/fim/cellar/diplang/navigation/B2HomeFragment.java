@@ -30,6 +30,7 @@ import cz.uhk.fim.cellar.diplang.lessons.Lesson1Activity;
 import cz.uhk.fim.cellar.diplang.R;
 import cz.uhk.fim.cellar.diplang.classes.Lesson;
 import cz.uhk.fim.cellar.diplang.lessons.Lesson2Activity;
+import cz.uhk.fim.cellar.diplang.lessons.Lesson3Activity;
 
 
 public class B2HomeFragment extends Fragment implements View.OnClickListener {
@@ -41,7 +42,7 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
     private ImageView startLesson1, startLesson2, startLesson3, startLesson4, startLesson5, startLesson6, startLesson7;
     private ImageView downloadLesson1, downloadLesson2, downloadLesson3, downloadLesson4, downloadLesson5, downloadLesson6, downloadLesson7;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    private Lesson lesson1, resultLesson1, lesson2, resultLesson2;
+    private Lesson lesson1, resultLesson1, lesson2, resultLesson2, lesson3, resultLesson3;
     FirebaseUser user;
 
     public B2HomeFragment() {
@@ -75,8 +76,10 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
 
         lesson1 = new Lesson();
         resultLesson1 = new Lesson();
-        lesson1 = new Lesson();
+        lesson2 = new Lesson();
         resultLesson2 = new Lesson();
+        lesson3 = new Lesson();
+        resultLesson3 = new Lesson();
         user = FirebaseAuth.getInstance().getCurrentUser();
         textLessonName1 = (TextView) v.findViewById(R.id.textLessonName1);
         textLessonName2 = (TextView) v.findViewById(R.id.textLessonName2);
@@ -112,6 +115,7 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
         }
         startLesson1.setOnClickListener(this);
         startLesson2.setOnClickListener(this);
+        startLesson3.setOnClickListener(this);
         
         
 
@@ -147,6 +151,24 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
                 lesson2 = dataSnapshot.getValue(Lesson.class);
                 if(lesson2!=null){
                     textLessonName2.setText(lesson2.getName());
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+            }
+        });
+
+        DatabaseReference myRefLesson3 = database
+                .getReference("Lessons").child("Lesson3");
+        myRefLesson3.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                lesson3 = dataSnapshot.getValue(Lesson.class);
+                if(lesson3!=null){
+                    textLessonName3.setText(lesson3.getName());
                 }
             }
             @Override
@@ -209,6 +231,33 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
             }
         });
 
+        DatabaseReference myRefUserLesson3 = database
+                .getReference("UserTasks")
+                .child(user.getUid()).child("Lesson3")
+                .child("Results");
+        myRefUserLesson3.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                resultLesson3= dataSnapshot.getValue(Lesson.class);
+                if(resultLesson3!=null){
+                    textLessonPoints3.setText(Integer.toString(resultLesson3.getDipsGained())+" / " + resultLesson3.getPointsTotal());
+                    if(resultLesson3.getDipsGained()==resultLesson3.getPointsTotal()){
+                        startLesson3.setImageResource(R.drawable.star_purple_full);
+                    } else if (resultLesson3.getDipsGained()==0) {
+                        startLesson3.setImageResource(R.drawable.star_purple_border);
+                    }else{
+                        startLesson3.setImageResource(R.drawable.star_purple_half);
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+            }
+        });
+
     }
 
     private boolean isNetworkAvailable() {
@@ -244,6 +293,19 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
                             .putExtra("number", lesson2.getNumber())
                             .putExtra("name", lesson2.getName())
                             .putExtra("pointsTotal", lesson2.getPointsTotal())
+
+                    );
+                }finally {
+                    getActivity().finish();
+                }
+                break;
+            case R.id.startLesson3:
+                try {
+                    startActivity(new Intent(this.getActivity(), Lesson3Activity.class)
+                            .putExtra("level", lesson3.getLevel())
+                            .putExtra("number", lesson3.getNumber())
+                            .putExtra("name", lesson3.getName())
+                            .putExtra("pointsTotal", lesson3.getPointsTotal())
 
                     );
                 }finally {

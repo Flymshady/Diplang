@@ -47,7 +47,7 @@ public class Page8Lesson2Fragment extends Fragment implements View.OnClickListen
     private EditText ET1L2P8, ET2L2P8, ET3L2P8, ET4L2P8, ET5L2P8;
     private Button btnSaveL2P8, btnNextToP9;
     private String A1T1L2P8, A2T1L2P8, A3T1L2P8, A4T1L2P8, A5T1L2P8;
-    private String rightAnswerTextTask1L2P8, rightAnswerTextTask2L2P8, rightAnswerTextTask3L2P8, rightAnswerTextTask4L2P8, rightAnswerTextTask5L2P8;
+    private String rightAnswerTextTask1L2P8, rightAnswer2TextTask1L2P8, rightAnswerTextTask2L2P8, rightAnswerTextTask3L2P8, rightAnswerTextTask4L2P8, rightAnswerTextTask5L2P8;
     private int points = 0;
     private ViewPager2 viewPager2;
     private LinearLayout finishL2P8;
@@ -164,7 +164,8 @@ public class Page8Lesson2Fragment extends Fragment implements View.OnClickListen
                     task1L2P8.setText(task1.getText());
                     task1L2P8.isTextSelectable();
                     rightAnswerTextTask1L2P8 = task1.getRightAnswer();
-                    RightAnswer1L2P8.setText("Right answer: "+rightAnswerTextTask1L2P8);
+                    rightAnswer2TextTask1L2P8 = task1.getRightAnswer2();
+                    RightAnswer1L2P8.setText("Right answer: "+rightAnswerTextTask1L2P8+" / " + rightAnswer2TextTask1L2P8);
                     RightAnswer1L2P8.isTextSelectable();
                     pointsT1 = task1.getPoints();
                 }
@@ -347,6 +348,10 @@ public class Page8Lesson2Fragment extends Fragment implements View.OnClickListen
         utask4.setAnswer(A4T1L2P8);
         utask5.setAnswer(A5T1L2P8);
         if(A1T1L2P8.toLowerCase().equals(rightAnswerTextTask1L2P8.toLowerCase())) {
+            ET1L2P8.setBackgroundResource(R.color.green);
+            utask1.setPoints(pointsT1);
+            pointsCount+=pointsT1;
+        }else if(A1T1L2P8.toLowerCase().equals(rightAnswer2TextTask1L2P8.toLowerCase())){
             ET1L2P8.setBackgroundResource(R.color.green);
             utask1.setPoints(pointsT1);
             pointsCount+=pointsT1;

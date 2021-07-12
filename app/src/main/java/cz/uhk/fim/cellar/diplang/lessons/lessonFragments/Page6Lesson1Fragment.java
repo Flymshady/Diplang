@@ -39,7 +39,7 @@ public class Page6Lesson1Fragment extends Fragment implements View.OnClickListen
     private EditText ET1L1P6, ET2L1P6, ET3L1P6, ET4L1P6, ET5L1P6;
     private Button btnSaveL1P6, btnNextToP7;
     private String A1T1L1P6, A2T1L1P6, A3T1L1P6, A4T1L1P6, A5T1L1P6;
-    private String rightAnswerTextTask1L1P6, rightAnswerTextTask2L1P6, rightAnswerTextTask3L1P6, rightAnswerTextTask4L1P6, rightAnswerTextTask5L1P6;
+    private String rightAnswerTextTask1L1P6, rightAnswer2TextTask1L1P6, rightAnswerTextTask2L1P6, rightAnswerTextTask3L1P6, rightAnswerTextTask4L1P6, rightAnswer2TextTask4L1P6, rightAnswerTextTask5L1P6;
     private int points = 0;
     private ViewPager2 viewPager2;
     private LinearLayout finishL1P6;
@@ -140,7 +140,8 @@ public class Page6Lesson1Fragment extends Fragment implements View.OnClickListen
                 if(task1!=null){
                     task1L1P6.setText(task1.getText());
                     rightAnswerTextTask1L1P6 = task1.getRightAnswer();
-                    RightAnswer1L1P6.setText("Right answer: "+rightAnswerTextTask1L1P6);
+                    rightAnswer2TextTask1L1P6 = task1.getRightAnswer2();
+                    RightAnswer1L1P6.setText("Right answer: "+rightAnswerTextTask1L1P6 + " / "+rightAnswer2TextTask1L1P6);
                     pointsT1 = task1.getPoints();
                 }
             }
@@ -203,7 +204,8 @@ public class Page6Lesson1Fragment extends Fragment implements View.OnClickListen
                 if(task4!=null){
                     task4L1P6.setText(task4.getText());
                     rightAnswerTextTask4L1P6 = task4.getRightAnswer();
-                    RightAnswer4L1P6.setText("Right answer: "+rightAnswerTextTask4L1P6);
+                    rightAnswer2TextTask4L1P6 = task4.getRightAnswer2();
+                    RightAnswer4L1P6.setText("Right answer: "+rightAnswerTextTask4L1P6 + " / " +rightAnswer2TextTask4L1P6);
                     pointsT4 = task4.getPoints();
                 }
             }
@@ -314,7 +316,11 @@ public class Page6Lesson1Fragment extends Fragment implements View.OnClickListen
         utask3.setAnswer(A3T1L1P6);
         utask4.setAnswer(A4T1L1P6);
         utask5.setAnswer(A5T1L1P6);
-        if(A1T1L1P6.toLowerCase().equals("they were allowed to come to see us.") || A1T1L1P6.toLowerCase().equals("they were allowed to come to visit us.")) {
+        if(rightAnswerTextTask1L1P6.toLowerCase().equals(A1T1L1P6.toLowerCase())) {
+            ET1L1P6.setBackgroundResource(R.color.green);
+            utask1.setPoints(pointsT1);
+            pointsCount+=pointsT1;
+        }else if(rightAnswer2TextTask1L1P6.toLowerCase().equals(A1T1L1P6.toLowerCase())) {
             ET1L1P6.setBackgroundResource(R.color.green);
             utask1.setPoints(pointsT1);
             pointsCount+=pointsT1;
@@ -341,7 +347,7 @@ public class Page6Lesson1Fragment extends Fragment implements View.OnClickListen
             ET3L1P6.setBackgroundResource(R.color.red);
             utask3.setPoints(0);
         }
-        if(A4T1L1P6.toLowerCase().equals("her book hasn’t been published yet.") || A4T1L1P6.toLowerCase().equals("her book has not been published yet")) {
+        if(rightAnswerTextTask4L1P6.toLowerCase().equals(A4T1L1P6.toLowerCase()) || rightAnswer2TextTask4L1P6.toLowerCase().equals(A4T1L1P6.toLowerCase())) {
             ET4L1P6.setBackgroundResource(R.color.green);
             utask4.setPoints(pointsT4);
             pointsCount+=pointsT4;

@@ -16,6 +16,9 @@
         <activity android:name=".lessons.Lesson2Activity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"></activity>
+        <activity android:name=".lessons.Lesson3Activity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".PhrasesActivity"
             android:configChanges="keyboardHidden|orientation"
