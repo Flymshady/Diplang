@@ -172,7 +172,7 @@ public class B1HomeFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.startLesson1:
+            case R.id.startLesson1B1:
                 try {
                     startActivity(new Intent(this.getActivity(), Lesson1B1Activity.class)
                             .putExtra("level", lesson1.getLevel())

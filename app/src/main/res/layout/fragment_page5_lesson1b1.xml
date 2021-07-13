@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".lessons.lessonFragments.Page2Lesson1B1Fragment">
+    tools:context=".lessons.lessonFragments.Page5Lesson1B1Fragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,7 +12,7 @@
         android:orientation="horizontal"
         android:weightSum="1">
         <TextView
-            android:id="@+id/TVPointsL1B1P2"
+            android:id="@+id/TVPointsL1B1P5"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -45,7 +45,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/infoPage2Lesson1B1"
+                    android:id="@+id/infoPage5Lesson1B1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
@@ -55,7 +55,7 @@
                     android:textStyle="bold"/>
 
                 <TextView
-                    android:id="@+id/task1L1B1P2"
+                    android:id="@+id/task1L1B1P5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
@@ -72,14 +72,14 @@
                     android:weightSum="2"
                     android:orientation="horizontal">
                     <Spinner
-                        android:id="@+id/spinnerT1L1B1P2"
+                        android:id="@+id/spinnerT1L1B1P5"
                         android:layout_weight="1.5"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         />
                     <ImageButton
                         android:layout_weight="0.5"
-                        android:id="@+id/btnHint1L1B1P2"
+                        android:id="@+id/btnHint1L1B1P5"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:src="@drawable/ic_baseline_help_24"
@@ -88,7 +88,7 @@
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/RightAnswer1L1B1P2"
+                    android:id="@+id/RightAnswer1L1B1P5"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="18sp"
@@ -99,7 +99,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/task2L1B1P2"
+                    android:id="@+id/task2L1B1P5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
@@ -116,14 +116,14 @@
                     android:weightSum="2"
                     android:orientation="horizontal">
                     <Spinner
-                        android:id="@+id/spinnerT2L1B1P2"
+                        android:id="@+id/spinnerT2L1B1P5"
                         android:layout_weight="1.5"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         />
                     <ImageButton
                         android:layout_weight="0.5"
-                        android:id="@+id/btnHint2L1B1P2"
+                        android:id="@+id/btnHint2L1B1P5"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:src="@drawable/ic_baseline_help_24"
@@ -131,7 +131,7 @@
                         />
                 </LinearLayout>
                 <TextView
-                    android:id="@+id/RightAnswer2L1B1P2"
+                    android:id="@+id/RightAnswer2L1B1P5"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="18sp"
@@ -143,7 +143,7 @@
 
 
                 <TextView
-                    android:id="@+id/task3L1B1P2"
+                    android:id="@+id/task3L1B1P5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
@@ -160,14 +160,14 @@
                     android:weightSum="2"
                     android:orientation="horizontal">
                     <Spinner
-                        android:id="@+id/spinnerT3L1B1P2"
+                        android:id="@+id/spinnerT3L1B1P5"
                         android:layout_weight="1.5"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         />
                     <ImageButton
                         android:layout_weight="0.5"
-                        android:id="@+id/btnHint3L1B1P2"
+                        android:id="@+id/btnHint3L1B1P5"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:src="@drawable/ic_baseline_help_24"
@@ -175,7 +175,7 @@
                         />
                 </LinearLayout>
                 <TextView
-                    android:id="@+id/RightAnswer3L1B1P2"
+                    android:id="@+id/RightAnswer3L1B1P5"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="18sp"
@@ -186,7 +186,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/task4L1B1P2"
+                    android:id="@+id/task4L1B1P5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
@@ -203,14 +203,14 @@
                     android:weightSum="2"
                     android:orientation="horizontal">
                     <Spinner
-                        android:id="@+id/spinnerT4L1B1P2"
+                        android:id="@+id/spinnerT4L1B1P5"
                         android:layout_weight="1.5"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         />
                     <ImageButton
                         android:layout_weight="0.5"
-                        android:id="@+id/btnHint4L1B1P2"
+                        android:id="@+id/btnHint4L1B1P5"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:src="@drawable/ic_baseline_help_24"
@@ -218,7 +218,7 @@
                         />
                 </LinearLayout>
                 <TextView
-                    android:id="@+id/RightAnswer4L1B1P2"
+                    android:id="@+id/RightAnswer4L1B1P5"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="18sp"
@@ -229,7 +229,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/task5L1B1P2"
+                    android:id="@+id/task5L1B1P5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
@@ -246,14 +246,14 @@
                     android:weightSum="2"
                     android:orientation="horizontal">
                     <Spinner
-                        android:id="@+id/spinnerT5L1B1P2"
+                        android:id="@+id/spinnerT5L1B1P5"
                         android:layout_weight="1.5"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         />
                     <ImageButton
                         android:layout_weight="0.5"
-                        android:id="@+id/btnHint5L1B1P2"
+                        android:id="@+id/btnHint5L1B1P5"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:src="@drawable/ic_baseline_help_24"
@@ -261,7 +261,7 @@
                         />
                 </LinearLayout>
                 <TextView
-                    android:id="@+id/RightAnswer5L1B1P2"
+                    android:id="@+id/RightAnswer5L1B1P5"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="18sp"
@@ -272,7 +272,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/task6L1B1P2"
+                    android:id="@+id/task6L1B1P5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
@@ -289,14 +289,14 @@
                     android:weightSum="2"
                     android:orientation="horizontal">
                     <Spinner
-                        android:id="@+id/spinnerT6L1B1P2"
+                        android:id="@+id/spinnerT6L1B1P5"
                         android:layout_weight="1.5"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         />
                     <ImageButton
                         android:layout_weight="0.5"
-                        android:id="@+id/btnHint6L1B1P2"
+                        android:id="@+id/btnHint6L1B1P5"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:src="@drawable/ic_baseline_help_24"
@@ -304,7 +304,7 @@
                         />
                 </LinearLayout>
                 <TextView
-                    android:id="@+id/RightAnswer6L1B1P2"
+                    android:id="@+id/RightAnswer6L1B1P5"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="18sp"
@@ -315,7 +315,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/task7L1B1P2"
+                    android:id="@+id/task7L1B1P5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
@@ -332,14 +332,14 @@
                     android:weightSum="2"
                     android:orientation="horizontal">
                     <Spinner
-                        android:id="@+id/spinnerT7L1B1P2"
+                        android:id="@+id/spinnerT7L1B1P5"
                         android:layout_weight="1.5"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         />
                     <ImageButton
                         android:layout_weight="0.5"
-                        android:id="@+id/btnHint7L1B1P2"
+                        android:id="@+id/btnHint7L1B1P5"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:src="@drawable/ic_baseline_help_24"
@@ -347,7 +347,7 @@
                         />
                 </LinearLayout>
                 <TextView
-                    android:id="@+id/RightAnswer7L1B1P2"
+                    android:id="@+id/RightAnswer7L1B1P5"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="18sp"
@@ -358,7 +358,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/task8L1B1P2"
+                    android:id="@+id/task8L1B1P5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
@@ -375,14 +375,14 @@
                     android:weightSum="2"
                     android:orientation="horizontal">
                     <Spinner
-                        android:id="@+id/spinnerT8L1B1P2"
+                        android:id="@+id/spinnerT8L1B1P5"
                         android:layout_weight="1.5"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         />
                     <ImageButton
                         android:layout_weight="0.5"
-                        android:id="@+id/btnHint8L1B1P2"
+                        android:id="@+id/btnHint8L1B1P5"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:src="@drawable/ic_baseline_help_24"
@@ -390,7 +390,7 @@
                         />
                 </LinearLayout>
                 <TextView
-                    android:id="@+id/RightAnswer8L1B1P2"
+                    android:id="@+id/RightAnswer8L1B1P5"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="18sp"
@@ -401,7 +401,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/task9L1B1P2"
+                    android:id="@+id/task9L1B1P5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
@@ -418,14 +418,14 @@
                     android:weightSum="2"
                     android:orientation="horizontal">
                     <Spinner
-                        android:id="@+id/spinnerT9L1B1P2"
+                        android:id="@+id/spinnerT9L1B1P5"
                         android:layout_weight="1.5"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         />
                     <ImageButton
                         android:layout_weight="0.5"
-                        android:id="@+id/btnHint9L1B1P2"
+                        android:id="@+id/btnHint9L1B1P5"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:src="@drawable/ic_baseline_help_24"
@@ -433,7 +433,7 @@
                         />
                 </LinearLayout>
                 <TextView
-                    android:id="@+id/RightAnswer9L1B1P2"
+                    android:id="@+id/RightAnswer9L1B1P5"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="18sp"
@@ -444,7 +444,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/task10L1B1P2"
+                    android:id="@+id/task10L1B1P5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
@@ -461,14 +461,14 @@
                     android:weightSum="2"
                     android:orientation="horizontal">
                     <Spinner
-                        android:id="@+id/spinnerT10L1B1P2"
+                        android:id="@+id/spinnerT10L1B1P5"
                         android:layout_weight="1.5"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         />
                     <ImageButton
                         android:layout_weight="0.5"
-                        android:id="@+id/btnHint10L1B1P2"
+                        android:id="@+id/btnHint10L1B1P5"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:src="@drawable/ic_baseline_help_24"
@@ -476,7 +476,7 @@
                         />
                 </LinearLayout>
                 <TextView
-                    android:id="@+id/RightAnswer10L1B1P2"
+                    android:id="@+id/RightAnswer10L1B1P5"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="18sp"
@@ -487,7 +487,7 @@
                     />
 
                 <Button
-                    android:id="@+id/btnSaveL1B1P2"
+                    android:id="@+id/btnSaveL1B1P5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -496,7 +496,7 @@
                     android:text="Uložit"/>
 
                 <LinearLayout
-                    android:id="@+id/finishL1B1P2"
+                    android:id="@+id/finishL1B1P5"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/teal_700"
@@ -506,7 +506,7 @@
                     android:orientation="vertical"
                     >
                     <TextView
-                        android:id="@+id/finishTVL1B1P2"
+                        android:id="@+id/finishTVL1B1P5"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -516,7 +516,7 @@
                         android:layout_marginTop="20dp"
                         />
                     <Button
-                        android:id="@+id/btnNextToP3L1B1"
+                        android:id="@+id/btnNextToP6L1B1"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"

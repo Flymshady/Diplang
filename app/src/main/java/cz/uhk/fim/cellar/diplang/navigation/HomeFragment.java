@@ -35,10 +35,11 @@ public class HomeFragment extends Fragment {
     private TextView textName, textPoints;
     private SharedPreferences sp;
     private Spinner spinnerLevel;
-
+    private String userLevel;
     private B2HomeFragment b2HomeFragment;
     private B1HomeFragment b1HomeFragment;
     private List<String> names;
+    private int spinnerValue;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     FirebaseUser user;
 
@@ -66,6 +67,7 @@ public class HomeFragment extends Fragment {
         sp = this.getActivity().getSharedPreferences("MyUser", Context.MODE_PRIVATE);
         textName = (TextView) v.findViewById(R.id.textName);
         textName.setText(sp.getString("name",""));
+
         user = FirebaseAuth.getInstance().getCurrentUser();
         spinnerLevel =(Spinner) v.findViewById(R.id.spinnerLevel);
         textPoints = (TextView) v.findViewById(R.id.textPoints);
@@ -77,6 +79,10 @@ public class HomeFragment extends Fragment {
         names.add("B2");
         names.add("B1");
 
+        spinnerValue = sp.getInt("userLevel",-1);
+        if(spinnerValue != -1){
+            spinnerLevel.setSelection(spinnerValue);
+        }
         ArrayAdapter<String > arrayAdapter = new ArrayAdapter<>(v.getContext(), R.layout.item_level, names);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerLevel.setAdapter(arrayAdapter);
@@ -84,14 +90,21 @@ public class HomeFragment extends Fragment {
         spinnerLevel.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                SharedPreferences.Editor editor = sp.edit();
                 switch(i){
                     case 0:
+                        editor.putInt("userLevel", 0);
+                        editor.commit();
                         selectFragment(b2HomeFragment);
                         break;
                     case 1:
+                        editor.putInt("userLevel", 1);
+                        editor.commit();
                         selectFragment(b1HomeFragment);
                         break;
                     default:
+                        editor.putInt("userLevel", 0);
+                        editor.commit();
                         selectFragment(b2HomeFragment);
                         break;
                 }
@@ -103,14 +116,37 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        spinnerValue = sp.getInt("userLevel",-1);
+        if(spinnerValue != -1){
+            spinnerLevel.setSelection(spinnerValue);
+        }
+
+        int userLevel = spinnerLevel.getSelectedItemPosition();
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putInt("userLevel", userLevel);
+        editor.commit();
+
+        spinnerValue = sp.getInt("userLevel",-1);
+        if(spinnerValue != -1){
+            spinnerLevel.setSelection(spinnerValue);
+        }
+
         if(isNetworkAvailable()) {
             loadUserData();
         }
 
-
         return v;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        spinnerValue = sp.getInt("userLevel",-1);
+        if(spinnerValue != -1){
+            spinnerLevel.setSelection(spinnerValue);
+        }
+
+    }
 
     private void loadUserData() {
         DatabaseReference myRef = database

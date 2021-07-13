@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -58,6 +59,10 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
     private Spinner spinnerT6L1B1P2, spinnerT7L1B1P2, spinnerT8L1B1P2, spinnerT9L1B1P2, spinnerT10L1B1P2;
     private String[] spinnerT1L1B1P2Array, spinnerT2L1B1P2Array, spinnerT3L1B1P2Array, spinnerT4L1B1P2Array, spinnerT5L1B1P2Array;
     private String[] spinnerT6L1B1P2Array, spinnerT7L1B1P2Array, spinnerT8L1B1P2Array, spinnerT9L1B1P2Array, spinnerT10L1B1P2Array;
+    private String hint1L1B1P2, hint2L1B1P2, hint3L1B1P2, hint4L1B1P2, hint5L1B1P2;
+    private String hint6L1B1P2, hint7L1B1P2, hint8L1B1P2, hint9L1B1P2, hint10L1B1P2;
+    private ImageButton btnHint1L1B1P2, btnHint2L1B1P2, btnHint3L1B1P2, btnHint4L1B1P2, btnHint5L1B1P2;
+    private ImageButton btnHint6L1B1P2, btnHint7L1B1P2, btnHint8L1B1P2, btnHint9L1B1P2, btnHint10L1B1P2;
 
 
     public Page2Lesson1B1Fragment() {
@@ -102,6 +107,28 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
         spinnerT8L1B1P2 = (Spinner) v.findViewById(R.id.spinnerT8L1B1P2);
         spinnerT9L1B1P2 = (Spinner) v.findViewById(R.id.spinnerT9L1B1P2);
         spinnerT10L1B1P2 = (Spinner) v.findViewById(R.id.spinnerT10L1B1P2);
+
+        btnHint1L1B1P2 = (ImageButton) v.findViewById(R.id.btnHint1L1B1P2);
+        btnHint2L1B1P2 = (ImageButton) v.findViewById(R.id.btnHint2L1B1P2);
+        btnHint3L1B1P2 = (ImageButton) v.findViewById(R.id.btnHint3L1B1P2);
+        btnHint4L1B1P2 = (ImageButton) v.findViewById(R.id.btnHint4L1B1P2);
+        btnHint5L1B1P2 = (ImageButton) v.findViewById(R.id.btnHint5L1B1P2);
+        btnHint6L1B1P2 = (ImageButton) v.findViewById(R.id.btnHint6L1B1P2);
+        btnHint7L1B1P2 = (ImageButton) v.findViewById(R.id.btnHint7L1B1P2);
+        btnHint8L1B1P2 = (ImageButton) v.findViewById(R.id.btnHint8L1B1P2);
+        btnHint9L1B1P2 = (ImageButton) v.findViewById(R.id.btnHint9L1B1P2);
+        btnHint10L1B1P2 = (ImageButton) v.findViewById(R.id.btnHint10L1B1P2);
+        btnHint1L1B1P2.setOnClickListener(this);
+        btnHint2L1B1P2.setOnClickListener(this);
+        btnHint3L1B1P2.setOnClickListener(this);
+        btnHint4L1B1P2.setOnClickListener(this);
+        btnHint5L1B1P2.setOnClickListener(this);
+        btnHint6L1B1P2.setOnClickListener(this);
+        btnHint7L1B1P2.setOnClickListener(this);
+        btnHint8L1B1P2.setOnClickListener(this);
+        btnHint9L1B1P2.setOnClickListener(this);
+        btnHint10L1B1P2.setOnClickListener(this);
+
 
         btnSaveL1B1P2 = (Button) v.findViewById(R.id.btnSaveL1B1P2);
         finishL1B1P2 = (LinearLayout) v.findViewById(R.id.finishL1B1P2);
@@ -196,6 +223,7 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
                 if(optionsTask1!=null){
                     task1L1B1P2.setText(optionsTask1.getText());
                     task1L1B1P2.isTextSelectable();
+                    hint1L1B1P2=optionsTask1.getHint();
                     rightAnswerTextTask1L1B1P2 = optionsTask1.getRightAnswer();
                     RightAnswer1L1B1P2.setText("Right answer: "+rightAnswerTextTask1L1B1P2);
                     RightAnswer1L1B1P2.isTextSelectable();
@@ -212,6 +240,7 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
                         @Override
                         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                             A1T1L1B1P2 = spinnerT1L1B1P2Array[i];
+                            spinnerT1L1B1P2.setBackgroundResource(R.color.spinner_selected);
                         }
 
                         @Override
@@ -238,6 +267,7 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
                 if(optionsTask2!=null){
                     task2L1B1P2.setText(optionsTask2.getText());
                     task2L1B1P2.isTextSelectable();
+                    hint2L1B1P2=optionsTask2.getHint();
                     rightAnswerTextTask2L1B1P2 = optionsTask2.getRightAnswer();
                     RightAnswer2L1B1P2.setText("Right answer: "+rightAnswerTextTask2L1B1P2);
                     RightAnswer2L1B1P2.isTextSelectable();
@@ -257,6 +287,7 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
                         @Override
                         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                             A2T1L1B1P2 = spinnerT2L1B1P2Array[i];
+                            spinnerT2L1B1P2.setBackgroundResource(R.color.spinner_selected);
                         }
 
                         @Override
@@ -283,6 +314,7 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
                 if(optionsTask3!=null){
                     task3L1B1P2.setText(optionsTask3.getText());
                     task3L1B1P2.isTextSelectable();
+                    hint3L1B1P2=optionsTask3.getHint();
                     rightAnswerTextTask3L1B1P2 = optionsTask3.getRightAnswer();
                     RightAnswer3L1B1P2.setText("Right answer: "+rightAnswerTextTask3L1B1P2);
                     RightAnswer3L1B1P2.isTextSelectable();
@@ -302,6 +334,7 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
                         @Override
                         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                             A3T1L1B1P2 = spinnerT3L1B1P2Array[i];
+                            spinnerT3L1B1P2.setBackgroundResource(R.color.spinner_selected);
                         }
 
                         @Override
@@ -329,6 +362,7 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
                 if(optionsTask4!=null) {
                     task4L1B1P2.setText(optionsTask4.getText());
                     task4L1B1P2.isTextSelectable();
+                    hint4L1B1P2=optionsTask4.getHint();
                     rightAnswerTextTask4L1B1P2 = optionsTask4.getRightAnswer();
                     RightAnswer4L1B1P2.setText("Right answer: " + rightAnswerTextTask4L1B1P2);
                     RightAnswer4L1B1P2.isTextSelectable();
@@ -348,6 +382,7 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
                         @Override
                         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                             A4T1L1B1P2 = spinnerT4L1B1P2Array[i];
+                            spinnerT4L1B1P2.setBackgroundResource(R.color.spinner_selected);
                         }
 
                         @Override
@@ -376,6 +411,7 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
                 if(optionsTask5!=null){
                     task5L1B1P2.setText(optionsTask5.getText());
                     task5L1B1P2.isTextSelectable();
+                    hint5L1B1P2=optionsTask5.getHint();
                     rightAnswerTextTask5L1B1P2 = optionsTask5.getRightAnswer();
                     RightAnswer5L1B1P2.setText("Right answer: "+rightAnswerTextTask5L1B1P2);
                     RightAnswer5L1B1P2.isTextSelectable();
@@ -395,6 +431,7 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
                         @Override
                         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                             A5T1L1B1P2 = spinnerT5L1B1P2Array[i];
+                            spinnerT5L1B1P2.setBackgroundResource(R.color.spinner_selected);
                         }
 
                         @Override
@@ -423,6 +460,7 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
                 if(optionsTask6!=null){
                     task6L1B1P2.setText(optionsTask6.getText());
                     task6L1B1P2.isTextSelectable();
+                    hint6L1B1P2=optionsTask6.getHint();
                     rightAnswerTextTask6L1B1P2 = optionsTask6.getRightAnswer();
                     RightAnswer6L1B1P2.setText("Right answer: "+rightAnswerTextTask6L1B1P2);
                     RightAnswer6L1B1P2.isTextSelectable();
@@ -442,6 +480,7 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
                         @Override
                         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                             A6T1L1B1P2 = spinnerT6L1B1P2Array[i];
+                            spinnerT6L1B1P2.setBackgroundResource(R.color.spinner_selected);
                         }
 
                         @Override
@@ -470,6 +509,7 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
                 if(optionsTask7!=null){
                     task7L1B1P2.setText(optionsTask7.getText());
                     task7L1B1P2.isTextSelectable();
+                    hint7L1B1P2=optionsTask7.getHint();
                     rightAnswerTextTask7L1B1P2 = optionsTask7.getRightAnswer();
                     RightAnswer7L1B1P2.setText("Right answer: "+rightAnswerTextTask7L1B1P2);
                     RightAnswer7L1B1P2.isTextSelectable();
@@ -489,6 +529,7 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
                         @Override
                         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                             A7T1L1B1P2 = spinnerT7L1B1P2Array[i];
+                            spinnerT7L1B1P2.setBackgroundResource(R.color.spinner_selected);
                         }
 
                         @Override
@@ -517,6 +558,7 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
                 if(optionsTask8!=null){
                     task8L1B1P2.setText(optionsTask8.getText());
                     task8L1B1P2.isTextSelectable();
+                    hint8L1B1P2=optionsTask8.getHint();
                     rightAnswerTextTask8L1B1P2 = optionsTask8.getRightAnswer();
                     RightAnswer8L1B1P2.setText("Right answer: "+rightAnswerTextTask8L1B1P2);
                     RightAnswer8L1B1P2.isTextSelectable();
@@ -525,7 +567,7 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
                     spinnerT8L1B1P2Array[0]=optionsTask8.getOptionA();
                     spinnerT8L1B1P2Array[1]=optionsTask8.getOptionB();
                     spinnerT8L1B1P2Array[2]=optionsTask8.getOptionC();
-                    spinnerT8L1B1P2Array[8]=optionsTask8.getOptionD();
+                    spinnerT8L1B1P2Array[3]=optionsTask8.getOptionD();
                     ArrayAdapter<String> spinnerArrayAdapterT8 =
                             new ArrayAdapter<String>(getContext(),
                                     android.R.layout.simple_spinner_item,
@@ -536,6 +578,7 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
                         @Override
                         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                             A8T1L1B1P2 = spinnerT8L1B1P2Array[i];
+                            spinnerT8L1B1P2.setBackgroundResource(R.color.spinner_selected);
                         }
 
                         @Override
@@ -563,6 +606,7 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
                 if(optionsTask9!=null){
                     task9L1B1P2.setText(optionsTask9.getText());
                     task9L1B1P2.isTextSelectable();
+                    hint9L1B1P2=optionsTask9.getHint();
                     rightAnswerTextTask9L1B1P2 = optionsTask9.getRightAnswer();
                     RightAnswer9L1B1P2.setText("Right answer: "+rightAnswerTextTask9L1B1P2);
                     RightAnswer9L1B1P2.isTextSelectable();
@@ -582,6 +626,7 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
                         @Override
                         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                             A9T1L1B1P2 = spinnerT9L1B1P2Array[i];
+                            spinnerT9L1B1P2.setBackgroundResource(R.color.spinner_selected);
                         }
 
                         @Override
@@ -609,6 +654,7 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
                 if(optionsTask10!=null){
                     task10L1B1P2.setText(optionsTask10.getText());
                     task10L1B1P2.isTextSelectable();
+                    hint10L1B1P2=optionsTask10.getHint();
                     rightAnswerTextTask10L1B1P2 = optionsTask10.getRightAnswer();
                     RightAnswer10L1B1P2.setText("Right answer: "+rightAnswerTextTask10L1B1P2);
                     RightAnswer10L1B1P2.isTextSelectable();
@@ -628,6 +674,7 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
                         @Override
                         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                             A10T1L1B1P2 = spinnerT10L1B1P2Array[i];
+                            spinnerT10L1B1P2.setBackgroundResource(R.color.spinner_selected);
                         }
 
                         @Override
@@ -669,6 +716,37 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
             case (R.id.btnNextToP3L1B1):
                 viewPager2.setCurrentItem(viewPager2.getCurrentItem() + 1);
                 break;
+            case (R.id.btnHint1L1B1P2):
+                Toast.makeText(this.getActivity(), hint1L1B1P2, Toast.LENGTH_LONG).show();
+                break;
+            case (R.id.btnHint2L1B1P2):
+                Toast.makeText(this.getActivity(), hint2L1B1P2, Toast.LENGTH_LONG).show();
+                break;
+            case (R.id.btnHint3L1B1P2):
+                Toast.makeText(this.getActivity(), hint3L1B1P2, Toast.LENGTH_LONG).show();
+                break;
+            case (R.id.btnHint4L1B1P2):
+                Toast.makeText(this.getActivity(), hint4L1B1P2, Toast.LENGTH_LONG).show();
+                break;
+            case (R.id.btnHint5L1B1P2):
+                Toast.makeText(this.getActivity(), hint5L1B1P2, Toast.LENGTH_LONG).show();
+                break;
+            case (R.id.btnHint6L1B1P2):
+                Toast.makeText(this.getActivity(), hint6L1B1P2, Toast.LENGTH_LONG).show();
+                break;
+            case (R.id.btnHint7L1B1P2):
+                Toast.makeText(this.getActivity(), hint7L1B1P2, Toast.LENGTH_LONG).show();
+                break;
+            case (R.id.btnHint8L1B1P2):
+                Toast.makeText(this.getActivity(), hint8L1B1P2, Toast.LENGTH_LONG).show();
+                break;
+            case (R.id.btnHint9L1B1P2):
+                Toast.makeText(this.getActivity(), hint9L1B1P2, Toast.LENGTH_LONG).show();
+                break;
+            case (R.id.btnHint10L1B1P2):
+                Toast.makeText(this.getActivity(), hint10L1B1P2, Toast.LENGTH_LONG).show();
+                break;
+
 
         }
     }
