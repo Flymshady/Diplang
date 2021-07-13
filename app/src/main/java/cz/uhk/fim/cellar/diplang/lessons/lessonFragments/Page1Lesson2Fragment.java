@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,6 +24,8 @@ import com.google.firebase.database.ValueEventListener;
 import org.jetbrains.annotations.NotNull;
 
 import cz.uhk.fim.cellar.diplang.R;
+import cz.uhk.fim.cellar.diplang.classes.LessonPage;
+import cz.uhk.fim.cellar.diplang.classes.TheoryTask;
 
 public class Page1Lesson2Fragment extends Fragment implements View.OnClickListener {
 
@@ -30,6 +33,7 @@ public class Page1Lesson2Fragment extends Fragment implements View.OnClickListen
     private ViewPager2 viewPager2;
     private LinearLayout linearLayout;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private TheoryTask theoryTask;
 
     public Page1Lesson2Fragment() {
         // Required empty public constructor
@@ -99,14 +103,57 @@ public class Page1Lesson2Fragment extends Fragment implements View.OnClickListen
 
             }
         });
+
+        DatabaseReference myRefTask2 = database.getReference("Lessons").child("Lesson2").child("Page1").child("TheoryTask1");
+        myRefTask2.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                theoryTask = snapshot.getValue(TheoryTask.class);
+                for(DataSnapshot dataSnapshot:snapshot.getChildren()){
+                    String key = dataSnapshot.getKey();
+                    String value = dataSnapshot.getValue().toString();
+                    value = value.replace(";", "\n");
+
+                    TextView textView = new TextView(getActivity());
+                    LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
+                            LinearLayout.LayoutParams.WRAP_CONTENT);
+                    lp.gravity = Gravity.CENTER;
+                    lp.setMargins(0, 20, 0, 0);
+
+                    textView.setText(value);
+                    textView.setTextSize(20);
+                    textView.isTextSelectable();
+                    textView.setTextColor(Color.BLACK);
+                    textView.setLayoutParams(lp);
+
+                    linearLayout.addView(textView);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btnNextToP2L2:
+                saveUserTheory();
                 viewPager2.setCurrentItem(viewPager2.getCurrentItem() + 1);
 
         }
+    }
+
+    private void saveUserTheory() {
+        FirebaseDatabase.getInstance().getReference("UserTheory")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())
+                .child("Lesson2")
+                .child("Page1")
+                .child("TheoryTask1")
+                .setValue(theoryTask);
     }
 }

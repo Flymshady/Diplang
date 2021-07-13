@@ -1,9 +1,13 @@
 package cz.uhk.fim.cellar.diplang.navigation;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -11,18 +15,33 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import org.jetbrains.annotations.NotNull;
 
 import cz.uhk.fim.cellar.diplang.PhrasesActivity;
 import cz.uhk.fim.cellar.diplang.R;
 import cz.uhk.fim.cellar.diplang.SpeechActivity;
+import cz.uhk.fim.cellar.diplang.TheoryLesson2Activity;
+import cz.uhk.fim.cellar.diplang.TheoryLesson3Activity;
 import cz.uhk.fim.cellar.diplang.TranslatorActivity;
 
 public class StudyFragment extends Fragment implements View.OnClickListener {
     private Context mContext;
-
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    FirebaseUser user;
     private Button buttonSpeechActivity, buttonTranslatorActivity, buttonPhrasesActivity;
+    private LinearLayout layoutStudy;
 
     public StudyFragment() {
         // Required empty public constructor
@@ -55,8 +74,59 @@ public class StudyFragment extends Fragment implements View.OnClickListener {
         buttonPhrasesActivity = (Button) v.findViewById(R.id.buttonPhrasesActivity);
         buttonPhrasesActivity.setOnClickListener(this);
 
+        layoutStudy = (LinearLayout) v.findViewById(R.id.layoutStudy);
+
+        loadData();
+
 
         return v;
+    }
+
+    private void loadData() {
+
+        user = FirebaseAuth.getInstance().getCurrentUser();
+
+
+        DatabaseReference myRefTask1 = database.getReference("UserTheory").child(user.getUid());
+        myRefTask1.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                for(DataSnapshot dataSnapshot:snapshot.getChildren()){
+                    String lessonName = dataSnapshot.getKey().toString();
+                    ImageButton btnTheory = new ImageButton(getActivity());
+                    LinearLayout.LayoutParams lpBtn = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                            0, 1f);
+                    lpBtn.setMargins(5,10,5,0);
+                    if(lessonName.equals("Lesson2")){
+                        btnTheory.setBackgroundResource(R.drawable.ic_baseline_looks_two_24);
+                    }else if(lessonName.equals("Lesson3")){
+                        btnTheory.setBackgroundResource(R.drawable.ic_baseline_looks_3_24);
+                    }
+               //     btnTheory.setBackgroundColor(getResources().getColor(R.color.teal_100));
+                    btnTheory.setLayoutParams(lpBtn);
+                    btnTheory.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            if(lessonName.equals("Lesson2")){
+                            startActivity(new Intent(getActivity(), TheoryLesson2Activity.class));
+                            }
+                            else if(lessonName.equals("Lesson3")){
+                                startActivity(new Intent(getActivity(), TheoryLesson3Activity.class));
+                            }
+                        }
+                    });
+
+                    layoutStudy.addView(btnTheory);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
+
+
     }
 
     @Override

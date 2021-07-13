@@ -13,15 +13,19 @@
         android:roundIcon="@mipmap/pixel_diplang"
         android:supportsRtl="true"
         android:theme="@style/Theme.Diplang">
-        <activity android:name=".lessons.Lesson2Activity"
+        <activity android:name=".TheoryLesson3Activity"></activity>
+        <activity
+            android:name=".lessons.Lesson2Activity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".lessons.Lesson3Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".lessons.Lesson3Activity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".lessons.Lesson1B1Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".lessons.Lesson1B1Activity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".PhrasesActivity"
             android:configChanges="keyboardHidden|orientation"
@@ -32,6 +36,10 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".lessons.Lesson1Activity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".TheoryLesson2Activity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" />
         <activity

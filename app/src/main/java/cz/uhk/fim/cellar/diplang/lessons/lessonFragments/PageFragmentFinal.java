@@ -137,7 +137,7 @@ public class PageFragmentFinal extends Fragment implements View.OnClickListener 
 
             FirebaseDatabase.getInstance().getReference("Users")
                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())
-                    .child("Points").child("lesson1")
+                    .child("Points").child("lesson1b1")
                     .setValue(lesson.getDipsGained());
         }
         else if(lesson.getNumber()==2 && lesson.getLevel().equals("B2")){

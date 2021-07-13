@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,6 +26,7 @@ import org.jetbrains.annotations.NotNull;
 
 import cz.uhk.fim.cellar.diplang.R;
 import cz.uhk.fim.cellar.diplang.classes.LessonPage;
+import cz.uhk.fim.cellar.diplang.classes.TheoryTask;
 
 public class Page2Lesson3Fragment extends Fragment implements View.OnClickListener {
 
@@ -33,6 +35,8 @@ public class Page2Lesson3Fragment extends Fragment implements View.OnClickListen
     private LinearLayout linearLayout;
     private TextView infoPage2Lesson3;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private TheoryTask theoryTask1, theoryTask2, theoryTask3;
+    private LessonPage lessonPage;
 
     public Page2Lesson3Fragment() {
         // Required empty public constructor
@@ -78,9 +82,10 @@ public class Page2Lesson3Fragment extends Fragment implements View.OnClickListen
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
-                LessonPage lessonPage = dataSnapshot.getValue(LessonPage.class);
+                lessonPage = dataSnapshot.getValue(LessonPage.class);
                 if(lessonPage!=null){
                     infoPage2Lesson3.setText(lessonPage.getInfo());
+
                 }
             }
             @Override
@@ -93,6 +98,7 @@ public class Page2Lesson3Fragment extends Fragment implements View.OnClickListen
         myRefTask1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                theoryTask1 = snapshot.getValue(TheoryTask.class);
                 for(DataSnapshot dataSnapshot:snapshot.getChildren()){
                     String key = dataSnapshot.getKey();
                     String value = dataSnapshot.getValue().toString();
@@ -128,6 +134,7 @@ public class Page2Lesson3Fragment extends Fragment implements View.OnClickListen
         myRefTask2.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                theoryTask2 = snapshot.getValue(TheoryTask.class);
                 for(DataSnapshot dataSnapshot:snapshot.getChildren()){
                     String key = dataSnapshot.getKey();
                     String value = dataSnapshot.getValue().toString();
@@ -162,6 +169,7 @@ public class Page2Lesson3Fragment extends Fragment implements View.OnClickListen
         myRefTask3.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                theoryTask3 = snapshot.getValue(TheoryTask.class);
                 for(DataSnapshot dataSnapshot:snapshot.getChildren()){
                     String key = dataSnapshot.getKey();
                     String value = dataSnapshot.getValue().toString();
@@ -197,8 +205,35 @@ public class Page2Lesson3Fragment extends Fragment implements View.OnClickListen
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btnNextToP3L3:
+                saveUserTheory();
                 viewPager2.setCurrentItem(viewPager2.getCurrentItem() + 1);
 
         }
+    }
+
+    private void saveUserTheory() {
+        FirebaseDatabase.getInstance().getReference("UserTheory")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())
+                .child("Lesson3")
+                .child("Page1")
+                .setValue(lessonPage);
+        FirebaseDatabase.getInstance().getReference("UserTheory")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())
+                .child("Lesson3")
+                .child("Page1")
+                .child("TheoryTask1")
+                .setValue(theoryTask1);
+        FirebaseDatabase.getInstance().getReference("UserTheory")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())
+                .child("Lesson3")
+                .child("Page1")
+                .child("TheoryTask2")
+                .setValue(theoryTask2);
+        FirebaseDatabase.getInstance().getReference("UserTheory")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())
+                .child("Lesson3")
+                .child("Page1")
+                .child("TheoryTask3")
+                .setValue(theoryTask3);
     }
 }
