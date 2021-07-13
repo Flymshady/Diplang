@@ -14,6 +14,7 @@ import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import cz.uhk.fim.cellar.diplang.PhrasesActivity;
 import cz.uhk.fim.cellar.diplang.R;
 import cz.uhk.fim.cellar.diplang.SpeechActivity;
 import cz.uhk.fim.cellar.diplang.TranslatorActivity;
@@ -21,7 +22,7 @@ import cz.uhk.fim.cellar.diplang.TranslatorActivity;
 public class StudyFragment extends Fragment implements View.OnClickListener {
     private Context mContext;
 
-    private Button buttonSpeechActivity, buttonTranslatorActivity;
+    private Button buttonSpeechActivity, buttonTranslatorActivity, buttonPhrasesActivity;
 
     public StudyFragment() {
         // Required empty public constructor
@@ -51,6 +52,9 @@ public class StudyFragment extends Fragment implements View.OnClickListener {
         buttonTranslatorActivity = (Button) v.findViewById(R.id.buttonTranslatorActivity);
         buttonTranslatorActivity.setOnClickListener(this);
 
+        buttonPhrasesActivity = (Button) v.findViewById(R.id.buttonPhrasesActivity);
+        buttonPhrasesActivity.setOnClickListener(this);
+
 
         return v;
     }
@@ -72,6 +76,9 @@ public class StudyFragment extends Fragment implements View.OnClickListener {
                 transaction.commit();
                 startActivity(new Intent(getActivity(), TranslatorActivity.class));
 
+                break;
+            case R.id.buttonPhrasesActivity:
+                startActivity(new Intent(getActivity(), PhrasesActivity.class));
                 break;
 
         }

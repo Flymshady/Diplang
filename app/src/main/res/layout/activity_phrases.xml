@@ -24,7 +24,6 @@
             android:layout_gravity="center"
             />
         <LinearLayout
-            android:id="@+id/phrasesLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
@@ -32,28 +31,51 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="20dp"
-            android:layout_weight="3">
-            
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1.5"
-                android:text="Ang"
-                />
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1.5"
-                android:text="Cze"
-                />
+            android:layout_weight="3.5">
             <ImageButton
+                android:id="@+id/backToStudy"
                 android:layout_width="0dp"
                 android:background="@color/purple_700"
                 android:layout_height="match_parent"
                 android:layout_weight=".5"
-                android:src="@drawable/ic_baseline_delete_24"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/ic_baseline_arrow_back_24"
+                android:backgroundTint="@color/teal_100"
                 />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:textColor="@color/purple_700"
+                android:layout_marginLeft="5dp"
+                android:textStyle="bold"
+                android:layout_marginRight="5dp"
+                android:text="Czech"
+                />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:textStyle="bold"
+                android:textColor="@color/purple_700"
+                android:layout_marginRight="5dp"
+                android:text="English"
+                />
+
         </LinearLayout>
+    <LinearLayout
+        android:id="@+id/phrasesLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        >
+
+    </LinearLayout>
 
 
     </LinearLayout>
