@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/teal_700"
+    android:background="@drawable/gradient_purple_teal"
     tools:context=".lessons.lessonFragments.PageFragmentFinal">
 
     <ImageView
@@ -28,7 +28,6 @@
         android:textColor="@color/purple_700"
         android:textSize="25sp"
         android:textStyle="bold"
-        android:background="@color/teal_100"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -42,7 +41,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/yellow" />
+         />
 
     <Button
         android:id="@+id/buttonFinishLesson"

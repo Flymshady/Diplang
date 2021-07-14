@@ -70,6 +70,7 @@
                     android:id="@+id/spinnerT1L2P6"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@color/spinner_selected"
                     />
                 <TextView
                     android:id="@+id/RightAnswer1L2P6"
@@ -97,6 +98,7 @@
                 <Spinner
                     android:id="@+id/spinnerT2L2P6"
                     android:layout_width="match_parent"
+                    android:background="@color/spinner_selected"
                     android:layout_height="match_parent"
                     />
                 <TextView
@@ -125,6 +127,7 @@
                     />
                 <Spinner
                     android:id="@+id/spinnerT3L2P6"
+                    android:background="@color/spinner_selected"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     />
@@ -154,6 +157,7 @@
                 <Spinner
                     android:id="@+id/spinnerT4L2P6"
                     android:layout_width="match_parent"
+                    android:background="@color/spinner_selected"
                     android:layout_height="match_parent"
                     />
                 <TextView
@@ -182,6 +186,7 @@
                 <Spinner
                     android:id="@+id/spinnerT5L2P6"
                     android:layout_width="match_parent"
+                    android:background="@color/spinner_selected"
                     android:layout_height="match_parent"
                     />
                 <TextView
@@ -210,6 +215,7 @@
                 <Spinner
                     android:id="@+id/spinnerT6L2P6"
                     android:layout_width="match_parent"
+                    android:background="@color/spinner_selected"
                     android:layout_height="match_parent"
                     />
                 <TextView
@@ -250,7 +256,7 @@
                     android:id="@+id/finishL2P6"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/teal_700"
+                    android:background="@drawable/gradient_purple_teal"
                     android:visibility="gone"
                     android:weightSum="2"
                     android:layout_marginTop="50dp"

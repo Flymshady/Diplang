@@ -59,7 +59,7 @@ public class Lesson1Activity extends AppCompatActivity {
         new TabLayoutMediator(tabs, viewPager2, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
             public void onConfigureTab(@NonNull @NotNull TabLayout.Tab tab, int position) {
-                tab.setText("Page "+(position + 1));
+                tab.setText(""+(position + 1));
                 tab.view.setClickable(false);
             }
         }).attach();

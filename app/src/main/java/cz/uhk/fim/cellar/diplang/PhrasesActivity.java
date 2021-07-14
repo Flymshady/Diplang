@@ -47,10 +47,13 @@ public class PhrasesActivity extends AppCompatActivity {
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         phrasesLayout = (LinearLayout) findViewById(R.id.phrasesLayout);
-
+/*
         if(isNetworkAvailable()) {
             loadUserData();
         }
+ */
+        loadUserData();
+
         btnBackToStudy = (ImageButton) findViewById(R.id.backToStudy);
         btnBackToStudy.setOnClickListener(new View.OnClickListener() {
             @Override

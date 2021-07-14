@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:paddingTop="15dp"
+        android:background="@drawable/gradient_teal"
         android:weightSum="3">
 
         <Spinner

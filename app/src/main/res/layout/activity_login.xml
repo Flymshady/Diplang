@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_teal"
     tools:context=".authentication.LoginActivity">
 
     <TextView
@@ -11,6 +12,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="DIPLANG"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColor="@color/purple_700"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.467"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -47,37 +51,40 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Přihlásit se"
+        android:textColor="@color/teal_100"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password"
         app:layout_constraintVertical_bias="0.433" />
+
     <Button
         android:id="@+id/forgotten"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Zapomenuté heslo"
         android:backgroundTint="@color/colorOffWhite"
-        android:textColor="@color/black"
+        android:text="Zapomenuté heslo"
+        android:textAllCaps="false"
+        android:textColor="@color/teal_700"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login"
-        app:layout_constraintVertical_bias="0.433" />
+        app:layout_constraintTop_toBottomOf="@+id/register" />
+
     <Button
         android:id="@+id/register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/teal_200"
         android:text="Registrace"
-        android:backgroundTint="@color/teal_700"
-        android:textColor="@color/black"
+        android:textAllCaps="false"
+        android:textColor="@color/purple_700"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/forgotten"
-        app:layout_constraintVertical_bias="0.433" />
+        app:layout_constraintTop_toBottomOf="@+id/login" />
 
     <ProgressBar
         android:id="@+id/progressBar"

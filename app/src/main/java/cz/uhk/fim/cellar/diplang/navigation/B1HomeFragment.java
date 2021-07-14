@@ -7,6 +7,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -34,10 +35,10 @@ public class B1HomeFragment extends Fragment implements View.OnClickListener {
     private TextView textLessonName1B1,textLessonName2B1, textLessonName3B1, textLessonName4B1, textLessonName5B1, textLessonName6B1, textLessonName7B1;
     private TextView textLessonPoints1B1, textLessonPoints2B1, textLessonPoints3B1, textLessonPoints4B1, textLessonPoints5B1, textLessonPoints6B1, textLessonPoints7B1;
     private SharedPreferences sp;
-    private ImageView startLesson1B1, startLesson2B1, startLesson3B1, startLesson4B1, startLesson5B1, startLesson6B1, startLesson7B1;
-    private ImageView downloadLesson1B1, downloadLesson2B1, downloadLesson3B1, downloadLesson4B1, downloadLesson5B1, downloadLesson6B1, downloadLesson7B1;
+    private CardView startLesson1B1, startLesson2B1, startLesson3B1, startLesson4B1, startLesson5B1, startLesson6B1, startLesson7B1;
     private Context mContext;
     private Lesson lesson1, resultLesson1;
+    private ImageView starL1B1;
     FirebaseUser user;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     
@@ -69,12 +70,12 @@ public class B1HomeFragment extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_b1_home, container, false);
-
+        user = FirebaseAuth.getInstance().getCurrentUser();
         sp = this.getActivity().getSharedPreferences("MyUser", Context.MODE_PRIVATE);
 
         lesson1 = new Lesson();
         resultLesson1 = new Lesson();
-        user = FirebaseAuth.getInstance().getCurrentUser();
+
         
         textLessonName1B1 = (TextView) v.findViewById(R.id.textLessonName1B1);
         textLessonName2B1 = (TextView) v.findViewById(R.id.textLessonName2B1);
@@ -90,24 +91,22 @@ public class B1HomeFragment extends Fragment implements View.OnClickListener {
         textLessonPoints5B1 = (TextView) v.findViewById(R.id.textLessonPoints5B1);
         textLessonPoints6B1 = (TextView) v.findViewById(R.id.textLessonPoints6B1);
         textLessonPoints7B1 = (TextView) v.findViewById(R.id.textLessonPoints7B1);
-        startLesson1B1 = (ImageView) v.findViewById(R.id.startLesson1B1);
-        startLesson2B1 = (ImageView) v.findViewById(R.id.startLesson2B1);
-        startLesson3B1 = (ImageView) v.findViewById(R.id.startLesson3B1);
-        startLesson4B1 = (ImageView) v.findViewById(R.id.startLesson4B1);
-        startLesson5B1 = (ImageView) v.findViewById(R.id.startLesson5B1);
-        startLesson6B1 = (ImageView) v.findViewById(R.id.startLesson6B1);
-        startLesson7B1 = (ImageView) v.findViewById(R.id.startLesson7B1);
-        downloadLesson1B1 = (ImageView) v.findViewById(R.id.downloadLesson1B1);
-        downloadLesson2B1 = (ImageView) v.findViewById(R.id.downloadLesson2B1);
-        downloadLesson3B1 = (ImageView) v.findViewById(R.id.downloadLesson3B1);
-        downloadLesson4B1 = (ImageView) v.findViewById(R.id.downloadLesson4B1);
-        downloadLesson5B1 = (ImageView) v.findViewById(R.id.downloadLesson5B1);
-        downloadLesson6B1 = (ImageView) v.findViewById(R.id.downloadLesson6B1);
-        downloadLesson7B1 = (ImageView) v.findViewById(R.id.downloadLesson7B1);
+        startLesson1B1 = (CardView) v.findViewById(R.id.startLesson1B1);
+        startLesson2B1 = (CardView) v.findViewById(R.id.startLesson2B1);
+        startLesson3B1 = (CardView) v.findViewById(R.id.startLesson3B1);
+        startLesson4B1 = (CardView) v.findViewById(R.id.startLesson4B1);
+        startLesson5B1 = (CardView) v.findViewById(R.id.startLesson5B1);
+        startLesson6B1 = (CardView) v.findViewById(R.id.startLesson6B1);
+        startLesson7B1 = (CardView) v.findViewById(R.id.startLesson7B1);
+        starL1B1 = (ImageView) v.findViewById(R.id.starL1B1);
 
+        /*
         if(isNetworkAvailable()) {
-            loadLessonsData();
+
         }
+         */
+        loadLessonsData();
+
         startLesson1B1.setOnClickListener(this);
 
         return v;
@@ -145,11 +144,11 @@ public class B1HomeFragment extends Fragment implements View.OnClickListener {
                 if(resultLesson1!=null){
                     textLessonPoints1B1.setText(Integer.toString(resultLesson1.getDipsGained())+" / " + resultLesson1.getPointsTotal());
                     if(resultLesson1.getDipsGained()==resultLesson1.getPointsTotal()){
-                        startLesson1B1.setImageResource(R.drawable.star_purple_full);
+                        starL1B1.setImageResource(R.drawable.star_purple_full);
                     } else if (resultLesson1.getDipsGained()==0) {
-                        startLesson1B1.setImageResource(R.drawable.star_purple_border);
+                        starL1B1.setImageResource(R.drawable.star_purple_border);
                     }else{
-                        startLesson1B1.setImageResource(R.drawable.star_purple_half);
+                        starL1B1.setImageResource(R.drawable.star_purple_half);
                     }
                 }
             }

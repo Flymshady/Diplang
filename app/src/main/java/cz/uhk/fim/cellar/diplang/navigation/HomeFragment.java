@@ -29,6 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cz.uhk.fim.cellar.diplang.R;
+import cz.uhk.fim.cellar.diplang.classes.User;
 
 public class HomeFragment extends Fragment {
 
@@ -66,7 +67,6 @@ public class HomeFragment extends Fragment {
         View v=  inflater.inflate(R.layout.fragment_home, container, false);
         sp = this.getActivity().getSharedPreferences("MyUser", Context.MODE_PRIVATE);
         textName = (TextView) v.findViewById(R.id.textName);
-        textName.setText(sp.getString("name",""));
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         spinnerLevel =(Spinner) v.findViewById(R.id.spinnerLevel);
@@ -130,10 +130,15 @@ public class HomeFragment extends Fragment {
         if(spinnerValue != -1){
             spinnerLevel.setSelection(spinnerValue);
         }
-
+/*
         if(isNetworkAvailable()) {
             loadUserData();
         }
+
+
+ */
+        loadUserData();
+
 
         return v;
     }
@@ -150,14 +155,13 @@ public class HomeFragment extends Fragment {
 
     private void loadUserData() {
         DatabaseReference myRef = database
-                .getReference("Users").child(user.getUid())
-                .child("Points");
+                .getReference("Users").child(user.getUid());
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int total=0;
                 String dipsText="dips";
-                for(DataSnapshot snapshot:dataSnapshot.getChildren()) {
+                for(DataSnapshot snapshot:dataSnapshot.child("Points").getChildren()) {
                     String key = snapshot.getKey();
                     int value = ((Long)snapshot.getValue()).intValue();
                     total+=value;
@@ -166,6 +170,9 @@ public class HomeFragment extends Fragment {
                     dipsText="dip";
                 }
                 textPoints.setText(total + " "+dipsText);
+                User u = dataSnapshot.getValue(User.class);
+                textName.setText(u.getName());
+
             }
             @Override
             public void onCancelled(DatabaseError error) {

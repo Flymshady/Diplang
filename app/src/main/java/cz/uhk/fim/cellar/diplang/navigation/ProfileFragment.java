@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -15,22 +16,30 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import cz.uhk.fim.cellar.diplang.R;
+import cz.uhk.fim.cellar.diplang.classes.User;
 import cz.uhk.fim.cellar.diplang.notifications.NotificationSettingsActivity;
 
 
 public class ProfileFragment extends Fragment implements View.OnClickListener {
 
     private Button buttonLogout, buttonSetNotification;
-    private FirebaseUser user;
     private String userID;
     private SharedPreferences sp;
     private Context mContext;
     private Drawable topDrawable;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    FirebaseUser user;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -68,11 +77,11 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         buttonSetNotification.setCompoundDrawablesWithIntrinsicBounds(null, topDrawable, null, null);
         buttonSetNotification.setOnClickListener(this);
 
-        final TextView textNameFill = (TextView) v.findViewById(R.id.textNameFill);
-        textNameFill.setText(this.getActivity().getSharedPreferences("MyUser", Context.MODE_PRIVATE).getString("name", ""));
-/*
+        TextView textNameFill = (TextView) v.findViewById(R.id.textNameFill);
+
         user = FirebaseAuth.getInstance().getCurrentUser();
         userID = user.getUid();
+        /*
         reference = db.collection("users").document(userID);
         Task<DocumentSnapshot> documentSnapshot = reference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -88,14 +97,16 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             }
         });
 */
-     /*
-        reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+        DatabaseReference myRef = database
+                .getReference("Users").child(user.getUid());
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User userProfile = snapshot.getValue(User.class);
                 if(userProfile != null){
                     String name = userProfile.name;
-                    textNameFill.setText(name);
+                    String email = userProfile.getEmail();
+                    textNameFill.setText(name+"\n"+email);
                 }
             }
 
@@ -106,7 +117,6 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         });
 
 
-      */
         return v;
 
 

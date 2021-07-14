@@ -11,10 +11,10 @@
         android:layout_height="match_parent">
         <LinearLayout
             android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_marginTop="50dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_height="wrap_content">
             <TextView
                 android:layout_width="match_parent"
@@ -22,7 +22,7 @@
                 android:text="Studijní sekce"
                 android:textStyle="bold"
                 android:textColor="@color/purple_700"
-                android:textSize="30sp"
+                android:textSize="25sp"
                 android:textAlignment="center"
                 />
             <Button
@@ -32,7 +32,15 @@
                 android:layout_gravity="center"
                 android:text="SpeechActivity"
                 />
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                app:cardCornerRadius="8dp">
             <LinearLayout
+                android:background="@drawable/gradient_light_purple"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:weightSum="2"
@@ -40,12 +48,12 @@
 
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:layout_margin="10dp"
                     android:textColor="@color/purple_700"
-                    android:textSize="20sp"
-                    android:gravity="center"
-                    android:text="Látka z probrané teorie na jednom místě. Můžete si zde také ukládat vlastní poznámky."
+                    android:textSize="18sp"
+                    android:text="Látka z probrané teorie na jednom místě. Můžete si zde také ukládat vlastní poznámky"
                     />
                 <LinearLayout
                     android:id="@+id/layoutStudy"
@@ -58,65 +66,82 @@
 
                 </LinearLayout>
             </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-
-            <LinearLayout
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                app:cardCornerRadius="8dp">
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/gradient_light_purple"
                 android:weightSum="2"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="center"
                     android:textColor="@color/purple_700"
-                    android:textSize="20sp"
-                    android:text="Překladač pro češtinu a angličtinu s možností uložení oblíbených frází."
+                    android:textSize="18sp"
+                    android:text="Překladač pro češtinu a angličtinu s možností uložení oblíbených frází"
                     />
                 <Button
                     android:id="@+id/buttonTranslatorActivity"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:layout_margin="20dp"
                     android:layout_gravity="center"
                     android:text="Překladač"
                     android:textAllCaps="false"
                     android:drawableTop="@drawable/ic_baseline_translate_24_white"
                     />
             </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-             <LinearLayout
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                app:cardCornerRadius="8dp">
+             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                 android:background="@drawable/gradient_light_purple"
                 android:weightSum="2"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="center"
                     android:textColor="@color/purple_700"
-                    android:textSize="20sp"
-                    android:text="Přehled uložených anglicko-českých frází."
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"
+                    android:text="Přehled uložených frází."
                     />
 
                  <Button
                      android:id="@+id/buttonPhrasesActivity"
                      android:layout_width="0dp"
-                     android:layout_height="match_parent"
+                     android:layout_height="wrap_content"
                      android:layout_weight="1"
+                     android:layout_margin="20dp"
                      android:layout_gravity="center"
                      android:drawableTop="@drawable/ic_baseline_view_list_24"
-                     android:text="PhrasesActivity "
+                     android:text="Uložené fráze "
                      android:textAllCaps="false"
                     />
 
              </LinearLayout>
+            </androidx.cardview.widget.CardView>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

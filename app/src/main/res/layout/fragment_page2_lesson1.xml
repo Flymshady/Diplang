@@ -58,6 +58,7 @@
                     android:textSize="18sp"
                     android:textColor="@color/black"
                     android:gravity="center"
+                    android:background="@color/teal_100"
                     android:layout_marginTop="20dp"
                     android:textIsSelectable="true"
                     android:text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam. Nulla est. Pellentesque sapien. In sem justo, commodo ut, suscipit at, pharetra vitae, orci. Aliquam in lorem sit amet leo accumsan lacinia.
@@ -90,6 +91,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
                     android:textColor="@color/black"
+                    android:background="@color/teal_100"
                     android:gravity="center"
                     android:layout_marginTop="30dp"
                     android:textIsSelectable="true"
@@ -119,6 +121,7 @@
                 <TextView
                     android:id="@+id/task3L1P2"
                     android:layout_width="wrap_content"
+                    android:background="@color/teal_100"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
                     android:textColor="@color/black"
@@ -156,6 +159,7 @@
                     android:textColor="@color/black"
                     android:gravity="center"
                     android:layout_marginTop="30dp"
+                    android:background="@color/teal_100"
                     android:textIsSelectable="true"
                     android:text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam. Nulla est. Pellentesque sapien. In sem justo, commodo ut, suscipit at, pharetra vitae, orci. Aliquam in lorem sit amet leo accumsan lacinia.
 "/>
@@ -187,6 +191,7 @@
                     android:textSize="18sp"
                     android:textColor="@color/black"
                     android:gravity="center"
+                    android:background="@color/teal_100"
                     android:layout_marginTop="30dp"
                     android:textIsSelectable="true"
                     android:text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam. Nulla est. Pellentesque sapien. In sem justo, commodo ut, suscipit at, pharetra vitae, orci. Aliquam in lorem sit amet leo accumsan lacinia.
@@ -225,7 +230,7 @@
                     android:id="@+id/finishL1P2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/teal_700"
+                    android:background="@drawable/gradient_purple_teal"
                     android:visibility="gone"
                     android:weightSum="2"
                     android:layout_marginTop="50dp"

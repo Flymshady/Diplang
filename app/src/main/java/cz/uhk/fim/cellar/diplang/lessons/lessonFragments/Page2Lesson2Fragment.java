@@ -228,8 +228,9 @@ public class Page2Lesson2Fragment extends Fragment implements View.OnClickListen
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 videoTask = dataSnapshot.getValue(PageTask.class);
-                if(task1!=null){
+                if(videoTask!=null){
                     videoLink = videoTask.getLink();
+                    System.out.println(videoTask.getText());
                     listeningText = videoTask.getText();
                 }
             }
@@ -494,6 +495,8 @@ public class Page2Lesson2Fragment extends Fragment implements View.OnClickListen
             case (R.id.btnNextToP3L2): viewPager2.setCurrentItem(viewPager2.getCurrentItem() + 1);
                 break;
             case (R.id.listeningSound):
+                System.out.println(listeningText);
+                System.out.println(videoTask.getText());
                 if(mTTS.isSpeaking()){
                     mTTS.stop();
                 }else{

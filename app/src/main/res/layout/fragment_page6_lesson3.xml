@@ -55,6 +55,7 @@
                     android:id="@+id/task1L3P6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@color/teal_100"
                     android:textSize="18sp"
                     android:textColor="@color/black"
                     android:gravity="center"
@@ -69,6 +70,7 @@
                     android:layout_height="match_parent"
                     android:textSize="18sp"
                     android:textColor="@color/black"
+                    
                     android:gravity="center"
                     android:hint="1)"
                     android:layout_marginTop="10dp"
@@ -91,6 +93,7 @@
                     android:textSize="18sp"
                     android:textColor="@color/black"
                     android:gravity="center"
+                    android:background="@color/teal_100"
                     android:layout_marginTop="30dp"
                     android:textIsSelectable="true"
                     android:text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam. Nulla est. Pellentesque sapien. In sem justo, commodo ut, suscipit at, pharetra vitae, orci. Aliquam in lorem sit amet leo accumsan lacinia.
@@ -103,6 +106,7 @@
                     android:textSize="18sp"
                     android:textColor="@color/black"
                     android:gravity="center"
+                    
                     android:hint="2)"
                     android:layout_marginTop="10dp"
                     />
@@ -123,6 +127,7 @@
                     android:textSize="18sp"
                     android:textColor="@color/black"
                     android:gravity="center"
+                    android:background="@color/teal_100"
                     android:layout_marginTop="30dp"
                     android:textIsSelectable="true"
                     android:text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam. Nulla est. Pellentesque sapien. In sem justo, commodo ut, suscipit at, pharetra vitae, orci. Aliquam in lorem sit amet leo accumsan lacinia.
@@ -135,6 +140,7 @@
                     android:textSize="18sp"
                     android:textColor="@color/black"
                     android:gravity="center"
+                    
                     android:hint="3)"
                     android:layout_marginTop="10dp"
                     />
@@ -156,6 +162,7 @@
                     android:textColor="@color/black"
                     android:gravity="center"
                     android:layout_marginTop="30dp"
+                    android:background="@color/teal_100"
                     android:textIsSelectable="true"
                     android:text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam. Nulla est. Pellentesque sapien. In sem justo, commodo ut, suscipit at, pharetra vitae, orci. Aliquam in lorem sit amet leo accumsan lacinia.
 "/>
@@ -166,6 +173,7 @@
                     android:layout_height="match_parent"
                     android:textSize="18sp"
                     android:textColor="@color/black"
+                    
                     android:gravity="center"
                     android:hint="4)"
                     android:layout_marginTop="10dp"
@@ -186,6 +194,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
                     android:textColor="@color/black"
+                    android:background="@color/teal_100"
                     android:gravity="center"
                     android:layout_marginTop="30dp"
                     android:textIsSelectable="true"
@@ -199,6 +208,7 @@
                     android:textSize="18sp"
                     android:textColor="@color/black"
                     android:gravity="center"
+                    
                     android:hint="5)"
                     android:layout_marginTop="10dp"
                     />
@@ -219,6 +229,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
+                    android:background="@color/teal_100"
                     android:textColor="@color/black"
                     android:gravity="center"
                     android:layout_marginTop="30dp"
@@ -231,6 +242,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="18sp"
+                    
                     android:textColor="@color/black"
                     android:gravity="center"
                     android:hint="6)"
@@ -253,6 +265,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
                     android:textColor="@color/black"
+                    android:background="@color/teal_100"
                     android:gravity="center"
                     android:layout_marginTop="30dp"
                     android:textIsSelectable="true"
@@ -266,6 +279,7 @@
                     android:textSize="18sp"
                     android:textColor="@color/black"
                     android:gravity="center"
+                    
                     android:hint="7)"
                     android:layout_marginTop="10dp"
                     />
@@ -285,6 +299,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
+                    android:background="@color/teal_100"
                     android:textColor="@color/black"
                     android:gravity="center"
                     android:layout_marginTop="30dp"
@@ -298,6 +313,7 @@
                     android:layout_height="match_parent"
                     android:textSize="18sp"
                     android:textColor="@color/black"
+                    
                     android:gravity="center"
                     android:hint="8)"
                     android:layout_marginTop="10dp"
@@ -317,6 +333,7 @@
                     android:id="@+id/task9L3P6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@color/teal_100"
                     android:textSize="18sp"
                     android:textColor="@color/black"
                     android:gravity="center"
@@ -330,6 +347,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="18sp"
+                    
                     android:textColor="@color/black"
                     android:gravity="center"
                     android:hint="9)"
@@ -353,6 +371,7 @@
                     android:textSize="18sp"
                     android:textColor="@color/black"
                     android:gravity="center"
+                    android:background="@color/teal_100"
                     android:layout_marginTop="30dp"
                     android:textIsSelectable="true"
                     android:text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam. Nulla est. Pellentesque sapien. In sem justo, commodo ut, suscipit at, pharetra vitae, orci. Aliquam in lorem sit amet leo accumsan lacinia.
@@ -365,6 +384,7 @@
                     android:textSize="18sp"
                     android:textColor="@color/black"
                     android:gravity="center"
+                    
                     android:hint="10)"
                     android:layout_marginTop="10dp"
                     />
@@ -393,7 +413,7 @@
                     android:id="@+id/finishL3P6"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/teal_700"
+                   android:background="@drawable/gradient_purple_teal"
                     android:visibility="gone"
                     android:weightSum="2"
                     android:layout_marginTop="50dp"

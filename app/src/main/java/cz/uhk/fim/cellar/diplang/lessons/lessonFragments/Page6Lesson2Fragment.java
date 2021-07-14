@@ -429,7 +429,7 @@ public class Page6Lesson2Fragment extends Fragment implements View.OnClickListen
                 // whenever data at this location is updated.
                 optionsTask7 = dataSnapshot.getValue(OptionsTask.class);
                 if(optionsTask7!=null) {
-                    task7L2P6.setText(optionsTask6.getText());
+                    task7L2P6.setText(optionsTask7.getText());
                     task7L2P6.isTextSelectable();
                 }
             }

@@ -21,16 +21,7 @@
         android:textStyle="bold"
         android:textColor="@color/purple_700"
         android:padding="4dp"/>
-    <TextView
-        android:layout_width="90dp"
-        android:layout_height="wrap_content"
-        android:text="Začít lekci"
-        android:layout_marginTop="0dp"
-        android:layout_marginLeft="52dp"
-        android:gravity="left"
-        android:textColor="@color/purple_700"
-        android:drawableLeft="@drawable/ic_baseline_arrow_downward_24"
-        />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,80 +32,89 @@
             android:paddingBottom="50dp"
             android:orientation="vertical">
 
-            <LinearLayout
+            <androidx.cardview.widget.CardView
+                android:id="@+id/startLesson1B1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="25dp"
-                android:weightSum="3">
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                app:cardCornerRadius="8dp">
 
-                <ImageView
-                    android:id="@+id/startLesson1B1"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:src="@drawable/ic_baseline_star_border_24"
-                    app:tint="@color/teal_700"
-                    />
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:background="@drawable/gradient_purple_teal"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
-                    android:orientation="vertical"
-                    android:weightSum="3"
-                    >
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:textAlignment="center"
-                        android:gravity="center"
-                        android:textStyle="bold"
-                        android:textSize="18sp"
-                        android:textColor="@color/purple_700"
-                        android:text="Lekce 1"/>
-                    <TextView
-                        android:id="@+id/textLessonName1B1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:textAlignment="center"
-                        android:gravity="center"
-                        android:textStyle="bold"
-                        android:textSize="18sp"
-                        android:textColor="@color/purple_700"
-                        android:text="Název"/>
-                    <TextView
-                        android:id="@+id/textLessonPoints1B1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:textAlignment="center"
-                        android:gravity="center"
-                        android:textStyle="bold"
-                        android:textColor="@color/purple_700"
-                        android:text="Body za lekci"/>
-                </LinearLayout>
-                <ImageView
-                    android:id="@+id/downloadLesson1B1"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_weight="0.5"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_baseline_cloud_download_24"
-                    app:tint="@color/teal_700"
-                    />
-            </LinearLayout>
+                    android:orientation="horizontal"
+                    android:weightSum="2">
 
+                    <ImageView
+                        android:id="@+id/starL1B1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_baseline_star_border_24"
+                        app:tint="@color/teal_700"
+                        />
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.5"
+                        android:orientation="vertical"
+                        android:weightSum="3"
+                        >
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:textAlignment="center"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:textSize="18sp"
+                            android:textColor="@color/purple_700"
+                            android:text="Lekce 1"/>
+                        <TextView
+                            android:id="@+id/textLessonName1B1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:textAlignment="center"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:textSize="18sp"
+                            android:textColor="@color/purple_700"
+                            />
+                        <TextView
+                            android:id="@+id/textLessonPoints1B1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:textAlignment="center"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:textColor="@color/purple_700"
+                            />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/startLesson2B1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                app:cardCornerRadius="8dp">
             <LinearLayout
+                android:background="@drawable/gradient_purple_teal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="25dp"
-                android:weightSum="3">
+                android:weightSum="2">
 
                 <ImageView
-                    android:id="@+id/startLesson2B1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -148,7 +148,7 @@
                         android:textStyle="bold"
                         android:textSize="18sp"
                         android:textColor="@color/purple_700"
-                        android:text="Název"/>
+                        />
                     <TextView
                         android:id="@+id/textLessonPoints2B1"
                         android:layout_width="wrap_content"
@@ -158,28 +158,27 @@
                         android:gravity="center"
                         android:textStyle="bold"
                         android:textColor="@color/purple_700"
-                        android:text="Body za lekci"/>
+                        />
                 </LinearLayout>
-                <ImageView
-                    android:id="@+id/downloadLesson2B1"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_weight="0.5"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_baseline_cloud_download_24"
-                    app:tint="@color/teal_700"
-                    />
             </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
+            <androidx.cardview.widget.CardView
+                android:id="@+id/startLesson3B1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                app:cardCornerRadius="8dp">
             <LinearLayout
+                android:background="@drawable/gradient_purple_teal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="25dp"
-                android:weightSum="3">
+                android:weightSum="2">
 
                 <ImageView
-                    android:id="@+id/startLesson3B1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -213,7 +212,7 @@
                         android:textStyle="bold"
                         android:textSize="18sp"
                         android:textColor="@color/purple_700"
-                        android:text="Název"/>
+                        />
                     <TextView
                         android:id="@+id/textLessonPoints3B1"
                         android:layout_width="wrap_content"
@@ -223,28 +222,27 @@
                         android:gravity="center"
                         android:textStyle="bold"
                         android:textColor="@color/purple_700"
-                        android:text="Body za lekci"/>
+                        />
                 </LinearLayout>
-                <ImageView
-                    android:id="@+id/downloadLesson3B1"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_weight="0.5"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_baseline_cloud_download_24"
-                    app:tint="@color/teal_700"
-                    />
             </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
+            <androidx.cardview.widget.CardView
+                android:id="@+id/startLesson4B1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                app:cardCornerRadius="8dp">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="25dp"
-                android:weightSum="3">
+                android:background="@drawable/gradient_purple_teal"
+                android:weightSum="2">
 
                 <ImageView
-                    android:id="@+id/startLesson4B1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -278,7 +276,7 @@
                         android:textStyle="bold"
                         android:textSize="18sp"
                         android:textColor="@color/purple_700"
-                        android:text="Název"/>
+                       />
                     <TextView
                         android:id="@+id/textLessonPoints4B1"
                         android:layout_width="wrap_content"
@@ -288,28 +286,27 @@
                         android:gravity="center"
                         android:textStyle="bold"
                         android:textColor="@color/purple_700"
-                        android:text="Body za lekci"/>
+                        />
                 </LinearLayout>
-                <ImageView
-                    android:id="@+id/downloadLesson4B1"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_weight="0.5"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_baseline_cloud_download_24"
-                    app:tint="@color/teal_700"
-                    />
             </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/startLesson5B1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                app:cardCornerRadius="8dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="25dp"
-                android:weightSum="3">
+                android:background="@drawable/gradient_purple_teal"
+                android:weightSum="2">
 
                 <ImageView
-                    android:id="@+id/startLesson5B1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -343,7 +340,7 @@
                         android:textStyle="bold"
                         android:textSize="18sp"
                         android:textColor="@color/purple_700"
-                        android:text="Název"/>
+                        />
                     <TextView
                         android:id="@+id/textLessonPoints5B1"
                         android:layout_width="wrap_content"
@@ -353,28 +350,26 @@
                         android:gravity="center"
                         android:textStyle="bold"
                         android:textColor="@color/purple_700"
-                        android:text="Body za lekci"/>
+                        />
                 </LinearLayout>
-                <ImageView
-                    android:id="@+id/downloadLesson5B1"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_weight="0.5"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_baseline_cloud_download_24"
-                    app:tint="@color/teal_700"
-                    />
             </LinearLayout>
-
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/startLesson6B1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                app:cardCornerRadius="8dp">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="25dp"
-                android:weightSum="3">
+                android:background="@drawable/gradient_purple_teal"
+                android:weightSum="2">
 
                 <ImageView
-                    android:id="@+id/startLesson6B1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -408,7 +403,7 @@
                         android:textStyle="bold"
                         android:textSize="18sp"
                         android:textColor="@color/purple_700"
-                        android:text="Název"/>
+                        />
                     <TextView
                         android:id="@+id/textLessonPoints6B1"
                         android:layout_width="wrap_content"
@@ -418,28 +413,27 @@
                         android:gravity="center"
                         android:textStyle="bold"
                         android:textColor="@color/purple_700"
-                        android:text="Body za lekci"/>
+                        />
                 </LinearLayout>
-                <ImageView
-                    android:id="@+id/downloadLesson6B1"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_weight="0.5"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_baseline_cloud_download_24"
-                    app:tint="@color/teal_700"
-                    />
             </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/startLesson7B1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                app:cardCornerRadius="8dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="25dp"
-                android:weightSum="3">
+                android:background="@drawable/gradient_purple_teal"
+                android:weightSum="2">
 
                 <ImageView
-                    android:id="@+id/startLesson7B1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -473,7 +467,7 @@
                         android:textStyle="bold"
                         android:textSize="18sp"
                         android:textColor="@color/purple_700"
-                        android:text="Název"/>
+                        />
                     <TextView
                         android:id="@+id/textLessonPoints7B1"
                         android:layout_width="wrap_content"
@@ -482,19 +476,11 @@
                         android:textAlignment="center"
                         android:gravity="center"
                         android:textStyle="bold"
-                        android:textColor="@color/purple_700"
-                        android:text="Body za lekci"/>
+                        android:textColor="@color/purple_700"/>
                 </LinearLayout>
-                <ImageView
-                    android:id="@+id/downloadLesson7B1"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_weight="0.5"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_baseline_cloud_download_24"
-                    app:tint="@color/teal_700"
-                    />
+
             </LinearLayout>
+            </androidx.cardview.widget.CardView>
         </LinearLayout>
     </ScrollView>
 
