@@ -22,4 +22,5 @@
     <color name="textHint">#c6c6c6</color>
     <color name="right_answer_color">#FAC0A2</color>
     <color name="spinner_selected">#f0f3ff</color>
+    <color name="light_blue">#5bcbfa</color>
 </resources>

@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -25,6 +28,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import org.jetbrains.annotations.NotNull;
 
 import cz.uhk.fim.cellar.diplang.R;
 import cz.uhk.fim.cellar.diplang.classes.User;
@@ -38,8 +43,11 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     private SharedPreferences sp;
     private Context mContext;
     private Drawable topDrawable;
+    private TextView textNameFill, textEmailFill, textPointsFill;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     FirebaseUser user;
+    private TabLayout tabs;
+    private ViewPager2 viewPagerProfile;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -77,7 +85,30 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         buttonSetNotification.setCompoundDrawablesWithIntrinsicBounds(null, topDrawable, null, null);
         buttonSetNotification.setOnClickListener(this);
 
-        TextView textNameFill = (TextView) v.findViewById(R.id.textNameFill);
+        textNameFill = (TextView) v.findViewById(R.id.textNameFill);
+        textEmailFill = (TextView) v.findViewById(R.id.textEmailFill);
+        textPointsFill = (TextView) v.findViewById(R.id.textPointsFill);
+
+        tabs = (TabLayout) v.findViewById(R.id.tabsProfile);
+        viewPagerProfile = (ViewPager2) v.findViewById(R.id.viewPagerProfile);
+
+
+        ProfileViewPagerAdapter adapter = new ProfileViewPagerAdapter(getActivity());
+        viewPagerProfile.setAdapter(adapter);
+
+        new TabLayoutMediator(tabs, viewPagerProfile, new TabLayoutMediator.TabConfigurationStrategy() {
+            @Override
+            public void onConfigureTab(@NonNull @NotNull TabLayout.Tab tab, int position) {
+                if(position==0){
+                    tab.setText("Žebříček");
+                    tab.sete
+                }
+                else if(position==1){
+                    tab.setText("Přidat přátelé");
+                }
+                tab.view.setClickable(true);
+            }
+        }).attach();
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         userID = user.getUid();
@@ -97,6 +128,15 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             }
         });
 */
+
+        loadData();
+
+        return v;
+
+
+    }
+
+    private void loadData() {
         DatabaseReference myRef = database
                 .getReference("Users").child(user.getUid());
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -106,8 +146,20 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                 if(userProfile != null){
                     String name = userProfile.name;
                     String email = userProfile.getEmail();
-                    textNameFill.setText(name+"\n"+email);
+                    textNameFill.setText(name);
+                    textEmailFill.setText(email);
                 }
+                int total=0;
+                String dipsText="dips";
+                for(DataSnapshot datasnapshot:snapshot.child("Points").getChildren()) {
+                    String key = datasnapshot.getKey();
+                    int value = ((Long)datasnapshot.getValue()).intValue();
+                    total+=value;
+                }
+                if(total==1){
+                    dipsText="dip";
+                }
+                textPointsFill.setText(total + " "+dipsText);
             }
 
             @Override
@@ -115,12 +167,8 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                 Toast.makeText(getActivity(), "Něco se pokazilo.", Toast.LENGTH_LONG).show();
             }
         });
-
-
-        return v;
-
-
     }
+
 
     @Override
     public void onClick(View view) {

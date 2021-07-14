@@ -13,6 +13,7 @@
       android:id="@+id/tabs"
       android:clickable="false"
       android:layout_width="match_parent"
+      android:background="@drawable/gradient_teal"
       android:layout_height="wrap_content">
 
   </com.google.android.material.tabs.TabLayout>

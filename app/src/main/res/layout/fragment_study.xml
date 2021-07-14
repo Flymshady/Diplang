@@ -40,7 +40,7 @@
                 android:layout_marginLeft="20dp"
                 app:cardCornerRadius="8dp">
             <LinearLayout
-                android:background="@drawable/gradient_light_purple"
+                android:background="@drawable/gradient_teal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:weightSum="2"
@@ -78,7 +78,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/gradient_light_purple"
+                android:background="@drawable/gradient_teal"
                 android:weightSum="2"
                 android:orientation="horizontal">
 
@@ -86,6 +86,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:layout_margin="10dp"
                     android:textColor="@color/purple_700"
                     android:textSize="18sp"
                     android:text="Překladač pro češtinu a angličtinu s možností uložení oblíbených frází"
@@ -93,7 +94,7 @@
                 <Button
                     android:id="@+id/buttonTranslatorActivity"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_margin="20dp"
                     android:layout_gravity="center"
@@ -114,7 +115,7 @@
              <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                 android:background="@drawable/gradient_light_purple"
+                 android:background="@drawable/gradient_teal"
                 android:weightSum="2"
                 android:orientation="horizontal">
 
@@ -125,7 +126,7 @@
                     android:textColor="@color/purple_700"
                     android:layout_margin="10dp"
                     android:textSize="18sp"
-                    android:text="Přehled uložených frází."
+                    android:text="Přehled uložených frází"
                     />
 
                  <Button

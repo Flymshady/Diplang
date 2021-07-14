@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,8 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -35,6 +38,7 @@ import cz.uhk.fim.cellar.diplang.SpeechActivity;
 import cz.uhk.fim.cellar.diplang.TheoryLesson2Activity;
 import cz.uhk.fim.cellar.diplang.TheoryLesson3Activity;
 import cz.uhk.fim.cellar.diplang.TranslatorActivity;
+import cz.uhk.fim.cellar.diplang.lessons.Lesson2ViewPagerAdapter;
 
 public class StudyFragment extends Fragment implements View.OnClickListener {
     private Context mContext;
@@ -76,7 +80,9 @@ public class StudyFragment extends Fragment implements View.OnClickListener {
 
         layoutStudy = (LinearLayout) v.findViewById(R.id.layoutStudy);
 
+
         loadData();
+
 
 
         return v;
@@ -94,7 +100,7 @@ public class StudyFragment extends Fragment implements View.OnClickListener {
                 for(DataSnapshot dataSnapshot:snapshot.getChildren()){
                     String lessonName = dataSnapshot.getKey().toString();
                     ImageButton btnTheory = new ImageButton(getActivity());
-                    LinearLayout.LayoutParams lpBtn = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams lpBtn = new LinearLayout.LayoutParams(200,
                             0, 1f);
                     lpBtn.setMargins(5,10,5,0);
                     if(lessonName.equals("Lesson2")){
@@ -128,6 +134,7 @@ public class StudyFragment extends Fragment implements View.OnClickListener {
 
 
     }
+
 
     @Override
     public void onClick(View view) {

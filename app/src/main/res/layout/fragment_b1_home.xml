@@ -42,7 +42,7 @@
                 app:cardCornerRadius="8dp">
 
                 <LinearLayout
-                    android:background="@drawable/gradient_purple_teal"
+                    android:background="@drawable/gradient_teal_light"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -108,7 +108,7 @@
                 android:layout_marginLeft="20dp"
                 app:cardCornerRadius="8dp">
             <LinearLayout
-                android:background="@drawable/gradient_purple_teal"
+                android:background="@drawable/gradient_teal_light"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -172,7 +172,7 @@
                 android:layout_marginLeft="20dp"
                 app:cardCornerRadius="8dp">
             <LinearLayout
-                android:background="@drawable/gradient_purple_teal"
+                android:background="@drawable/gradient_teal_light"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -239,7 +239,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:background="@drawable/gradient_purple_teal"
+                android:background="@drawable/gradient_teal_light"
                 android:weightSum="2">
 
                 <ImageView
@@ -303,7 +303,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:background="@drawable/gradient_purple_teal"
+                android:background="@drawable/gradient_teal_light"
                 android:weightSum="2">
 
                 <ImageView
@@ -366,7 +366,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:background="@drawable/gradient_purple_teal"
+                android:background="@drawable/gradient_teal_light"
                 android:weightSum="2">
 
                 <ImageView
@@ -430,7 +430,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:background="@drawable/gradient_purple_teal"
+                android:background="@drawable/gradient_teal_light"
                 android:weightSum="2">
 
                 <ImageView

@@ -9,6 +9,7 @@
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabsL3"
+        android:background="@drawable/gradient_teal"
         android:clickable="false"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
