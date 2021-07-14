@@ -34,6 +34,7 @@ import org.jetbrains.annotations.NotNull;
 import cz.uhk.fim.cellar.diplang.R;
 import cz.uhk.fim.cellar.diplang.classes.User;
 import cz.uhk.fim.cellar.diplang.notifications.NotificationSettingsActivity;
+import cz.uhk.fim.cellar.diplang.users.ProfileViewPagerAdapter;
 
 
 public class ProfileFragment extends Fragment implements View.OnClickListener {
@@ -101,7 +102,6 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             public void onConfigureTab(@NonNull @NotNull TabLayout.Tab tab, int position) {
                 if(position==0){
                     tab.setText("Žebříček");
-                    tab.sete
                 }
                 else if(position==1){
                     tab.setText("Přidat přátelé");

@@ -1,4 +1,4 @@
-package cz.uhk.fim.cellar.diplang.navigation;
+package cz.uhk.fim.cellar.diplang.users;
 
 import android.os.Bundle;
 
@@ -11,16 +11,17 @@ import android.view.ViewGroup;
 import cz.uhk.fim.cellar.diplang.R;
 
 
-public class ProfileFriendsFragment extends Fragment {
+public class ProfileChartFragment extends Fragment {
 
 
 
-    public ProfileFriendsFragment() {
+    public ProfileChartFragment() {
         // Required empty public constructor
     }
 
-    public static ProfileFriendsFragment newInstance(String param1, String param2) {
-        ProfileFriendsFragment fragment = new ProfileFriendsFragment();
+
+    public static ProfileChartFragment newInstance(String param1, String param2) {
+        ProfileChartFragment fragment = new ProfileChartFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -35,7 +36,7 @@ public class ProfileFriendsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_profile_friends, container, false);
+        View v = inflater.inflate(R.layout.fragment_profile_chart, container, false);
 
 
 

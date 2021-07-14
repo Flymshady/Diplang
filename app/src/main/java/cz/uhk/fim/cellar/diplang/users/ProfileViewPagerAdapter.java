@@ -1,4 +1,4 @@
-package cz.uhk.fim.cellar.diplang.navigation;
+package cz.uhk.fim.cellar.diplang.users;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -6,14 +6,6 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import org.jetbrains.annotations.NotNull;
-
-import cz.uhk.fim.cellar.diplang.lessons.lessonFragments.Page1Lesson3Fragment;
-import cz.uhk.fim.cellar.diplang.lessons.lessonFragments.Page2Lesson3Fragment;
-import cz.uhk.fim.cellar.diplang.lessons.lessonFragments.Page3Lesson3Fragment;
-import cz.uhk.fim.cellar.diplang.lessons.lessonFragments.Page4Lesson3Fragment;
-import cz.uhk.fim.cellar.diplang.lessons.lessonFragments.Page5Lesson3Fragment;
-import cz.uhk.fim.cellar.diplang.lessons.lessonFragments.Page6Lesson3Fragment;
-import cz.uhk.fim.cellar.diplang.lessons.lessonFragments.PageFragmentFinal;
 
 public class ProfileViewPagerAdapter extends FragmentStateAdapter {
     public ProfileViewPagerAdapter(@NonNull @NotNull FragmentActivity fragmentActivity) {

@@ -4,12 +4,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".navigation.ProfileFriendsFragment">
+    tools:context=".users.ProfileFriendsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:orientation="vertical">
+    <android.widget.SearchView
+        android:id="@+id/searchUsers"
+        android:background="@color/right_answer_color"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        />
+   </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/usersRecycleView"
+        android:background="@color/teal_100"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Profile frag" />
+        >
+
+    </androidx.recyclerview.widget.RecyclerView>
 
 </LinearLayout>
