@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
@@ -110,11 +111,7 @@ public class TheoryLesson2Activity extends AppCompatActivity implements View.OnC
                 saveTheory1L1P2();
                 break;
             case (R.id.btnBackFromTheory2):
-                try {
-                    startActivity(new Intent(TheoryLesson2Activity.this, NavigationActivity.class));
-                } finally {
-                    finish();
-                }
+                finish();
                 break;
         }
     }
@@ -127,6 +124,7 @@ public class TheoryLesson2Activity extends AppCompatActivity implements View.OnC
                 .child("Page1")
                 .child("TheoryTaskUser1")
                 .setValue(userTheory);
+        Toast.makeText(TheoryLesson2Activity.this, "Uloženo", Toast.LENGTH_LONG).show();
     }
 
 

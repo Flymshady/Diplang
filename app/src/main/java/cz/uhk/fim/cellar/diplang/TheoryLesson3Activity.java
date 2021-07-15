@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
@@ -344,11 +345,7 @@ public class TheoryLesson3Activity extends AppCompatActivity implements View.OnC
                 saveTheory2L3P3();
                 break;
             case (R.id.btnBackFromTheory3):
-                try {
-                    startActivity(new Intent(TheoryLesson3Activity.this, NavigationActivity.class));
-                } finally {
-                    finish();
-                }
+                finish();
                 break;
         }
     }
@@ -361,6 +358,7 @@ public class TheoryLesson3Activity extends AppCompatActivity implements View.OnC
                 .child("Page1")
                 .child("TheoryTaskUser2")
                 .setValue(userTheory);
+        Toast.makeText(TheoryLesson3Activity.this, "Uloženo", Toast.LENGTH_LONG).show();
     }
 
     private void saveTheory1L1P3() {
@@ -371,6 +369,7 @@ public class TheoryLesson3Activity extends AppCompatActivity implements View.OnC
                 .child("Page1")
                 .child("TheoryTaskUser1")
                 .setValue(userTheory);
+        Toast.makeText(TheoryLesson3Activity.this, "Uloženo", Toast.LENGTH_LONG).show();
     }
 
     private void saveTheory3L1P3() {
@@ -381,6 +380,7 @@ public class TheoryLesson3Activity extends AppCompatActivity implements View.OnC
                 .child("Page1")
                 .child("TheoryTaskUser3")
                 .setValue(userTheory);
+        Toast.makeText(TheoryLesson3Activity.this, "Uloženo", Toast.LENGTH_LONG).show();
     }
 
     private void saveTheory1L2P3() {
@@ -391,6 +391,7 @@ public class TheoryLesson3Activity extends AppCompatActivity implements View.OnC
                 .child("Page2")
                 .child("TheoryTaskUser1")
                 .setValue(userTheory);
+        Toast.makeText(TheoryLesson3Activity.this, "Uloženo", Toast.LENGTH_LONG).show();
     }
 
     private void saveTheory2L2P3() {
@@ -401,6 +402,7 @@ public class TheoryLesson3Activity extends AppCompatActivity implements View.OnC
                 .child("Page2")
                 .child("TheoryTaskUser2")
                 .setValue(userTheory);
+        Toast.makeText(TheoryLesson3Activity.this, "Uloženo", Toast.LENGTH_LONG).show();
     }
     private void saveTheory3L2P3() {
         UserTheory userTheory = new UserTheory(theoryUser3P2L3.getText().toString());
@@ -410,6 +412,7 @@ public class TheoryLesson3Activity extends AppCompatActivity implements View.OnC
                 .child("Page2")
                 .child("TheoryTaskUser3")
                 .setValue(userTheory);
+        Toast.makeText(TheoryLesson3Activity.this, "Uloženo", Toast.LENGTH_LONG).show();
     }
     private void saveTheory1L3P3() {
         UserTheory userTheory = new UserTheory(theoryUser1P3L3.getText().toString());
@@ -419,6 +422,7 @@ public class TheoryLesson3Activity extends AppCompatActivity implements View.OnC
                 .child("Page3")
                 .child("TheoryTaskUser1")
                 .setValue(userTheory);
+        Toast.makeText(TheoryLesson3Activity.this, "Uloženo", Toast.LENGTH_LONG).show();
     }
     private void saveTheory2L3P3() {
         UserTheory userTheory = new UserTheory(theoryUser2P3L3.getText().toString());
@@ -428,5 +432,6 @@ public class TheoryLesson3Activity extends AppCompatActivity implements View.OnC
                 .child("Page3")
                 .child("TheoryTaskUser2")
                 .setValue(userTheory);
+        Toast.makeText(TheoryLesson3Activity.this, "Uloženo", Toast.LENGTH_LONG).show();
     }
 }

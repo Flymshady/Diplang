@@ -3,6 +3,8 @@ package cz.uhk.fim.cellar.diplang.users;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import org.jetbrains.annotations.NotNull;
@@ -25,6 +27,7 @@ public class ProfileViewPagerAdapter extends FragmentStateAdapter {
                 return new ProfileChartFragment();
         }
     }
+
 
     @Override
     public int getItemCount() {

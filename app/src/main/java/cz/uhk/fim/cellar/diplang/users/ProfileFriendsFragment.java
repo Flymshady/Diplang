@@ -1,5 +1,6 @@
 package cz.uhk.fim.cellar.diplang.users;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.text.TextUtils;
 import android.view.Gravity;
@@ -35,6 +37,7 @@ import java.util.List;
 import cz.uhk.fim.cellar.diplang.R;
 import cz.uhk.fim.cellar.diplang.classes.FriendRequest;
 import cz.uhk.fim.cellar.diplang.classes.User;
+import cz.uhk.fim.cellar.diplang.navigation.ProfileFragment;
 
 
 public class ProfileFriendsFragment extends Fragment {
@@ -47,6 +50,8 @@ public class ProfileFriendsFragment extends Fragment {
     private RecyclerView usersRecycleView;
     private AdapterUsers adapterUsers;
     private LinearLayout layoutRequests;
+    private Context mContext;
+    private ViewPager2 viewPagerProfile;
 
 
 
@@ -74,6 +79,7 @@ public class ProfileFriendsFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_profile_friends, container, false);
         user = FirebaseAuth.getInstance().getCurrentUser();
         userID = user.getUid();
+        viewPagerProfile = (ViewPager2) v.findViewById(R.id.viewPagerProfile);
 
         usersRecycleView = (RecyclerView) v.findViewById(R.id.usersRecycleView);
         usersRecycleView.setHasFixedSize(true);
@@ -89,7 +95,7 @@ public class ProfileFriendsFragment extends Fragment {
             @Override
             public boolean onClose() {
                 userList.clear();
-                adapterUsers = new AdapterUsers(getActivity(), userList);
+                adapterUsers = new AdapterUsers(mContext, userList);
                 //refresh adapter
                 adapterUsers.notifyDataSetChanged();
                 usersRecycleView.setAdapter(adapterUsers);
@@ -117,6 +123,11 @@ public class ProfileFriendsFragment extends Fragment {
 
         return v;
     }
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mContext=context;
+    }
 
     private void loadRequests() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users")
@@ -127,13 +138,13 @@ public class ProfileFriendsFragment extends Fragment {
                 for(DataSnapshot ds: snapshot.getChildren()){
                     FriendRequest friendRequest = ds.getValue(FriendRequest.class);
                     if(friendRequest!=null){
-                        LinearLayout ll = new LinearLayout(getActivity());
+                        LinearLayout ll = new LinearLayout(mContext);
                         ll.setOrientation(LinearLayout.HORIZONTAL);
                         ll.setBackgroundResource(R.color.right_answer_color);
                         ll.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
                         ll.setWeightSum(2f);
 
-                        ImageButton btnConfirm = new ImageButton(getActivity());
+                        ImageButton btnConfirm = new ImageButton(mContext);
                         btnConfirm.setBackgroundResource(R.drawable.ic_baseline_check_circle_24);
                         LinearLayout.LayoutParams lpBtn = new LinearLayout.LayoutParams(100,
                                 100);
@@ -181,11 +192,12 @@ public class ProfileFriendsFragment extends Fragment {
                                         .removeValue();
 
                                 layoutRequests.removeView(ll);
+
                             }
                         });
 
 
-                        ImageButton btnCancel = new ImageButton(getActivity());
+                        ImageButton btnCancel = new ImageButton(mContext);
                         btnCancel.setBackgroundResource(R.drawable.ic_baseline_cancel_24);
                         btnCancel.setLayoutParams(lpBtn);
                         btnCancel.setOnClickListener(new View.OnClickListener() {
@@ -209,7 +221,7 @@ public class ProfileFriendsFragment extends Fragment {
                         });
 
 
-                        TextView textView = new TextView(getActivity());
+                        TextView textView = new TextView(mContext);
                         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
                                 LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
                         lp.setMargins(0, 10, 0, 10);
@@ -254,7 +266,7 @@ public class ProfileFriendsFragment extends Fragment {
                             }
                         }
                     }
-                    adapterUsers = new AdapterUsers(getActivity(), userList);
+                    adapterUsers = new AdapterUsers(mContext, userList);
                     //refresh adapter
                     adapterUsers.notifyDataSetChanged();
                     usersRecycleView.setAdapter(adapterUsers);
