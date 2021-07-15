@@ -34,8 +34,10 @@ public class AdapterUsers extends RecyclerView.Adapter<AdapterUsers.MyHolder>{
     Context context;
     List<User> userList;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    FirebaseUser user;
-    String userID;
+    FirebaseUser sender;
+    String senderID;
+    String senderEmail;
+    String senderName;
 
     public AdapterUsers(Context context, List<User> userList) {
         this.context=context;
@@ -47,8 +49,6 @@ public class AdapterUsers extends RecyclerView.Adapter<AdapterUsers.MyHolder>{
     @Override
     public MyHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.row_users, parent,false);
-        user = FirebaseAuth.getInstance().getCurrentUser();
-        userID = user.getUid();
         return new MyHolder(view);
     }
 
@@ -57,6 +57,29 @@ public class AdapterUsers extends RecyclerView.Adapter<AdapterUsers.MyHolder>{
         String userName = userList.get(position).getName();
         String userEmail = userList.get(position).getEmail();
         String receiverId = userList.get(position).getUid();
+        sender = FirebaseAuth.getInstance().getCurrentUser();
+        senderID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        senderEmail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+
+
+        DatabaseReference myRef = database
+                .getReference("Users").child(sender.getUid());
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User senderProfile = snapshot.getValue(User.class);
+                if(senderProfile != null){
+                    senderName = senderProfile.name;
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+
+        });
+
 
         holder.searchUserName.setText(userName);
         holder.searchUserEmail.setText(userEmail);
@@ -64,9 +87,10 @@ public class AdapterUsers extends RecyclerView.Adapter<AdapterUsers.MyHolder>{
         holder.btnAddUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String senderId = userID;
+                String senderId = senderID;
                 String createdTime = LocalDateTime.now().toString();
-                FriendRequest friendRequest = new FriendRequest(createdTime);
+                sender = FirebaseAuth.getInstance().getCurrentUser();
+                FriendRequest friendRequest = new FriendRequest(createdTime, senderEmail, userEmail, senderId, receiverId, senderName, userName);
                 FirebaseDatabase.getInstance().getReference("Users")
                         .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())
                         .child("Social")
