@@ -249,10 +249,10 @@ public class Page2Lesson2Fragment extends Fragment implements View.OnClickListen
                 task1 = dataSnapshot.getValue(PageTask.class);
                 if(task1!=null){
                     task1L2P2.setText(task1.getText());
-                    task1L2P2.isTextSelectable();
+                    task1L2P2.setTextIsSelectable(true);
                     rightAnswerTextTask1L2P2 = task1.getRightAnswer();
                     RightAnswer1L2P2.setText("Right answer: "+rightAnswerTextTask1L2P2);
-                    RightAnswer1L2P2.isTextSelectable();
+                    RightAnswer1L2P2.setTextIsSelectable(true);
                     pointsT1 = task1.getPoints();
                 }
             }
@@ -272,10 +272,10 @@ public class Page2Lesson2Fragment extends Fragment implements View.OnClickListen
                 task2 = dataSnapshot.getValue(PageTask.class);
                 if(task2!=null){
                     task2L2P2.setText(task2.getText());
-                    task2L2P2.isTextSelectable();
+                    task2L2P2.setTextIsSelectable(true);
                     rightAnswerTextTask2L2P2 = task2.getRightAnswer();
                     RightAnswer2L2P2.setText("Right answer: "+rightAnswerTextTask2L2P2);
-                    RightAnswer2L2P2.isTextSelectable();
+                    RightAnswer2L2P2.setTextIsSelectable(true);
                     pointsT2 = task2.getPoints();
                 }
             }
@@ -295,10 +295,10 @@ public class Page2Lesson2Fragment extends Fragment implements View.OnClickListen
                 task3 = dataSnapshot.getValue(PageTask.class);
                 if(task3!=null){
                     task3L2P2.setText(task3.getText());
-                    task3L2P2.isTextSelectable();
+                    task3L2P2.setTextIsSelectable(true);
                     rightAnswerTextTask3L2P2 = task3.getRightAnswer();
                     RightAnswer3L2P2.setText("Right answer: "+rightAnswerTextTask3L2P2);
-                    RightAnswer3L2P2.isTextSelectable();
+                    RightAnswer3L2P2.setTextIsSelectable(true);
                     pointsT3 = task3.getPoints();
                 }
             }
@@ -318,10 +318,10 @@ public class Page2Lesson2Fragment extends Fragment implements View.OnClickListen
                 task4 = dataSnapshot.getValue(PageTask.class);
                 if(task4!=null){
                     task4L2P2.setText(task4.getText());
-                    task4L2P2.isTextSelectable();
+                    task4L2P2.setTextIsSelectable(true);
                     rightAnswerTextTask4L2P2 = task4.getRightAnswer();
                     RightAnswer4L2P2.setText("Right answer: "+rightAnswerTextTask4L2P2);
-                    RightAnswer4L2P2.isTextSelectable();
+                    RightAnswer4L2P2.setTextIsSelectable(true);
                     pointsT4 = task4.getPoints();
                 }
             }
@@ -341,10 +341,10 @@ public class Page2Lesson2Fragment extends Fragment implements View.OnClickListen
                 task5 = dataSnapshot.getValue(PageTask.class);
                 if(task5!=null){
                     task5L2P2.setText(task5.getText());
-                    task5L2P2.isTextSelectable();
+                    task5L2P2.setTextIsSelectable(true);
                     rightAnswerTextTask5L2P2 = task5.getRightAnswer();
                     RightAnswer5L2P2.setText("Right answer: "+rightAnswerTextTask5L2P2);
-                    RightAnswer5L2P2.isTextSelectable();
+                    RightAnswer5L2P2.setTextIsSelectable(true);
                     pointsT5 = task5.getPoints();
                 }
             }
@@ -364,10 +364,10 @@ public class Page2Lesson2Fragment extends Fragment implements View.OnClickListen
                 task6 = dataSnapshot.getValue(PageTask.class);
                 if(task6!=null){
                     task6L2P2.setText(task6.getText());
-                    task6L2P2.isTextSelectable();
+                    task6L2P2.setTextIsSelectable(true);
                     rightAnswerTextTask6L2P2 = task6.getRightAnswer();
                     RightAnswer6L2P2.setText("Right answer: "+rightAnswerTextTask6L2P2);
-                    RightAnswer6L2P2.isTextSelectable();
+                    RightAnswer6L2P2.setTextIsSelectable(true);
                     pointsT6 = task6.getPoints();
                 }
             }
@@ -387,10 +387,10 @@ public class Page2Lesson2Fragment extends Fragment implements View.OnClickListen
                 task7 = dataSnapshot.getValue(PageTask.class);
                 if(task7!=null){
                     task7L2P2.setText(task7.getText());
-                    task7L2P2.isTextSelectable();
+                    task7L2P2.setTextIsSelectable(true);
                     rightAnswerTextTask7L2P2 = task7.getRightAnswer();
                     RightAnswer7L2P2.setText("Right answer: "+rightAnswerTextTask7L2P2);
-                    RightAnswer7L2P2.isTextSelectable();
+                    RightAnswer7L2P2.setTextIsSelectable(true);
                     pointsT7 = task7.getPoints();
                 }
             }
@@ -410,10 +410,10 @@ public class Page2Lesson2Fragment extends Fragment implements View.OnClickListen
                 task8 = dataSnapshot.getValue(PageTask.class);
                 if(task8!=null){
                     task8L2P2.setText(task8.getText());
-                    task8L2P2.isTextSelectable();
+                    task8L2P2.setTextIsSelectable(true);
                     rightAnswerTextTask8L2P2 = task8.getRightAnswer();
                     RightAnswer8L2P2.setText("Right answer: "+rightAnswerTextTask8L2P2);
-                    RightAnswer8L2P2.isTextSelectable();
+                    RightAnswer8L2P2.setTextIsSelectable(true);
                     pointsT8 = task8.getPoints();
                 }
             }
@@ -433,10 +433,10 @@ public class Page2Lesson2Fragment extends Fragment implements View.OnClickListen
                 task9 = dataSnapshot.getValue(PageTask.class);
                 if(task9!=null){
                     task9L2P2.setText(task9.getText());
-                    task9L2P2.isTextSelectable();
+                    task9L2P2.setTextIsSelectable(true);
                     rightAnswerTextTask9L2P2 = task9.getRightAnswer();
                     RightAnswer9L2P2.setText("Right answer: "+rightAnswerTextTask9L2P2);
-                    RightAnswer9L2P2.isTextSelectable();
+                    RightAnswer9L2P2.setTextIsSelectable(true);
                     pointsT9 = task9.getPoints();
                 }
             }
@@ -456,10 +456,10 @@ public class Page2Lesson2Fragment extends Fragment implements View.OnClickListen
                 task10 = dataSnapshot.getValue(PageTask.class);
                 if(task10!=null){
                     task10L2P2.setText(task10.getText());
-                    task10L2P2.isTextSelectable();
+                    task10L2P2.setTextIsSelectable(true);
                     rightAnswerTextTask10L2P2 = task10.getRightAnswer();
                     RightAnswer10L2P2.setText("Right answer: "+rightAnswerTextTask10L2P2);
-                    RightAnswer10L2P2.isTextSelectable();
+                    RightAnswer10L2P2.setTextIsSelectable(true);
                     pointsT10 = task10.getPoints();
                 }
             }
@@ -590,16 +590,26 @@ public class Page2Lesson2Fragment extends Fragment implements View.OnClickListen
         A8T1L2P2 = ET8L2P2.getText().toString();
         A9T1L2P2 = ET9L2P2.getText().toString();
         A10T1L2P2 = ET10L2P2.getText().toString();
-        ET1L2P2.setInputType(InputType.TYPE_NULL);
-        ET2L2P2.setInputType(InputType.TYPE_NULL);
-        ET3L2P2.setInputType(InputType.TYPE_NULL);
-        ET4L2P2.setInputType(InputType.TYPE_NULL);
-        ET5L2P2.setInputType(InputType.TYPE_NULL);
-        ET6L2P2.setInputType(InputType.TYPE_NULL);
-        ET7L2P2.setInputType(InputType.TYPE_NULL);
-        ET8L2P2.setInputType(InputType.TYPE_NULL);
-        ET9L2P2.setInputType(InputType.TYPE_NULL);
-        ET10L2P2.setInputType(InputType.TYPE_NULL);
+        ET1L2P2.setFocusableInTouchMode(false);
+        ET2L2P2.setFocusableInTouchMode(false);
+        ET3L2P2.setFocusableInTouchMode(false);
+        ET4L2P2.setFocusableInTouchMode(false);
+        ET5L2P2.setFocusableInTouchMode(false);
+        ET6L2P2.setFocusableInTouchMode(false);
+        ET7L2P2.setFocusableInTouchMode(false);
+        ET8L2P2.setFocusableInTouchMode(false);
+        ET9L2P2.setFocusableInTouchMode(false);
+        ET10L2P2.setFocusableInTouchMode(false);
+        ET1L2P2.setFocusable(false);
+        ET2L2P2.setFocusable(false);
+        ET3L2P2.setFocusable(false);
+        ET4L2P2.setFocusable(false);
+        ET5L2P2.setFocusable(false);
+        ET6L2P2.setFocusable(false);
+        ET7L2P2.setFocusable(false);
+        ET8L2P2.setFocusable(false);
+        ET9L2P2.setFocusable(false);
+        ET10L2P2.setFocusable(false);
         utask1.setAnswer(A1T1L2P2);
         utask2.setAnswer(A2T1L2P2);
         utask3.setAnswer(A3T1L2P2);

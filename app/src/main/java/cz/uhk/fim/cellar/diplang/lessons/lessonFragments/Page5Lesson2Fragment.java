@@ -161,10 +161,10 @@ public class Page5Lesson2Fragment extends Fragment implements View.OnClickListen
                 optionsTask1 = dataSnapshot.getValue(OptionsTask.class);
                 if(optionsTask1!=null){
                     task1L2P5.setText(optionsTask1.getText());
-                    task1L2P5.isTextSelectable();
+                    task1L2P5.setTextIsSelectable(true);
                     rightAnswerTextTask1L2P5 = optionsTask1.getRightAnswer();
                     RightAnswer1L2P5.setText("Right answer: "+rightAnswerTextTask1L2P5);
-                    RightAnswer1L2P5.isTextSelectable();
+                    RightAnswer1L2P5.setTextIsSelectable(true);
                     pointsT1 = optionsTask1.getPoints();
 
                     spinnerT1L2P5Array[0]=optionsTask1.getOptionA();
@@ -203,10 +203,10 @@ public class Page5Lesson2Fragment extends Fragment implements View.OnClickListen
                 optionsTask2 = dataSnapshot.getValue(OptionsTask.class);
                 if(optionsTask2!=null){
                     task2L2P5.setText(optionsTask2.getText());
-                    task2L2P5.isTextSelectable();
+                    task2L2P5.setTextIsSelectable(true);
                     rightAnswerTextTask2L2P5 = optionsTask2.getRightAnswer();
                     RightAnswer2L2P5.setText("Right answer: "+rightAnswerTextTask2L2P5);
-                    RightAnswer2L2P5.isTextSelectable();
+                    RightAnswer2L2P5.setTextIsSelectable(true);
                     pointsT2 = optionsTask2.getPoints();
 
                     spinnerT2L2P5Array[0]=optionsTask2.getOptionA();
@@ -248,10 +248,10 @@ public class Page5Lesson2Fragment extends Fragment implements View.OnClickListen
                 optionsTask3 = dataSnapshot.getValue(OptionsTask.class);
                 if(optionsTask3!=null){
                     task3L2P5.setText(optionsTask3.getText());
-                    task3L2P5.isTextSelectable();
+                    task3L2P5.setTextIsSelectable(true);
                     rightAnswerTextTask3L2P5 = optionsTask3.getRightAnswer();
                     RightAnswer3L2P5.setText("Right answer: "+rightAnswerTextTask3L2P5);
-                    RightAnswer3L2P5.isTextSelectable();
+                    RightAnswer3L2P5.setTextIsSelectable(true);
                     pointsT3 = optionsTask3.getPoints();
 
                     spinnerT3L2P5Array[0]=optionsTask3.getOptionA();
@@ -294,10 +294,10 @@ public class Page5Lesson2Fragment extends Fragment implements View.OnClickListen
                 optionsTask4 = dataSnapshot.getValue(OptionsTask.class);
                 if(optionsTask4!=null) {
                     task4L2P5.setText(optionsTask4.getText());
-                    task4L2P5.isTextSelectable();
+                    task4L2P5.setTextIsSelectable(true);
                     rightAnswerTextTask4L2P5 = optionsTask4.getRightAnswer();
                     RightAnswer4L2P5.setText("Right answer: " + rightAnswerTextTask4L2P5);
-                    RightAnswer4L2P5.isTextSelectable();
+                    RightAnswer4L2P5.setTextIsSelectable(true);
                     pointsT4 = optionsTask4.getPoints();
 
                     spinnerT4L2P5Array[0] = optionsTask4.getOptionA();
@@ -339,10 +339,10 @@ public class Page5Lesson2Fragment extends Fragment implements View.OnClickListen
                 optionsTask5 = dataSnapshot.getValue(OptionsTask.class);
                 if(optionsTask5!=null) {
                     task5L2P5.setText(optionsTask5.getText());
-                    task5L2P5.isTextSelectable();
+                    task5L2P5.setTextIsSelectable(true);
                     rightAnswerTextTask5L2P5 = optionsTask5.getRightAnswer();
                     RightAnswer5L2P5.setText("Right answer: " + rightAnswerTextTask5L2P5);
-                    RightAnswer5L2P5.isTextSelectable();
+                    RightAnswer5L2P5.setTextIsSelectable(true);
                     pointsT5 = optionsTask5.getPoints();
 
                     spinnerT5L2P5Array[0] = optionsTask5.getOptionA();
@@ -384,10 +384,10 @@ public class Page5Lesson2Fragment extends Fragment implements View.OnClickListen
                 optionsTask6 = dataSnapshot.getValue(OptionsTask.class);
                 if(optionsTask6!=null) {
                     task6L2P5.setText(optionsTask6.getText());
-                    task6L2P5.isTextSelectable();
+                    task6L2P5.setTextIsSelectable(true);
                     rightAnswerTextTask6L2P5 = optionsTask6.getRightAnswer();
                     RightAnswer6L2P5.setText("Right answer: " + rightAnswerTextTask6L2P5);
-                    RightAnswer6L2P5.isTextSelectable();
+                    RightAnswer6L2P5.setTextIsSelectable(true);
                     pointsT6 = optionsTask6.getPoints();
 
                     spinnerT6L2P5Array[0] = optionsTask6.getOptionA();

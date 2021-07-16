@@ -54,10 +54,18 @@ public class PageFragmentFinal extends Fragment implements View.OnClickListener 
         if(viewModel.getDipPoints().getValue()==1){
             dipsText = "dip";
         }
+        String previousResults="";
+        int lessonResults = viewModel.getLessonResults().getValue();
+        if(lessonResults!=-1){
+            previousResults="Předchozí pokus: "+String.valueOf(lessonResults)+" dips";
+        }
+        System.out.println(previousResults);
+
         pointsFinal.setText("Výsledek lekce je:\n" +
                 viewModel.getDipPoints().getValue().toString()
                 + " dips\nz celkových\n" +
-                viewModel.getPointsTotal().getValue().toString() + " "+ dipsText);
+                viewModel.getPointsTotal().getValue().toString() + " "+ dipsText
+                + "\n" + previousResults);
         buttonFinishLesson = (Button) v.findViewById(R.id.buttonFinishLesson);
         buttonFinishLesson.setOnClickListener(this);
 
@@ -91,15 +99,24 @@ public class PageFragmentFinal extends Fragment implements View.OnClickListener 
     @Override
     public void onResume() {
         super.onResume();
+        saveUserLesson();
         viewModel = new ViewModelProvider(requireActivity()).get(LessonViewModel.class);
         String dipsText = "dips";
         if(viewModel.getDipPoints().getValue()==1){
             dipsText = "dip";
         }
+        String previousResults="";
+        int lessonResults = viewModel.getLessonResults().getValue();
+        if(lessonResults!=-1){
+            previousResults="Předchozí pokus: "+String.valueOf(lessonResults)+" dips";
+        }
+        System.out.println(previousResults);
+
         pointsFinal.setText("Výsledek lekce je:\n" +
                 viewModel.getDipPoints().getValue().toString()
                 + " dips\nz celkových\n" +
-                viewModel.getPointsTotal().getValue().toString() + " "+ dipsText);
+                viewModel.getPointsTotal().getValue().toString() + " "+ dipsText
+                + "\n" + previousResults);
         if(viewModel.getDipPoints().getValue() == viewModel.getPointsTotal().getValue()){
             finalStar.setBackgroundResource(R.drawable.star_purple_full);
         }

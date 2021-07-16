@@ -115,7 +115,7 @@ public class Page4Lesson3Fragment extends Fragment implements View.OnClickListen
                     }
                     textView.setText(value);
                     textView.setTextSize(18);
-                    textView.isTextSelectable();
+                    textView.setTextIsSelectable(true);
                     textView.setTextColor(Color.BLACK);
                     textView.setLayoutParams(lp);
                     linearLayout.addView(textView);
@@ -150,7 +150,7 @@ public class Page4Lesson3Fragment extends Fragment implements View.OnClickListen
                     }
                     textView.setText(value);
                     textView.setTextSize(20);
-                    textView.isTextSelectable();
+                    textView.setTextIsSelectable(true);
                     textView.setTextColor(Color.BLACK);
                     textView.setLayoutParams(lp);
                     linearLayout.addView(textView);
@@ -171,6 +171,7 @@ public class Page4Lesson3Fragment extends Fragment implements View.OnClickListen
             case R.id.btnNextToP5L3:
                 saveUserTheory();
                 viewPager2.setCurrentItem(viewPager2.getCurrentItem() + 1);
+                break;
 
         }
     }

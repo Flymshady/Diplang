@@ -27,6 +27,8 @@ import cz.uhk.fim.cellar.diplang.R;
 import cz.uhk.fim.cellar.diplang.classes.LessonPage;
 import cz.uhk.fim.cellar.diplang.classes.TheoryTask;
 
+import static java.lang.Boolean.TRUE;
+
 public class Page1Lesson2Fragment extends Fragment implements View.OnClickListener {
 
     private Button btnNextToP2L2;
@@ -89,7 +91,7 @@ public class Page1Lesson2Fragment extends Fragment implements View.OnClickListen
 
                     textView.setText(value);
                     textView.setTextSize(20);
-                    textView.isTextSelectable();
+                    textView.setTextIsSelectable(true);
                     textView.setTextColor(Color.BLACK);
                     textView.setLayoutParams(lp);
 
@@ -122,7 +124,7 @@ public class Page1Lesson2Fragment extends Fragment implements View.OnClickListen
 
                     textView.setText(value);
                     textView.setTextSize(20);
-                    textView.isTextSelectable();
+                    textView.setTextIsSelectable(true);
                     textView.setTextColor(Color.BLACK);
                     textView.setLayoutParams(lp);
 
@@ -144,6 +146,7 @@ public class Page1Lesson2Fragment extends Fragment implements View.OnClickListen
             case R.id.btnNextToP2L2:
                 saveUserTheory();
                 viewPager2.setCurrentItem(viewPager2.getCurrentItem() + 1);
+                break;
 
         }
     }

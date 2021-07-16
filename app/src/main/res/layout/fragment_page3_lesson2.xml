@@ -22,36 +22,398 @@
             android:textAlignment="center"
             android:text="Body: "/>
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="center"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         >
         <LinearLayout
-            android:id="@+id/layoutP3L2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:orientation="vertical">
 
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_gravity="center"
-            android:layout_marginTop="50dp"
-            >
 
-            <Button
-                android:id="@+id/btnNextToP4L2"
+            <TextView
+                android:id="@+id/infoPage3Lesson2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Další"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:textIsSelectable="true"
+                android:textStyle="bold"/>
+            <Button
+                android:layout_gravity="center"
+                android:id="@+id/btnCantSpeak"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:text="Can't speak now"
+                android:drawableTop="@drawable/ic_baseline_mic_off_24"
+                android:layout_weight="0.4"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:layout_marginTop="20dp"
+                android:layout_weight="3"
+                android:orientation="horizontal"
+                >
+
+
+                <TextView
+                    android:id="@+id/task1L2P3"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.3"
+                    android:layout_height="match_parent"
+                    android:textSize="18sp"
+                    android:background="@color/teal_100"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:textIsSelectable="true"
+                    android:text="text"/>
+                <EditText
+                    android:id="@+id/ET1L2P3"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.3"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:hint="1)"
+                    />
+                <ImageButton
+                    android:id="@+id/btnSpeak1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_baseline_mic_24"
+                    android:background="@color/purple_700"
+                    android:layout_weight="0.4"/>
+
+            </LinearLayout>
+            <TextView
+                android:id="@+id/RightAnswer1L2P3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:visibility="gone"
+                android:background="@color/right_answer_color"
                 />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:layout_marginTop="20dp"
+                android:layout_weight="3"
+                android:orientation="horizontal"
+                >
+
+
+                <TextView
+                    android:id="@+id/task2L2P3"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.3"
+                    android:layout_height="match_parent"
+                    android:textSize="18sp"
+                    android:background="@color/teal_100"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:textIsSelectable="true"
+                    android:text="text"/>
+                <EditText
+                    android:id="@+id/ET2L2P3"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.3"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:hint="2)"
+                    />
+                <ImageButton
+                    android:id="@+id/btnSpeak2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_baseline_mic_24"
+                    android:background="@color/purple_700"
+                    android:layout_weight="0.4"/>
+
+            </LinearLayout>
+            <TextView
+                android:id="@+id/RightAnswer2L2P3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:visibility="gone"
+                android:background="@color/right_answer_color"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:layout_marginTop="20dp"
+                android:layout_weight="3"
+                android:orientation="horizontal"
+                >
+
+
+                <TextView
+                    android:id="@+id/task3L2P3"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.3"
+                    android:layout_height="match_parent"
+                    android:textSize="18sp"
+                    android:background="@color/teal_100"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:textIsSelectable="true"
+                    android:text="text"/>
+                <EditText
+                    android:id="@+id/ET3L2P3"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.3"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:hint="3)"
+                    />
+                <ImageButton
+                    android:id="@+id/btnSpeak3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_baseline_mic_24"
+                    android:background="@color/purple_700"
+                    android:layout_weight="0.4"/>
+
+            </LinearLayout>
+            <TextView
+                android:id="@+id/RightAnswer3L2P3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:visibility="gone"
+                android:background="@color/right_answer_color"
+                />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:layout_marginTop="20dp"
+                android:layout_weight="3"
+                android:orientation="horizontal"
+                >
+
+
+                <TextView
+                    android:id="@+id/task4L2P3"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.3"
+                    android:layout_height="match_parent"
+                    android:textSize="18sp"
+                    android:background="@color/teal_100"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:textIsSelectable="true"
+                    android:text="text"/>
+                <EditText
+                    android:id="@+id/ET4L2P3"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.3"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:hint="4)"
+                    />
+                <ImageButton
+                    android:id="@+id/btnSpeak4"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_baseline_mic_24"
+                    android:background="@color/purple_700"
+                    android:layout_weight="0.4"/>
+
+            </LinearLayout>
+            <TextView
+                android:id="@+id/RightAnswer4L2P3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:visibility="gone"
+                android:background="@color/right_answer_color"
+                />
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:layout_marginTop="20dp"
+                android:layout_weight="3"
+                android:orientation="horizontal"
+                >
+
+
+                <TextView
+                    android:id="@+id/task5L2P3"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.3"
+                    android:layout_height="match_parent"
+                    android:textSize="18sp"
+                    android:background="@color/teal_100"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:textIsSelectable="true"
+                    android:text="text"/>
+                <EditText
+                    android:id="@+id/ET5L2P3"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.3"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:hint="5)"
+                    />
+                <ImageButton
+                    android:id="@+id/btnSpeak5"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_baseline_mic_24"
+                    android:background="@color/purple_700"
+                    android:layout_weight="0.4"/>
+
+            </LinearLayout>
+            <TextView
+                android:id="@+id/RightAnswer5L2P3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:visibility="gone"
+                android:background="@color/right_answer_color"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:layout_marginTop="20dp"
+                android:layout_weight="3"
+                android:orientation="horizontal"
+                >
+
+
+                <TextView
+                    android:id="@+id/task6L2P3"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.3"
+                    android:layout_height="match_parent"
+                    android:textSize="18sp"
+                    android:background="@color/teal_100"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:textIsSelectable="true"
+                    android:text="text"/>
+                <EditText
+                    android:id="@+id/ET6L2P3"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.3"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:hint="6)"
+                    />
+                <ImageButton
+                    android:id="@+id/btnSpeak6"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_baseline_mic_24"
+                    android:background="@color/purple_700"
+                    android:layout_weight="0.4"/>
+
+            </LinearLayout>
+            <TextView
+                android:id="@+id/RightAnswer6L2P3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:visibility="gone"
+                android:background="@color/right_answer_color"
+                />
+
+            <Button
+                android:id="@+id/btnSaveL2P3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="20dp"
+                android:text="Uložit"/>
+
+
+            <LinearLayout
+                android:id="@+id/finishL2P3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/gradient_purple_teal"
+                android:visibility="gone"
+                android:weightSum="2"
+                android:layout_marginTop="50dp"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:id="@+id/finishTVL2P3"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:layout_marginTop="20dp"
+                    />
+                <Button
+                    android:id="@+id/btnNextToP4L2"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:background="@color/teal_700"
+                    android:text="Další"
+                    />
+
+            </LinearLayout>
+
+
         </LinearLayout>
-    </LinearLayout>
+
+
+    </ScrollView>
 
 </LinearLayout>

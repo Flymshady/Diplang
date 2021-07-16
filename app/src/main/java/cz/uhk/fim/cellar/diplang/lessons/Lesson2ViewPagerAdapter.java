@@ -36,9 +36,9 @@ public class Lesson2ViewPagerAdapter extends FragmentStateAdapter {
             case 0:
                 return new Page1Lesson2Fragment();
             case 1:
-                return new Page2Lesson2Fragment();
-            case 2:
                 return new Page3Lesson2Fragment();
+            case 2:
+                return new Page2Lesson2Fragment();
             case 3:
                 return new Page4Lesson2Fragment();
             case 4:

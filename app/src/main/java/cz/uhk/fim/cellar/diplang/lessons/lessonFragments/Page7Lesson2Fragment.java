@@ -90,47 +90,47 @@ public class Page7Lesson2Fragment extends Fragment implements View.OnClickListen
                     String value = dataSnapshot.getValue().toString();
                     if(key.equals("info")){
                         textInfoP7L2.setText(value);
-                        textInfoP7L2.isTextSelectable();
+                        textInfoP7L2.setTextIsSelectable(true);
                     }
                     if(key.equals("textA1")){
                         textA1P7L2.setText(value);
-                        textA1P7L2.isTextSelectable();
+                        textA1P7L2.setTextIsSelectable(true);
                     }
                     if(key.equals("textA2")){
                         textA2P7L2.setText(value);
-                        textA2P7L2.isTextSelectable();
+                        textA2P7L2.setTextIsSelectable(true);
                     }
                     if(key.equals("textA3")){
                         textA3P7L2.setText(value);
-                        textA3P7L2.isTextSelectable();
+                        textA3P7L2.setTextIsSelectable(true);
                     }
                     if(key.equals("textA4")){
                         textA4P7L2.setText(value);
-                        textA4P7L2.isTextSelectable();
+                        textA4P7L2.setTextIsSelectable(true);
                     }
                     if(key.equals("textA4")){
                         textA5P7L2.setText(value);
-                        textA5P7L2.isTextSelectable();
+                        textA5P7L2.setTextIsSelectable(true);
                     }
                     if(key.equals("textB1")){
                         textB1P7L2.setText(value);
-                        textB1P7L2.isTextSelectable();
+                        textB1P7L2.setTextIsSelectable(true);
                     }
                     if(key.equals("textB2")){
                         textB2P7L2.setText(value);
-                        textB2P7L2.isTextSelectable();
+                        textB2P7L2.setTextIsSelectable(true);
                     }
                     if(key.equals("textB3")){
                         textB3P7L2.setText(value);
-                        textB3P7L2.isTextSelectable();
+                        textB3P7L2.setTextIsSelectable(true);
                     }
                     if(key.equals("textB4")){
                         textB4P7L2.setText(value);
-                        textB4P7L2.isTextSelectable();
+                        textB4P7L2.setTextIsSelectable(true);
                     }
                     if(key.equals("textB4")) {
                         textB5P7L2.setText(value);
-                        textB5P7L2.isTextSelectable();
+                        textB5P7L2.setTextIsSelectable(true);
                     }
 
                 }
@@ -157,8 +157,10 @@ public class Page7Lesson2Fragment extends Fragment implements View.OnClickListen
         switch (view.getId()){
             case R.id.btnNextToP8L2:
                 viewPager2.setCurrentItem(viewPager2.getCurrentItem() + 1);
+                break;
             case R.id.btnHintP7L2:
                 hintQuestion();
+                break;
         }
     }
 

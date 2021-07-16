@@ -45,6 +45,7 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     private Lesson lesson1, resultLesson1, lesson2, resultLesson2, lesson3, resultLesson3;
     FirebaseUser user;
+    private int lesson1Results, lesson2Results, lesson3Results;
 
     public B2HomeFragment() {
         // Required empty public constructor
@@ -129,7 +130,7 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
     private void loadLessonsData() {
         DatabaseReference myRefLesson1 = database
                 .getReference("Lessons").child("Lesson1");
-        myRefLesson1.addListenerForSingleValueEvent(new ValueEventListener() {
+        myRefLesson1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
@@ -147,7 +148,7 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
 
         DatabaseReference myRefLesson2 = database
                 .getReference("Lessons").child("Lesson2");
-        myRefLesson2.addListenerForSingleValueEvent(new ValueEventListener() {
+        myRefLesson2.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
@@ -165,7 +166,7 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
 
         DatabaseReference myRefLesson3 = database
                 .getReference("Lessons").child("Lesson3");
-        myRefLesson3.addListenerForSingleValueEvent(new ValueEventListener() {
+        myRefLesson3.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
@@ -185,7 +186,7 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
                 .getReference("UserTasks")
                 .child(user.getUid()).child("Lesson1")
                 .child("Results");
-        myRefUserLesson.addListenerForSingleValueEvent(new ValueEventListener() {
+        myRefUserLesson.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
@@ -200,6 +201,7 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
                     }else{
                         starLesson1.setImageResource(R.drawable.star_purple_half);
                     }
+                    lesson1Results=(resultLesson1.getDipsGained());
                 }
             }
             @Override
@@ -212,7 +214,7 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
                 .getReference("UserTasks")
                 .child(user.getUid()).child("Lesson2")
                 .child("Results");
-        myRefUserLesson2.addListenerForSingleValueEvent(new ValueEventListener() {
+        myRefUserLesson2.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
@@ -227,6 +229,7 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
                     }else{
                         starLesson2.setImageResource(R.drawable.star_purple_half);
                     }
+                    lesson2Results=(resultLesson2.getDipsGained());
                 }
             }
             @Override
@@ -239,7 +242,7 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
                 .getReference("UserTasks")
                 .child(user.getUid()).child("Lesson3")
                 .child("Results");
-        myRefUserLesson3.addListenerForSingleValueEvent(new ValueEventListener() {
+        myRefUserLesson3.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
@@ -254,6 +257,7 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
                     }else{
                         starLesson3.setImageResource(R.drawable.star_purple_half);
                     }
+                    lesson3Results=(resultLesson3.getDipsGained());
                 }
             }
             @Override
@@ -284,6 +288,7 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
                             .putExtra("number", lesson1.getNumber())
                             .putExtra("name", lesson1.getName())
                             .putExtra("pointsTotal", lesson1.getPointsTotal())
+                            .putExtra("lessonResults", lesson1Results)
 
                     );
                 }finally {
@@ -297,6 +302,7 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
                             .putExtra("number", lesson2.getNumber())
                             .putExtra("name", lesson2.getName())
                             .putExtra("pointsTotal", lesson2.getPointsTotal())
+                            .putExtra("lessonResults", lesson2Results)
 
                     );
                 }finally {
@@ -310,6 +316,7 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
                             .putExtra("number", lesson3.getNumber())
                             .putExtra("name", lesson3.getName())
                             .putExtra("pointsTotal", lesson3.getPointsTotal())
+                            .putExtra("lessonResults", lesson3Results)
 
                     );
                 }finally {

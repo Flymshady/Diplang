@@ -14,6 +14,7 @@ public class LessonViewModel extends ViewModel {
     private final MutableLiveData<String> level = new MutableLiveData<String>();
     private final MutableLiveData<Integer> lesson = new MutableLiveData<Integer>();
     private final MutableLiveData<String> username = new MutableLiveData<String>();
+    private final MutableLiveData<Integer> lessonResults = new MutableLiveData<Integer>();
 
     public void setDipPoints(int points){
         dipPoints.setValue(points);
@@ -27,6 +28,13 @@ public class LessonViewModel extends ViewModel {
     }
     public LiveData<Integer> getPointsTotal(){
         return pointsTotal;
+    }
+
+    public void setLessonResults(int results){
+        lessonResults.setValue(results);
+    }
+    public LiveData<Integer> getLessonResults(){
+        return lessonResults;
     }
 
     public LiveData<String> getLevel() {

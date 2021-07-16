@@ -25,7 +25,7 @@ public class Lesson2Activity extends AppCompatActivity {
     private TabLayout tabs;
     private ViewPager2 viewPager2;
     private LessonViewModel viewModel;
-    private int pointsTotal;
+    private int pointsTotal, lessonResults;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +46,8 @@ public class Lesson2Activity extends AppCompatActivity {
         viewModel.setUsername(userName);
         pointsTotal = getIntent().getIntExtra("pointsTotal", 1);
         viewModel.setPointsTotal(pointsTotal);
+        lessonResults = getIntent().getIntExtra("lessonResults", -1);
+        viewModel.setLessonResults(lessonResults);
 
         tabs = (TabLayout) findViewById(R.id.tabsL2);
         viewPager2 = (ViewPager2) findViewById(R.id.viewPagerL2);

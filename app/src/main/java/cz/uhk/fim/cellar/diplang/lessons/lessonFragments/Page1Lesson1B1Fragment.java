@@ -85,7 +85,7 @@ public class Page1Lesson1B1Fragment extends Fragment implements View.OnClickList
 
                     textView.setText(value);
                     textView.setTextSize(20);
-                    textView.isTextSelectable();
+                    textView.setTextIsSelectable(true);
                     textView.setTextColor(Color.BLACK);
                     textView.setLayoutParams(lp);
 
@@ -106,6 +106,7 @@ public class Page1Lesson1B1Fragment extends Fragment implements View.OnClickList
         switch (view.getId()){
             case R.id.btnNextToP2L1B1:
                 viewPager2.setCurrentItem(viewPager2.getCurrentItem() + 1);
+                break;
 
         }
     }

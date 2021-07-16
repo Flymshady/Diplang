@@ -222,11 +222,11 @@ public class Page6Lesson1B1Fragment extends Fragment implements View.OnClickList
                 optionsTask1 = dataSnapshot.getValue(OptionsTask.class);
                 if(optionsTask1!=null){
                     task1L1B1P6.setText(optionsTask1.getText());
-                    task1L1B1P6.isTextSelectable();
+                    task1L1B1P6.setTextIsSelectable(true);
                     hint1L1B1P6=optionsTask1.getHint();
                     rightAnswerTextTask1L1B1P6 = optionsTask1.getRightAnswer();
                     RightAnswer1L1B1P6.setText("Right answer: "+rightAnswerTextTask1L1B1P6);
-                    RightAnswer1L1B1P6.isTextSelectable();
+                    RightAnswer1L1B1P6.setTextIsSelectable(true);
                     pointsT1 = optionsTask1.getPoints();
 
                     spinnerT1L1B1P6Array[0]=optionsTask1.getOptionA();
@@ -266,11 +266,11 @@ public class Page6Lesson1B1Fragment extends Fragment implements View.OnClickList
                 optionsTask2 = dataSnapshot.getValue(OptionsTask.class);
                 if(optionsTask2!=null){
                     task2L1B1P6.setText(optionsTask2.getText());
-                    task2L1B1P6.isTextSelectable();
+                    task2L1B1P6.setTextIsSelectable(true);
                     hint2L1B1P6=optionsTask2.getHint();
                     rightAnswerTextTask2L1B1P6 = optionsTask2.getRightAnswer();
                     RightAnswer2L1B1P6.setText("Right answer: "+rightAnswerTextTask2L1B1P6);
-                    RightAnswer2L1B1P6.isTextSelectable();
+                    RightAnswer2L1B1P6.setTextIsSelectable(true);
                     pointsT2 = optionsTask2.getPoints();
 
                     spinnerT2L1B1P6Array[0]=optionsTask2.getOptionA();
@@ -313,11 +313,11 @@ public class Page6Lesson1B1Fragment extends Fragment implements View.OnClickList
                 optionsTask3 = dataSnapshot.getValue(OptionsTask.class);
                 if(optionsTask3!=null){
                     task3L1B1P6.setText(optionsTask3.getText());
-                    task3L1B1P6.isTextSelectable();
+                    task3L1B1P6.setTextIsSelectable(true);
                     hint3L1B1P6=optionsTask3.getHint();
                     rightAnswerTextTask3L1B1P6 = optionsTask3.getRightAnswer();
                     RightAnswer3L1B1P6.setText("Right answer: "+rightAnswerTextTask3L1B1P6);
-                    RightAnswer3L1B1P6.isTextSelectable();
+                    RightAnswer3L1B1P6.setTextIsSelectable(true);
                     pointsT3 = optionsTask3.getPoints();
 
                     spinnerT3L1B1P6Array[0]=optionsTask3.getOptionA();
@@ -361,11 +361,11 @@ public class Page6Lesson1B1Fragment extends Fragment implements View.OnClickList
                 optionsTask4 = dataSnapshot.getValue(OptionsTask.class);
                 if(optionsTask4!=null) {
                     task4L1B1P6.setText(optionsTask4.getText());
-                    task4L1B1P6.isTextSelectable();
+                    task4L1B1P6.setTextIsSelectable(true);
                     hint4L1B1P6=optionsTask4.getHint();
                     rightAnswerTextTask4L1B1P6 = optionsTask4.getRightAnswer();
                     RightAnswer4L1B1P6.setText("Right answer: " + rightAnswerTextTask4L1B1P6);
-                    RightAnswer4L1B1P6.isTextSelectable();
+                    RightAnswer4L1B1P6.setTextIsSelectable(true);
                     pointsT4 = optionsTask4.getPoints();
 
                     spinnerT4L1B1P6Array[0] = optionsTask4.getOptionA();
@@ -410,11 +410,11 @@ public class Page6Lesson1B1Fragment extends Fragment implements View.OnClickList
                 optionsTask5 = dataSnapshot.getValue(OptionsTask.class);
                 if(optionsTask5!=null){
                     task5L1B1P6.setText(optionsTask5.getText());
-                    task5L1B1P6.isTextSelectable();
+                    task5L1B1P6.setTextIsSelectable(true);
                     hint5L1B1P6=optionsTask5.getHint();
                     rightAnswerTextTask5L1B1P6 = optionsTask5.getRightAnswer();
                     RightAnswer5L1B1P6.setText("Right answer: "+rightAnswerTextTask5L1B1P6);
-                    RightAnswer5L1B1P6.isTextSelectable();
+                    RightAnswer5L1B1P6.setTextIsSelectable(true);
                     pointsT5 = optionsTask5.getPoints();
 
                     spinnerT5L1B1P6Array[0]=optionsTask5.getOptionA();
@@ -459,11 +459,11 @@ public class Page6Lesson1B1Fragment extends Fragment implements View.OnClickList
                 optionsTask6 = dataSnapshot.getValue(OptionsTask.class);
                 if(optionsTask6!=null){
                     task6L1B1P6.setText(optionsTask6.getText());
-                    task6L1B1P6.isTextSelectable();
+                    task6L1B1P6.setTextIsSelectable(true);
                     hint6L1B1P6=optionsTask6.getHint();
                     rightAnswerTextTask6L1B1P6 = optionsTask6.getRightAnswer();
                     RightAnswer6L1B1P6.setText("Right answer: "+rightAnswerTextTask6L1B1P6);
-                    RightAnswer6L1B1P6.isTextSelectable();
+                    RightAnswer6L1B1P6.setTextIsSelectable(true);
                     pointsT6 = optionsTask6.getPoints();
 
                     spinnerT6L1B1P6Array[0]=optionsTask6.getOptionA();
@@ -508,11 +508,11 @@ public class Page6Lesson1B1Fragment extends Fragment implements View.OnClickList
                 optionsTask7 = dataSnapshot.getValue(OptionsTask.class);
                 if(optionsTask7!=null){
                     task7L1B1P6.setText(optionsTask7.getText());
-                    task7L1B1P6.isTextSelectable();
+                    task7L1B1P6.setTextIsSelectable(true);
                     hint7L1B1P6=optionsTask7.getHint();
                     rightAnswerTextTask7L1B1P6 = optionsTask7.getRightAnswer();
                     RightAnswer7L1B1P6.setText("Right answer: "+rightAnswerTextTask7L1B1P6);
-                    RightAnswer7L1B1P6.isTextSelectable();
+                    RightAnswer7L1B1P6.setTextIsSelectable(true);
                     pointsT7 = optionsTask7.getPoints();
 
                     spinnerT7L1B1P6Array[0]=optionsTask7.getOptionA();
@@ -557,11 +557,11 @@ public class Page6Lesson1B1Fragment extends Fragment implements View.OnClickList
                 optionsTask8 = dataSnapshot.getValue(OptionsTask.class);
                 if(optionsTask8!=null){
                     task8L1B1P6.setText(optionsTask8.getText());
-                    task8L1B1P6.isTextSelectable();
+                    task8L1B1P6.setTextIsSelectable(true);
                     hint8L1B1P6=optionsTask8.getHint();
                     rightAnswerTextTask8L1B1P6 = optionsTask8.getRightAnswer();
                     RightAnswer8L1B1P6.setText("Right answer: "+rightAnswerTextTask8L1B1P6);
-                    RightAnswer8L1B1P6.isTextSelectable();
+                    RightAnswer8L1B1P6.setTextIsSelectable(true);
                     pointsT8 = optionsTask8.getPoints();
 
                     spinnerT8L1B1P6Array[0]=optionsTask8.getOptionA();
@@ -605,11 +605,11 @@ public class Page6Lesson1B1Fragment extends Fragment implements View.OnClickList
                 optionsTask9 = dataSnapshot.getValue(OptionsTask.class);
                 if(optionsTask9!=null){
                     task9L1B1P6.setText(optionsTask9.getText());
-                    task9L1B1P6.isTextSelectable();
+                    task9L1B1P6.setTextIsSelectable(true);
                     hint9L1B1P6=optionsTask9.getHint();
                     rightAnswerTextTask9L1B1P6 = optionsTask9.getRightAnswer();
                     RightAnswer9L1B1P6.setText("Right answer: "+rightAnswerTextTask9L1B1P6);
-                    RightAnswer9L1B1P6.isTextSelectable();
+                    RightAnswer9L1B1P6.setTextIsSelectable(true);
                     pointsT9 = optionsTask9.getPoints();
 
                     spinnerT9L1B1P6Array[0]=optionsTask9.getOptionA();
@@ -653,11 +653,11 @@ public class Page6Lesson1B1Fragment extends Fragment implements View.OnClickList
                 optionsTask10 = dataSnapshot.getValue(OptionsTask.class);
                 if(optionsTask10!=null){
                     task10L1B1P6.setText(optionsTask10.getText());
-                    task10L1B1P6.isTextSelectable();
+                    task10L1B1P6.setTextIsSelectable(true);
                     hint10L1B1P6=optionsTask10.getHint();
                     rightAnswerTextTask10L1B1P6 = optionsTask10.getRightAnswer();
                     RightAnswer10L1B1P6.setText("Right answer: "+rightAnswerTextTask10L1B1P6);
-                    RightAnswer10L1B1P6.isTextSelectable();
+                    RightAnswer10L1B1P6.setTextIsSelectable(true);
                     pointsT10 = optionsTask10.getPoints();
 
                     spinnerT10L1B1P6Array[0]=optionsTask10.getOptionA();

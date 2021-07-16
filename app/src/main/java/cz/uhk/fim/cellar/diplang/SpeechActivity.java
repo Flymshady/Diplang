@@ -37,13 +37,6 @@ public class SpeechActivity extends AppCompatActivity {
         resources = context.getResources();
 
         String CurrentLang = getResources().getConfiguration().locale.getLanguage();
-        System.out.println(CurrentLang);
-        System.out.println(CurrentLang);
-        System.out.println(CurrentLang);
-        System.out.println(CurrentLang);
-        System.out.println(CurrentLang);
-        System.out.println(CurrentLang);
-
 
 
         mVoiceInputTv = (TextView) findViewById(R.id.voiceInput);
@@ -53,12 +46,6 @@ public class SpeechActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                System.out.println(CurrentLang);
-                System.out.println(CurrentLang);
-                System.out.println(CurrentLang);
-                System.out.println(CurrentLang);
-                System.out.println(CurrentLang);
-                System.out.println(CurrentLang);
                 startVoiceInput();
             }
         });
@@ -66,12 +53,25 @@ public class SpeechActivity extends AppCompatActivity {
 
 
     private void startVoiceInput() {
+
+          /*
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "en-US");
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_PREFERENCE, "en-US");
         intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Speech to text");
+
+       */
+
+        Intent rintent = new Intent( RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        rintent.putExtra(RecognizerIntent.EXTRA_LANGUAGE , Locale.US.toString());
+        rintent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_PREFERENCE, Locale.US.toString());
+        rintent.putExtra(RecognizerIntent.EXTRA_ONLY_RETURN_LANGUAGE_PREFERENCE , true );
+        rintent.putExtra( RecognizerIntent.EXTRA_LANGUAGE_MODEL , RecognizerIntent.LANGUAGE_MODEL_FREE_FORM );
+        rintent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Speech to text");
+
         try {
-            startActivityForResult(intent, REQ_CODE_SPEECH_INPUT);
+            startActivityForResult(rintent, REQ_CODE_SPEECH_INPUT);
         } catch (ActivityNotFoundException a) {
 
         }

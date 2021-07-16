@@ -41,6 +41,7 @@ public class B1HomeFragment extends Fragment implements View.OnClickListener {
     private ImageView starL1B1;
     FirebaseUser user;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private int lesson1Results;
     
     public B1HomeFragment() {
         // Required empty public constructor
@@ -115,7 +116,7 @@ public class B1HomeFragment extends Fragment implements View.OnClickListener {
     private void loadLessonsData() {
         DatabaseReference myRefLesson1 = database
                 .getReference("Lessons").child("Lesson1B1");
-        myRefLesson1.addListenerForSingleValueEvent(new ValueEventListener() {
+        myRefLesson1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
@@ -135,7 +136,7 @@ public class B1HomeFragment extends Fragment implements View.OnClickListener {
                 .getReference("UserTasks")
                 .child(user.getUid()).child("Lesson1B1")
                 .child("Results");
-        myRefUserLesson.addListenerForSingleValueEvent(new ValueEventListener() {
+        myRefUserLesson.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
@@ -150,6 +151,7 @@ public class B1HomeFragment extends Fragment implements View.OnClickListener {
                     }else{
                         starL1B1.setImageResource(R.drawable.star_purple_half);
                     }
+                    lesson1Results = resultLesson1.getDipsGained();
                 }
             }
             @Override
@@ -178,6 +180,7 @@ public class B1HomeFragment extends Fragment implements View.OnClickListener {
                             .putExtra("number", lesson1.getNumber())
                             .putExtra("name", lesson1.getName())
                             .putExtra("pointsTotal", lesson1.getPointsTotal())
+                            .putExtra("lessonResults", lesson1Results)
 
                     );
                 } finally {

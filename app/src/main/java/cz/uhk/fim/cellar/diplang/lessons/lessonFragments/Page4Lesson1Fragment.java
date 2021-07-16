@@ -273,10 +273,14 @@ public class Page4Lesson1Fragment extends Fragment implements View.OnClickListen
         A2T1L1P4 = ET2L1P4.getText().toString();
         A3T1L1P4 = ET3L1P4.getText().toString();
         A4T1L1P4 = ET4L1P4.getText().toString();
-        ET1L1P4.setInputType(InputType.TYPE_NULL);
-        ET2L1P4.setInputType(InputType.TYPE_NULL);
-        ET3L1P4.setInputType(InputType.TYPE_NULL);
-        ET4L1P4.setInputType(InputType.TYPE_NULL);
+        ET1L1P4.setFocusableInTouchMode(false);
+        ET2L1P4.setFocusableInTouchMode(false);
+        ET3L1P4.setFocusableInTouchMode(false);
+        ET4L1P4.setFocusableInTouchMode(false);
+        ET1L1P4.setFocusable(false);
+        ET2L1P4.setFocusable(false);
+        ET3L1P4.setFocusable(false);
+        ET4L1P4.setFocusable(false);
         utask1.setAnswer(A1T1L1P4);
         utask2.setAnswer(A2T1L1P4);
         utask3.setAnswer(A3T1L1P4);
