@@ -97,7 +97,7 @@ public class ProfileChartFragment extends Fragment {
     private void loadChart() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users")
                 .child(userID).child("Social").child("Friends");
-        reference.addValueEventListener(new ValueEventListener() {
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 layoutChart.removeAllViews();

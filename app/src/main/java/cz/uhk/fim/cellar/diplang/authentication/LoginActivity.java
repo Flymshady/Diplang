@@ -162,7 +162,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             String userID = user.getUid();
             reference = FirebaseDatabase.getInstance().getReference("Users");
 
-            reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+            reference.child(userID).child("UserParams").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     User userProfile = snapshot.getValue(User.class);

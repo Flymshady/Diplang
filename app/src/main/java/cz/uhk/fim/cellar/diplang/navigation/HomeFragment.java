@@ -170,7 +170,7 @@ public class HomeFragment extends Fragment {
                     dipsText="dip";
                 }
                 textPoints.setText(total + " "+dipsText);
-                User u = dataSnapshot.getValue(User.class);
+                User u = dataSnapshot.child("UserParams").getValue(User.class);
                 textName.setText(u.getName());
 
             }

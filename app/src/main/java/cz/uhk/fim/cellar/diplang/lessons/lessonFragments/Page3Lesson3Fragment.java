@@ -76,7 +76,7 @@ public class Page3Lesson3Fragment extends Fragment implements View.OnClickListen
 
     private void loadData() {
 
-        DatabaseReference myRefPage = database.getReference("Lessons").child("Lesson3").child("Page3");
+        DatabaseReference myRefPage = database.getReference("Lessons").child("Lesson3").child("Page3").child("PageParams");
         myRefPage.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -216,6 +216,7 @@ public class Page3Lesson3Fragment extends Fragment implements View.OnClickListen
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())
                 .child("Lesson3")
                 .child("Page2")
+                .child("PageParams")
                 .setValue(lessonPage);
         FirebaseDatabase.getInstance().getReference("UserTheory")
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())

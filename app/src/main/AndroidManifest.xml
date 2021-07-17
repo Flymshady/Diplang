@@ -14,7 +14,6 @@
         android:roundIcon="@mipmap/pixel_diplang"
         android:supportsRtl="true"
         android:theme="@style/Theme.Diplang">
-        <activity android:name=".TheoryLesson3Activity"></activity>
         <activity
             android:name=".lessons.Lesson2Activity"
             android:configChanges="keyboardHidden|orientation"
@@ -41,6 +40,10 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".TheoryLesson2Activity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".TheoryLesson3Activity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" />
         <activity
@@ -92,6 +95,11 @@
         </activity>
 
         <receiver android:name=".notifications.ReminderBroadcast" />
+        <!-- firebase performance -->
+        <meta-data
+            android:name="firebase_performance_logcat_enabled"
+            android:value="true" />
+
     </application>
 
 </manifest>

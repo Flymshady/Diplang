@@ -132,7 +132,7 @@ public class ProfileFriendsFragment extends Fragment {
     private void loadRequests() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users")
                                         .child(userID).child("Social").child("RequestsReceivedFrom");
-        reference.addValueEventListener(new ValueEventListener() {
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 for(DataSnapshot ds: snapshot.getChildren()){
@@ -248,7 +248,7 @@ public class ProfileFriendsFragment extends Fragment {
     private void searchUsers(String query) {
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
-        reference.addValueEventListener(new ValueEventListener() {
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 userList.clear();

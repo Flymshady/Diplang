@@ -63,7 +63,7 @@ public class AdapterUsers extends RecyclerView.Adapter<AdapterUsers.MyHolder>{
 
 
         DatabaseReference myRef = database
-                .getReference("Users").child(sender.getUid());
+                .getReference("Users").child(sender.getUid()).child("UserParams");
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

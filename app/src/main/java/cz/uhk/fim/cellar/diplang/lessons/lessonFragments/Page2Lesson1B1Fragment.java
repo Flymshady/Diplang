@@ -193,7 +193,7 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
     }
 
     private void loadData() {
-        DatabaseReference myRefPage = database.getReference("Lessons").child("Lesson1B1").child("Page2");
+        DatabaseReference myRefPage = database.getReference("Lessons").child("Lesson1B1").child("Page2").child("PageParams");
         myRefPage.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

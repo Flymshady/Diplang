@@ -98,7 +98,7 @@ public class TheoryLesson3Activity extends AppCompatActivity implements View.OnC
         myRefTask1.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                LessonPage lessonPage = snapshot.getValue(LessonPage.class);
+                LessonPage lessonPage = snapshot.child("PageParams").getValue(LessonPage.class);
                 textInfoP1L3.setText(lessonPage.getInfo());
 
                 for(DataSnapshot dataSnapshot:snapshot.child("TheoryTask1").getChildren()){
@@ -183,7 +183,7 @@ public class TheoryLesson3Activity extends AppCompatActivity implements View.OnC
         myRefTask2.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                LessonPage lessonPage = snapshot.getValue(LessonPage.class);
+                LessonPage lessonPage = snapshot.child("PageParams").getValue(LessonPage.class);
                 textInfoP2L3.setText(lessonPage.getInfo());
                 for(DataSnapshot dataSnapshot:snapshot.child("TheoryTask1").getChildren()){
                     TextView tw= new TextView(TheoryLesson3Activity.this);
@@ -263,7 +263,7 @@ public class TheoryLesson3Activity extends AppCompatActivity implements View.OnC
         myRefTask3.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                LessonPage lessonPage = snapshot.getValue(LessonPage.class);
+                LessonPage lessonPage = snapshot.child("PageParams").getValue(LessonPage.class);
                 textInfoP3L3.setText(lessonPage.getInfo());
                 for(DataSnapshot dataSnapshot:snapshot.child("TheoryTask1").getChildren()){
                     TextView tw= new TextView(TheoryLesson3Activity.this);

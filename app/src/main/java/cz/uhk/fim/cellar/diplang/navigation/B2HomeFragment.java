@@ -129,49 +129,21 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
 
     private void loadLessonsData() {
         DatabaseReference myRefLesson1 = database
-                .getReference("Lessons").child("Lesson1");
-        myRefLesson1.addValueEventListener(new ValueEventListener() {
+                .getReference("Lessons");
+        myRefLesson1.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
-                lesson1 = dataSnapshot.getValue(Lesson.class);
+                lesson1 = dataSnapshot.child("Lesson1").child("LessonParams").getValue(Lesson.class);
                 if(lesson1!=null){
                     textLessonName1.setText(lesson1.getName());
                 }
-            }
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-            }
-        });
-
-        DatabaseReference myRefLesson2 = database
-                .getReference("Lessons").child("Lesson2");
-        myRefLesson2.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                lesson2 = dataSnapshot.getValue(Lesson.class);
+                lesson2 = dataSnapshot.child("Lesson2").child("LessonParams").getValue(Lesson.class);
                 if(lesson2!=null){
                     textLessonName2.setText(lesson2.getName());
                 }
-            }
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-            }
-        });
-
-        DatabaseReference myRefLesson3 = database
-                .getReference("Lessons").child("Lesson3");
-        myRefLesson3.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                lesson3 = dataSnapshot.getValue(Lesson.class);
+                lesson3 = dataSnapshot.child("Lesson3").child("LessonParams").getValue(Lesson.class);
                 if(lesson3!=null){
                     textLessonName3.setText(lesson3.getName());
                 }
@@ -184,14 +156,14 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
 
         DatabaseReference myRefUserLesson = database
                 .getReference("UserTasks")
-                .child(user.getUid()).child("Lesson1")
-                .child("Results");
-        myRefUserLesson.addValueEventListener(new ValueEventListener() {
+                .child(user.getUid());
+        myRefUserLesson.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
-                resultLesson1 = dataSnapshot.getValue(Lesson.class);
+                resultLesson1 = dataSnapshot.child("Lesson1")
+                        .child("Results").getValue(Lesson.class);
                 if(resultLesson1!=null){
                     textLessonPoints1.setText(Integer.toString(resultLesson1.getDipsGained())+" / " + resultLesson1.getPointsTotal());
                     if(resultLesson1.getDipsGained()==resultLesson1.getPointsTotal()){
@@ -203,23 +175,9 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
                     }
                     lesson1Results=(resultLesson1.getDipsGained());
                 }
-            }
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-            }
-        });
 
-        DatabaseReference myRefUserLesson2 = database
-                .getReference("UserTasks")
-                .child(user.getUid()).child("Lesson2")
-                .child("Results");
-        myRefUserLesson2.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                resultLesson2 = dataSnapshot.getValue(Lesson.class);
+                resultLesson2 = dataSnapshot.child("Lesson2")
+                        .child("Results").getValue(Lesson.class);
                 if(resultLesson2!=null){
                     textLessonPoints2.setText(Integer.toString(resultLesson2.getDipsGained())+" / " + resultLesson2.getPointsTotal());
                     if(resultLesson2.getDipsGained()==resultLesson2.getPointsTotal()){
@@ -231,23 +189,9 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
                     }
                     lesson2Results=(resultLesson2.getDipsGained());
                 }
-            }
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-            }
-        });
 
-        DatabaseReference myRefUserLesson3 = database
-                .getReference("UserTasks")
-                .child(user.getUid()).child("Lesson3")
-                .child("Results");
-        myRefUserLesson3.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                resultLesson3= dataSnapshot.getValue(Lesson.class);
+                resultLesson3= dataSnapshot.child("Lesson3")
+                        .child("Results").getValue(Lesson.class);
                 if(resultLesson3!=null){
                     textLessonPoints3.setText(Integer.toString(resultLesson3.getDipsGained())+" / " + resultLesson3.getPointsTotal());
                     if(resultLesson3.getDipsGained()==resultLesson3.getPointsTotal()){

@@ -77,6 +77,7 @@ public class B1HomeFragment extends Fragment implements View.OnClickListener {
         lesson1 = new Lesson();
         resultLesson1 = new Lesson();
 
+
         
         textLessonName1B1 = (TextView) v.findViewById(R.id.textLessonName1B1);
         textLessonName2B1 = (TextView) v.findViewById(R.id.textLessonName2B1);
@@ -115,7 +116,7 @@ public class B1HomeFragment extends Fragment implements View.OnClickListener {
 
     private void loadLessonsData() {
         DatabaseReference myRefLesson1 = database
-                .getReference("Lessons").child("Lesson1B1");
+                .getReference("Lessons").child("Lesson1B1").child("LessonParams");
         myRefLesson1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

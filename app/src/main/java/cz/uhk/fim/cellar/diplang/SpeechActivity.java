@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -37,6 +38,18 @@ public class SpeechActivity extends AppCompatActivity {
         resources = context.getResources();
 
         String CurrentLang = getResources().getConfiguration().locale.getLanguage();
+
+        Button crashButton = new Button(this);
+        crashButton.setText("Crash!");
+        crashButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                throw new RuntimeException("Test Crash"); // Force a crash
+            }
+        });
+
+        addContentView(crashButton, new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT));
 
 
         mVoiceInputTv = (TextView) findViewById(R.id.voiceInput);
