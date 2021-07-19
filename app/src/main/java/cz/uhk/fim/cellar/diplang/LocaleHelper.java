@@ -14,7 +14,13 @@ public class LocaleHelper {
 
     private static final String SELECTED_LANGUAGE = "Locale.Helper.Selected.Language";
 
-    // the method is used to set the language at runtime
+
+    /**
+     * Nastaví zvolený jazyk
+     * @param context
+     * @param language zvolený jazyk
+     * @return
+     */
     public static Context setLocale(Context context, String language) {
         persist(context, language);
 
@@ -26,6 +32,11 @@ public class LocaleHelper {
         return updateResourcesLegacy(context, language);
     }
 
+    /**
+     * Uloží zvolený jazyk do Shared Preferences
+     * @param context
+     * @param language jazyk
+     */
     private static void persist(Context context, String language) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = preferences.edit();
@@ -33,8 +44,12 @@ public class LocaleHelper {
         editor.apply();
     }
 
-    // the method is used update the language of application by creating
-    // object of inbuilt Locale class and passing language argument to it
+    /**
+     * Upraví jazyk aplikace vytvořením objektu třídy Locale a vložením argumentu jazyku do ní
+     * @param context
+     * @param language jazyk
+     * @return
+     */
     @TargetApi(Build.VERSION_CODES.N)
     private static Context updateResources(Context context, String language) {
         Locale locale = new Locale(language);
@@ -47,8 +62,13 @@ public class LocaleHelper {
         return context.createConfigurationContext(configuration);
     }
 
-
-    @SuppressWarnings("deprecation")
+    /**
+     * Deprecation metoda
+     * Upraví jazyk aplikace vytvořením objektu třídy Locale a vložením argumentu jazyku do ní
+     * @param context
+     * @param language jazyk
+     * @return
+     */
     private static Context updateResourcesLegacy(Context context, String language) {
         Locale locale = new Locale(language);
         Locale.setDefault(locale);

@@ -1,5 +1,8 @@
 package cz.uhk.fim.cellar.diplang.classes;
 
+/**
+ * Třída reprezentující odpověď uživatele v úloze
+ */
 public class UserTask {
 
     private String answer;

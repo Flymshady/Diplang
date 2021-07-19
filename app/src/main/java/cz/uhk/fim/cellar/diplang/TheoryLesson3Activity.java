@@ -1,23 +1,17 @@
 package cz.uhk.fim.cellar.diplang;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -26,14 +20,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import org.jetbrains.annotations.NotNull;
-
-import cz.uhk.fim.cellar.diplang.R;
 import cz.uhk.fim.cellar.diplang.classes.LessonPage;
 import cz.uhk.fim.cellar.diplang.classes.UserTheory;
-import cz.uhk.fim.cellar.diplang.navigation.NavigationActivity;
 
+/**
+ * Aktivita pro teoretické materiály z třetí lekce
+ */
 public class TheoryLesson3Activity extends AppCompatActivity implements View.OnClickListener {
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -91,6 +84,9 @@ public class TheoryLesson3Activity extends AppCompatActivity implements View.OnC
         loadData();
     }
 
+    /**
+     * Načte data teoretických materiálů třetí lekce a uživatelovy poznámky z databáze a aktualizuje layout
+     */
     private void loadData() {
 
         DatabaseReference myRefTask1 = database.getReference("UserTheory").child(user.getUid()).child("Lesson3")
@@ -317,26 +313,30 @@ public class TheoryLesson3Activity extends AppCompatActivity implements View.OnC
         });
     }
 
+    /**
+     * Nastavení buttonu
+     * @param view
+     */
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case (R.id.btnSaveTheory1P1L3):
-                saveTheory1L1P3();
+                saveTheory1L3P1();
                 break;
             case (R.id.btnSaveTheory2P1L3):
-                saveTheory2L1P3();
+                saveTheory2L3P1();
                 break;
             case (R.id.btnSaveTheory3P1L3):
-                saveTheory3L1P3();
+                saveTheory3L3P1();
                 break;
             case (R.id.btnSaveTheory1P2L3):
-                saveTheory1L2P3();
+                saveTheory1L3P2();
                 break;
             case (R.id.btnSaveTheory2P2L3):
-                saveTheory2L2P3();
+                saveTheory2L3P2();
                 break;
             case (R.id.btnSaveTheory3P2L3):
-                saveTheory3L2P3();
+                saveTheory3L3P2();
                 break;
             case (R.id.btnSaveTheory1P3L3):
                 saveTheory1L3P3();
@@ -350,7 +350,10 @@ public class TheoryLesson3Activity extends AppCompatActivity implements View.OnC
         }
     }
 
-    private void saveTheory2L1P3() {
+    /**
+     * Uložení uživatelových poznámek ke druhé části na první stránce ze třetí lekce
+     */
+    private void saveTheory2L3P1() {
         UserTheory userTheory = new UserTheory(theoryUser2P1L3.getText().toString());
         FirebaseDatabase.getInstance().getReference("UserTheory")
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())
@@ -361,7 +364,10 @@ public class TheoryLesson3Activity extends AppCompatActivity implements View.OnC
         Toast.makeText(TheoryLesson3Activity.this, "Uloženo", Toast.LENGTH_LONG).show();
     }
 
-    private void saveTheory1L1P3() {
+    /**
+     * Uložení uživatelových poznámek k první části na první stránce ze třetí lekce
+     */
+    private void saveTheory1L3P1() {
         UserTheory userTheory = new UserTheory(theoryUser1P1L3.getText().toString());
         FirebaseDatabase.getInstance().getReference("UserTheory")
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())
@@ -372,7 +378,10 @@ public class TheoryLesson3Activity extends AppCompatActivity implements View.OnC
         Toast.makeText(TheoryLesson3Activity.this, "Uloženo", Toast.LENGTH_LONG).show();
     }
 
-    private void saveTheory3L1P3() {
+    /**
+     * Uložení uživatelových poznámek ke třetí části na první stránce ze třetí lekce
+     */
+    private void saveTheory3L3P1() {
         UserTheory userTheory = new UserTheory(theoryUser3P1L3.getText().toString());
         FirebaseDatabase.getInstance().getReference("UserTheory")
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())
@@ -383,7 +392,10 @@ public class TheoryLesson3Activity extends AppCompatActivity implements View.OnC
         Toast.makeText(TheoryLesson3Activity.this, "Uloženo", Toast.LENGTH_LONG).show();
     }
 
-    private void saveTheory1L2P3() {
+    /**
+     * Uložení uživatelových poznámek k první části na druhé stránce ze třetí lekce
+     */
+    private void saveTheory1L3P2() {
         UserTheory userTheory = new UserTheory(theoryUser1P2L3.getText().toString());
         FirebaseDatabase.getInstance().getReference("UserTheory")
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())
@@ -394,7 +406,10 @@ public class TheoryLesson3Activity extends AppCompatActivity implements View.OnC
         Toast.makeText(TheoryLesson3Activity.this, "Uloženo", Toast.LENGTH_LONG).show();
     }
 
-    private void saveTheory2L2P3() {
+    /**
+     * Uložení uživatelových poznámek ke druhé části na druhé stránce ze třetí lekce
+     */
+    private void saveTheory2L3P2() {
         UserTheory userTheory = new UserTheory(theoryUser2P2L3.getText().toString());
         FirebaseDatabase.getInstance().getReference("UserTheory")
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())
@@ -404,7 +419,11 @@ public class TheoryLesson3Activity extends AppCompatActivity implements View.OnC
                 .setValue(userTheory);
         Toast.makeText(TheoryLesson3Activity.this, "Uloženo", Toast.LENGTH_LONG).show();
     }
-    private void saveTheory3L2P3() {
+
+    /**
+     * Uložení uživatelových poznámek ke třetí části na druhé stránce ze třetí lekce
+     */
+    private void saveTheory3L3P2() {
         UserTheory userTheory = new UserTheory(theoryUser3P2L3.getText().toString());
         FirebaseDatabase.getInstance().getReference("UserTheory")
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())
@@ -414,6 +433,9 @@ public class TheoryLesson3Activity extends AppCompatActivity implements View.OnC
                 .setValue(userTheory);
         Toast.makeText(TheoryLesson3Activity.this, "Uloženo", Toast.LENGTH_LONG).show();
     }
+    /**
+     * Uložení uživatelových poznámek k první části na třetí stránce ze třetí lekce
+     */
     private void saveTheory1L3P3() {
         UserTheory userTheory = new UserTheory(theoryUser1P3L3.getText().toString());
         FirebaseDatabase.getInstance().getReference("UserTheory")
@@ -424,6 +446,10 @@ public class TheoryLesson3Activity extends AppCompatActivity implements View.OnC
                 .setValue(userTheory);
         Toast.makeText(TheoryLesson3Activity.this, "Uloženo", Toast.LENGTH_LONG).show();
     }
+
+    /**
+     * Uložení uživatelových poznámek ke druhé části na třetí stránce ze třetí lekce
+     */
     private void saveTheory2L3P3() {
         UserTheory userTheory = new UserTheory(theoryUser2P3L3.getText().toString());
         FirebaseDatabase.getInstance().getReference("UserTheory")

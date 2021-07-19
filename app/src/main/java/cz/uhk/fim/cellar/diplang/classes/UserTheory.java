@@ -1,5 +1,8 @@
 package cz.uhk.fim.cellar.diplang.classes;
 
+/**
+ * Třída reprezentující uživatelovu teoretickou poznámku
+ */
 public class UserTheory {
     private String text;
 

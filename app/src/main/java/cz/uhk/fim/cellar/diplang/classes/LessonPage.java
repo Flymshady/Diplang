@@ -1,5 +1,8 @@
 package cz.uhk.fim.cellar.diplang.classes;
 
+/**
+ * Třída reprezentující stránku lekce - cvičení
+ */
 public class LessonPage {
 
     private int pagePoints;

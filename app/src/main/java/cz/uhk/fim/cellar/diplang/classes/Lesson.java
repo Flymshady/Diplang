@@ -1,5 +1,8 @@
 package cz.uhk.fim.cellar.diplang.classes;
 
+/**
+ * Třída reprezentující lekci
+ */
 public class Lesson {
 
     private int pointsTotal;
@@ -7,7 +10,7 @@ public class Lesson {
     private String level;
     private int dipsGained;
     private int number;
-    private String created; //LocalDateTime.now();
+    private String created;
 
     public Lesson(int pointsTotal, String name, String level, int dipsGained, int number, String created) {
         this.pointsTotal = pointsTotal;

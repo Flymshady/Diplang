@@ -4,8 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.FragmentManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
@@ -23,11 +21,8 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
@@ -40,17 +35,16 @@ import com.google.mlkit.nl.translate.TranslateRemoteModel;
 import com.google.mlkit.nl.translate.Translation;
 import com.google.mlkit.nl.translate.Translator;
 import com.google.mlkit.nl.translate.TranslatorOptions;
-
 import org.jetbrains.annotations.NotNull;
-
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Locale;
-
 import cz.uhk.fim.cellar.diplang.classes.Phrase;
-import cz.uhk.fim.cellar.diplang.navigation.NavigationActivity;
 
+/**
+ * Aktivita pro překladač
+ */
 public class TranslatorActivity extends AppCompatActivity {
 
     private Spinner fromSpinner, toSpinner;
@@ -108,7 +102,7 @@ public class TranslatorActivity extends AppCompatActivity {
         
 
         /**
-         * Select the language from which to translate
+         * Vybrání jazyka ze kterého má být překlad
          */
         fromSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -127,7 +121,7 @@ public class TranslatorActivity extends AppCompatActivity {
         fromSpinner.setAdapter(fromAdapter);
 
         /**
-         * Select the language to be translated into
+         * Vabrání jazyka do kterého má být překlad
          */
         toSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -140,8 +134,6 @@ public class TranslatorActivity extends AppCompatActivity {
 
             }
         });
-
-
 
         ArrayAdapter toAdapter = new ArrayAdapter(this, R.layout.spinner_item, toLanguages);
         toAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -255,7 +247,7 @@ public class TranslatorActivity extends AppCompatActivity {
         });
 
         /**
-         * Share String (text) for the translation (from English to Czech only)
+         * Sdílení textu pro překlad z angličtiny do češtiny
          */
         if(Intent.ACTION_SEND.equals(action) && type != null){
             String sharedText = intent.getStringExtra(Intent.EXTRA_TEXT);
@@ -274,12 +266,11 @@ public class TranslatorActivity extends AppCompatActivity {
         }
 
         /**
-         * Better scrollbar visibility inside the editable text field
+         * Lepší viditelnost posuvníku v editovaném textovém poli
          */
         sourceEditText.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-
                 if (view.getId() == R.id.idEditSource) {
                     view.getParent().requestDisallowInterceptTouchEvent(true);
                     switch (motionEvent.getAction()&MotionEvent.ACTION_MASK){
@@ -292,10 +283,6 @@ public class TranslatorActivity extends AppCompatActivity {
             }
         });
 
-        /**
-         * Save the english phrase and its translation to the DB
-         * and use it in the PhrasesActivity
-         */
         btnSavePhrase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -305,6 +292,10 @@ public class TranslatorActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Uloží anglickou frázi a její překlad do databáze
+     * a ta tak bude použitelná prostřednictvím PhrasesActivity
+     */
     private void savePhrase() {
         String englishPhrase="";
         String czechPhrase="";
@@ -342,6 +333,10 @@ public class TranslatorActivity extends AppCompatActivity {
         Toast.makeText(TranslatorActivity.this, "Fráze byla uložena.", Toast.LENGTH_LONG).show();
     }
 
+    /**
+     * Text to speech metoda
+     * @param type zdroj textu, který má být přečten, kde 1 = editovaný text; 2 = přeložený text
+     */
     private void speak(int type) {
         String text="";
         if(type==1){
@@ -368,6 +363,12 @@ public class TranslatorActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
+    /**
+     * Metoda pro zpracování mluveného slova do textu
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -379,6 +380,12 @@ public class TranslatorActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Ověří dostupnost modelu pro překlad a provede překlad
+     * @param fromLanguageCode kód jazyka ze kterého má být překlad
+     * @param toLanguageCode kód jazyka do kterého má být překlad
+     * @param source
+     */
     private void translateText(String fromLanguageCode, String toLanguageCode, String source){
         translatedTextView.setText("Stahuji data...");
         TranslatorOptions options = new TranslatorOptions.Builder()
@@ -422,6 +429,11 @@ public class TranslatorActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Určení kódu jazyku pro překlad
+     * @param language jazyk
+     * @return
+     */
     public String getLanguageCode(String language) {
         String languageCode = "";
         switch (language){

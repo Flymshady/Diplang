@@ -1,5 +1,8 @@
 package cz.uhk.fim.cellar.diplang.classes;
 
+/**
+ * Třída reprezentující teoretickou úlohu
+ */
 public class TheoryTask {
 
     private String info;

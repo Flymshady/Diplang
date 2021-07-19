@@ -1,5 +1,8 @@
 package cz.uhk.fim.cellar.diplang.classes;
 
+/**
+ * Třída reprezentující úlohu cvičení
+ */
 public class PageTask {
 
     private String text;

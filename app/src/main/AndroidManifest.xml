@@ -76,7 +76,7 @@
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".authentication.ForgottenPassword"
+            android:name=".authentication.ForgottenPasswordActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" />
         <activity

@@ -1,5 +1,8 @@
 package cz.uhk.fim.cellar.diplang.classes;
 
+/**
+ * Třída reprezentující žádost o přátelství
+ */
 public class FriendRequest {
     private String created;
     private String senderEmail;

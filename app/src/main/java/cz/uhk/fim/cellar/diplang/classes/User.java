@@ -1,5 +1,8 @@
 package cz.uhk.fim.cellar.diplang.classes;
 
+/**
+ * Třída reprezentující uživatele
+ */
 public class User {
 
     public String name, email, uid;

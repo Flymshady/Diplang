@@ -2,7 +2,6 @@ package cz.uhk.fim.cellar.diplang.authentication;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
@@ -12,22 +11,18 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-
 import cz.uhk.fim.cellar.diplang.navigation.MainActivity;
 import cz.uhk.fim.cellar.diplang.R;
 import cz.uhk.fim.cellar.diplang.classes.User;
 
 /**
- * Registration activity to register the new user via email, password and name
- * to the Firebase Authenticator and save the data to the Firebase RealTime Database
+ * Aktivita pro registraci nového uživatele prostřednictvím emailu, hesla a celého jména
  */
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -61,6 +56,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     }
 
+    /**
+     * Nastavení button
+     * @param v View
+     */
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -73,6 +72,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
+    /**
+     * Aktviace tlačítka pro registraci
+     * Provede se validace zadaných údajů a následně je odeslán požadavek na registraci uživatele
+     * a uložení jeho atributů do RealTime databáze
+     */
     private void buttonRegister() {
         final String email = editTextEmail.getText().toString().trim();
         final String password = editTextPassword.getText().toString().trim();

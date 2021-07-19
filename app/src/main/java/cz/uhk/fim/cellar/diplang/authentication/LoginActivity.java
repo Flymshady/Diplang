@@ -2,7 +2,6 @@ package cz.uhk.fim.cellar.diplang.authentication;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,7 +12,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -24,12 +22,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import cz.uhk.fim.cellar.diplang.R;
 import cz.uhk.fim.cellar.diplang.SplashScreen;
 import cz.uhk.fim.cellar.diplang.classes.User;
 
-
+/**
+ * Aktivita pro přihlášení uživatele
+ */
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText email, password;
@@ -66,7 +65,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if (user != null) {
             // User is signed in
             // go to main page
-            saveNameOfUser();
             try {
                 startActivity(new Intent(LoginActivity.this, SplashScreen.class));
             } finally {
@@ -75,7 +73,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-
+    /**
+     * Aktivace button
+     * @param v View
+     */
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -86,12 +87,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 userLogin();
                 break;
             case R.id.forgotten:
-                startActivity(new Intent(this, ForgottenPassword.class));
+                startActivity(new Intent(this, ForgottenPasswordActivity.class));
                 break;
 
         }
     }
 
+    /**
+     * Validace emailu a hesla, zaslání požadavku o přihlášení a přesměrování uživatele na SplashScreen
+     */
     private void userLogin() {
         String emailString = email.getText().toString().trim();
         String passwordString = password.getText().toString().trim();
@@ -139,8 +143,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     */
                     //přesměrování na navigační stránku
 
-                    saveNameOfUser();
-
                     try {
                         startActivity(new Intent(LoginActivity.this, SplashScreen.class));
                     } finally {
@@ -154,34 +156,5 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 }
             }
         });
-    }
-
-    private void saveNameOfUser() {
-        user = FirebaseAuth.getInstance().getCurrentUser();
-        if(user!=null) {
-            String userID = user.getUid();
-            reference = FirebaseDatabase.getInstance().getReference("Users");
-
-            reference.child(userID).child("UserParams").addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    User userProfile = snapshot.getValue(User.class);
-                    if(userProfile != null){
-                        String name = userProfile.name;
-                        sp = getSharedPreferences("MyUser", Context.MODE_PRIVATE);
-                        SharedPreferences.Editor editor = sp.edit();
-                        editor.putString("name", name);
-                        editor.commit();
-                    }
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(LoginActivity.this, "Něco se pokazilo.", Toast.LENGTH_LONG).show();
-                }
-            });
-
-
-        }
     }
 }
