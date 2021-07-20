@@ -24,8 +24,8 @@ import cz.uhk.fim.cellar.diplang.navigation.NavigationActivity;
 import cz.uhk.fim.cellar.diplang.R;
 
 /**
- * The NotificationSettingsActivity is class for customizable notifications
- *
+ * @author Štěpán Cellar - FIM UHK
+ * Aktivita pro nastavení upozornění
  */
 public class NotificationSettingsActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -35,31 +35,23 @@ public class NotificationSettingsActivity extends AppCompatActivity implements V
     private boolean timePicked;
     private SharedPreferences sp;
 
-    /**
-     * Load all components and set in/visibility of the components based on the switch state from
-     * the sharedPreferences variable "switcher"
-     * @param savedInstanceState
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification_settings);
 
         sp = getSharedPreferences("MyNotifications", Context.MODE_PRIVATE);
-
         buttonSaveNotification = (Button) findViewById(R.id.buttonSaveNotification);
         buttonSaveNotification.setOnClickListener(this);
-
         buttonBackFromNotifications = (Button) findViewById(R.id.buttonBackFromNotifications);
         buttonBackFromNotifications.setOnClickListener(this);
-
-
         buttonTimePicker = (Button) findViewById(R.id.buttonTimePicker);
-
         switchNotifications = (Switch) findViewById(R.id.switchNotifications);
-
         switchNotifications.setChecked(sp.getBoolean("switcher", true));
 
+        /**
+         * Nastavení ne/viditelnosti pro nastavení času upozornění
+         */
         if(sp.getBoolean("switcher", true)) {
             buttonTimePicker.setVisibility(View.VISIBLE);
             buttonTimePicker.setText(String.format(Locale.getDefault(), "%02d:%02d", sp.getInt("hour", 0), sp.getInt("minute",0)));
@@ -68,7 +60,6 @@ public class NotificationSettingsActivity extends AppCompatActivity implements V
             buttonTimePicker.setVisibility(View.INVISIBLE);
             buttonSaveNotification.setVisibility(View.INVISIBLE);
         }
-
 
         switchNotifications.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -93,10 +84,9 @@ public class NotificationSettingsActivity extends AppCompatActivity implements V
     }
 
     /**
-     * Save the custom notification and repeat it at a specific time every day
+     * Nastaví vlastní upozornění a jeho opakování ve zvolený čas každý den
      */
     private void saveNotification() {
-
         if(sp.getBoolean("timePicked",true)) {
             AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
             Intent intent = new Intent(NotificationSettingsActivity.this, ReminderBroadcast.class);
@@ -118,11 +108,10 @@ public class NotificationSettingsActivity extends AppCompatActivity implements V
         }else{
             Toast.makeText(this, "Vyberte čas!", Toast.LENGTH_LONG).show();
         }
-
     }
 
     /**
-     * Cancel all notifications
+     * Zruší notifikace
      */
     private void turnOffNotification(){
         Toast.makeText(this, "Upozornění je vypnuto!", Toast.LENGTH_LONG).show();
@@ -132,14 +121,23 @@ public class NotificationSettingsActivity extends AppCompatActivity implements V
         alarmManager.cancel(pendingIntent);
     }
 
-
+    /**
+     * Nastavení buttonu
+     * @param view
+     */
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.buttonSaveNotification:
+                /**
+                 * Zavolá metodu pro uložení notifikací
+                 */
                 saveNotification();
                 break;
             case R.id.buttonBackFromNotifications:
+                /**
+                 * Ukončení aktivity, přechod na NavigationAcitivity
+                 */
                 try {
                     startActivity(new Intent(NotificationSettingsActivity.this, NavigationActivity.class));
                 } finally {
@@ -150,8 +148,8 @@ public class NotificationSettingsActivity extends AppCompatActivity implements V
     }
 
     /**
-     * Pop up the TimePickerDialog for specifying the time for repeated notifications and save it
-     * to the shared preferences
+     * Zobrazí TimePickerDialog pro nastavení času pro opakovné notifikace
+     * a uloží ho do shared preferences
      * @param view
      */
     public void popTimePicker(View view) {
@@ -170,12 +168,9 @@ public class NotificationSettingsActivity extends AppCompatActivity implements V
 
             }
         };
-
         int style = AlertDialog.THEME_HOLO_DARK;
-
         TimePickerDialog timePickerDialog = new TimePickerDialog(this, style, onTimeSetListener, hour, minute, true);
         timePickerDialog.setTitle("Vyberte čas");
         timePickerDialog.show();
-
     }
 }

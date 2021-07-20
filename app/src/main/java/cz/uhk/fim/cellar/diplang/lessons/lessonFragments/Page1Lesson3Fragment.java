@@ -9,21 +9,21 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import org.jetbrains.annotations.NotNull;
-
 import cz.uhk.fim.cellar.diplang.R;
 
+/**
+ * @author Štěpán Cellar - FIM UHK
+ * Fragment první stránky, třetí lekce, úrovně B2
+ */
 public class Page1Lesson3Fragment extends Fragment implements View.OnClickListener {
 
     private Button btnNextToP2L3;
@@ -34,7 +34,6 @@ public class Page1Lesson3Fragment extends Fragment implements View.OnClickListen
     public Page1Lesson3Fragment() {
         // Required empty public constructor
     }
-
 
     public static Page1Lesson3Fragment newInstance(String param1, String param2) {
         Page1Lesson3Fragment fragment = new Page1Lesson3Fragment();
@@ -65,9 +64,13 @@ public class Page1Lesson3Fragment extends Fragment implements View.OnClickListen
 
         return v;
     }
-
+    /**
+     * Načtení dat
+     */
     private void loadData() {
-
+        /**
+         * Načtení textové úlohy a její přidání do layoutu
+         */
         DatabaseReference myRefTask1 = database.getReference("Lessons").child("Lesson3").child("Page1").child("TextTask1");
         myRefTask1.addValueEventListener(new ValueEventListener() {
             @Override
@@ -76,13 +79,11 @@ public class Page1Lesson3Fragment extends Fragment implements View.OnClickListen
                     String key = dataSnapshot.getKey();
                     String value = dataSnapshot.getValue().toString();
                     value = value.replace(";", "\n");
-
                     TextView textView = new TextView(getActivity());
                     LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
                             LinearLayout.LayoutParams.WRAP_CONTENT);
                     lp.gravity = Gravity.CENTER;
                     lp.setMargins(0, 20, 0, 0);
-
                     textView.setText(value);
                     textView.setTextSize(20);
                     textView.setTextIsSelectable(true);
@@ -90,7 +91,6 @@ public class Page1Lesson3Fragment extends Fragment implements View.OnClickListen
                     textView.setLayoutParams(lp);
 
                     linearLayout.addView(textView);
-
                 }
             }
 
@@ -105,6 +105,9 @@ public class Page1Lesson3Fragment extends Fragment implements View.OnClickListen
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btnNextToP2L3:
+                /**
+                 * Přechod na další stránku
+                 */
                 viewPager2.setCurrentItem(viewPager2.getCurrentItem() + 1);
                 break;
 

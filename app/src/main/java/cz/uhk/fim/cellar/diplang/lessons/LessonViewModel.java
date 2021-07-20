@@ -4,10 +4,12 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.google.firebase.database.FirebaseDatabase;
-
+/**
+ * @author Štěpán Cellar - FIM UHK
+ * ViewModel pro uchování dat o lekci a jejich provázání s příslušnými fragmenty lekce
+ */
 public class LessonViewModel extends ViewModel {
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
+
 
     private final MutableLiveData<Integer> dipPoints = new MutableLiveData<Integer>();
     private final MutableLiveData<Integer> pointsTotal = new MutableLiveData<Integer>();

@@ -5,20 +5,17 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager2.widget.ViewPager2;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,15 +25,16 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import org.jetbrains.annotations.NotNull;
-
 import cz.uhk.fim.cellar.diplang.R;
 import cz.uhk.fim.cellar.diplang.classes.User;
 import cz.uhk.fim.cellar.diplang.notifications.NotificationSettingsActivity;
 import cz.uhk.fim.cellar.diplang.users.ProfileViewPagerAdapter;
 
-
+/**
+ * @author Štěpán Cellar - FIM UHK
+ * Fragment NavigationActivity pro profilovou sekci
+ */
 public class ProfileFragment extends Fragment implements View.OnClickListener {
 
     private Button buttonLogout, buttonSetNotification;
@@ -82,17 +80,13 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
              topDrawable = AppCompatResources.getDrawable(mContext , R.drawable.ic_baseline_notifications_off_24);
         }
         buttonSetNotification = (Button) v.findViewById(R.id.buttonSetNotification);
-
         buttonSetNotification.setCompoundDrawablesWithIntrinsicBounds(null, topDrawable, null, null);
         buttonSetNotification.setOnClickListener(this);
-
         textNameFill = (TextView) v.findViewById(R.id.textNameFill);
         textEmailFill = (TextView) v.findViewById(R.id.textEmailFill);
         textPointsFill = (TextView) v.findViewById(R.id.textPointsFill);
-
         tabs = (TabLayout) v.findViewById(R.id.tabsProfile);
         viewPagerProfile = (ViewPager2) v.findViewById(R.id.viewPagerProfile);
-
 
         ProfileViewPagerAdapter adapter = new ProfileViewPagerAdapter(getActivity());
         viewPagerProfile.setAdapter(adapter);
@@ -112,30 +106,15 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         userID = user.getUid();
-        /*
-        reference = db.collection("users").document(userID);
-        Task<DocumentSnapshot> documentSnapshot = reference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull @NotNull Task<DocumentSnapshot> task) {
-                User userProfile = task.getResult().toObject(User.class);
-                if(userProfile != null){
-                    String name = userProfile.name;
-                    textNameFill.setText(name);
-                }else{
-                    Toast.makeText(getActivity(), "Něco se pokazilo.", Toast.LENGTH_LONG).show();
-
-                }
-            }
-        });
-*/
 
         loadData();
 
         return v;
-
-
     }
 
+    /**
+     * Načtení dat z databáze
+     */
     private void loadData() {
         DatabaseReference myRef = database
                 .getReference("Users").child(user.getUid());
@@ -143,12 +122,18 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User userProfile = snapshot.child("UserParams").getValue(User.class);
+                /**
+                 * Načtení parametrů o uživatele
+                 */
                 if(userProfile != null){
                     String name = userProfile.name;
                     String email = userProfile.getEmail();
                     textNameFill.setText(name);
                     textEmailFill.setText(email);
                 }
+                /**
+                 * Načtení součtu bodů z lekcí uživatele
+                 */
                 int total=0;
                 String dipsText="dips";
                 for(DataSnapshot datasnapshot:snapshot.child("Points").getChildren()) {
@@ -169,27 +154,32 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         });
     }
 
-
+    /**
+     * Nastavení buttonu
+     * @param view View
+     */
     @Override
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.buttonLogout:
+                /**
+                 * Odhlášení a přesměrování
+                 */
                 FirebaseAuth.getInstance().signOut();
                 try {
                     startActivity(new Intent(getActivity(), MainActivity.class));
                 } finally {
                     getActivity().finish();
                 }
-
-
                 break;
             case R.id.buttonSetNotification:
-
+                /**
+                 * Přechod na aktivitu pro nastavení upozornění
+                 */
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.addToBackStack(null);
                 transaction.commit();
                 startActivity(new Intent(getActivity(), NotificationSettingsActivity.class));
-
                 break;
 
         }

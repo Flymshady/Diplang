@@ -15,6 +15,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import cz.uhk.fim.cellar.diplang.R;
 
 /**
+ * @author Štěpán Cellar - FIM UHK
  * Aktivita pro reset hesla uživatele
  */
 public class ForgottenPasswordActivity extends AppCompatActivity {

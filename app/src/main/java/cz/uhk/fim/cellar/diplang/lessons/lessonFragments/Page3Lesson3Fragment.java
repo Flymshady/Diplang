@@ -10,24 +10,24 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import org.jetbrains.annotations.NotNull;
-
 import cz.uhk.fim.cellar.diplang.R;
 import cz.uhk.fim.cellar.diplang.classes.LessonPage;
 import cz.uhk.fim.cellar.diplang.classes.TheoryTask;
 
+/**
+ * @author Štěpán Cellar - FIM UHK
+ * Fragment třetí stránky, třetí lekce, úrovně B2
+ */
 public class Page3Lesson3Fragment extends Fragment implements View.OnClickListener {
 
     private Button btnNextToP4L3;

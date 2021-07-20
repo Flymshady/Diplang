@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import cz.uhk.fim.cellar.diplang.classes.UserTheory;
 
 /**
+ * @author Štěpán Cellar - FIM UHK
  * Aktivita pro teoretické materiály druhé lekce
  */
 public class TheoryLesson2Activity extends AppCompatActivity implements View.OnClickListener {
@@ -58,6 +59,9 @@ public class TheoryLesson2Activity extends AppCompatActivity implements View.OnC
         myRefTask1.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                /**
+                 * Načtení uložené teorie
+                 */
                 for(DataSnapshot dataSnapshot:snapshot.child("TheoryTask1").getChildren()){
                     TextView tw= new TextView(TheoryLesson2Activity.this);
 
@@ -79,6 +83,9 @@ public class TheoryLesson2Activity extends AppCompatActivity implements View.OnC
                     theoryTask1P1L2.addView(tw);
                 }
 
+                /**
+                 * Načtení poznámek k teorii
+                 */
                 for(DataSnapshot dataSnapshot:snapshot.child("TheoryTaskUser1").getChildren()){
                     if(dataSnapshot!=null) {
                         String text = dataSnapshot.getValue().toString();

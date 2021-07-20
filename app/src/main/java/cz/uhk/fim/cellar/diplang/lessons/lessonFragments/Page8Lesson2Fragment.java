@@ -1,47 +1,35 @@
 package cz.uhk.fim.cellar.diplang.lessons.lessonFragments;
 
-import android.os.Build;
 import android.os.Bundle;
-import android.speech.tts.TextToSpeech;
-import android.text.InputType;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
-
-import org.jetbrains.annotations.NotNull;
-
 import java.time.LocalDateTime;
-import java.util.Locale;
-
 import cz.uhk.fim.cellar.diplang.R;
 import cz.uhk.fim.cellar.diplang.classes.LessonPage;
 import cz.uhk.fim.cellar.diplang.classes.PageTask;
 import cz.uhk.fim.cellar.diplang.classes.UserTask;
 import cz.uhk.fim.cellar.diplang.lessons.LessonViewModel;
-
 import static android.view.View.GONE;
 
+/**
+ * @author Štěpán Cellar - FIM UHK
+ * Fragment osmé stránky, druhé lekce, úrovně B2
+ */
 public class Page8Lesson2Fragment extends Fragment implements View.OnClickListener {
 
     private EditText ET1L2P8, ET2L2P8, ET3L2P8, ET4L2P8, ET5L2P8;

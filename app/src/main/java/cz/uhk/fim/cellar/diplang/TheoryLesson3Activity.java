@@ -25,6 +25,7 @@ import cz.uhk.fim.cellar.diplang.classes.LessonPage;
 import cz.uhk.fim.cellar.diplang.classes.UserTheory;
 
 /**
+ * @author Štěpán Cellar - FIM UHK
  * Aktivita pro teoretické materiály z třetí lekce
  */
 public class TheoryLesson3Activity extends AppCompatActivity implements View.OnClickListener {
@@ -94,9 +95,14 @@ public class TheoryLesson3Activity extends AppCompatActivity implements View.OnC
         myRefTask1.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                /**
+                 * Načtení informací o stránce teorie
+                 */
                 LessonPage lessonPage = snapshot.child("PageParams").getValue(LessonPage.class);
                 textInfoP1L3.setText(lessonPage.getInfo());
-
+                /**
+                 * Načtení teorie
+                 */
                 for(DataSnapshot dataSnapshot:snapshot.child("TheoryTask1").getChildren()){
                     TextView tw= new TextView(TheoryLesson3Activity.this);
                     tw.setText(dataSnapshot.getValue().toString());
@@ -113,7 +119,9 @@ public class TheoryLesson3Activity extends AppCompatActivity implements View.OnC
                     tw.setLayoutParams(lp);
                     theoryTask1P1L3.addView(tw);
                 }
-
+                /**
+                 * Načtení teorie
+                 */
                 for(DataSnapshot dataSnapshot:snapshot.child("TheoryTask2").getChildren()){
                     TextView tw= new TextView(TheoryLesson3Activity.this);
                     tw.setText(dataSnapshot.getValue().toString());
@@ -130,7 +138,9 @@ public class TheoryLesson3Activity extends AppCompatActivity implements View.OnC
                     tw.setLayoutParams(lp);
                     theoryTask2P1L3.addView(tw);
                 }
-
+                /**
+                 * Načtení teorie
+                 */
                 for(DataSnapshot dataSnapshot:snapshot.child("TheoryTask3").getChildren()){
                     TextView tw= new TextView(TheoryLesson3Activity.this);
                     tw.setText(dataSnapshot.getValue().toString());
@@ -147,20 +157,27 @@ public class TheoryLesson3Activity extends AppCompatActivity implements View.OnC
                     tw.setLayoutParams(lp);
                     theoryTask3P1L3.addView(tw);
                 }
-
-
+                /**
+                 * Načtení uživatelových poznámek
+                 */
                 for(DataSnapshot dataSnapshot:snapshot.child("TheoryTaskUser1").getChildren()){
                     if(dataSnapshot!=null) {
                         String text = dataSnapshot.getValue().toString();
                         theoryUser1P1L3.setText(text);
                     }
                 }
+                 /**
+                 * Načtení uživatelových poznámek
+                 */
                 for(DataSnapshot dataSnapshot:snapshot.child("TheoryTaskUser2").getChildren()){
                     if(dataSnapshot!=null) {
                         String text = dataSnapshot.getValue().toString();
                         theoryUser2P1L3.setText(text);
                     }
                 }
+                 /**
+                 * Načtení uživatelových poznámek
+                 */
                 for(DataSnapshot dataSnapshot:snapshot.child("TheoryTaskUser3").getChildren()){
                     if(dataSnapshot!=null) {
                         String text = dataSnapshot.getValue().toString();
@@ -179,8 +196,14 @@ public class TheoryLesson3Activity extends AppCompatActivity implements View.OnC
         myRefTask2.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                /**
+                 * Načtení informací o stránce teorie
+                 */
                 LessonPage lessonPage = snapshot.child("PageParams").getValue(LessonPage.class);
                 textInfoP2L3.setText(lessonPage.getInfo());
+                /**
+                 * Načtení teorie
+                 */
                 for(DataSnapshot dataSnapshot:snapshot.child("TheoryTask1").getChildren()){
                     TextView tw= new TextView(TheoryLesson3Activity.this);
                     tw.setText(dataSnapshot.getValue().toString());
@@ -197,6 +220,9 @@ public class TheoryLesson3Activity extends AppCompatActivity implements View.OnC
                     tw.setLayoutParams(lp);
                     theoryTask1P2L3.addView(tw);
                 }
+                /**
+                 * Načtení teorie
+                 */
                 for(DataSnapshot dataSnapshot:snapshot.child("TheoryTask2").getChildren()){
                     TextView tw= new TextView(TheoryLesson3Activity.this);
                     tw.setText(dataSnapshot.getValue().toString());
@@ -213,6 +239,9 @@ public class TheoryLesson3Activity extends AppCompatActivity implements View.OnC
                     tw.setLayoutParams(lp);
                     theoryTask2P2L3.addView(tw);
                 }
+                /**
+                 * Načtení teorie
+                 */
                 for(DataSnapshot dataSnapshot:snapshot.child("TheoryTask3").getChildren()){
                     TextView tw= new TextView(TheoryLesson3Activity.this);
                     tw.setText(dataSnapshot.getValue().toString());
@@ -229,18 +258,27 @@ public class TheoryLesson3Activity extends AppCompatActivity implements View.OnC
                     tw.setLayoutParams(lp);
                     theoryTask3P2L3.addView(tw);
                 }
+                /**
+                 * Načtení uživatelových poznámek
+                 */
                 for(DataSnapshot dataSnapshot:snapshot.child("TheoryTaskUser1").getChildren()){
                     if(dataSnapshot!=null) {
                         String text = dataSnapshot.getValue().toString();
                         theoryUser1P2L3.setText(text);
                     }
                 }
+                /**
+                 * Načtení uživatelových poznámek
+                 */
                 for(DataSnapshot dataSnapshot:snapshot.child("TheoryTaskUser2").getChildren()){
                     if(dataSnapshot!=null) {
                         String text = dataSnapshot.getValue().toString();
                         theoryUser2P2L3.setText(text);
                     }
                 }
+                /**
+                 * Načtení uživatelových poznámek
+                 */
                 for(DataSnapshot dataSnapshot:snapshot.child("TheoryTaskUser3").getChildren()){
                     if(dataSnapshot!=null) {
                         String text = dataSnapshot.getValue().toString();
@@ -259,8 +297,14 @@ public class TheoryLesson3Activity extends AppCompatActivity implements View.OnC
         myRefTask3.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                /**
+                 * Načtení informací o stránce teorie
+                 */
                 LessonPage lessonPage = snapshot.child("PageParams").getValue(LessonPage.class);
                 textInfoP3L3.setText(lessonPage.getInfo());
+                /**
+                 * Načtení teorie
+                 */
                 for(DataSnapshot dataSnapshot:snapshot.child("TheoryTask1").getChildren()){
                     TextView tw= new TextView(TheoryLesson3Activity.this);
                     tw.setText(dataSnapshot.getValue().toString());
@@ -277,6 +321,9 @@ public class TheoryLesson3Activity extends AppCompatActivity implements View.OnC
                     tw.setLayoutParams(lp);
                     theoryTask1P3L3.addView(tw);
                 }
+                /**
+                 * Načtení teorie
+                 */
                 for(DataSnapshot dataSnapshot:snapshot.child("TheoryTask2").getChildren()){
                     TextView tw= new TextView(TheoryLesson3Activity.this);
                     tw.setText(dataSnapshot.getValue().toString());
@@ -293,12 +340,18 @@ public class TheoryLesson3Activity extends AppCompatActivity implements View.OnC
                     tw.setLayoutParams(lp);
                     theoryTask2P3L3.addView(tw);
                 }
+                /**
+                 * Načtení uživatelových poznámek
+                 */
                 for(DataSnapshot dataSnapshot:snapshot.child("TheoryTaskUser1").getChildren()){
                     if(dataSnapshot!=null) {
                         String text = dataSnapshot.getValue().toString();
                         theoryUser1P3L3.setText(text);
                     }
                 }
+                /**
+                 * Načtení uživatelových poznámek
+                 */
                 for(DataSnapshot dataSnapshot:snapshot.child("TheoryTaskUser2").getChildren()){
                     if(dataSnapshot!=null) {
                         String text = dataSnapshot.getValue().toString();
@@ -320,6 +373,9 @@ public class TheoryLesson3Activity extends AppCompatActivity implements View.OnC
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            /**
+             * Tlačítka pro uložení příslušených poznámek pomocí volání metod
+             */
             case (R.id.btnSaveTheory1P1L3):
                 saveTheory1L3P1();
                 break;

@@ -22,6 +22,7 @@ import org.jetbrains.annotations.NotNull;
 import cz.uhk.fim.cellar.diplang.navigation.NavigationActivity;
 
 /**
+ * @author Štěpán Cellar - FIM UHK
  * Aktivita pro seznam uložených cz-en frází
  */
 public class PhrasesActivity extends AppCompatActivity {
@@ -74,6 +75,9 @@ public class PhrasesActivity extends AppCompatActivity {
                     phrasesLayout.addView(ll);
                     for(DataSnapshot child:dataSnapshot.getChildren()){
                         if(child.getKey().equals("englishPhrase")) {
+                            /**
+                             * Načtení anglického znění fráze a nastavení vzhledu textu v layoutu
+                             */
                             textViewEn = new TextView(PhrasesActivity.this);
                             textViewEn.setText(child.getValue().toString());
                             textViewEn.setTextColor(Color.BLACK);
@@ -86,6 +90,9 @@ public class PhrasesActivity extends AppCompatActivity {
                             ll.addView(textViewEn);
                         }
                         if(child.getKey().equals("czechPhrase")) {
+                            /**
+                             * Načtení českého znění fráze a nastavení vzhledu textu v layoutu
+                             */
                             textViewCz = new TextView(PhrasesActivity.this);
                             textViewCz.setText(child.getValue().toString());
                             textViewCz.setTextColor(Color.BLACK);
@@ -98,6 +105,9 @@ public class PhrasesActivity extends AppCompatActivity {
                             ll.addView(textViewCz);
                         }
                         if(child.getKey().equals("created")) {
+                            /**
+                             * Nastavení tlačítka pro odstranění příslušné fráze
+                             */
                             String created = child.getValue().toString();
                             btnRemove = new ImageButton(PhrasesActivity.this);
                             LinearLayout.LayoutParams lpBtn = new LinearLayout.LayoutParams(0,
@@ -110,7 +120,9 @@ public class PhrasesActivity extends AppCompatActivity {
                             btnRemove.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-
+                                    /**
+                                     * Dialog pro potvrzení odstranění fráze
+                                     */
                                     AlertDialog dialog = new AlertDialog.Builder(PhrasesActivity.this)
                                             .setTitle("Odstranění fráze")
                                             .setMessage("Skutečně chcete tuto frázi odstranit?")
@@ -135,7 +147,6 @@ public class PhrasesActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
-
             }
         });
     }

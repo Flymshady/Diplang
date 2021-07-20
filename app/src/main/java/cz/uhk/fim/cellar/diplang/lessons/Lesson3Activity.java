@@ -2,22 +2,19 @@ package cz.uhk.fim.cellar.diplang.lessons;
 
 import android.os.Bundle;
 import android.view.View;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
-
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
-
 import org.jetbrains.annotations.NotNull;
-
 import cz.uhk.fim.cellar.diplang.R;
 import cz.uhk.fim.cellar.diplang.classes.User;
-import cz.uhk.fim.cellar.diplang.lessons.Lesson2ViewPagerAdapter;
-import cz.uhk.fim.cellar.diplang.lessons.LessonViewModel;
 
+/**
+ * Aktivita třetí lekce pro úroveň B2
+ */
 public class Lesson3Activity extends AppCompatActivity {
 
     private String level;
@@ -34,12 +31,14 @@ public class Lesson3Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lesson3);
 
+        /**
+         * Předání parametrů o lekci do ViewModelu
+         */
         viewModel = new ViewModelProvider(this).get(LessonViewModel.class);
         viewModel.getDipPoints().observe(this, dipPoints -> {
 
         });
         viewModel.setDipPoints(0);
-
         level = getIntent().getStringExtra("level");
         viewModel.setLevel(level);
         numberOfLesson = getIntent().getIntExtra("number", 3);
@@ -53,13 +52,15 @@ public class Lesson3Activity extends AppCompatActivity {
 
         tabs = (TabLayout) findViewById(R.id.tabsL3);
         viewPager2 = (ViewPager2) findViewById(R.id.viewPagerL3);
-        //swipe disabled
+        /**
+         * Zamezení používání "swipe" pro přechod
+         */
         viewPager2.setUserInputEnabled(false);
-
-
+        /**
+         * Nastavení adapteru a tab layoutu
+         */
         Lesson3ViewPagerAdapter adapter = new Lesson3ViewPagerAdapter(this);
         viewPager2.setAdapter(adapter);
-
         new TabLayoutMediator(tabs, viewPager2, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
             public void onConfigureTab(@NonNull @NotNull TabLayout.Tab tab, int position) {

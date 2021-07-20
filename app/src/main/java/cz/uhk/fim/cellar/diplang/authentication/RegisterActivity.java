@@ -22,12 +22,13 @@ import cz.uhk.fim.cellar.diplang.R;
 import cz.uhk.fim.cellar.diplang.classes.User;
 
 /**
+ * @author Štěpán Cellar - FIM UHK
  * Aktivita pro registraci nového uživatele prostřednictvím emailu, hesla a celého jména
  */
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText editTextName, editTextEmail, editTextPassword;
-    private TextView registrace, banner;
+    private TextView banner;
     private Button buttonRegister;
     private ProgressBar progressBar;
 

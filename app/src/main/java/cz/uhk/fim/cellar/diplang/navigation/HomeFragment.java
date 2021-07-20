@@ -2,13 +2,9 @@ package cz.uhk.fim.cellar.diplang.navigation;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +12,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -24,13 +19,15 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import cz.uhk.fim.cellar.diplang.R;
 import cz.uhk.fim.cellar.diplang.classes.User;
 
+/**
+ * @author Štěpán Cellar - FIM UHK
+ * Fragment domovské stránky s lekcemi v NavigationActivity
+ */
 public class HomeFragment extends Fragment {
 
     private TextView textName, textPoints;
@@ -79,6 +76,9 @@ public class HomeFragment extends Fragment {
         names.add("B2");
         names.add("B1");
 
+        /**
+         * Automatický přechod na poslední nastavenou položku spinneru
+         */
         spinnerValue = sp.getInt("userLevel",-1);
         if(spinnerValue != -1){
             spinnerLevel.setSelection(spinnerValue);
@@ -116,11 +116,15 @@ public class HomeFragment extends Fragment {
             }
         });
 
+
         spinnerValue = sp.getInt("userLevel",-1);
         if(spinnerValue != -1){
             spinnerLevel.setSelection(spinnerValue);
         }
 
+        /**
+         * Uložení zvoleného stavu na spinneru
+         */
         int userLevel = spinnerLevel.getSelectedItemPosition();
         SharedPreferences.Editor editor = sp.edit();
         editor.putInt("userLevel", userLevel);
@@ -130,19 +134,15 @@ public class HomeFragment extends Fragment {
         if(spinnerValue != -1){
             spinnerLevel.setSelection(spinnerValue);
         }
-/*
-        if(isNetworkAvailable()) {
-            loadUserData();
-        }
 
-
- */
         loadUserData();
-
 
         return v;
     }
 
+    /**
+     * Přechod na posledni nastavenou položku na spinneru
+     */
     @Override
     public void onResume() {
         super.onResume();
@@ -153,6 +153,9 @@ public class HomeFragment extends Fragment {
 
     }
 
+    /**
+     * Načtení součtu uživatelových bodů z lekcí (dips)
+     */
     private void loadUserData() {
         DatabaseReference myRef = database
                 .getReference("Users").child(user.getUid());
@@ -181,21 +184,15 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    private boolean isNetworkAvailable() {
-        ConnectivityManager cm =
-                (ConnectivityManager)getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
-
-        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-        boolean isConnected = activeNetwork != null &&
-                activeNetwork.isConnectedOrConnecting();
-        return isConnected;
-    }
-
     @Override
     public void onSaveInstanceState(Bundle outState) {
         //No call for super(). Bug on API Level > 11.
     }
 
+    /**
+     * Přechod mezi fragmenty B1HomeFragment a B2HomeFragment pro různé úrovně jazyka
+     * @param fragment Fragment
+     */
     private void selectFragment(Fragment fragment) {
         FragmentTransaction fragmentTransaction = this.getActivity().getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.frameLayout, fragment);

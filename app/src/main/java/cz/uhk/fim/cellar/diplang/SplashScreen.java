@@ -7,6 +7,7 @@ import android.os.Handler;
 import cz.uhk.fim.cellar.diplang.navigation.NavigationActivity;
 
 /**
+ * @author Štěpán Cellar - FIM UHK
  * Aktivita, která je zobrazena po přihlášení uživatele a slouží k "zastítení" při načítání dat
  */
 public class SplashScreen extends AppCompatActivity {

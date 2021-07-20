@@ -4,23 +4,21 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
-
 import android.os.Bundle;
 import android.view.View;
-
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
-
 import org.jetbrains.annotations.NotNull;
-
 import cz.uhk.fim.cellar.diplang.R;
-import cz.uhk.fim.cellar.diplang.classes.User;
 
+/**
+ * @author Štěpán Cellar - FIM UHK
+ * Aktivita první lekce úrovně B2
+ */
 public class Lesson1Activity extends AppCompatActivity {
 
     private String level;
     private int numberOfLesson;
-    private User user;
     private String userName;
     private TabLayout tabs;
     private ViewPager2 viewPager2;
@@ -32,12 +30,13 @@ public class Lesson1Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lesson1);
 
+        /**
+         * Předání parametrů o lekci ViewModelu
+         */
         viewModel = new ViewModelProvider(this).get(LessonViewModel.class);
         viewModel.getDipPoints().observe(this, dipPoints -> {
-
         });
         viewModel.setDipPoints(0);
-
         level = getIntent().getStringExtra("level");
         viewModel.setLevel(level);
         numberOfLesson = getIntent().getIntExtra("number", 1);
@@ -51,13 +50,15 @@ public class Lesson1Activity extends AppCompatActivity {
 
         tabs = (TabLayout) findViewById(R.id.tabs);
         viewPager2 = (ViewPager2) findViewById(R.id.viewPager);
-        //swipe disabled
+        /**
+         * Zamezení používání "swipe" pro přechod
+         */
         viewPager2.setUserInputEnabled(false);
-
-
+        /**
+         * Nastavení adapteru a tab layoutu
+         */
         Lesson1ViewPagerAdapter adapter = new Lesson1ViewPagerAdapter(this);
         viewPager2.setAdapter(adapter);
-
         new TabLayoutMediator(tabs, viewPager2, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
             public void onConfigureTab(@NonNull @NotNull TabLayout.Tab tab, int position) {
@@ -65,11 +66,6 @@ public class Lesson1Activity extends AppCompatActivity {
                 tab.view.setClickable(false);
             }
         }).attach();
-
-
-
-
-
     }
 
     public void moveNext(View view) {

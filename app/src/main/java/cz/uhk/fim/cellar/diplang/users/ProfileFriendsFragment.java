@@ -2,17 +2,13 @@ package cz.uhk.fim.cellar.diplang.users;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
-
 import android.text.TextUtils;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +16,6 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.SearchView;
 import android.widget.TextView;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -28,18 +23,17 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import cz.uhk.fim.cellar.diplang.R;
 import cz.uhk.fim.cellar.diplang.classes.FriendRequest;
 import cz.uhk.fim.cellar.diplang.classes.User;
-import cz.uhk.fim.cellar.diplang.navigation.ProfileFragment;
 
-
+/**
+ * @author Štěpán Cellar - FIM UHK
+ * Fragment v rámci fragmentu profilové sekce obsahující vyhledávač uživatelů a seznam žádostí o přátelství
+ */
 public class ProfileFriendsFragment extends Fragment {
 
     private SearchView searchUsers;
@@ -52,9 +46,6 @@ public class ProfileFriendsFragment extends Fragment {
     private LinearLayout layoutRequests;
     private Context mContext;
     private ViewPager2 viewPagerProfile;
-
-
-
 
     public ProfileFriendsFragment() {
         // Required empty public constructor
@@ -80,17 +71,20 @@ public class ProfileFriendsFragment extends Fragment {
         user = FirebaseAuth.getInstance().getCurrentUser();
         userID = user.getUid();
         viewPagerProfile = (ViewPager2) v.findViewById(R.id.viewPagerProfile);
-
         usersRecycleView = (RecyclerView) v.findViewById(R.id.usersRecycleView);
         usersRecycleView.setHasFixedSize(true);
         usersRecycleView.setLayoutManager(new LinearLayoutManager(getContext()));
-
         userList = new ArrayList<>();
-
         layoutRequests = (LinearLayout) v.findViewById(R.id.layoutRequests);
         loadRequests();
 
+        /**
+         * Vyhledávač uživatelů s přiřezeným adapterem
+         */
         searchUsers = (SearchView) v.findViewById(R.id.searchUsers);
+        /**
+         * Zavření vyhledávače - odstranení listu vyhledaných uživatelů
+         */
         searchUsers.setOnCloseListener(new SearchView.OnCloseListener() {
             @Override
             public boolean onClose() {
@@ -102,6 +96,9 @@ public class ProfileFriendsFragment extends Fragment {
                 return false;
             }
         });
+        /**
+         * Vyhledávání podle textu ve vyhledávači s voláním metody pro vyhledávání
+         */
         searchUsers.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
@@ -120,7 +117,6 @@ public class ProfileFriendsFragment extends Fragment {
 
         });
 
-
         return v;
     }
     @Override
@@ -129,6 +125,9 @@ public class ProfileFriendsFragment extends Fragment {
         mContext=context;
     }
 
+    /**
+     * Načtení žádostí o přátelství
+     */
     private void loadRequests() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users")
                                         .child(userID).child("Social").child("RequestsReceivedFrom");
@@ -144,6 +143,9 @@ public class ProfileFriendsFragment extends Fragment {
                         ll.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
                         ll.setWeightSum(2f);
 
+                        /**
+                         * Tlačítko pro potvrzení žádosti o přátelství
+                         */
                         ImageButton btnConfirm = new ImageButton(mContext);
                         btnConfirm.setBackgroundResource(R.drawable.ic_baseline_check_circle_24);
                         LinearLayout.LayoutParams lpBtn = new LinearLayout.LayoutParams(100,
@@ -164,26 +166,36 @@ public class ProfileFriendsFragment extends Fragment {
                                 receiver.setName(friendRequest.getReceiverName());
                                 receiver.setUid(friendRequest.getReceiverId());
 
+                                /**
+                                 * Přidání přítele na straně příjemce žádosti o přátelství
+                                 */
                                 FirebaseDatabase.getInstance().getReference("Users")
                                         .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())
                                         .child("Social")
                                         .child("Friends")
                                         .child(friendRequest.getSenderId())
                                         .setValue(sender);
-
+                                /**
+                                 * Přidání přítele na straně odesílatele žádosti o přátelství
+                                 */
                                 FirebaseDatabase.getInstance().getReference("Users")
                                         .child(sender.getUid())
                                         .child("Social")
                                         .child("Friends")
                                         .child(receiver.getUid())
                                         .setValue(receiver);
-                                //remove req
+                                /**
+                                 * Odstranění žádosti o přátelství na straně příjemce
+                                 */
                                 FirebaseDatabase.getInstance().getReference("Users")
                                         .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())
                                         .child("Social")
                                         .child("RequestsReceivedFrom")
                                         .child(friendRequest.getSenderId())
                                         .removeValue();
+                                /**
+                                 * Odstranění žádosti o přátelství na straně odesílatele
+                                 */
                                 FirebaseDatabase.getInstance().getReference("Users")
                                         .child(friendRequest.getSenderId())
                                         .child("Social")
@@ -196,20 +208,27 @@ public class ProfileFriendsFragment extends Fragment {
                             }
                         });
 
-
+                        /**
+                         * Nastavení tlačítka pro zamítnutí žádosti o přátelství
+                         */
                         ImageButton btnCancel = new ImageButton(mContext);
                         btnCancel.setBackgroundResource(R.drawable.ic_baseline_cancel_24);
                         btnCancel.setLayoutParams(lpBtn);
                         btnCancel.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                //remove req
+                                /**
+                                 * Odstranění žádosti o přátelství na straně příjemce
+                                 */
                                 FirebaseDatabase.getInstance().getReference("Users")
                                         .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())
                                         .child("Social")
                                         .child("RequestsReceivedFrom")
                                         .child(friendRequest.getSenderId())
                                         .removeValue();
+                                /**
+                                 * Odstranění žádosti o přátelství na straně odesílatele
+                                 */
                                 FirebaseDatabase.getInstance().getReference("Users")
                                         .child(friendRequest.getSenderId())
                                         .child("Social")
@@ -219,7 +238,6 @@ public class ProfileFriendsFragment extends Fragment {
                                 layoutRequests.removeView(ll);
                             }
                         });
-
 
                         TextView textView = new TextView(mContext);
                         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
@@ -245,6 +263,10 @@ public class ProfileFriendsFragment extends Fragment {
         });
     }
 
+    /**
+     * Vyhledávání uživatelů podle textu
+     * @param query Text z vyhledávače
+     */
     private void searchUsers(String query) {
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
@@ -254,9 +276,9 @@ public class ProfileFriendsFragment extends Fragment {
                 userList.clear();
                 for(DataSnapshot ds: snapshot.getChildren()){
                     User user = ds.getValue(User.class);
-                    //overeni zda neni uz pritel
+                    //ověření zda již není přítel
                     if(ds.child("Social").child("Friends").child(userID).getValue(User.class)==null) {
-                        //zda od nej nema uz request
+                        //ověření zda od něj již neexistuje žádost o přátelství
                         if (ds.child("Social").child("RequestsSentTo").child(userID).getValue(FriendRequest.class) == null) {
                             if (!user.getUid().equals(userID)) {
                                 if (user.getName().toLowerCase().contains(query.toLowerCase()) ||
@@ -275,7 +297,6 @@ public class ProfileFriendsFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
-
             }
         });
     }

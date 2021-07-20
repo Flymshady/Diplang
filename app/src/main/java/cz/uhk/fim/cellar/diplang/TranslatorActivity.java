@@ -43,6 +43,8 @@ import java.util.Locale;
 import cz.uhk.fim.cellar.diplang.classes.Phrase;
 
 /**
+ * @author Štěpán Cellar - FIM UHK
+ * @since 2021
  * Aktivita pro překladač
  */
 public class TranslatorActivity extends AppCompatActivity {
@@ -54,14 +56,12 @@ public class TranslatorActivity extends AppCompatActivity {
     private TextView translatedTextView;
     private Button buttonDeleteModels, buttonBack, btnSavePhrase;
     private TextToSpeech mTTS;
-    String[] fromLanguages = {"Z", "Angličtina", "Čeština"};
-    String[] toLanguages = {"Do", "Angličtina", "Čeština"};
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
+    private String[] fromLanguages = {"Z", "Angličtina", "Čeština"};
+    private String[] toLanguages = {"Do", "Angličtina", "Čeština"};
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     private static final int REQUEST_PERMISSION_CODE = 1;
-    String languageCode, fromLanguageCode, toLanguageCode = "";
-
+    private String languageCode, fromLanguageCode, toLanguageCode = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -177,6 +177,9 @@ public class TranslatorActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * Aktivate mikrofonu pro zaznamenání hlasu pro převod na text
+         */
         mic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -200,6 +203,9 @@ public class TranslatorActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * Button pro odstranění modelů pro překlad z uložiště zařízení
+         */
         buttonDeleteModels.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

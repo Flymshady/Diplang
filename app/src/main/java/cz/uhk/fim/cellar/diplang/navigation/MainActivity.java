@@ -7,13 +7,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
 import cz.uhk.fim.cellar.diplang.R;
 import cz.uhk.fim.cellar.diplang.authentication.LoginActivity;
 
+/**
+ * @author Štěpán Cellar - FIM UHK
+ * Hlavní aktivita
+ * Slouží pro zjištění zda je uživatel přihlášený -> převede jej na domovskou stránku
+ * Pokud uživatel není přihlášený -> převede jej na stránku s přihlášením
+ */
 public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
@@ -28,9 +32,9 @@ public class MainActivity extends AppCompatActivity {
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         progressBar.setVisibility(View.VISIBLE);
         if (user != null) {
-            // User is signed in
-            // go to main page
-
+            /**
+             * Uživatel je přihlášen, je převeden na domovskou stránku
+             */
             Toast.makeText(MainActivity.this, "Vítejte!", Toast.LENGTH_SHORT).show();
             progressBar.setVisibility(View.GONE);
             try {
@@ -39,8 +43,9 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         } else {
-            // No user is signed in
-            // go to loging page
+            /**
+             * Uživatel není přihlášen, musí se přihlásit
+             */
             Toast.makeText(MainActivity.this, "Přihlaště se", Toast.LENGTH_SHORT).show();
             progressBar.setVisibility(View.GONE);
             try {

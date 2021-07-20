@@ -27,6 +27,7 @@ import cz.uhk.fim.cellar.diplang.SplashScreen;
 import cz.uhk.fim.cellar.diplang.classes.User;
 
 /**
+ * @author Štěpán Cellar - FIM UHK
  * Aktivita pro přihlášení uživatele
  */
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {

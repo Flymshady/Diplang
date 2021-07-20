@@ -1,6 +1,7 @@
 package cz.uhk.fim.cellar.diplang.classes;
 
 /**
+ * @author Štěpán Cellar - FIM UHK
  * Třída reprezentující úlohu cvičení, která nabízí více možnosti pro odpověď ale pouze jednu správnou
  */
 public class OptionsTask {

@@ -2,12 +2,10 @@ package cz.uhk.fim.cellar.diplang.lessons.lessonFragments;
 
 import android.graphics.Color;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
-
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,18 +13,19 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import org.jetbrains.annotations.NotNull;
 import cz.uhk.fim.cellar.diplang.R;
 import cz.uhk.fim.cellar.diplang.lessons.LessonViewModel;
 
-
+/**
+ * @author Štěpán Cellar - FIM UHK
+ * Fragment páté stránky, první lekce, úrovně B2
+ */
 public class Page5Lesson1Fragment extends Fragment implements View.OnClickListener {
 
     private Button btnNextToP6;

@@ -4,12 +4,10 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
-
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +15,6 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -25,13 +22,14 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import org.jetbrains.annotations.NotNull;
-
 import cz.uhk.fim.cellar.diplang.R;
 import cz.uhk.fim.cellar.diplang.classes.User;
 
-
+/**
+ * @author Štěpán Cellar
+ * Fragment v rámci fragmentu profilové sekce pro zobrazení žebříčku přátel uživatele a jejich bodů z lekcí
+ */
 public class ProfileChartFragment extends Fragment {
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -42,12 +40,9 @@ public class ProfileChartFragment extends Fragment {
     private Context mContext;
     private ViewPager2 viewPagerProfile;
 
-
-
     public ProfileChartFragment() {
         // Required empty public constructor
     }
-
 
     public static ProfileChartFragment newInstance(String param1, String param2) {
         ProfileChartFragment fragment = new ProfileChartFragment();
@@ -73,11 +68,8 @@ public class ProfileChartFragment extends Fragment {
         layoutChart = (LinearLayout) v.findViewById(R.id.layoutChart);
         loadChart();
 
-
         return v;
     }
-
-
 
     @Override
     public void onAttach(Context context) {
@@ -92,8 +84,9 @@ public class ProfileChartFragment extends Fragment {
     }
 
 
-
-
+    /**
+     * Načtení žebříčku přátel uživatele
+     */
     private void loadChart() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users")
                 .child(userID).child("Social").child("Friends");
@@ -104,6 +97,9 @@ public class ProfileChartFragment extends Fragment {
                 for(DataSnapshot ds: snapshot.getChildren()) {
                     User friend = ds.getValue(User.class);
 
+                    /**
+                     * Card layout
+                     */
                     CardView cardview = new CardView(mContext);
                     LinearLayout.LayoutParams lpCard = new LinearLayout.LayoutParams(
                             LinearLayout.LayoutParams.MATCH_PARENT,
@@ -123,7 +119,9 @@ public class ProfileChartFragment extends Fragment {
                     LinearLayout llNameEmail = new LinearLayout(mContext);
                     llNameEmail.setOrientation(LinearLayout.VERTICAL);
                     llNameEmail.setLayoutParams(new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1.5f));
-
+                    /**
+                     * Text pro celé jméno a email
+                     */
                     TextView textViewName = new TextView(mContext);
                     TextView textViewEmail = new TextView(mContext);
 
@@ -150,7 +148,9 @@ public class ProfileChartFragment extends Fragment {
 
                     TextView textViewPoints = new TextView(mContext);
 
-
+                    /**
+                     * Načtení součtu bodů uživatele
+                     */
                     DatabaseReference myRef = database.getReference("Users").child(friend.getUid());
                     myRef.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override

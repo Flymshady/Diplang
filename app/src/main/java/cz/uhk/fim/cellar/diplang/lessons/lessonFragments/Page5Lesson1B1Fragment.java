@@ -12,28 +12,27 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import java.time.LocalDateTime;
-
 import cz.uhk.fim.cellar.diplang.R;
 import cz.uhk.fim.cellar.diplang.classes.LessonPage;
 import cz.uhk.fim.cellar.diplang.classes.OptionsTask;
 import cz.uhk.fim.cellar.diplang.classes.UserTask;
 import cz.uhk.fim.cellar.diplang.lessons.LessonViewModel;
-
 import static android.view.View.GONE;
 
+/**
+ * @author Štěpán Cellar - FIM UHK
+ * Fragment páté stránky, první lekce, úrovně B1
+ */
 public class Page5Lesson1B1Fragment extends Fragment implements View.OnClickListener {
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();

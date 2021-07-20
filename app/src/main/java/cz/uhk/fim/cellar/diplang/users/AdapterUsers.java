@@ -7,11 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -19,25 +16,25 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import org.jetbrains.annotations.NotNull;
-
 import java.time.LocalDateTime;
 import java.util.List;
-
 import cz.uhk.fim.cellar.diplang.R;
 import cz.uhk.fim.cellar.diplang.classes.FriendRequest;
 import cz.uhk.fim.cellar.diplang.classes.User;
 
+/**
+ * Adapter pro zobrazení vyhledávání uživatelů
+ */
 public class AdapterUsers extends RecyclerView.Adapter<AdapterUsers.MyHolder>{
 
-    Context context;
-    List<User> userList;
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    FirebaseUser sender;
-    String senderID;
-    String senderEmail;
-    String senderName;
+    private Context context;
+    private List<User> userList;
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private FirebaseUser sender;
+    private String senderID;
+    private String senderEmail;
+    private String senderName;
 
     public AdapterUsers(Context context, List<User> userList) {
         this.context=context;
@@ -57,10 +54,13 @@ public class AdapterUsers extends RecyclerView.Adapter<AdapterUsers.MyHolder>{
         String userName = userList.get(position).getName();
         String userEmail = userList.get(position).getEmail();
         String receiverId = userList.get(position).getUid();
+
+        /**
+         * Nastavení parametrů pro odesílatele žádosti o přátelství
+         */
         sender = FirebaseAuth.getInstance().getCurrentUser();
         senderID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         senderEmail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
-
 
         DatabaseReference myRef = database
                 .getReference("Users").child(sender.getUid()).child("UserParams");
@@ -75,21 +75,20 @@ public class AdapterUsers extends RecyclerView.Adapter<AdapterUsers.MyHolder>{
 
             @Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
-
             }
-
         });
-
 
         holder.searchUserName.setText(userName);
         holder.searchUserEmail.setText(userEmail);
-
         holder.btnAddUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String senderId = senderID;
                 String createdTime = LocalDateTime.now().toString();
                 sender = FirebaseAuth.getInstance().getCurrentUser();
+                /**
+                 * Vytvoření požadavku na žádost o přátelství na straně odesílatele
+                 */
                 FriendRequest friendRequest = new FriendRequest(createdTime, senderEmail, userEmail, senderId, receiverId, senderName, userName);
                 FirebaseDatabase.getInstance().getReference("Users")
                         .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())
@@ -97,7 +96,9 @@ public class AdapterUsers extends RecyclerView.Adapter<AdapterUsers.MyHolder>{
                         .child("RequestsSentTo")
                         .child(receiverId)
                         .setValue(friendRequest);
-
+                /**
+                 * Vytvoření požadavku na žádost o přátelství na straně příjemce
+                 */
                 FirebaseDatabase.getInstance().getReference("Users")
                         .child(receiverId)
                         .child("Social")
@@ -110,12 +111,14 @@ public class AdapterUsers extends RecyclerView.Adapter<AdapterUsers.MyHolder>{
         });
     }
 
-
     @Override
     public int getItemCount() {
         return userList.size();
     }
 
+    /**
+     * Holder pro zobrazení komponent pro popis vyhledaného uživatele
+     */
     class MyHolder extends RecyclerView.ViewHolder{
         TextView searchUserName, searchUserEmail;
         ImageButton btnAddUser;

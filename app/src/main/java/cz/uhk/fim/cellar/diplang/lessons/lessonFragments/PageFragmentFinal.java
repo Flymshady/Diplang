@@ -2,27 +2,25 @@ package cz.uhk.fim.cellar.diplang.lessons.lessonFragments;
 
 import android.content.Intent;
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
-
 import cz.uhk.fim.cellar.diplang.classes.Lesson;
 import cz.uhk.fim.cellar.diplang.lessons.LessonViewModel;
 import cz.uhk.fim.cellar.diplang.navigation.NavigationActivity;
 import cz.uhk.fim.cellar.diplang.R;
 
-
+/**
+ * @author Štěpán Cellar - FIM UHK
+ * Fragment závěrečné stránky lekcí
+ */
 public class PageFragmentFinal extends Fragment implements View.OnClickListener {
 
     private TextView pointsFinal;
@@ -50,6 +48,9 @@ public class PageFragmentFinal extends Fragment implements View.OnClickListener 
 
         finalStar = (ImageView) v.findViewById(R.id.finalStar);
         pointsFinal = (TextView) v.findViewById(R.id.pointsFinal);
+        /**
+         * Nastavení textu pro popis získaných bodů
+         */
         String dipsText = "dips";
         if(viewModel.getDipPoints().getValue()==1){
             dipsText = "dip";
@@ -59,16 +60,18 @@ public class PageFragmentFinal extends Fragment implements View.OnClickListener 
         if(lessonResults!=-1){
             previousResults="Předchozí pokus: "+String.valueOf(lessonResults)+" dips";
         }
-        System.out.println(previousResults);
-
         pointsFinal.setText("Výsledek lekce je:\n" +
                 viewModel.getDipPoints().getValue().toString()
                 + " dips\nz celkových\n" +
                 viewModel.getPointsTotal().getValue().toString() + " "+ dipsText
                 + "\n" + previousResults);
+
         buttonFinishLesson = (Button) v.findViewById(R.id.buttonFinishLesson);
         buttonFinishLesson.setOnClickListener(this);
 
+        /**
+         * Nastavení vzhledu "hvězdy" pro znázornění úspěšnosti v lekci
+         */
         if(viewModel.getDipPoints().getValue() == viewModel.getPointsTotal().getValue()){
             finalStar.setBackgroundResource(R.drawable.star_purple_full);
         }
@@ -78,14 +81,20 @@ public class PageFragmentFinal extends Fragment implements View.OnClickListener 
             finalStar.setBackgroundResource(R.drawable.star_purple_half);
         }
 
-
         return v;
     }
 
+    /**
+     * Nastavení buttonu
+     * @param view
+     */
     @Override
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.buttonFinishLesson:
+                /**
+                 * Zavolání metody pro uložení výsledků lekce a přesměrování na navigační stránku
+                 */
                 saveUserLesson();
                 try {
                     startActivity(new Intent( getActivity(), NavigationActivity.class));
@@ -101,6 +110,9 @@ public class PageFragmentFinal extends Fragment implements View.OnClickListener 
         super.onResume();
         saveUserLesson();
         viewModel = new ViewModelProvider(requireActivity()).get(LessonViewModel.class);
+        /**
+         * Nastavení textu pro popis získaných bodů
+         */
         String dipsText = "dips";
         if(viewModel.getDipPoints().getValue()==1){
             dipsText = "dip";
@@ -110,13 +122,14 @@ public class PageFragmentFinal extends Fragment implements View.OnClickListener 
         if(lessonResults!=-1){
             previousResults="Předchozí pokus: "+String.valueOf(lessonResults)+" dips";
         }
-        System.out.println(previousResults);
-
         pointsFinal.setText("Výsledek lekce je:\n" +
                 viewModel.getDipPoints().getValue().toString()
                 + " dips\nz celkových\n" +
                 viewModel.getPointsTotal().getValue().toString() + " "+ dipsText
                 + "\n" + previousResults);
+        /**
+         * Nastavení vzhledu "hvězdy" pro znázornění úspěšnosti v lekci
+         */
         if(viewModel.getDipPoints().getValue() == viewModel.getPointsTotal().getValue()){
             finalStar.setBackgroundResource(R.drawable.star_purple_full);
         }
@@ -125,9 +138,12 @@ public class PageFragmentFinal extends Fragment implements View.OnClickListener 
         }else{
             finalStar.setBackgroundResource(R.drawable.star_purple_half);
         }
-
     }
 
+    /**
+     * Uloží výsledky lekce na základě úrovně lekce a čísla lekce
+     * Uloží získané body uživetele
+     */
     private void saveUserLesson() {
         lesson = new Lesson();
         lesson.setDipsGained(viewModel.getDipPoints().getValue());

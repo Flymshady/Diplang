@@ -8,14 +8,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import androidx.core.app.NotificationCompat;
-
 import cz.uhk.fim.cellar.diplang.navigation.MainActivity;
 import cz.uhk.fim.cellar.diplang.R;
 
 /**
- * BroadcastReceiver class for managing the notifications
- * from the NotificationSettingsActitivy.class
- *
+ * @author Štěpán Cellar - FIM UHK
+ * BroadcastReceiver třída pro správu notifikací
+ * z NotificationSettingsActivity
  */
 public class ReminderBroadcast extends BroadcastReceiver {
     @Override
@@ -26,7 +25,7 @@ public class ReminderBroadcast extends BroadcastReceiver {
         PendingIntent pendingIntent;
 
         /**
-         * Devices with SDK version >= "Oreo" need the notification channel specification
+         * Zařízení s SDK verzí >= "Oreo" potřebují specifikaci kanálu pro notifikace
          */
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
@@ -40,7 +39,7 @@ public class ReminderBroadcast extends BroadcastReceiver {
 
         }
         /**
-         * Customizable look of the notification
+         * Upravitelný vzhled notifikací
          */
         builder = new NotificationCompat.Builder(context, "notifyDiplang")
                 .setSmallIcon(R.drawable.ic_black_school_24)

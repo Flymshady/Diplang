@@ -4,25 +4,21 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
-
 import org.jetbrains.annotations.NotNull;
-
-import cz.uhk.fim.cellar.diplang.lessons.lessonFragments.Page1Lesson1Fragment;
 import cz.uhk.fim.cellar.diplang.lessons.lessonFragments.Page1Lesson2Fragment;
-import cz.uhk.fim.cellar.diplang.lessons.lessonFragments.Page2Lesson1Fragment;
 import cz.uhk.fim.cellar.diplang.lessons.lessonFragments.Page2Lesson2Fragment;
-import cz.uhk.fim.cellar.diplang.lessons.lessonFragments.Page3Lesson1Fragment;
 import cz.uhk.fim.cellar.diplang.lessons.lessonFragments.Page3Lesson2Fragment;
-import cz.uhk.fim.cellar.diplang.lessons.lessonFragments.Page4Lesson1Fragment;
 import cz.uhk.fim.cellar.diplang.lessons.lessonFragments.Page4Lesson2Fragment;
-import cz.uhk.fim.cellar.diplang.lessons.lessonFragments.Page5Lesson1Fragment;
 import cz.uhk.fim.cellar.diplang.lessons.lessonFragments.Page5Lesson2Fragment;
-import cz.uhk.fim.cellar.diplang.lessons.lessonFragments.Page6Lesson1Fragment;
 import cz.uhk.fim.cellar.diplang.lessons.lessonFragments.Page6Lesson2Fragment;
 import cz.uhk.fim.cellar.diplang.lessons.lessonFragments.Page7Lesson2Fragment;
 import cz.uhk.fim.cellar.diplang.lessons.lessonFragments.Page8Lesson2Fragment;
 import cz.uhk.fim.cellar.diplang.lessons.lessonFragments.PageFragmentFinal;
 
+/**
+ * @author Štěpán Cellar - FIM UHK
+ * View Pager Adapter pro nastavení přechodů mezi fragmenty druhé lekce úrovně B2
+ */
 public class Lesson2ViewPagerAdapter extends FragmentStateAdapter {
     public Lesson2ViewPagerAdapter(@NonNull @NotNull FragmentActivity fragmentActivity) {
         super(fragmentActivity);

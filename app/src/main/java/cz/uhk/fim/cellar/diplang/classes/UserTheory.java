@@ -1,13 +1,13 @@
 package cz.uhk.fim.cellar.diplang.classes;
 
 /**
+ * @author Štěpán Cellar - FIM UHK
  * Třída reprezentující uživatelovu teoretickou poznámku
  */
 public class UserTheory {
     private String text;
 
     public UserTheory(){
-
     }
 
     public UserTheory(String text) {

@@ -1,6 +1,7 @@
 package cz.uhk.fim.cellar.diplang.classes;
 
 /**
+ * @author Štěpán Cellar - FIM UHK
  * Třída reprezentující frázi
  */
 public class Phrase {

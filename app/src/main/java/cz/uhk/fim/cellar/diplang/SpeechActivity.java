@@ -23,7 +23,6 @@ public class SpeechActivity extends AppCompatActivity {
     private Context context;
     private Resources resources;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

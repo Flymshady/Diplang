@@ -1,27 +1,17 @@
 package cz.uhk.fim.cellar.diplang.navigation;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.viewpager2.widget.ViewPager2;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.TextView;
-
-import com.google.android.material.tabs.TabLayout;
-import com.google.android.material.tabs.TabLayoutMediator;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -29,17 +19,18 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import org.jetbrains.annotations.NotNull;
-
 import cz.uhk.fim.cellar.diplang.PhrasesActivity;
 import cz.uhk.fim.cellar.diplang.R;
 import cz.uhk.fim.cellar.diplang.SpeechActivity;
 import cz.uhk.fim.cellar.diplang.TheoryLesson2Activity;
 import cz.uhk.fim.cellar.diplang.TheoryLesson3Activity;
 import cz.uhk.fim.cellar.diplang.TranslatorActivity;
-import cz.uhk.fim.cellar.diplang.lessons.Lesson2ViewPagerAdapter;
 
+/**
+ * @author Štěpán Cellar - FIM UHK
+ * Fragment studijní sekce v NavigationActivity
+ */
 public class StudyFragment extends Fragment implements View.OnClickListener {
     private Context mContext;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -71,28 +62,25 @@ public class StudyFragment extends Fragment implements View.OnClickListener {
 
         buttonSpeechActivity = (Button) v.findViewById(R.id.buttonSpeechActivity);
         buttonSpeechActivity.setOnClickListener(this);
-
         buttonTranslatorActivity = (Button) v.findViewById(R.id.buttonTranslatorActivity);
         buttonTranslatorActivity.setOnClickListener(this);
-
         buttonPhrasesActivity = (Button) v.findViewById(R.id.buttonPhrasesActivity);
         buttonPhrasesActivity.setOnClickListener(this);
-
         layoutStudy = (LinearLayout) v.findViewById(R.id.layoutStudy);
 
-
         loadData();
-
-
 
         return v;
     }
 
+    /**
+     * Načtebí dat z databáze
+     */
     private void loadData() {
-
         user = FirebaseAuth.getInstance().getCurrentUser();
-
-
+        /**
+         * Načtení uložených teoretickýh materiálů
+         */
         DatabaseReference myRefTask1 = database.getReference("UserTheory").child(user.getUid());
         myRefTask1.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -108,7 +96,6 @@ public class StudyFragment extends Fragment implements View.OnClickListener {
                     }else if(lessonName.equals("Lesson3")){
                         btnTheory.setBackgroundResource(R.drawable.ic_baseline_looks_3_24);
                     }
-               //     btnTheory.setBackgroundColor(getResources().getColor(R.color.teal_100));
                     btnTheory.setLayoutParams(lpBtn);
                     btnTheory.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -121,21 +108,19 @@ public class StudyFragment extends Fragment implements View.OnClickListener {
                             }
                         }
                     });
-
                     layoutStudy.addView(btnTheory);
                 }
             }
-
             @Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
-
             }
         });
-
-
     }
 
-
+    /**
+     * Nastavení buttonu
+     * @param view View
+     */
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -147,14 +132,18 @@ public class StudyFragment extends Fragment implements View.OnClickListener {
                 }
                 break;
             case R.id.buttonTranslatorActivity:
-
+                /**
+                 * Přechod na aktivitu překladače
+                 */
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.addToBackStack(null);
                 transaction.commit();
                 startActivity(new Intent(getActivity(), TranslatorActivity.class));
-
                 break;
             case R.id.buttonPhrasesActivity:
+                /**
+                 * Přechod na aktivitu uložených frází
+                 */
                 startActivity(new Intent(getActivity(), PhrasesActivity.class));
                 break;
 

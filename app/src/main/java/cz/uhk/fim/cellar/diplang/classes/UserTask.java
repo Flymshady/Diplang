@@ -1,6 +1,7 @@
 package cz.uhk.fim.cellar.diplang.classes;
 
 /**
+ * @author Štěpán Cellar - FIM UHK
  * Třída reprezentující odpověď uživatele v úloze
  */
 public class UserTask {

@@ -3,12 +3,13 @@ package cz.uhk.fim.cellar.diplang.users;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
-
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * @author Štěpán Cellar - FIM UHK
+ * View Pager Adapter pro nastavení přechodů mezi fragmenty profilové sekce
+ */
 public class ProfileViewPagerAdapter extends FragmentStateAdapter {
     public ProfileViewPagerAdapter(@NonNull @NotNull FragmentActivity fragmentActivity) {
         super(fragmentActivity);
@@ -27,7 +28,6 @@ public class ProfileViewPagerAdapter extends FragmentStateAdapter {
                 return new ProfileChartFragment();
         }
     }
-
 
     @Override
     public int getItemCount() {
