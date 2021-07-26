@@ -131,7 +131,7 @@ public class ProfileFriendsFragment extends Fragment {
     private void loadRequests() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users")
                                         .child(userID).child("Social").child("RequestsReceivedFrom");
-        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+        reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 for(DataSnapshot ds: snapshot.getChildren()){
@@ -270,20 +270,22 @@ public class ProfileFriendsFragment extends Fragment {
     private void searchUsers(String query) {
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
-        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+        reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 userList.clear();
                 for(DataSnapshot ds: snapshot.getChildren()){
-                    User user = ds.getValue(User.class);
-                    //ověření zda již není přítel
-                    if(ds.child("Social").child("Friends").child(userID).getValue(User.class)==null) {
-                        //ověření zda od něj již neexistuje žádost o přátelství
-                        if (ds.child("Social").child("RequestsSentTo").child(userID).getValue(FriendRequest.class) == null) {
-                            if (!user.getUid().equals(userID)) {
-                                if (user.getName().toLowerCase().contains(query.toLowerCase()) ||
-                                        user.getEmail().toLowerCase().contains(query.toLowerCase())) {
-                                    userList.add(user);
+                    User user = ds.child("UserParams").getValue(User.class);
+                    if(user!=null) {
+                        //ověření zda již není přítel
+                        if (ds.child("Social").child("Friends").child(userID).getValue(User.class) == null) {
+                            //ověření zda od něj již neexistuje žádost o přátelství
+                            if (ds.child("Social").child("RequestsSentTo").child(userID).getValue(FriendRequest.class) == null) {
+                                if (!user.getUid().equals(userID)) {
+                                    if (user.getName().toLowerCase().contains(query.toLowerCase()) ||
+                                            user.getEmail().toLowerCase().contains(query.toLowerCase())) {
+                                        userList.add(user);
+                                    }
                                 }
                             }
                         }

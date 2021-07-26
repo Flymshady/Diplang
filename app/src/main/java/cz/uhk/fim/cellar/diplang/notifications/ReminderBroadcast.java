@@ -29,14 +29,12 @@ public class ReminderBroadcast extends BroadcastReceiver {
          */
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
-            CharSequence name = "DiplangReminderChallenge";
+            CharSequence name = "DiplangReminder";
             String description = "Channel for Diplang Reminder";
             int importance = NotificationManager.IMPORTANCE_DEFAULT;
             NotificationChannel channel = new NotificationChannel("notifyDiplang", name, importance);
             channel.setDescription(description);
-
             notificationManager.createNotificationChannel(channel);
-
         }
         /**
          * Upravitelný vzhled notifikací

@@ -411,6 +411,149 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
                 </LinearLayout>
+                <!-- 4-->
+                <TextView
+                    android:id="@+id/textInfoP4L3"
+                    android:layout_marginTop="50dp"
+                    android:textColor="@color/purple_700"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textStyle="bold"
+                    android:textSize="25sp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_marginTop="5dp"
+                        android:id="@+id/theoryTask1P4L3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                    </LinearLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginTop="20dp"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:padding="5dp"
+                        >
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/theoryUser1P4L3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:ems="10"
+                            android:overScrollMode="always"
+                            android:scrollbarStyle="insideInset"
+                            android:scrollbars="vertical"
+                            android:scrollbarSize="15dp"
+                            android:inputType="textImeMultiLine|textMultiLine"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/black"
+                            android:textSize="18sp"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <Button
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:id="@+id/btnSaveTheory1P4L3"
+                        android:text="Uložit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:id="@+id/theoryTask2P4L3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                    </LinearLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginTop="20dp"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:padding="5dp"
+                        >
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/theoryUser2P4L3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:ems="10"
+                            android:overScrollMode="always"
+                            android:scrollbarStyle="insideInset"
+                            android:scrollbars="vertical"
+                            android:scrollbarSize="15dp"
+                            android:inputType="textImeMultiLine|textMultiLine"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/black"
+                            android:textSize="18sp"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <Button
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:id="@+id/btnSaveTheory2P4L3"
+                        android:text="Uložit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:id="@+id/theoryTask3P4L3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                    </LinearLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginTop="20dp"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:padding="5dp"
+                        >
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/theoryUser3P4L3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:ems="10"
+                            android:overScrollMode="always"
+                            android:scrollbarStyle="insideInset"
+                            android:scrollbars="vertical"
+                            android:scrollbarSize="15dp"
+                            android:inputType="textImeMultiLine|textMultiLine"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/black"
+                            android:textSize="18sp"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <Button
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:id="@+id/btnSaveTheory3P4L3"
+                        android:text="Uložit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
 
 
         </LinearLayout>

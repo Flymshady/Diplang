@@ -124,7 +124,7 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
          */
         DatabaseReference myRefLesson1 = database
                 .getReference("Lessons");
-        myRefLesson1.addListenerForSingleValueEvent(new ValueEventListener() {
+        myRefLesson1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
@@ -151,7 +151,7 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
         DatabaseReference myRefUserLesson = database
                 .getReference("UserTasks")
                 .child(user.getUid());
-        myRefUserLesson.addListenerForSingleValueEvent(new ValueEventListener() {
+        myRefUserLesson.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again

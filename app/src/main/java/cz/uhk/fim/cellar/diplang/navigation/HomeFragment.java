@@ -159,7 +159,7 @@ public class HomeFragment extends Fragment {
     private void loadUserData() {
         DatabaseReference myRef = database
                 .getReference("Users").child(user.getUid());
-        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int total=0;

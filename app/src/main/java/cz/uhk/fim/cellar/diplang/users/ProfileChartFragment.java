@@ -90,7 +90,7 @@ public class ProfileChartFragment extends Fragment {
     private void loadChart() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users")
                 .child(userID).child("Social").child("Friends");
-        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+        reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 layoutChart.removeAllViews();
@@ -152,7 +152,7 @@ public class ProfileChartFragment extends Fragment {
                      * Načtení součtu bodů uživatele
                      */
                     DatabaseReference myRef = database.getReference("Users").child(friend.getUid());
-                    myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    myRef.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             int total=0;

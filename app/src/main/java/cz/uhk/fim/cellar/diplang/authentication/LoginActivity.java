@@ -93,7 +93,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         }
     }
-
     /**
      * Validace emailu a hesla, zaslání požadavku o přihlášení a přesměrování uživatele na SplashScreen
      */

@@ -307,14 +307,14 @@ public class TranslatorActivity extends AppCompatActivity {
         String czechPhrase="";
         if(toSpinner.getSelectedItemPosition()==1 //english
                 && fromSpinner.getSelectedItemPosition()==2 //czech
-                && sourceEditText.getText().toString()!=null //2
-                && translatedTextView.getText().toString()!=null){
+                && sourceEditText.getText()!=null //2
+                && translatedTextView.getText()!=null){
             czechPhrase = sourceEditText.getText().toString();
             englishPhrase = translatedTextView.getText().toString();
         }else if(toSpinner.getSelectedItemPosition()==2
                 && fromSpinner.getSelectedItemPosition()==1
-                && sourceEditText.getText().toString()!=null
-                && translatedTextView.getText().toString()!=null){
+                && sourceEditText.getText()!=null
+                && translatedTextView.getText()!=null){
             englishPhrase = sourceEditText.getText().toString();
             czechPhrase = translatedTextView.getText().toString();
         }else {
@@ -438,7 +438,7 @@ public class TranslatorActivity extends AppCompatActivity {
     /**
      * Určení kódu jazyku pro překlad
      * @param language jazyk
-     * @return
+     * @return lanuageCode kód zvoleného jazyku
      */
     public String getLanguageCode(String language) {
         String languageCode = "";

@@ -35,7 +35,7 @@ public class StudyFragment extends Fragment implements View.OnClickListener {
     private Context mContext;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     FirebaseUser user;
-    private Button buttonSpeechActivity, buttonTranslatorActivity, buttonPhrasesActivity;
+    private Button buttonTranslatorActivity, buttonPhrasesActivity;
     private LinearLayout layoutStudy;
 
     public StudyFragment() {
@@ -60,8 +60,6 @@ public class StudyFragment extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_study, container, false);
 
-        buttonSpeechActivity = (Button) v.findViewById(R.id.buttonSpeechActivity);
-        buttonSpeechActivity.setOnClickListener(this);
         buttonTranslatorActivity = (Button) v.findViewById(R.id.buttonTranslatorActivity);
         buttonTranslatorActivity.setOnClickListener(this);
         buttonPhrasesActivity = (Button) v.findViewById(R.id.buttonPhrasesActivity);
@@ -82,7 +80,7 @@ public class StudyFragment extends Fragment implements View.OnClickListener {
          * Načtení uložených teoretickýh materiálů
          */
         DatabaseReference myRefTask1 = database.getReference("UserTheory").child(user.getUid());
-        myRefTask1.addListenerForSingleValueEvent(new ValueEventListener() {
+        myRefTask1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot:snapshot.getChildren()){
@@ -124,13 +122,6 @@ public class StudyFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.buttonSpeechActivity:
-                try {
-                    startActivity(new Intent(getActivity(), SpeechActivity.class));
-                } finally {
-                    getActivity().finish();
-                }
-                break;
             case R.id.buttonTranslatorActivity:
                 /**
                  * Přechod na aktivitu překladače

@@ -118,15 +118,15 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     private void loadData() {
         DatabaseReference myRef = database
                 .getReference("Users").child(user.getUid());
-        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User userProfile = snapshot.child("UserParams").getValue(User.class);
                 /**
-                 * Načtení parametrů o uživatele
+                 * Načtení parametrů o uživateli
                  */
                 if(userProfile != null){
-                    String name = userProfile.name;
+                    String name = userProfile.getName();
                     String email = userProfile.getEmail();
                     textNameFill.setText(name);
                     textEmailFill.setText(email);

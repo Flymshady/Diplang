@@ -109,7 +109,7 @@ public class Page6Lesson1Fragment extends Fragment implements View.OnClickListen
 
     private void loadData() {
         DatabaseReference myRefPage = database.getReference("Lessons").child("Lesson1").child("Page6").child("PageParams");
-        myRefPage.addListenerForSingleValueEvent(new ValueEventListener() {
+        myRefPage.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
@@ -127,7 +127,7 @@ public class Page6Lesson1Fragment extends Fragment implements View.OnClickListen
         });
 
         DatabaseReference myRefTask1 = database.getReference("Lessons").child("Lesson1").child("Page6").child("Task1");
-        myRefTask1.addListenerForSingleValueEvent(new ValueEventListener() {
+        myRefTask1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
@@ -149,7 +149,7 @@ public class Page6Lesson1Fragment extends Fragment implements View.OnClickListen
 
         DatabaseReference myRefTask2 = database
                 .getReference("Lessons").child("Lesson1").child("Page6").child("Task2");
-        myRefTask2.addListenerForSingleValueEvent(new ValueEventListener() {
+        myRefTask2.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
@@ -170,7 +170,7 @@ public class Page6Lesson1Fragment extends Fragment implements View.OnClickListen
 
         DatabaseReference myRefTask3 = database
                 .getReference("Lessons").child("Lesson1").child("Page6").child("Task3");
-        myRefTask3.addListenerForSingleValueEvent(new ValueEventListener() {
+        myRefTask3.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
@@ -191,7 +191,7 @@ public class Page6Lesson1Fragment extends Fragment implements View.OnClickListen
 
         DatabaseReference myRefTask4 = database
                 .getReference("Lessons").child("Lesson1").child("Page6").child("Task4");
-        myRefTask4.addListenerForSingleValueEvent(new ValueEventListener() {
+        myRefTask4.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
@@ -213,7 +213,7 @@ public class Page6Lesson1Fragment extends Fragment implements View.OnClickListen
 
         DatabaseReference myRefTask5 = database
                 .getReference("Lessons").child("Lesson1").child("Page6").child("Task5");
-        myRefTask5.addListenerForSingleValueEvent(new ValueEventListener() {
+        myRefTask5.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again

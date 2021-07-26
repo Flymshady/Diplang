@@ -72,7 +72,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 break;
         }
     }
-
     /**
      * Aktviace tlačítka pro registraci
      * Provede se validace zadaných údajů a následně je odeslán požadavek na registraci uživatele
