@@ -85,7 +85,7 @@ public class StudyFragment extends Fragment implements View.OnClickListener {
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot:snapshot.getChildren()){
                     String lessonName = dataSnapshot.getKey().toString();
-                    ImageButton btnTheory = new ImageButton(getActivity());
+                    ImageButton btnTheory = new ImageButton(mContext);
                     LinearLayout.LayoutParams lpBtn = new LinearLayout.LayoutParams(200,
                             0, 1f);
                     lpBtn.setMargins(5,10,5,0);
