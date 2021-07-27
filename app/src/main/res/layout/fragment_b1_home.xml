@@ -29,7 +29,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="50dp"
+            android:paddingBottom="150dp"
             android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
@@ -52,7 +52,7 @@
                         android:id="@+id/starL1B1"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
+                        android:layout_weight=".5"
                         android:src="@drawable/ic_baseline_star_border_24"
                         app:tint="@color/teal_700"
                         />
@@ -117,7 +117,7 @@
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight=".5"
                     android:src="@drawable/ic_baseline_star_border_24"
                     app:tint="@color/teal_700"
                     />
@@ -181,7 +181,7 @@
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight=".5"
                     android:src="@drawable/ic_baseline_star_border_24"
                     app:tint="@color/teal_700"
                     />
@@ -245,7 +245,7 @@
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight=".5"
                     android:src="@drawable/ic_baseline_star_border_24"
                     app:tint="@color/teal_700"
                     />
@@ -309,7 +309,7 @@
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight=".5"
                     android:src="@drawable/ic_baseline_star_border_24"
                     app:tint="@color/teal_700"
                     />
@@ -372,7 +372,7 @@
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight=".5"
                     android:src="@drawable/ic_baseline_star_border_24"
                     app:tint="@color/teal_700"
                     />
@@ -436,7 +436,7 @@
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight=".5"
                     android:src="@drawable/ic_baseline_star_border_24"
                     app:tint="@color/teal_700"
                     />

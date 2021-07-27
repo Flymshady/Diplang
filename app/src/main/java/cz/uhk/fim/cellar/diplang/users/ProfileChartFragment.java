@@ -76,13 +76,13 @@ public class ProfileChartFragment extends Fragment {
         super.onAttach(context);
         mContext=context;
     }
-
+/*
     @Override
     public void onResume() {
         super.onResume();
         loadChart();
     }
-
+*/
 
     /**
      * Načtení žebříčku přátel uživatele

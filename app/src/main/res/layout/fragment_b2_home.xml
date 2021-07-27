@@ -29,7 +29,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="50dp"
+            android:paddingBottom="150dp"
             android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
@@ -51,7 +51,7 @@
                     android:id="@+id/starLesson1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight=".5"
                     android:src="@drawable/ic_baseline_star_border_24"
                     app:tint="@color/purple_700"
                     />
@@ -116,7 +116,7 @@
                     android:id="@+id/starLesson2"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight=".5"
                     android:src="@drawable/ic_baseline_star_border_24"
                     app:tint="@color/purple_700"
                     />
@@ -180,7 +180,7 @@
                     android:id="@+id/starLesson3"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight=".5"
                     android:src="@drawable/ic_baseline_star_border_24"
                     app:tint="@color/purple_700"
                     />
@@ -245,7 +245,7 @@
                     android:id="@+id/starLesson4"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight=".5"
                     android:src="@drawable/ic_baseline_star_border_24"
                     app:tint="@color/purple_700"
                     />
@@ -310,7 +310,7 @@
                     android:id="@+id/starLesson5"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight=".5"
                     android:src="@drawable/ic_baseline_star_border_24"
                     app:tint="@color/purple_700"
                     />
@@ -375,7 +375,7 @@
                     android:id="@+id/starLesson6"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight=".5"
                     android:src="@drawable/ic_baseline_star_border_24"
                     app:tint="@color/purple_700"
                     />
@@ -441,7 +441,7 @@
                     android:id="@+id/starLesson7"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight=".5"
                     android:src="@drawable/ic_baseline_star_border_24"
                     app:tint="@color/purple_700"
                     />
