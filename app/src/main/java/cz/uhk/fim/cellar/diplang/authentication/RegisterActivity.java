@@ -2,10 +2,14 @@ package cz.uhk.fim.cellar.diplang.authentication;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -29,7 +33,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     private EditText editTextName, editTextEmail, editTextPassword;
     private TextView banner;
-    private Button buttonRegister;
+    private Button buttonRegister, backToLoginFromRegister;
     private ProgressBar progressBar;
 
     private FirebaseAuth mAuth;
@@ -48,6 +52,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         buttonRegister = (Button) findViewById(R.id.register);
         buttonRegister.setOnClickListener(this);
+        backToLoginFromRegister = (Button) findViewById(R.id.backToLoginFromRegister);
+        backToLoginFromRegister.setOnClickListener(this);
 
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
@@ -65,11 +71,24 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.banner:
-                startActivity(new Intent(this, MainActivity.class));
+                try {
+                    startActivity(new Intent(this, MainActivity.class));
+                } finally {
+                    finish();
+                }
                 break;
             case R.id.register:
                 buttonRegister();
                 break;
+            case R.id.backToLoginFromRegister:
+                try {
+                    startActivity(new Intent(this, LoginActivity.class));
+                } finally {
+                    finish();
+                }
+                break;
+
+
         }
     }
     /**
@@ -148,4 +167,14 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
 
     }
+    /** Skrytí klávesnice při "kliknutí" mimo editovatelné textové pole **/
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        if (getCurrentFocus() != null) {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        }
+        return super.dispatchTouchEvent(ev);
+    }
+
 }

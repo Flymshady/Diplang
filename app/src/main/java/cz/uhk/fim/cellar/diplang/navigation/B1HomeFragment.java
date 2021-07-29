@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -19,6 +21,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import cz.uhk.fim.cellar.diplang.R;
+import cz.uhk.fim.cellar.diplang.authentication.LoginActivity;
 import cz.uhk.fim.cellar.diplang.classes.Lesson;
 import cz.uhk.fim.cellar.diplang.lessons.Lesson1B1Activity;
 
@@ -37,7 +40,7 @@ public class B1HomeFragment extends Fragment implements View.OnClickListener {
     private ImageView starL1B1;
     FirebaseUser user;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    private int lesson1Results;
+    private int lesson1Results, lesson1HighScoreResults;
     
     public B1HomeFragment() {
         // Required empty public constructor
@@ -99,6 +102,12 @@ public class B1HomeFragment extends Fragment implements View.OnClickListener {
         loadLessonsData();
 
         startLesson1B1.setOnClickListener(this);
+        startLesson2B1.setOnClickListener(this);
+        startLesson3B1.setOnClickListener(this);
+        startLesson4B1.setOnClickListener(this);
+        startLesson5B1.setOnClickListener(this);
+        startLesson6B1.setOnClickListener(this);
+        startLesson7B1.setOnClickListener(this);
 
         return v;
     }
@@ -142,7 +151,10 @@ public class B1HomeFragment extends Fragment implements View.OnClickListener {
                 // whenever data at this location is updated.
                 resultLesson1 = dataSnapshot.getValue(Lesson.class);
                 if(resultLesson1!=null){
-                    textLessonPoints1B1.setText(Integer.toString(resultLesson1.getDipsGained())+" / " + resultLesson1.getPointsTotal());
+                    textLessonPoints1B1.setText(Integer.toString(
+                            resultLesson1.getDipsGained())+" / " + resultLesson1.getPointsTotal()
+                            + ", Nejvyšší skóre: "+resultLesson1.getHighScore()
+                    );
                     if(resultLesson1.getDipsGained()==resultLesson1.getPointsTotal()){
                         starL1B1.setImageResource(R.drawable.star_purple_full);
                     } else if (resultLesson1.getDipsGained()==0) {
@@ -151,6 +163,7 @@ public class B1HomeFragment extends Fragment implements View.OnClickListener {
                         starL1B1.setImageResource(R.drawable.star_purple_half);
                     }
                     lesson1Results = resultLesson1.getDipsGained();
+                    lesson1HighScoreResults = resultLesson1.getHighScore();
                 }
             }
             @Override
@@ -174,10 +187,29 @@ public class B1HomeFragment extends Fragment implements View.OnClickListener {
                             .putExtra("name", lesson1.getName())
                             .putExtra("pointsTotal", lesson1.getPointsTotal())
                             .putExtra("lessonResults", lesson1Results)
+                            .putExtra("highScore", lesson1HighScoreResults)
                     );
                 } finally {
                     getActivity().finish();
                 }
+                break;
+            case R.id.startLesson2B1:
+                Toast.makeText(getContext(), "Tato lekce není připravena", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.startLesson3B1:
+                Toast.makeText(getContext(), "Tato lekce není připravena", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.startLesson4B1:
+                Toast.makeText(getContext(), "Tato lekce není připravena", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.startLesson5B1:
+                Toast.makeText(getContext(), "Tato lekce není připravena", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.startLesson6B1:
+                Toast.makeText(getContext(), "Tato lekce není připravena", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.startLesson7B1:
+                Toast.makeText(getContext(), "Tato lekce není připravena", Toast.LENGTH_LONG).show();
                 break;
         }
     }

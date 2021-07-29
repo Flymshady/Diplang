@@ -2,11 +2,15 @@ package cz.uhk.fim.cellar.diplang;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -690,5 +694,15 @@ public class TheoryLesson3Activity extends AppCompatActivity implements View.OnC
                 .child("TheoryTaskUser3")
                 .setValue(userTheory);
         Toast.makeText(TheoryLesson3Activity.this, "Uloženo", Toast.LENGTH_LONG).show();
+    }
+
+    /** Skrytí klávesnice při "kliknutí" mimo editovatelné textové pole **/
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        if (getCurrentFocus() != null) {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        }
+        return super.dispatchTouchEvent(ev);
     }
 }

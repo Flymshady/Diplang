@@ -387,6 +387,7 @@ public class Page3Lesson2Fragment extends Fragment implements View.OnClickListen
                 break;
             case (R.id.btnCantSpeak):
                 userCantSpeakNow();
+                Toast.makeText(getContext(), "Nyní můžete odpovědi napsat do přiřazených polí.", Toast.LENGTH_LONG).show();
                 break;
         }
     }

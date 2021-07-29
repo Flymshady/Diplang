@@ -12,6 +12,17 @@ public class Lesson {
     private int dipsGained;
     private int number;
     private String created;
+    private int highScore;
+
+    public Lesson(int pointsTotal, String name, String level, int dipsGained, int number, String created, int highScore) {
+        this.pointsTotal = pointsTotal;
+        this.name = name;
+        this.level = level;
+        this.dipsGained = dipsGained;
+        this.number = number;
+        this.created = created;
+        this.highScore = highScore;
+    }
 
     public Lesson(int pointsTotal, String name, String level, int dipsGained, int number, String created) {
         this.pointsTotal = pointsTotal;
@@ -38,6 +49,14 @@ public class Lesson {
     }
 
     public Lesson() {
+    }
+
+    public int getHighScore() {
+        return highScore;
+    }
+
+    public void setHighScore(int highScore) {
+        this.highScore = highScore;
     }
 
     public String getCreated() {

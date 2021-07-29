@@ -43,6 +43,14 @@
                 android:gravity="center"
                 android:textIsSelectable="true"
                 android:textStyle="bold"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:text="Pokud nemůžete nyní hovořit, stiskněte tlačítko a správné odpovědi napiště"
+                />
             <Button
                 android:layout_gravity="center"
                 android:id="@+id/btnCantSpeak"

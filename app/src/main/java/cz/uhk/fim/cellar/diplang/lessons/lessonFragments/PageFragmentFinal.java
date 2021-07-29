@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.protobuf.StringValue;
+
 import cz.uhk.fim.cellar.diplang.classes.Lesson;
 import cz.uhk.fim.cellar.diplang.lessons.LessonViewModel;
 import cz.uhk.fim.cellar.diplang.navigation.NavigationActivity;
@@ -51,9 +53,19 @@ public class PageFragmentFinal extends Fragment implements View.OnClickListener 
         /**
          * Nastavení textu pro popis získaných bodů
          */
+
+
         String dipsText = "dips";
         if(viewModel.getDipPoints().getValue()==1){
             dipsText = "dip";
+        }
+        int highScore = viewModel.getHighScore().getValue();
+        if(highScore<viewModel.getDipPoints().getValue()){
+            highScore=viewModel.getDipPoints().getValue();
+        }
+        String highScoreText = "";
+        if(highScore!=-1){
+            highScoreText = "Nejvyšší skóre: "+ String.valueOf(highScore)+" dips";
         }
         String previousResults="";
         int lessonResults = viewModel.getLessonResults().getValue();
@@ -64,7 +76,9 @@ public class PageFragmentFinal extends Fragment implements View.OnClickListener 
                 viewModel.getDipPoints().getValue().toString()
                 + " dips\nz celkových\n" +
                 viewModel.getPointsTotal().getValue().toString() + " "+ dipsText
-                + "\n" + previousResults);
+                + "\n" + previousResults
+                + "\n" + highScoreText
+        );
 
         buttonFinishLesson = (Button) v.findViewById(R.id.buttonFinishLesson);
         buttonFinishLesson.setOnClickListener(this);
@@ -113,9 +127,18 @@ public class PageFragmentFinal extends Fragment implements View.OnClickListener 
         /**
          * Nastavení textu pro popis získaných bodů
          */
+
         String dipsText = "dips";
         if(viewModel.getDipPoints().getValue()==1){
             dipsText = "dip";
+        }
+        int highScore = viewModel.getHighScore().getValue();
+        if(highScore<viewModel.getDipPoints().getValue()){
+            highScore=viewModel.getDipPoints().getValue();
+        }
+        String highScoreText = "";
+        if(highScore!=-1){
+            highScoreText = "Nejvyšší skóre: "+ String.valueOf(highScore)+" dips";
         }
         String previousResults="";
         int lessonResults = viewModel.getLessonResults().getValue();
@@ -126,7 +149,9 @@ public class PageFragmentFinal extends Fragment implements View.OnClickListener 
                 viewModel.getDipPoints().getValue().toString()
                 + " dips\nz celkových\n" +
                 viewModel.getPointsTotal().getValue().toString() + " "+ dipsText
-                + "\n" + previousResults);
+                + "\n" + previousResults
+                + "\n" + highScoreText
+        );
         /**
          * Nastavení vzhledu "hvězdy" pro znázornění úspěšnosti v lekci
          */
@@ -138,6 +163,8 @@ public class PageFragmentFinal extends Fragment implements View.OnClickListener 
         }else{
             finalStar.setBackgroundResource(R.drawable.star_purple_half);
         }
+        finalStar.animate()
+                .setDuration(2000).rotationYBy(360f).start();
     }
 
     /**
@@ -150,6 +177,11 @@ public class PageFragmentFinal extends Fragment implements View.OnClickListener 
         lesson.setLevel(viewModel.getLevel().getValue());
         lesson.setNumber(viewModel.getLesson().getValue());
         lesson.setPointsTotal(viewModel.getPointsTotal().getValue());
+        if(viewModel.getHighScore().getValue()<viewModel.getDipPoints().getValue()){
+            lesson.setHighScore(viewModel.getDipPoints().getValue());
+        }else {
+            lesson.setHighScore(viewModel.getHighScore().getValue());
+        }
 
         if(lesson.getNumber()==1 && lesson.getLevel().equals("B2")){
             FirebaseDatabase.getInstance().getReference("UserTasks")

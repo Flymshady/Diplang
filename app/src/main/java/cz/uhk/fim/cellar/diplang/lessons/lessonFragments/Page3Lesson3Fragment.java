@@ -149,7 +149,7 @@ public class Page3Lesson3Fragment extends Fragment implements View.OnClickListen
                         textView.setTypeface(Typeface.DEFAULT_BOLD);
                     }
                     textView.setText(value);
-                    textView.setTextSize(20);
+                    textView.setTextSize(18);
                     textView.setTextIsSelectable(true);
                     textView.setTextColor(Color.BLACK);
                     textView.setLayoutParams(lp);
@@ -184,7 +184,7 @@ public class Page3Lesson3Fragment extends Fragment implements View.OnClickListen
                         textView.setTypeface(Typeface.DEFAULT_BOLD);
                     }
                     textView.setText(value);
-                    textView.setTextSize(20);
+                    textView.setTextSize(18);
                     textView.setTextIsSelectable(true);
                     textView.setTextColor(Color.BLACK);
                     textView.setLayoutParams(lp);

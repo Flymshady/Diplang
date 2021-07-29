@@ -80,7 +80,7 @@ public class StudyFragment extends Fragment implements View.OnClickListener {
          * Načtení uložených teoretickýh materiálů
          */
         DatabaseReference myRefTask1 = database.getReference("UserTheory").child(user.getUid());
-        myRefTask1.addValueEventListener(new ValueEventListener() {
+        myRefTask1.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot:snapshot.getChildren()){

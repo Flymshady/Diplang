@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -39,7 +41,7 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     private Lesson lesson1, resultLesson1, lesson2, resultLesson2, lesson3, resultLesson3;
     FirebaseUser user;
-    private int lesson1Results, lesson2Results, lesson3Results;
+    private int lesson1Results, lesson2Results, lesson3Results, lesson1HighScoreResults, lesson2HighScoreResults, lesson3HighScoreResults;
 
     public B2HomeFragment() {
         // Required empty public constructor
@@ -111,6 +113,10 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
         startLesson1.setOnClickListener(this);
         startLesson2.setOnClickListener(this);
         startLesson3.setOnClickListener(this);
+        startLesson4.setOnClickListener(this);
+        startLesson5.setOnClickListener(this);
+        startLesson6.setOnClickListener(this);
+        startLesson7.setOnClickListener(this);
 
         return v;
     }
@@ -162,7 +168,8 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
                 resultLesson1 = dataSnapshot.child("Lesson1")
                         .child("Results").getValue(Lesson.class);
                 if(resultLesson1!=null){
-                    textLessonPoints1.setText(Integer.toString(resultLesson1.getDipsGained())+" / " + resultLesson1.getPointsTotal());
+                    textLessonPoints1.setText(Integer.toString(resultLesson1.getDipsGained())+" / " + resultLesson1.getPointsTotal()
+                    + ", Nejvyšší skóre: "+ resultLesson1.getHighScore());
                     if(resultLesson1.getDipsGained()==resultLesson1.getPointsTotal()){
                         starLesson1.setImageResource(R.drawable.star_purple_full);
                     } else if (resultLesson1.getDipsGained()==0) {
@@ -171,6 +178,7 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
                         starLesson1.setImageResource(R.drawable.star_purple_half);
                     }
                     lesson1Results=(resultLesson1.getDipsGained());
+                    lesson1HighScoreResults = resultLesson1.getHighScore();
                 }
                 /**
                  * Načtení uživatelových výsledků druhé lekce
@@ -178,7 +186,8 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
                 resultLesson2 = dataSnapshot.child("Lesson2")
                         .child("Results").getValue(Lesson.class);
                 if(resultLesson2!=null){
-                    textLessonPoints2.setText(Integer.toString(resultLesson2.getDipsGained())+" / " + resultLesson2.getPointsTotal());
+                    textLessonPoints2.setText(Integer.toString(resultLesson2.getDipsGained())+" / " + resultLesson2.getPointsTotal()
+                            + ", Nejvyšší skóre: "+ resultLesson2.getHighScore());
                     if(resultLesson2.getDipsGained()==resultLesson2.getPointsTotal()){
                         starLesson2.setImageResource(R.drawable.star_purple_full);
                     } else if (resultLesson2.getDipsGained()==0) {
@@ -187,6 +196,7 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
                         starLesson2.setImageResource(R.drawable.star_purple_half);
                     }
                     lesson2Results=(resultLesson2.getDipsGained());
+                    lesson2HighScoreResults = resultLesson2.getHighScore();
                 }
 
                 /**
@@ -195,7 +205,8 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
                 resultLesson3= dataSnapshot.child("Lesson3")
                         .child("Results").getValue(Lesson.class);
                 if(resultLesson3!=null){
-                    textLessonPoints3.setText(Integer.toString(resultLesson3.getDipsGained())+" / " + resultLesson3.getPointsTotal());
+                    textLessonPoints3.setText(Integer.toString(resultLesson3.getDipsGained())+" / " + resultLesson3.getPointsTotal()
+                            + ", Nejvyšší skóre: "+ resultLesson3.getHighScore());
                     if(resultLesson3.getDipsGained()==resultLesson3.getPointsTotal()){
                         starLesson3.setImageResource(R.drawable.star_purple_full);
                     } else if (resultLesson3.getDipsGained()==0) {
@@ -204,6 +215,7 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
                         starLesson3.setImageResource(R.drawable.star_purple_half);
                     }
                     lesson3Results=(resultLesson3.getDipsGained());
+                    lesson3HighScoreResults = resultLesson3.getHighScore();
                 }
             }
             @Override
@@ -229,6 +241,7 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
                             .putExtra("name", lesson1.getName())
                             .putExtra("pointsTotal", lesson1.getPointsTotal())
                             .putExtra("lessonResults", lesson1Results)
+                            .putExtra("highScore", lesson1HighScoreResults)
 
                     );
                 }finally {
@@ -246,6 +259,7 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
                             .putExtra("name", lesson2.getName())
                             .putExtra("pointsTotal", lesson2.getPointsTotal())
                             .putExtra("lessonResults", lesson2Results)
+                            .putExtra("highScore", lesson2HighScoreResults)
 
                     );
                 }finally {
@@ -263,11 +277,24 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
                             .putExtra("name", lesson3.getName())
                             .putExtra("pointsTotal", lesson3.getPointsTotal())
                             .putExtra("lessonResults", lesson3Results)
+                            .putExtra("highScore", lesson3HighScoreResults)
 
                     );
                 }finally {
                     getActivity().finish();
                 }
+                break;
+            case R.id.startLesson4:
+                Toast.makeText(getContext(), "Tato lekce není připravena", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.startLesson5:
+                Toast.makeText(getContext(), "Tato lekce není připravena", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.startLesson6:
+                Toast.makeText(getContext(), "Tato lekce není připravena", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.startLesson7:
+                Toast.makeText(getContext(), "Tato lekce není připravena", Toast.LENGTH_LONG).show();
                 break;
         }
     }

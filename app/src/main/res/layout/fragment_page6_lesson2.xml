@@ -55,6 +55,15 @@
                     android:textStyle="bold"/>
 
                 <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:text="Rozklikněte pole pro výběr možností"
+                    />
+
+                <TextView
                     android:id="@+id/task1L2P6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -69,7 +78,7 @@
                 <Spinner
                     android:id="@+id/spinnerT1L2P6"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="40dp"
                     android:background="@color/spinner_selected"
                     />
                 <TextView
@@ -99,7 +108,7 @@
                     android:id="@+id/spinnerT2L2P6"
                     android:layout_width="match_parent"
                     android:background="@color/spinner_selected"
-                    android:layout_height="match_parent"
+                    android:layout_height="40dp"
                     />
                 <TextView
                     android:id="@+id/RightAnswer2L2P6"
@@ -129,7 +138,7 @@
                     android:id="@+id/spinnerT3L2P6"
                     android:background="@color/spinner_selected"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="40dp"
                     />
                 <TextView
                     android:id="@+id/RightAnswer3L2P6"
@@ -158,7 +167,7 @@
                     android:id="@+id/spinnerT4L2P6"
                     android:layout_width="match_parent"
                     android:background="@color/spinner_selected"
-                    android:layout_height="match_parent"
+                    android:layout_height="40dp"
                     />
                 <TextView
                     android:id="@+id/RightAnswer4L2P6"
@@ -187,7 +196,7 @@
                     android:id="@+id/spinnerT5L2P6"
                     android:layout_width="match_parent"
                     android:background="@color/spinner_selected"
-                    android:layout_height="match_parent"
+                    android:layout_height="40dp"
                     />
                 <TextView
                     android:id="@+id/RightAnswer5L2P6"
@@ -216,7 +225,7 @@
                     android:id="@+id/spinnerT6L2P6"
                     android:layout_width="match_parent"
                     android:background="@color/spinner_selected"
-                    android:layout_height="match_parent"
+                    android:layout_height="40dp"
                     />
                 <TextView
                     android:id="@+id/RightAnswer6L2P6"

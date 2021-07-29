@@ -73,8 +73,8 @@ public class HomeFragment extends Fragment {
         b1HomeFragment = new B1HomeFragment();
 
         names = new ArrayList<>();
-        names.add("B2");
-        names.add("B1");
+        names.add("Upper Intermediate");
+        names.add("Intermediate");
 
         /**
          * Automatický přechod na poslední nastavenou položku spinneru

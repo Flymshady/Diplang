@@ -1,7 +1,11 @@
 package cz.uhk.fim.cellar.diplang.lessons;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -24,7 +28,7 @@ public class Lesson1B1Activity extends AppCompatActivity {
     private TabLayout tabs;
     private ViewPager2 viewPager2;
     private LessonViewModel viewModel;
-    private int pointsTotal, lessonResults;
+    private int pointsTotal, lessonResults, highScore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +52,8 @@ public class Lesson1B1Activity extends AppCompatActivity {
         viewModel.setPointsTotal(pointsTotal);
         lessonResults = getIntent().getIntExtra("lessonResults", -1);
         viewModel.setLessonResults(lessonResults);
+        highScore = getIntent().getIntExtra("highScore", -1);
+        viewModel.setHighScore(highScore);
 
         tabs = (TabLayout) findViewById(R.id.tabsL1B1);
         viewPager2 = (ViewPager2) findViewById(R.id.viewPagerL1B1);
@@ -67,6 +73,16 @@ public class Lesson1B1Activity extends AppCompatActivity {
                 tab.view.setClickable(false);
             }
         }).attach();
+    }
+
+    /** Skrytí klávesnice při "kliknutí" mimo editovatelné textové pole **/
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        if (getCurrentFocus() != null) {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        }
+        return super.dispatchTouchEvent(ev);
     }
 
     public void moveNext(View view) {

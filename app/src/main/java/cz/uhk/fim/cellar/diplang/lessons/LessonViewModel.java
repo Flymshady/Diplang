@@ -10,13 +10,20 @@ import androidx.lifecycle.ViewModel;
  */
 public class LessonViewModel extends ViewModel {
 
-
+    private final MutableLiveData<Integer> highScore = new MutableLiveData<Integer>();
     private final MutableLiveData<Integer> dipPoints = new MutableLiveData<Integer>();
     private final MutableLiveData<Integer> pointsTotal = new MutableLiveData<Integer>();
     private final MutableLiveData<String> level = new MutableLiveData<String>();
     private final MutableLiveData<Integer> lesson = new MutableLiveData<Integer>();
     private final MutableLiveData<String> username = new MutableLiveData<String>();
     private final MutableLiveData<Integer> lessonResults = new MutableLiveData<Integer>();
+
+    public void setHighScore(int points){
+        highScore.setValue(points);
+    }
+    public LiveData<Integer> getHighScore(){
+        return highScore;
+    }
 
     public void setDipPoints(int points){
         dipPoints.setValue(points);
