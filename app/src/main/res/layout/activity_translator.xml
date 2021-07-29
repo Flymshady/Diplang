@@ -84,7 +84,14 @@
             android:textSize="14sp"/>
 
     </com.google.android.material.textfield.TextInputLayout>
-
+    <TextView
+        android:id="@+id/translatorHint"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        android:text="Při prvním použití překladače bude stáhnut model o velikosti okolo 60MB. Ke stažení je doporučeno využívat WiFi."
+    />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

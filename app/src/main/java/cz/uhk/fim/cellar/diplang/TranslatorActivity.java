@@ -56,7 +56,7 @@ public class TranslatorActivity extends AppCompatActivity {
     private TextInputEditText sourceEditText;
     private ImageView mic, imageTTS, imageTranslatedTTS;
     private MaterialButton translateButton;
-    private TextView translatedTextView;
+    private TextView translatedTextView, translatorHint;
     private Button buttonDeleteModels, buttonBack, btnSavePhrase;
     private TextToSpeech mTTS;
     private String[] fromLanguages = {"Z", "Angličtina", "Čeština"};
@@ -86,6 +86,7 @@ public class TranslatorActivity extends AppCompatActivity {
         imageTTS = (ImageView) findViewById(R.id.imageTTS);
         imageTranslatedTTS = (ImageView) findViewById(R.id.imageTranslatedTTS);
         btnSavePhrase = (Button) findViewById(R.id.btnSavePhrase);
+        translatorHint = (TextView) findViewById(R.id.translatorHint);
 
         mTTS = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
             @Override
@@ -154,6 +155,7 @@ public class TranslatorActivity extends AppCompatActivity {
                     Toast.makeText(TranslatorActivity.this, "Prosím zadejte cílový jazyk.", Toast.LENGTH_LONG).show();
                 }else{
                     translateText(fromLanguageCode, toLanguageCode, sourceEditText.getText().toString());
+                    translatorHint.setVisibility(View.GONE);
                 }
             }
         });
@@ -409,7 +411,7 @@ public class TranslatorActivity extends AppCompatActivity {
         getLifecycle().addObserver(translator);
 
         DownloadConditions conditions = new DownloadConditions.Builder()
-                .requireWifi()
+                //.requireWifi()
                 .build();
 
         translator.downloadModelIfNeeded(conditions).addOnSuccessListener(new OnSuccessListener<Void>() {
