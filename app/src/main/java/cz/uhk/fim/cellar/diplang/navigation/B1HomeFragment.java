@@ -41,6 +41,7 @@ public class B1HomeFragment extends Fragment implements View.OnClickListener {
     FirebaseUser user;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     private int lesson1Results, lesson1HighScoreResults;
+    private boolean loaded;
     
     public B1HomeFragment() {
         // Required empty public constructor
@@ -129,11 +130,15 @@ public class B1HomeFragment extends Fragment implements View.OnClickListener {
                 lesson1 = dataSnapshot.getValue(Lesson.class);
                 if(lesson1!=null){
                     textLessonName1B1.setText(lesson1.getName());
+                    loaded=true;
+                }else{
+                    loaded=false;
                 }
             }
             @Override
             public void onCancelled(DatabaseError error) {
                 // Failed to read value
+                loaded=false;
             }
         });
 
@@ -169,6 +174,7 @@ public class B1HomeFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onCancelled(DatabaseError error) {
                 // Failed to read value
+                loaded=false;
             }
         });
     }
@@ -180,17 +186,21 @@ public class B1HomeFragment extends Fragment implements View.OnClickListener {
              * Nastavení parametrů pro ViewModel první lekce
              */
             case R.id.startLesson1B1:
-                try {
-                    startActivity(new Intent(this.getActivity(), Lesson1B1Activity.class)
+                if(loaded){
+                    try {
+                        startActivity(new Intent(this.getActivity(), Lesson1B1Activity.class)
                             .putExtra("level", lesson1.getLevel())
                             .putExtra("number", lesson1.getNumber())
                             .putExtra("name", lesson1.getName())
                             .putExtra("pointsTotal", lesson1.getPointsTotal())
                             .putExtra("lessonResults", lesson1Results)
                             .putExtra("highScore", lesson1HighScoreResults)
-                    );
-                } finally {
-                    getActivity().finish();
+                        );
+                    } finally {
+                        getActivity().finish();
+                    }
+                }else{
+                    Toast.makeText(getContext(), "Data lekce nebyly načteny. Připojte se k síti a opakujte pokus.", Toast.LENGTH_LONG).show();
                 }
                 break;
             case R.id.startLesson2B1:

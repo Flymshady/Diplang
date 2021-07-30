@@ -62,7 +62,7 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
     private String hint6L1B1P2, hint7L1B1P2, hint8L1B1P2, hint9L1B1P2, hint10L1B1P2;
     private ImageButton btnHint1L1B1P2, btnHint2L1B1P2, btnHint3L1B1P2, btnHint4L1B1P2, btnHint5L1B1P2;
     private ImageButton btnHint6L1B1P2, btnHint7L1B1P2, btnHint8L1B1P2, btnHint9L1B1P2, btnHint10L1B1P2;
-
+    private boolean loaded;
 
     public Page2Lesson1B1Fragment() {
         // Required empty public constructor
@@ -202,11 +202,15 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
                 if(lessonPage!=null){
                     infoPage2Lesson1B1.setText(lessonPage.getInfo());
                     pagePoints = lessonPage.getPagePoints();
+                    loaded=true;
+                }else{
+                    loaded=false;
                 }
             }
             @Override
             public void onCancelled(DatabaseError error) {
                 // Failed to read value
+                loaded=false;
             }
         });
 
@@ -220,6 +224,7 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
                 // whenever data at this location is updated.
                 optionsTask1 = dataSnapshot.getValue(OptionsTask.class);
                 if(optionsTask1!=null){
+                    loaded=true;
                     task1L1B1P2.setText(optionsTask1.getText());
                     task1L1B1P2.setTextIsSelectable(true);
                     hint1L1B1P2=optionsTask1.getHint();
@@ -246,11 +251,14 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
                         public void onNothingSelected(AdapterView<?> adapterView) {
                         }
                     });
+                }else{
+                    loaded=false;
                 }
             }
             @Override
             public void onCancelled(DatabaseError error) {
                 // Failed to read value
+                loaded=false;
             }
         });
 
@@ -264,6 +272,7 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
                 // whenever data at this location is updated.
                 optionsTask2 = dataSnapshot.getValue(OptionsTask.class);
                 if(optionsTask2!=null){
+                    loaded=true;
                     task2L1B1P2.setText(optionsTask2.getText());
                     task2L1B1P2.setTextIsSelectable(true);
                     hint2L1B1P2=optionsTask2.getHint();
@@ -293,11 +302,14 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
                         public void onNothingSelected(AdapterView<?> adapterView) {
                         }
                     });
+                }else{
+                    loaded=false;
                 }
             }
             @Override
             public void onCancelled(DatabaseError error) {
                 // Failed to read value
+                loaded=false;
             }
         });
 
@@ -311,6 +323,7 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
                 // whenever data at this location is updated.
                 optionsTask3 = dataSnapshot.getValue(OptionsTask.class);
                 if(optionsTask3!=null){
+                    loaded=true;
                     task3L1B1P2.setText(optionsTask3.getText());
                     task3L1B1P2.setTextIsSelectable(true);
                     hint3L1B1P2=optionsTask3.getHint();
@@ -341,11 +354,14 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
                         }
                     });
 
+                }else{
+                    loaded=false;
                 }
             }
             @Override
             public void onCancelled(DatabaseError error) {
                 // Failed to read value
+                loaded=false;
             }
         });
 
@@ -359,6 +375,7 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
                 // whenever data at this location is updated.
                 optionsTask4 = dataSnapshot.getValue(OptionsTask.class);
                 if(optionsTask4!=null) {
+                    loaded=true;
                     task4L1B1P2.setText(optionsTask4.getText());
                     task4L1B1P2.setTextIsSelectable(true);
                     hint4L1B1P2=optionsTask4.getHint();
@@ -388,11 +405,14 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
                         public void onNothingSelected(AdapterView<?> adapterView) {
                         }
                     });
+                }else{
+                    loaded=false;
                 }
             }
             @Override
             public void onCancelled(DatabaseError error) {
                 // Failed to read value
+                loaded=false;
             }
         });
 
@@ -408,6 +428,7 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
                 // whenever data at this location is updated.
                 optionsTask5 = dataSnapshot.getValue(OptionsTask.class);
                 if(optionsTask5!=null){
+                    loaded=true;
                     task5L1B1P2.setText(optionsTask5.getText());
                     task5L1B1P2.setTextIsSelectable(true);
                     hint5L1B1P2=optionsTask5.getHint();
@@ -438,11 +459,14 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
                         }
                     });
 
+                }else{
+                    loaded=false;
                 }
             }
             @Override
             public void onCancelled(DatabaseError error) {
                 // Failed to read value
+                loaded=false;
             }
         });
 
@@ -457,6 +481,7 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
                 // whenever data at this location is updated.
                 optionsTask6 = dataSnapshot.getValue(OptionsTask.class);
                 if(optionsTask6!=null){
+                    loaded=true;
                     task6L1B1P2.setText(optionsTask6.getText());
                     task6L1B1P2.setTextIsSelectable(true);
                     hint6L1B1P2=optionsTask6.getHint();
@@ -487,11 +512,14 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
                         }
                     });
 
+                }else{
+                    loaded=false;
                 }
             }
             @Override
             public void onCancelled(DatabaseError error) {
                 // Failed to read value
+                loaded=false;
             }
         });
 
@@ -506,6 +534,7 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
                 // whenever data at this location is updated.
                 optionsTask7 = dataSnapshot.getValue(OptionsTask.class);
                 if(optionsTask7!=null){
+                    loaded=true;
                     task7L1B1P2.setText(optionsTask7.getText());
                     task7L1B1P2.setTextIsSelectable(true);
                     hint7L1B1P2=optionsTask7.getHint();
@@ -536,11 +565,14 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
                         }
                     });
 
+                }else{
+                    loaded=false;
                 }
             }
             @Override
             public void onCancelled(DatabaseError error) {
                 // Failed to read value
+                loaded=false;
             }
         });
 
@@ -555,6 +587,7 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
                 // whenever data at this location is updated.
                 optionsTask8 = dataSnapshot.getValue(OptionsTask.class);
                 if(optionsTask8!=null){
+                    loaded=true;
                     task8L1B1P2.setText(optionsTask8.getText());
                     task8L1B1P2.setTextIsSelectable(true);
                     hint8L1B1P2=optionsTask8.getHint();
@@ -585,11 +618,14 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
                         }
                     });
 
+                }else{
+                    loaded=false;
                 }
             }
             @Override
             public void onCancelled(DatabaseError error) {
                 // Failed to read value
+                loaded=false;
             }
         });
 
@@ -603,6 +639,7 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
                 // whenever data at this location is updated.
                 optionsTask9 = dataSnapshot.getValue(OptionsTask.class);
                 if(optionsTask9!=null){
+                    loaded=true;
                     task9L1B1P2.setText(optionsTask9.getText());
                     task9L1B1P2.setTextIsSelectable(true);
                     hint9L1B1P2=optionsTask9.getHint();
@@ -633,11 +670,14 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
                         }
                     });
 
+                }else{
+                    loaded=false;
                 }
             }
             @Override
             public void onCancelled(DatabaseError error) {
                 // Failed to read value
+                loaded=false;
             }
         });
 
@@ -651,6 +691,7 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
                 // whenever data at this location is updated.
                 optionsTask10 = dataSnapshot.getValue(OptionsTask.class);
                 if(optionsTask10!=null){
+                    loaded=true;
                     task10L1B1P2.setText(optionsTask10.getText());
                     task10L1B1P2.setTextIsSelectable(true);
                     hint10L1B1P2=optionsTask10.getHint();
@@ -681,11 +722,14 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
                         }
                     });
 
+                }else{
+                    loaded=false;
                 }
             }
             @Override
             public void onCancelled(DatabaseError error) {
                 // Failed to read value
+                loaded=false;
             }
         });
 
@@ -703,14 +747,18 @@ public class Page2Lesson1B1Fragment extends Fragment implements View.OnClickList
     public void onClick(View view) {
         switch (view.getId()){
             case (R.id.btnSaveL1B1P2):
-                points = calculatePoints();
-                finishL1B1P2.setVisibility(View.VISIBLE);
-                finishTVL1B1P2.setText("Splněno! "+points +"dips!");
-                btnSaveL1B1P2.setVisibility(GONE);
-                viewModel.setDipPoints(viewModel.getDipPoints().getValue()+points);
-                TVPointsL1B1P2.setText(viewModel.getDipPoints().getValue().toString());
-                saveUserTask();
-                Toast.makeText(this.getActivity(), "Počet bodů: "+points, Toast.LENGTH_LONG).show();
+                if(loaded=false){
+                    Toast.makeText(this.getActivity(), "Data lekce nebyly načteny. Připojte se k síti a opakujte pokus.", Toast.LENGTH_LONG).show();
+                }else {
+                    points = calculatePoints();
+                    finishL1B1P2.setVisibility(View.VISIBLE);
+                    finishTVL1B1P2.setText("Splněno! " + points + "dips!");
+                    btnSaveL1B1P2.setVisibility(GONE);
+                    viewModel.setDipPoints(viewModel.getDipPoints().getValue() + points);
+                    TVPointsL1B1P2.setText(viewModel.getDipPoints().getValue().toString());
+                    saveUserTask();
+                    Toast.makeText(this.getActivity(), "Počet bodů: " + points, Toast.LENGTH_LONG).show();
+                }
                 break;
             case (R.id.btnNextToP3L1B1):
                 viewPager2.setCurrentItem(viewPager2.getCurrentItem() + 1);

@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,6 +32,7 @@ public class Page1Lesson1Fragment extends Fragment implements View.OnClickListen
     private ViewPager2 viewPager2;
     private LinearLayout linearLayout;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private boolean loaded;
 
     public Page1Lesson1Fragment() {
         // Required empty public constructor
@@ -74,29 +77,33 @@ public class Page1Lesson1Fragment extends Fragment implements View.OnClickListen
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot:snapshot.getChildren()){
-                    String key = dataSnapshot.getKey();
-                    String value = dataSnapshot.getValue().toString();
+                    if(dataSnapshot!=null) {
+                        loaded=true;
+                        String key = dataSnapshot.getKey();
+                        String value = dataSnapshot.getValue().toString();
 
-                    TextView textView = new TextView(getActivity());
-                    LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
-                            LinearLayout.LayoutParams.WRAP_CONTENT);
-                    lp.gravity = Gravity.CENTER;
-                    lp.setMargins(0, 20, 0, 0);
+                        TextView textView = new TextView(getActivity());
+                        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
+                                LinearLayout.LayoutParams.WRAP_CONTENT);
+                        lp.gravity = Gravity.CENTER;
+                        lp.setMargins(0, 20, 0, 0);
 
-                    textView.setText(value);
-                    textView.setTextSize(20);
-                    textView.setTextIsSelectable(true);
-                    textView.setTextColor(Color.BLACK);
-                    textView.setLayoutParams(lp);
+                        textView.setText(value);
+                        textView.setTextSize(20);
+                        textView.setTextIsSelectable(true);
+                        textView.setTextColor(Color.BLACK);
+                        textView.setLayoutParams(lp);
 
-                    linearLayout.addView(textView);
-
+                        linearLayout.addView(textView);
+                    }else{
+                       loaded=false;
+                    }
                 }
             }
 
             @Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
-
+                loaded=false;
             }
         });
     }
@@ -108,7 +115,11 @@ public class Page1Lesson1Fragment extends Fragment implements View.OnClickListen
                 /**
                  * Přechod na další stránku
                  */
-                viewPager2.setCurrentItem(viewPager2.getCurrentItem() + 1);
+                if(loaded) {
+                    viewPager2.setCurrentItem(viewPager2.getCurrentItem() + 1);
+                }else{
+                    Toast.makeText(getContext(), "Data lekce nebyly načteny. Připojte se k síti a opakujte pokus.", Toast.LENGTH_LONG).show();
+                }
                 break;
 
         }

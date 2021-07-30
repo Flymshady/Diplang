@@ -42,6 +42,7 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
     private Lesson lesson1, resultLesson1, lesson2, resultLesson2, lesson3, resultLesson3;
     FirebaseUser user;
     private int lesson1Results, lesson2Results, lesson3Results, lesson1HighScoreResults, lesson2HighScoreResults, lesson3HighScoreResults;
+    private boolean loadedL1, loadedL2, loadedL3;
 
     public B2HomeFragment() {
         // Required empty public constructor
@@ -138,19 +139,31 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
                 lesson1 = dataSnapshot.child("Lesson1").child("LessonParams").getValue(Lesson.class);
                 if(lesson1!=null){
                     textLessonName1.setText(lesson1.getName());
+                    loadedL1=true;
+                }else{
+                    loadedL1=false;
                 }
                 lesson2 = dataSnapshot.child("Lesson2").child("LessonParams").getValue(Lesson.class);
                 if(lesson2!=null){
                     textLessonName2.setText(lesson2.getName());
+                    loadedL2=true;
+                }else{
+                    loadedL2=false;
                 }
                 lesson3 = dataSnapshot.child("Lesson3").child("LessonParams").getValue(Lesson.class);
                 if(lesson3!=null){
                     textLessonName3.setText(lesson3.getName());
+                    loadedL3=true;
+                }else{
+                    loadedL3=false;
                 }
             }
             @Override
             public void onCancelled(DatabaseError error) {
                 // Failed to read value
+                loadedL1=false;
+                loadedL2=false;
+                loadedL3=false;
             }
         });
 
@@ -221,6 +234,9 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onCancelled(DatabaseError error) {
                 // Failed to read value
+                loadedL1=false;
+                loadedL2=false;
+                loadedL3=false;
             }
         });
 
@@ -234,54 +250,66 @@ public class B2HomeFragment extends Fragment implements View.OnClickListener {
                 /**
                  * Nastavení parametrů první lekce
                  */
-                try {
-                    startActivity(new Intent(this.getActivity(), Lesson1Activity.class)
-                            .putExtra("level", lesson1.getLevel())
-                            .putExtra("number", lesson1.getNumber())
-                            .putExtra("name", lesson1.getName())
-                            .putExtra("pointsTotal", lesson1.getPointsTotal())
-                            .putExtra("lessonResults", lesson1Results)
-                            .putExtra("highScore", lesson1HighScoreResults)
+                if(loadedL1) {
+                    try {
+                        startActivity(new Intent(this.getActivity(), Lesson1Activity.class)
+                                .putExtra("level", lesson1.getLevel())
+                                .putExtra("number", lesson1.getNumber())
+                                .putExtra("name", lesson1.getName())
+                                .putExtra("pointsTotal", lesson1.getPointsTotal())
+                                .putExtra("lessonResults", lesson1Results)
+                                .putExtra("highScore", lesson1HighScoreResults)
 
-                    );
-                }finally {
-                    getActivity().finish();
+                        );
+                    } finally {
+                        getActivity().finish();
+                    }
+                }else{
+                    Toast.makeText(getContext(), "Data lekce nebyly načteny. Připojte se k síti a opakujte pokus.", Toast.LENGTH_LONG).show();
                 }
                 break;
             case R.id.startLesson2:
                 /**
                  * Nastavení parametrů druhé lekce
                  */
-                try {
-                    startActivity(new Intent(this.getActivity(), Lesson2Activity.class)
-                            .putExtra("level", lesson2.getLevel())
-                            .putExtra("number", lesson2.getNumber())
-                            .putExtra("name", lesson2.getName())
-                            .putExtra("pointsTotal", lesson2.getPointsTotal())
-                            .putExtra("lessonResults", lesson2Results)
-                            .putExtra("highScore", lesson2HighScoreResults)
+                if(loadedL2) {
+                    try {
+                        startActivity(new Intent(this.getActivity(), Lesson2Activity.class)
+                                .putExtra("level", lesson2.getLevel())
+                                .putExtra("number", lesson2.getNumber())
+                                .putExtra("name", lesson2.getName())
+                                .putExtra("pointsTotal", lesson2.getPointsTotal())
+                                .putExtra("lessonResults", lesson2Results)
+                                .putExtra("highScore", lesson2HighScoreResults)
 
-                    );
-                }finally {
-                    getActivity().finish();
+                        );
+                    } finally {
+                        getActivity().finish();
+                    }
+                }else{
+                    Toast.makeText(getContext(), "Data lekce nebyly načteny. Připojte se k síti a opakujte pokus.", Toast.LENGTH_LONG).show();
                 }
                 break;
             case R.id.startLesson3:
                 /**
                  * Nastavení parametrů třetí lekce
                  */
-                try {
-                    startActivity(new Intent(this.getActivity(), Lesson3Activity.class)
-                            .putExtra("level", lesson3.getLevel())
-                            .putExtra("number", lesson3.getNumber())
-                            .putExtra("name", lesson3.getName())
-                            .putExtra("pointsTotal", lesson3.getPointsTotal())
-                            .putExtra("lessonResults", lesson3Results)
-                            .putExtra("highScore", lesson3HighScoreResults)
+                if(loadedL3) {
+                    try {
+                        startActivity(new Intent(this.getActivity(), Lesson3Activity.class)
+                                .putExtra("level", lesson3.getLevel())
+                                .putExtra("number", lesson3.getNumber())
+                                .putExtra("name", lesson3.getName())
+                                .putExtra("pointsTotal", lesson3.getPointsTotal())
+                                .putExtra("lessonResults", lesson3Results)
+                                .putExtra("highScore", lesson3HighScoreResults)
 
-                    );
-                }finally {
-                    getActivity().finish();
+                        );
+                    } finally {
+                        getActivity().finish();
+                    }
+                }else {
+                    Toast.makeText(getContext(), "Data lekce nebyly načteny. Připojte se k síti a opakujte pokus.", Toast.LENGTH_LONG).show();
                 }
                 break;
             case R.id.startLesson4:

@@ -80,7 +80,7 @@ public class StudyFragment extends Fragment implements View.OnClickListener {
          * Načtení uložených teoretickýh materiálů
          */
         DatabaseReference myRefTask1 = database.getReference("UserTheory").child(user.getUid());
-        myRefTask1.addListenerForSingleValueEvent(new ValueEventListener() {
+        myRefTask1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot:snapshot.getChildren()){
@@ -129,13 +129,22 @@ public class StudyFragment extends Fragment implements View.OnClickListener {
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.addToBackStack(null);
                 transaction.commit();
-                startActivity(new Intent(getActivity(), TranslatorActivity.class));
+                try {
+                    startActivity(new Intent(getActivity(), TranslatorActivity.class));
+                }finally {
+                    getActivity().finish();
+                }
+
                 break;
             case R.id.buttonPhrasesActivity:
                 /**
                  * Přechod na aktivitu uložených frází
                  */
-                startActivity(new Intent(getActivity(), PhrasesActivity.class));
+                try{
+                    startActivity(new Intent(getActivity(), PhrasesActivity.class));
+                }finally {
+                    getActivity().finish();
+                }
                 break;
 
         }

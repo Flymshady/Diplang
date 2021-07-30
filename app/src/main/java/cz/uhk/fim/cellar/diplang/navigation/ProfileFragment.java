@@ -179,7 +179,11 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.addToBackStack(null);
                 transaction.commit();
-                startActivity(new Intent(getActivity(), NotificationSettingsActivity.class));
+                try{
+                    startActivity(new Intent(getActivity(), NotificationSettingsActivity.class));
+                }finally {
+                    getActivity().finish();
+                }
                 break;
 
         }

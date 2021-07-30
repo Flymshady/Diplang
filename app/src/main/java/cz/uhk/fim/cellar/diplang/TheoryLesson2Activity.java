@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -26,6 +27,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import org.jetbrains.annotations.NotNull;
 import cz.uhk.fim.cellar.diplang.classes.UserTheory;
+import cz.uhk.fim.cellar.diplang.navigation.NavigationActivity;
 
 /**
  * @author Štěpán Cellar - FIM UHK
@@ -116,7 +118,11 @@ public class TheoryLesson2Activity extends AppCompatActivity implements View.OnC
                 saveTheory1L2P1();
                 break;
             case (R.id.btnBackFromTheory2):
-                finish();
+                try {
+                    startActivity(new Intent(TheoryLesson2Activity.this, NavigationActivity.class));
+                }finally {
+                    finish();
+                }
                 break;
         }
     }

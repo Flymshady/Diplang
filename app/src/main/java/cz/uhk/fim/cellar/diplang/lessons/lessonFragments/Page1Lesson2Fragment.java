@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
@@ -33,6 +35,7 @@ public class Page1Lesson2Fragment extends Fragment implements View.OnClickListen
     private LinearLayout linearLayout;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     private TheoryTask theoryTask;
+    private boolean loaded;
 
     public Page1Lesson2Fragment() {
         // Required empty public constructor
@@ -77,28 +80,34 @@ public class Page1Lesson2Fragment extends Fragment implements View.OnClickListen
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot:snapshot.getChildren()){
-                    String key = dataSnapshot.getKey();
-                    String value = dataSnapshot.getValue().toString();
-                    value = value.replace(";", "\n");
+                    if(dataSnapshot!=null) {
+                        loaded=true;
+                        String key = dataSnapshot.getKey();
+                        String value = dataSnapshot.getValue().toString();
+                        value = value.replace(";", "\n");
 
-                    TextView textView = new TextView(getActivity());
-                    LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
-                            LinearLayout.LayoutParams.WRAP_CONTENT);
-                    lp.gravity = Gravity.CENTER;
-                    lp.setMargins(0, 20, 0, 0);
+                        TextView textView = new TextView(getActivity());
+                        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
+                                LinearLayout.LayoutParams.WRAP_CONTENT);
+                        lp.gravity = Gravity.CENTER;
+                        lp.setMargins(0, 20, 0, 0);
 
-                    textView.setText(value);
-                    textView.setTextSize(20);
-                    textView.setTextIsSelectable(true);
-                    textView.setTextColor(Color.BLACK);
-                    textView.setLayoutParams(lp);
+                        textView.setText(value);
+                        textView.setTextSize(20);
+                        textView.setTextIsSelectable(true);
+                        textView.setTextColor(Color.BLACK);
+                        textView.setLayoutParams(lp);
 
-                    linearLayout.addView(textView);
+                        linearLayout.addView(textView);
+                    }else{
+                        loaded=false;
+                    }
                 }
             }
 
             @Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
+                loaded=false;
             }
         });
 
@@ -111,27 +120,32 @@ public class Page1Lesson2Fragment extends Fragment implements View.OnClickListen
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 theoryTask = snapshot.getValue(TheoryTask.class);
                 for(DataSnapshot dataSnapshot:snapshot.getChildren()){
-                    String key = dataSnapshot.getKey();
-                    String value = dataSnapshot.getValue().toString();
-                    value = value.replace(";", "\n");
-                    TextView textView = new TextView(getActivity());
-                    LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
-                            LinearLayout.LayoutParams.WRAP_CONTENT);
-                    lp.gravity = Gravity.CENTER;
-                    lp.setMargins(0, 20, 0, 0);
-                    textView.setText(value);
-                    textView.setTextSize(20);
-                    textView.setTextIsSelectable(true);
-                    textView.setTextColor(Color.BLACK);
-                    textView.setLayoutParams(lp);
+                    if(dataSnapshot!=null) {
+                        loaded=true;
+                        String key = dataSnapshot.getKey();
+                        String value = dataSnapshot.getValue().toString();
+                        value = value.replace(";", "\n");
+                        TextView textView = new TextView(getActivity());
+                        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
+                                LinearLayout.LayoutParams.WRAP_CONTENT);
+                        lp.gravity = Gravity.CENTER;
+                        lp.setMargins(0, 20, 0, 0);
+                        textView.setText(value);
+                        textView.setTextSize(20);
+                        textView.setTextIsSelectable(true);
+                        textView.setTextColor(Color.BLACK);
+                        textView.setLayoutParams(lp);
 
-                    linearLayout.addView(textView);
+                        linearLayout.addView(textView);
+                    }else{
+                        loaded=false;
+                    }
                 }
             }
 
             @Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
-
+                loaded=false;
             }
         });
     }
@@ -144,8 +158,12 @@ public class Page1Lesson2Fragment extends Fragment implements View.OnClickListen
                  * Zavolání metody pro uložení teoretické úlohy
                  * a přechod na další stránku
                  */
-                saveUserTheory();
-                viewPager2.setCurrentItem(viewPager2.getCurrentItem() + 1);
+                if(loaded) {
+                    saveUserTheory();
+                    viewPager2.setCurrentItem(viewPager2.getCurrentItem() + 1);
+                }else {
+                    Toast.makeText(getContext(), "Data lekce nebyly načteny. Připojte se k síti a opakujte pokus.", Toast.LENGTH_LONG).show();
+                }
                 break;
 
         }
