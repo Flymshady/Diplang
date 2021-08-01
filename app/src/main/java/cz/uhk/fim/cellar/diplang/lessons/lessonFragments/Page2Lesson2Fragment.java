@@ -490,7 +490,10 @@ public class Page2Lesson2Fragment extends Fragment implements View.OnClickListen
                 saveUserTask();
                 Toast.makeText(this.getActivity(), "Počet bodů: "+points, Toast.LENGTH_LONG).show();
                 break;
-            case (R.id.btnNextToP3L2): viewPager2.setCurrentItem(viewPager2.getCurrentItem() + 1);
+            case (R.id.btnNextToP3L2):
+                mTTS.stop();
+                youTubePlayerView.release();
+                viewPager2.setCurrentItem(viewPager2.getCurrentItem() + 1);
                 break;
             case (R.id.listeningSound):
                 if(mTTS.isSpeaking()){
