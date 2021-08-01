@@ -84,7 +84,6 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:textSize="18sp"
-                        android:textColor="@color/black"
                         />
                     <ImageButton
                         android:layout_weight="0.5"

@@ -69,6 +69,7 @@ public class Page3Lesson2Fragment extends Fragment implements View.OnClickListen
     private Resources resources;
     private Context context;
     private boolean focusText1, focusText2, focusText3, focusText4, focusText5, focusText6;
+    private boolean clickable;
 
     public Page3Lesson2Fragment() {
         // Required empty public constructor
@@ -157,7 +158,7 @@ public class Page3Lesson2Fragment extends Fragment implements View.OnClickListen
         utask4.setCreated(LocalDateTime.now().toString());
         utask5.setCreated(LocalDateTime.now().toString());
         utask6.setCreated(LocalDateTime.now().toString());
-
+        clickable = true;
         btnCantSpeak.setOnClickListener(this);
         btnSpeak1.setOnClickListener(this);
         btnSpeak2.setOnClickListener(this);
@@ -350,6 +351,7 @@ public class Page3Lesson2Fragment extends Fragment implements View.OnClickListen
     public void onClick(View view) {
         switch (view.getId()){
             case (R.id.btnSaveL2P3):
+                clickable=false;
                 points = calculatePoint();
                 finishL2P3.setVisibility(View.VISIBLE);
                 finishTVL2P3.setText("Splněno! "+points +"dips!");
@@ -446,18 +448,20 @@ public class Page3Lesson2Fragment extends Fragment implements View.OnClickListen
     }
 
     private void userCantSpeakNow() {
-        ET1L2P3.setFocusableInTouchMode(true);
-        ET1L2P3.setFocusable(true);
-        ET2L2P3.setFocusableInTouchMode(true);
-        ET2L2P3.setFocusable(true);
-        ET3L2P3.setFocusableInTouchMode(true);
-        ET3L2P3.setFocusable(true);
-        ET4L2P3.setFocusableInTouchMode(true);
-        ET4L2P3.setFocusable(true);
-        ET5L2P3.setFocusableInTouchMode(true);
-        ET5L2P3.setFocusable(true);
-        ET6L2P3.setFocusableInTouchMode(true);
-        ET6L2P3.setFocusable(true);
+        if(clickable) {
+            ET1L2P3.setFocusableInTouchMode(true);
+            ET1L2P3.setFocusable(true);
+            ET2L2P3.setFocusableInTouchMode(true);
+            ET2L2P3.setFocusable(true);
+            ET3L2P3.setFocusableInTouchMode(true);
+            ET3L2P3.setFocusable(true);
+            ET4L2P3.setFocusableInTouchMode(true);
+            ET4L2P3.setFocusable(true);
+            ET5L2P3.setFocusableInTouchMode(true);
+            ET5L2P3.setFocusable(true);
+            ET6L2P3.setFocusableInTouchMode(true);
+            ET6L2P3.setFocusable(true);
+        }
     }
 
     private void speechToText() {

@@ -24,7 +24,7 @@
             android:spinnerMode="dropdown"
             android:textAlignment="center"
             android:gravity="center"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="20dp"
             android:textStyle="bold"
             android:textColor="@color/purple_700"
             />
@@ -32,7 +32,7 @@
         <TextView
             android:id="@+id/textName"
             android:layout_width="0dp"
-            android:layout_weight=".8"
+            android:layout_weight=".9"
             android:text="Uživatel"
             android:textAlignment="center"
             android:gravity="center"
@@ -43,7 +43,7 @@
         <TextView
             android:id="@+id/textPoints"
             android:layout_width="0dp"
-            android:layout_weight=".7"
+            android:layout_weight=".6"
             android:layout_marginRight="10dp"
             android:layout_height="wrap_content"
             android:textAlignment="center"
