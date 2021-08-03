@@ -42,7 +42,6 @@ public class Page2Lesson3Fragment extends Fragment implements View.OnClickListen
         // Required empty public constructor
     }
 
-
     public static Page2Lesson3Fragment newInstance(String param1, String param2) {
         Page2Lesson3Fragment fragment = new Page2Lesson3Fragment();
         Bundle args = new Bundle();

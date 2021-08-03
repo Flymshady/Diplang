@@ -172,6 +172,7 @@ public class Page2Lesson2Fragment extends Fragment implements View.OnClickListen
     }
 
     private void setListeningFormat() {
+        /** Nastavení video (YouTube) přehrávače **/
         youTubePlayerView.setVisibility(View.VISIBLE);
         youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
             @Override
@@ -181,7 +182,7 @@ public class Page2Lesson2Fragment extends Fragment implements View.OnClickListen
                 youTubePlayer.cueVideo(videoId, 0);
             }
         });
-
+        /** Nastavení syntetizace textu TextToSpeech **/
         btnListening.setVisibility(View.VISIBLE);
         mTTS = new TextToSpeech(getContext(), new TextToSpeech.OnInitListener() {
             @Override
