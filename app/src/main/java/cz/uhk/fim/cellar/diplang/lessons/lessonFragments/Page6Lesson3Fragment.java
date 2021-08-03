@@ -35,7 +35,6 @@ public class Page6Lesson3Fragment extends Fragment implements View.OnClickListen
         // Required empty public constructor
     }
 
-
     public static Page6Lesson3Fragment newInstance(String param1, String param2) {
         Page6Lesson3Fragment fragment = new Page6Lesson3Fragment();
         Bundle args = new Bundle();
@@ -64,9 +63,14 @@ public class Page6Lesson3Fragment extends Fragment implements View.OnClickListen
 
         return v;
     }
-
+    /**
+     * Načtení dat
+     */
     private void loadData() {
 
+        /**
+         * Načtení textové úlohy a její přidání do layoutu
+         */
         DatabaseReference myRefTask1 = database.getReference("Lessons").child("Lesson3").child("Page6").child("TextTask");
         myRefTask1.addValueEventListener(new ValueEventListener() {
             @Override
@@ -99,6 +103,7 @@ public class Page6Lesson3Fragment extends Fragment implements View.OnClickListen
         });
     }
 
+    /** Nastavení buttonu **/
     @Override
     public void onClick(View view) {
         switch (view.getId()){

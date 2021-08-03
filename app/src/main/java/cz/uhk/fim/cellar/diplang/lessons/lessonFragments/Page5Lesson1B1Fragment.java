@@ -128,7 +128,6 @@ public class Page5Lesson1B1Fragment extends Fragment implements View.OnClickList
         btnHint9L1B1P5.setOnClickListener(this);
         btnHint10L1B1P5.setOnClickListener(this);
 
-
         btnSaveL1B1P5 = (Button) v.findViewById(R.id.btnSaveL1B1P5);
         finishL1B1P5 = (LinearLayout) v.findViewById(R.id.finishL1B1P5);
         finishTVL1B1P5 = (TextView) v.findViewById(R.id.finishTVL1B1P5);
@@ -190,8 +189,11 @@ public class Page5Lesson1B1Fragment extends Fragment implements View.OnClickList
     
     
     }
-
+    /**
+     * Načtení dat
+     */
     private void loadData() {
+        /** Načtení informací o stránce **/
         DatabaseReference myRefPage = database.getReference("Lessons").child("Lesson1B1").child("Page5").child("PageParams");
         myRefPage.addValueEventListener(new ValueEventListener() {
             @Override
@@ -210,6 +212,9 @@ public class Page5Lesson1B1Fragment extends Fragment implements View.OnClickList
             }
         });
 
+        /**
+         * Načtení úlohy s možnostmi pro odpovědi a jejich přidání do layoutu
+         */
         DatabaseReference myRefTask1 = database
                 .getReference("Lessons")
                 .child("Lesson1B1").child("Page5").child("OptionsTask1");
@@ -254,6 +259,9 @@ public class Page5Lesson1B1Fragment extends Fragment implements View.OnClickList
             }
         });
 
+        /**
+         * Načtení úlohy s možnostmi pro odpovědi a jejich přidání do layoutu
+         */
         DatabaseReference myRefTask2 = database
                 .getReference("Lessons")
                 .child("Lesson1B1").child("Page5").child("OptionsTask2");
@@ -301,6 +309,9 @@ public class Page5Lesson1B1Fragment extends Fragment implements View.OnClickList
             }
         });
 
+        /**
+         * Načtení úlohy s možnostmi pro odpovědi a jejich přidání do layoutu
+         */
         DatabaseReference myRefTask3 = database
                 .getReference("Lessons")
                 .child("Lesson1B1").child("Page5").child("OptionsTask3");
@@ -349,6 +360,9 @@ public class Page5Lesson1B1Fragment extends Fragment implements View.OnClickList
             }
         });
 
+        /**
+         * Načtení úlohy s možnostmi pro odpovědi a jejich přidání do layoutu
+         */
         DatabaseReference myRefTask4 = database
                 .getReference("Lessons")
                 .child("Lesson1B1").child("Page5").child("OptionsTask4");
@@ -396,8 +410,9 @@ public class Page5Lesson1B1Fragment extends Fragment implements View.OnClickList
             }
         });
 
-
-
+        /**
+         * Načtení úlohy s možnostmi pro odpovědi a jejich přidání do layoutu
+         */
         DatabaseReference myRefTask5 = database
                 .getReference("Lessons")
                 .child("Lesson1B1").child("Page5").child("OptionsTask5");
@@ -446,7 +461,9 @@ public class Page5Lesson1B1Fragment extends Fragment implements View.OnClickList
             }
         });
 
-
+        /**
+         * Načtení úlohy s možnostmi pro odpovědi a jejich přidání do layoutu
+         */
         DatabaseReference myRefTask6 = database
                 .getReference("Lessons")
                 .child("Lesson1B1").child("Page5").child("OptionsTask6");
@@ -495,7 +512,9 @@ public class Page5Lesson1B1Fragment extends Fragment implements View.OnClickList
             }
         });
 
-
+        /**
+         * Načtení úlohy s možnostmi pro odpovědi a jejich přidání do layoutu
+         */
         DatabaseReference myRefTask7 = database
                 .getReference("Lessons")
                 .child("Lesson1B1").child("Page5").child("OptionsTask7");
@@ -544,7 +563,9 @@ public class Page5Lesson1B1Fragment extends Fragment implements View.OnClickList
             }
         });
 
-
+        /**
+         * Načtení úlohy s možnostmi pro odpovědi a jejich přidání do layoutu
+         */
         DatabaseReference myRefTask8 = database
                 .getReference("Lessons")
                 .child("Lesson1B1").child("Page5").child("OptionsTask8");
@@ -593,6 +614,9 @@ public class Page5Lesson1B1Fragment extends Fragment implements View.OnClickList
             }
         });
 
+        /**
+         * Načtení úlohy s možnostmi pro odpovědi a jejich přidání do layoutu
+         */
         DatabaseReference myRefTask9 = database
                 .getReference("Lessons")
                 .child("Lesson1B1").child("Page5").child("OptionsTask9");
@@ -641,6 +665,9 @@ public class Page5Lesson1B1Fragment extends Fragment implements View.OnClickList
             }
         });
 
+        /**
+         * Načtení úlohy s možnostmi pro odpovědi a jejich přidání do layoutu
+         */
         DatabaseReference myRefTask10 = database
                 .getReference("Lessons")
                 .child("Lesson1B1").child("Page5").child("OptionsTask10");
@@ -699,6 +726,7 @@ public class Page5Lesson1B1Fragment extends Fragment implements View.OnClickList
         TVPointsL1B1P5.setText(viewModel.getDipPoints().getValue().toString());
     }
 
+    /** Nastavení buttonů **/
     @Override
     public void onClick(View view) {
         switch (view.getId()){
@@ -750,6 +778,7 @@ public class Page5Lesson1B1Fragment extends Fragment implements View.OnClickList
         }
     }
 
+    /** Porovnání odpovědí, zobrazení správných řešení, kalkulace bodů **/
     private int calculatePoints() {
         int pointsCount=0;
         A1T1L1B1P5 = spinnerT1L1B1P5.getSelectedItem().toString();
@@ -878,6 +907,7 @@ public class Page5Lesson1B1Fragment extends Fragment implements View.OnClickList
         return pointsCount;
     }
 
+    /** Uložení uživatelových odpovědí do db **/
     private void saveUserTask() {
         FirebaseDatabase.getInstance().getReference("UserTasks")
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())

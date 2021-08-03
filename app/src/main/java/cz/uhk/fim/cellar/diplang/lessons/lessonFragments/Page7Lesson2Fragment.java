@@ -39,7 +39,6 @@ public class Page7Lesson2Fragment extends Fragment implements View.OnClickListen
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -74,9 +73,12 @@ public class Page7Lesson2Fragment extends Fragment implements View.OnClickListen
 
         return v;
     }
-
+    /**
+     * Načtení dat
+     */
     private void loadData() {
 
+        /** Načtení teoretické úlohy z db a její přidání do layoutu **/
         DatabaseReference myRefTask1 = database.getReference("Lessons").child("Lesson2").child("Page7").child("TheoryTask");
         myRefTask1.addValueEventListener(new ValueEventListener() {
             @Override
@@ -148,6 +150,7 @@ public class Page7Lesson2Fragment extends Fragment implements View.OnClickListen
 
     }
 
+    /** Nastavení buttonů **/
     @Override
     public void onClick(View view) {
         switch (view.getId()){
@@ -160,6 +163,7 @@ public class Page7Lesson2Fragment extends Fragment implements View.OnClickListen
         }
     }
 
+    /** Zobrazení nápovědy **/
     private void hintQuestion() {
         textB1P7L2.setBackgroundResource(R.color.right_answer_color);
         textB2P7L2.setBackgroundResource(R.color.right_answer_color);

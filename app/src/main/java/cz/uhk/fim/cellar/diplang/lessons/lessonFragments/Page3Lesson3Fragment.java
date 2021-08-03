@@ -74,8 +74,12 @@ public class Page3Lesson3Fragment extends Fragment implements View.OnClickListen
         return v;
     }
 
+    /**
+     * Načtení dat
+     */
     private void loadData() {
 
+        /**Načtení informací o stránce**/
         DatabaseReference myRefPage = database.getReference("Lessons").child("Lesson3").child("Page3").child("PageParams");
         myRefPage.addValueEventListener(new ValueEventListener() {
             @Override
@@ -92,7 +96,9 @@ public class Page3Lesson3Fragment extends Fragment implements View.OnClickListen
                 // Failed to read value
             }
         });
-
+        /**
+         * Načtení teoretické úlohy a její přidání do layoutu
+         */
         DatabaseReference myRefTask1 = database.getReference("Lessons").child("Lesson3").child("Page3").child("TheoryTask1");
         myRefTask1.addValueEventListener(new ValueEventListener() {
             @Override
@@ -128,7 +134,9 @@ public class Page3Lesson3Fragment extends Fragment implements View.OnClickListen
 
             }
         });
-
+/**
+ * Načtení teoretické úlohy a její přidání do layoutu
+ */
         DatabaseReference myRefTask2 = database.getReference("Lessons").child("Lesson3").child("Page3").child("TheoryTask2");
         myRefTask2.addValueEventListener(new ValueEventListener() {
             @Override
@@ -163,7 +171,9 @@ public class Page3Lesson3Fragment extends Fragment implements View.OnClickListen
 
             }
         });
-
+        /**
+         * Načtení teoretické úlohy a její přidání do layoutu
+         */
         DatabaseReference myRefTask3 = database.getReference("Lessons").child("Lesson3").child("Page3").child("TheoryTask3");
         myRefTask3.addValueEventListener(new ValueEventListener() {
             @Override
@@ -200,6 +210,7 @@ public class Page3Lesson3Fragment extends Fragment implements View.OnClickListen
         });
     }
 
+    /** Nastavení buttonu **/
     @Override
     public void onClick(View view) {
         switch (view.getId()){
@@ -211,6 +222,7 @@ public class Page3Lesson3Fragment extends Fragment implements View.OnClickListen
         }
     }
 
+    /** Uložení teoretických materiálů **/
     private void saveUserTheory() {
         FirebaseDatabase.getInstance().getReference("UserTheory")
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())

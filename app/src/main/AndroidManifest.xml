@@ -61,10 +61,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SpeechActivity"
-            android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".notifications.NotificationSettingsActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" />

@@ -39,7 +39,6 @@ public class Page5Lesson1Fragment extends Fragment implements View.OnClickListen
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -61,9 +60,14 @@ public class Page5Lesson1Fragment extends Fragment implements View.OnClickListen
 
         return v;
     }
-
+    /**
+     * Načtení dat
+     */
     private void loadData() {
 
+        /**
+         * Načtení textové úlohy a její přidání do layoutu
+         */
         DatabaseReference myRefTask1 = database.getReference("Lessons").child("Lesson1").child("Page5").child("TextTask1");
         myRefTask1.addValueEventListener(new ValueEventListener() {
             @Override
@@ -96,6 +100,7 @@ public class Page5Lesson1Fragment extends Fragment implements View.OnClickListen
         });
     }
 
+    /** Nastavení buttonu **/
     @Override
     public void onClick(View view) {
         switch (view.getId()){

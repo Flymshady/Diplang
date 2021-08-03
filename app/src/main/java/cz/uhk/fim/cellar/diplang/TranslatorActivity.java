@@ -47,7 +47,6 @@ import cz.uhk.fim.cellar.diplang.classes.Phrase;
 
 /**
  * @author Štěpán Cellar - FIM UHK
- * @since 2021
  * Aktivita pro překladač
  */
 public class TranslatorActivity extends AppCompatActivity {

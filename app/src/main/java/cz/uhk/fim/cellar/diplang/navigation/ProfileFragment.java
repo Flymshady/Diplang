@@ -85,6 +85,8 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         textNameFill = (TextView) v.findViewById(R.id.textNameFill);
         textEmailFill = (TextView) v.findViewById(R.id.textEmailFill);
         textPointsFill = (TextView) v.findViewById(R.id.textPointsFill);
+
+        /** Nastavení tabs pro přechod mezi žebříčkem a přidáváním přátel **/
         tabs = (TabLayout) v.findViewById(R.id.tabsProfile);
         viewPagerProfile = (ViewPager2) v.findViewById(R.id.viewPagerProfile);
 

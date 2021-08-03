@@ -49,11 +49,9 @@ public class Page8Lesson2Fragment extends Fragment implements View.OnClickListen
     private UserTask utask1, utask2, utask3, utask4, utask5;
     private int pagePoints;
 
-
     public Page8Lesson2Fragment() {
         // Required empty public constructor
     }
-
 
     public static Page8Lesson2Fragment newInstance(String param1, String param2) {
         Page8Lesson2Fragment fragment = new Page8Lesson2Fragment();
@@ -120,8 +118,11 @@ public class Page8Lesson2Fragment extends Fragment implements View.OnClickListen
         return v;
     }
 
-
+    /**
+     * Načtení dat
+     */
     private void loadData() {
+        /** Načtení informací o stránce **/
         DatabaseReference myRefPage = database.getReference("Lessons").child("Lesson2").child("Page8").child("PageParams");
         myRefPage.addValueEventListener(new ValueEventListener() {
             @Override
@@ -139,8 +140,9 @@ public class Page8Lesson2Fragment extends Fragment implements View.OnClickListen
                 // Failed to read value
             }
         });
-        
-
+        /**
+         * Načtení úlohy a její přidání do layoutu
+         */
         DatabaseReference myRefTask1 = database.getReference("Lessons").child("Lesson2").child("Page8").child("Task1");
         myRefTask1.addValueEventListener(new ValueEventListener() {
             @Override
@@ -163,7 +165,9 @@ public class Page8Lesson2Fragment extends Fragment implements View.OnClickListen
                 // Failed to read value
             }
         });
-
+        /**
+         * Načtení úlohy a její přidání do layoutu
+         */
         DatabaseReference myRefTask2 = database
                 .getReference("Lessons").child("Lesson2").child("Page8").child("Task2");
         myRefTask2.addValueEventListener(new ValueEventListener() {
@@ -186,7 +190,9 @@ public class Page8Lesson2Fragment extends Fragment implements View.OnClickListen
                 // Failed to read value
             }
         });
-
+        /**
+         * Načtení úlohy a její přidání do layoutu
+         */
         DatabaseReference myRefTask3 = database
                 .getReference("Lessons").child("Lesson2").child("Page8").child("Task3");
         myRefTask3.addValueEventListener(new ValueEventListener() {
@@ -209,7 +215,9 @@ public class Page8Lesson2Fragment extends Fragment implements View.OnClickListen
                 // Failed to read value
             }
         });
-
+        /**
+         * Načtení úlohy a její přidání do layoutu
+         */
         DatabaseReference myRefTask4 = database
                 .getReference("Lessons").child("Lesson2").child("Page8").child("Task4");
         myRefTask4.addValueEventListener(new ValueEventListener() {
@@ -233,6 +241,9 @@ public class Page8Lesson2Fragment extends Fragment implements View.OnClickListen
             }
         });
 
+        /**
+         * Načtení úlohy a její přidání do layoutu
+         */
         DatabaseReference myRefTask5 = database
                 .getReference("Lessons").child("Lesson2").child("Page8").child("Task5");
         myRefTask5.addValueEventListener(new ValueEventListener() {
@@ -258,6 +269,7 @@ public class Page8Lesson2Fragment extends Fragment implements View.OnClickListen
 
     }
 
+    /** Nastavení buttonů **/
     @Override
     public void onClick(View view) {
         switch (view.getId()){
@@ -277,6 +289,7 @@ public class Page8Lesson2Fragment extends Fragment implements View.OnClickListen
         }
     }
 
+    /** Uložení uživatelových odpovědí do db **/
     private void saveUserTask() {
         FirebaseDatabase.getInstance().getReference("UserTasks")
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())
@@ -318,6 +331,7 @@ public class Page8Lesson2Fragment extends Fragment implements View.OnClickListen
         TVPointsL2P8.setText(viewModel.getDipPoints().getValue().toString());
     }
 
+    /** Porovnání odpovědí, zobrazení správných řešení, kalkulace bodů **/
     private int calculatePoint() {
         int pointsCount=0;
         A1T1L2P8 = ET1L2P8.getText().toString();

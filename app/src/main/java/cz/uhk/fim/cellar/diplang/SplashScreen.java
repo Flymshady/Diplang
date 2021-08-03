@@ -24,6 +24,9 @@ public class SplashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
+        /**
+         * Vytvoření vlastní animace loga
+         */
         imageDip = (ImageView) findViewById(R.id.imageDip);
         imageDip.animate()
                 .setDuration(3000).rotationYBy(360f).start();

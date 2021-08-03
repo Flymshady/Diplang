@@ -22,7 +22,6 @@ import com.google.firebase.database.ValueEventListener;
 import org.jetbrains.annotations.NotNull;
 import cz.uhk.fim.cellar.diplang.PhrasesActivity;
 import cz.uhk.fim.cellar.diplang.R;
-import cz.uhk.fim.cellar.diplang.SpeechActivity;
 import cz.uhk.fim.cellar.diplang.TheoryLesson2Activity;
 import cz.uhk.fim.cellar.diplang.TheoryLesson3Activity;
 import cz.uhk.fim.cellar.diplang.TranslatorActivity;
@@ -72,7 +71,7 @@ public class StudyFragment extends Fragment implements View.OnClickListener {
     }
 
     /**
-     * Načtebí dat z databáze
+     * Načtení dat z databáze
      */
     private void loadData() {
         user = FirebaseAuth.getInstance().getCurrentUser();

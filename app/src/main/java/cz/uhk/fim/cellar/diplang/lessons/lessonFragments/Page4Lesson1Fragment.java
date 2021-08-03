@@ -50,7 +50,6 @@ public class Page4Lesson1Fragment extends Fragment implements View.OnClickListen
     private UserTask utask1, utask2, utask3, utask4;
     private int pagePoints;
 
-
     public Page4Lesson1Fragment() {
         // Required empty public constructor
     }
@@ -62,7 +61,6 @@ public class Page4Lesson1Fragment extends Fragment implements View.OnClickListen
         View v = inflater.inflate(R.layout.fragment_page4_lesson1, container, false);
 
         viewModel = new ViewModelProvider(requireActivity()).get(LessonViewModel.class);
-
 
         ET1L1P4 = (EditText) v.findViewById(R.id.ET1L1P4);
         ET2L1P4 = (EditText) v.findViewById(R.id.ET2L1P4);
@@ -92,7 +90,6 @@ public class Page4Lesson1Fragment extends Fragment implements View.OnClickListen
         utask3.setCreated(LocalDateTime.now().toString());
         utask4.setCreated(LocalDateTime.now().toString());
 
-
         finishL1P4.setVisibility(GONE);
 
         viewPager2 = (ViewPager2) getActivity().findViewById(R.id.viewPager);
@@ -104,8 +101,11 @@ public class Page4Lesson1Fragment extends Fragment implements View.OnClickListen
 
         return v;
     }
-
+    /**
+     * Načtení dat
+     */
     private void loadData() {
+        /** Načtení informací o stránce **/
         DatabaseReference myRefPage = database.getReference("Lessons").child("Lesson1").child("Page4").child("PageParams");
         myRefPage.addValueEventListener(new ValueEventListener() {
             @Override
@@ -123,7 +123,9 @@ public class Page4Lesson1Fragment extends Fragment implements View.OnClickListen
                 // Failed to read value
             }
         });
-
+        /**
+         * Načtení úlohy a její přidání do layoutu
+         */
         DatabaseReference myRefTask1 = database.getReference("Lessons").child("Lesson1").child("Page4").child("Task1");
         myRefTask1.addValueEventListener(new ValueEventListener() {
             @Override
@@ -143,7 +145,9 @@ public class Page4Lesson1Fragment extends Fragment implements View.OnClickListen
                 // Failed to read value
             }
         });
-
+        /**
+         * Načtení úlohy a její přidání do layoutu
+         */
         DatabaseReference myRefTask2 = database
                 .getReference("Lessons").child("Lesson1").child("Page4").child("Task2");
         myRefTask2.addValueEventListener(new ValueEventListener() {
@@ -164,7 +168,9 @@ public class Page4Lesson1Fragment extends Fragment implements View.OnClickListen
                 // Failed to read value
             }
         });
-
+        /**
+         * Načtení úlohy a její přidání do layoutu
+         */
         DatabaseReference myRefTask3 = database
                 .getReference("Lessons").child("Lesson1").child("Page4").child("Task3");
         myRefTask3.addValueEventListener(new ValueEventListener() {
@@ -185,7 +191,9 @@ public class Page4Lesson1Fragment extends Fragment implements View.OnClickListen
                 // Failed to read value
             }
         });
-
+        /**
+         * Načtení úlohy a její přidání do layoutu
+         */
         DatabaseReference myRefTask4 = database
                 .getReference("Lessons").child("Lesson1").child("Page4").child("Task4");
         myRefTask4.addValueEventListener(new ValueEventListener() {
@@ -208,7 +216,7 @@ public class Page4Lesson1Fragment extends Fragment implements View.OnClickListen
         });
     }
 
-
+    /** Nastavení buttonů **/
     @Override
     public void onClick(View view) {
         switch (view.getId()){
@@ -229,6 +237,7 @@ public class Page4Lesson1Fragment extends Fragment implements View.OnClickListen
         }
     }
 
+    /** Uložení uživatelových odpovědí do db **/
     private void saveUserTask() {
         FirebaseDatabase.getInstance().getReference("UserTasks")
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid().toString())
@@ -265,6 +274,7 @@ public class Page4Lesson1Fragment extends Fragment implements View.OnClickListen
 
     }
 
+    /** Porovnání odpovědí, zobrazení správných řešení, kalkulace bodů **/
     private int calculatePoint() {
         int pointsCount=0;
         A1T1L1P4 = ET1L1P4.getText().toString();
